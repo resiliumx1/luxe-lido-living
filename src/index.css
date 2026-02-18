@@ -128,7 +128,7 @@
 
   /* Property card overlay */
   .card-overlay {
-    @apply absolute inset-0 bg-gradient-to-t from-ocean-deep/80 via-ocean-deep/20 to-transparent transition-all duration-400;
+    @apply absolute inset-0 bg-gradient-to-t from-ocean-deep/80 via-ocean-deep/20 to-transparent transition-all duration-300;
   }
   .group:hover .card-overlay {
     @apply from-ocean-deep/90 via-ocean-deep/40;
