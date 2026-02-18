@@ -27,11 +27,13 @@ export default function PropertyCard({
       to={href}
       className={`group relative overflow-hidden block ${large ? "row-span-2" : ""}`}
     >
-      <div className={`relative overflow-hidden ${large ? "h-full min-h-[500px]" : "h-64 md:h-72"}`}>
+      <div className={`relative overflow-hidden ${large ? "h-full min-h-[500px]" : "h-56 md:h-72"}`}>
         <img
           src={image}
           alt={name}
           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+          loading="lazy"
+          decoding="async"
         />
         {/* Overlay */}
         <div className="card-overlay absolute inset-0" />
@@ -56,8 +58,10 @@ export default function PropertyCard({
           </div>
           {/* Hover CTA */}
           <div className="mt-3 flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            <span className="gold-line w-8" />
-            <span className="small-caps text-xs text-gold tracking-widest font-sans">View Property</span>
+            <span className="gold-line w-8 group-hover:w-12 transition-all duration-500" />
+            <span className="small-caps text-xs text-gold tracking-widest font-sans">
+              View Property →
+            </span>
           </div>
         </div>
       </div>

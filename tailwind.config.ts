@@ -76,6 +76,9 @@ export default {
         md: "0",
         sm: "0",
       },
+      transitionDuration: {
+        "400": "400ms",
+      },
       keyframes: {
         "accordion-down": {
           from: { height: "0" },
@@ -85,10 +88,15 @@ export default {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        shimmer: {
+          "0%": { transform: "translateX(-100%) skewX(-15deg)" },
+          "100%": { transform: "translateX(200%) skewX(-15deg)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        shimmer: "shimmer 0.7s ease-in-out",
       },
     },
   },

@@ -54,6 +54,55 @@
     --sidebar-border: 207 52% 21%;
     --sidebar-ring: 40 48% 59%;
   }
+
+  /* ========== DARK MODE ========== */
+  .dark {
+    --ocean-deep: 220 60% 7%;        /* deep near-black navy */
+    --ocean-mid: 210 30% 65%;        /* muted steel blue */
+    --teal: 193 35% 50%;             /* lighter teal */
+    --sand: 220 20% 28%;             /* dark stone */
+    --sand-light: 220 20% 13%;       /* very dark bg variant */
+    --off-white: 220 15% 92%;        /* near white */
+    --gold: 40 48% 59%;              /* gold unchanged */
+    --gold-soft: 42 52% 65%;         /* gold-soft unchanged */
+
+    --background: 222 47% 6%;        /* #070d18 */
+    --foreground: 40 33% 93%;        /* near off-white */
+
+    --card: 220 40% 10%;             /* dark card */
+    --card-foreground: 40 33% 93%;
+
+    --popover: 220 40% 10%;
+    --popover-foreground: 40 33% 93%;
+
+    --primary: 40 48% 59%;
+    --primary-foreground: 222 47% 6%;
+
+    --secondary: 220 20% 13%;
+    --secondary-foreground: 40 33% 93%;
+
+    --muted: 220 20% 13%;
+    --muted-foreground: 210 30% 65%;
+
+    --accent: 40 48% 59%;
+    --accent-foreground: 222 47% 6%;
+
+    --destructive: 0 62.8% 50%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 20% 20%;
+    --input: 220 20% 20%;
+    --ring: 40 48% 59%;
+
+    --sidebar-background: 222 47% 6%;
+    --sidebar-foreground: 40 33% 93%;
+    --sidebar-primary: 40 48% 59%;
+    --sidebar-primary-foreground: 222 47% 6%;
+    --sidebar-accent: 220 40% 10%;
+    --sidebar-accent-foreground: 40 33% 93%;
+    --sidebar-border: 220 20% 20%;
+    --sidebar-ring: 40 48% 59%;
+  }
 }
 
 @layer base {
@@ -118,13 +167,21 @@
   /* Scroll reveal */
   .reveal {
     opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 0.7s ease, transform 0.7s ease;
+    transform: translateY(28px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
   }
   .reveal.visible {
     opacity: 1;
     transform: translateY(0);
   }
+
+  /* Staggered reveal delays */
+  .reveal-delay-1 { transition-delay: 80ms; }
+  .reveal-delay-2 { transition-delay: 160ms; }
+  .reveal-delay-3 { transition-delay: 240ms; }
+  .reveal-delay-4 { transition-delay: 320ms; }
+  .reveal-delay-5 { transition-delay: 400ms; }
+  .reveal-delay-6 { transition-delay: 480ms; }
 
   /* Property card overlay */
   .card-overlay {
@@ -132,6 +189,36 @@
   }
   .group:hover .card-overlay {
     @apply from-ocean-deep/90 via-ocean-deep/40;
+  }
+
+  /* CTA shimmer effect */
+  .cta-shimmer {
+    @apply relative overflow-hidden;
+  }
+  .cta-shimmer::before {
+    content: '';
+    @apply absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-700;
+  }
+  .cta-shimmer:hover::before {
+    @apply translate-x-full;
+  }
+
+  /* CTA outline fill sweep */
+  .cta-fill-sweep {
+    @apply relative overflow-hidden;
+  }
+  .cta-fill-sweep::before {
+    content: '';
+    @apply absolute inset-0 w-0 bg-off-white/15 transition-all duration-400;
+  }
+  .cta-fill-sweep:hover::before {
+    @apply w-full;
+  }
+
+  /* Dark mode select fix */
+  .dark select option {
+    background-color: hsl(var(--card));
+    color: hsl(var(--foreground));
   }
 }
 
@@ -164,4 +251,20 @@
 
 .testimonial-enter {
   animation: fadeIn 0.6s ease forwards;
+}
+
+/* WhatsApp widget pulse ring */
+@keyframes wa-pulse {
+  0% { transform: scale(1); opacity: 0.7; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+
+.wa-pulse-ring {
+  animation: wa-pulse 2s ease-out infinite;
+}
+
+/* Shimmer keyframe */
+@keyframes shimmer {
+  0% { transform: translateX(-100%) skewX(-15deg); }
+  100% { transform: translateX(200%) skewX(-15deg); }
 }

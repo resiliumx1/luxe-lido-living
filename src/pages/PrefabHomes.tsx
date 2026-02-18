@@ -11,6 +11,9 @@ const prefabs = [
   { image: heroImg, location: "St. John's", name: "Palm Grove Prefab Villa", price: "$420,000", beds: 3, baths: 2, href: "/prefab-homes" },
   { image: villaTerraceImg, location: "Jolly Harbour", name: "Caribbean Sunrise Cottage", price: "$295,000", beds: 2, baths: 2, href: "/prefab-homes" },
   { image: containerBeachfrontImg, location: "English Harbour", name: "Harbour View Prefab", price: "$510,000", beds: 3, baths: 3, href: "/prefab-homes" },
+  { image: "https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=800&q=80", location: "Half Moon Bay", name: "Coral Bay Prefab", price: "$380,000", beds: 3, baths: 2, href: "/prefab-homes" },
+  { image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80", location: "St. John's", name: "Tradewind Villa", price: "$640,000", beds: 4, baths: 3, href: "/prefab-homes" },
+  { image: "https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=800&q=80", location: "English Harbour", name: "Skyview Prefab", price: "$725,000", beds: 4, baths: 3, href: "/prefab-homes" },
 ];
 
 const benefits = [
@@ -22,23 +25,23 @@ const benefits = [
 
 export default function PrefabHomes() {
   return (
-    <div className="bg-off-white">
+    <div className="bg-off-white dark:bg-background">
       <PageBanner
         image={heroImg}
         title="Prefab Homes"
         subtitle="Precision-built. Rapidly delivered. Caribbean-ready."
       />
 
-      <section className="py-20 bg-off-white">
+      <section className="py-20 bg-off-white dark:bg-background">
         <div className="max-w-[1280px] mx-auto px-6 md:px-10">
           <div className="max-w-2xl mb-16">
             <SectionLabel text="Prefabricated Homes" />
-            <p className="font-sans text-ocean-mid text-base leading-relaxed">
+            <p className="font-sans text-ocean-mid dark:text-foreground/70 text-base leading-relaxed">
               Our prefabricated homes are precision-engineered in controlled factory environments before being shipped and assembled on your chosen site in Antigua & Barbuda. Built for the Caribbean climate, they combine speed, affordability, and stunning design.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-20">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-20">
             {prefabs.map((p, i) => (
               <PropertyCard key={i} {...p} />
             ))}
@@ -46,13 +49,13 @@ export default function PrefabHomes() {
 
           {/* Key Benefits */}
           <SectionLabel text="Why Prefab" />
-          <h2 className="font-serif text-4xl text-ocean-deep mb-12">Key Benefits</h2>
+          <h2 className="font-serif text-4xl text-ocean-deep dark:text-foreground mb-12">Key Benefits</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {benefits.map(({ Icon, label, desc }) => (
               <div key={label} className="border-t border-gold pt-6">
                 <Icon size={20} className="text-gold mb-4" />
-                <h3 className="font-serif text-lg text-ocean-deep mb-2">{label}</h3>
-                <p className="font-sans text-sm text-ocean-mid/70 leading-relaxed">{desc}</p>
+                <h3 className="font-serif text-lg text-ocean-deep dark:text-foreground mb-2">{label}</h3>
+                <p className="font-sans text-sm text-ocean-mid/70 dark:text-foreground/50 leading-relaxed">{desc}</p>
               </div>
             ))}
           </div>
@@ -67,9 +70,9 @@ export default function PrefabHomes() {
           </p>
           <a
             href="/contact"
-            className="flex-shrink-0 bg-gold hover:bg-gold-soft text-ocean-deep font-sans font-medium small-caps tracking-widest text-sm px-8 py-4 transition-colors duration-300"
+            className="cta-shimmer flex-shrink-0 bg-gold hover:bg-gold-soft text-ocean-deep font-sans font-medium small-caps tracking-widest text-sm px-8 py-4 transition-colors duration-300 flex items-center gap-2 group"
           >
-            Enquire
+            Enquire <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
           </a>
         </div>
       </div>
