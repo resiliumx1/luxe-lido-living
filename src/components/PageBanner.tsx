@@ -11,6 +11,9 @@ export default function PageBanner({ image, title, subtitle }: PageBannerProps) 
         src={image}
         alt={title}
         className="absolute inset-0 w-full h-full object-cover"
+        loading="eager"
+        fetchPriority="high"
+        decoding="async"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-ocean-deep/80 via-ocean-deep/30 to-transparent" />
       <div className="relative max-w-[1280px] mx-auto px-6 md:px-10 w-full">
@@ -18,8 +21,8 @@ export default function PageBanner({ image, title, subtitle }: PageBannerProps) 
           <span className="gold-line w-10" />
           <span className="small-caps text-xs text-gold tracking-widest font-sans">A. Lindsay Luxe Estates</span>
         </div>
-        <h1 className="font-serif text-5xl md:text-7xl text-off-white font-medium leading-none mb-4">{title}</h1>
-        <p className="font-serif italic text-off-white/70 text-xl">{subtitle}</p>
+        <h1 className="font-serif text-4xl md:text-7xl text-off-white font-medium leading-none mb-4">{title}</h1>
+        <p className="font-serif italic text-off-white/70 text-lg md:text-xl">{subtitle}</p>
       </div>
     </div>
   );

@@ -9,15 +9,25 @@ import SectionLabel from "@/components/SectionLabel";
 import PropertyCard from "@/components/PropertyCard";
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 // ---------- Hero ----------
 function Hero() {
   const [offset, setOffset] = useState(0);
+  const rafRef = useRef<number>();
 
   useEffect(() => {
-    const handleScroll = () => setOffset(window.scrollY * 0.4);
+    const handleScroll = () => {
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+      rafRef.current = requestAnimationFrame(() => {
+        setOffset(window.scrollY * 0.38);
+      });
+    };
     window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    };
   }, []);
 
   return (
@@ -41,11 +51,11 @@ function Hero() {
         <div className="max-w-[900px]">
           {/* Agent name — big editorial */}
           <div className="mb-0 leading-none">
-            <h1 className="font-serif text-[clamp(72px,12vw,160px)] text-off-white font-light leading-none tracking-tight">
+            <h1 className="font-serif text-[clamp(56px,12vw,160px)] text-off-white font-light leading-none tracking-tight">
               Ashante
             </h1>
             <h1
-              className="font-serif text-[clamp(72px,12vw,160px)] font-light leading-none tracking-tight italic"
+              className="font-serif text-[clamp(56px,12vw,160px)] font-light leading-none tracking-tight italic"
               style={{
                 color: "transparent",
                 WebkitTextStroke: "1.5px #faf9f7",
@@ -72,13 +82,14 @@ function Hero() {
           <div className="flex flex-wrap gap-4">
             <a
               href="/luxury-homes"
-              className="bg-gold hover:bg-gold-soft text-ocean-deep font-sans font-medium small-caps tracking-widest text-sm px-8 py-4 transition-colors duration-300"
+              className="cta-shimmer relative bg-gold hover:bg-gold-soft text-ocean-deep font-sans font-medium small-caps tracking-widest text-sm px-8 py-4 transition-all duration-300 hover:scale-[1.02] flex items-center gap-2 group"
             >
               View Listings
+              <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
             </a>
             <a
               href="/contact"
-              className="border border-off-white text-off-white hover:bg-off-white hover:text-ocean-deep font-sans font-medium small-caps tracking-widest text-sm px-8 py-4 transition-all duration-300"
+              className="cta-fill-sweep border border-off-white text-off-white font-sans font-medium small-caps tracking-widest text-sm px-8 py-4 transition-all duration-300 hover:border-gold hover:text-gold"
             >
               Get In Touch
             </a>
@@ -112,12 +123,12 @@ function SearchBar() {
   };
 
   const selectClass =
-    "w-full bg-transparent outline-none font-sans text-sm text-foreground border-b border-sand pb-2 cursor-pointer";
+    "w-full bg-transparent outline-none font-sans text-sm text-foreground border-b border-sand dark:border-gold/20 pb-2 cursor-pointer";
 
   return (
-    <section className="bg-off-white shadow-xl py-0">
+    <section className="bg-off-white dark:bg-background shadow-xl py-0">
       <div className="max-w-[1280px] mx-auto px-6 md:px-10">
-        <div className="bg-card shadow-2xl px-8 py-8 -mt-12 relative z-10">
+        <div className="bg-card dark:bg-card shadow-2xl px-6 md:px-8 py-8 -mt-12 relative z-10 border border-transparent dark:border-gold/10">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 items-end">
             <div>
               <label className="small-caps text-xs text-gold tracking-widest font-sans block mb-2">Property Type</label>
@@ -165,7 +176,7 @@ function SearchBar() {
             </div>
             <button
               onClick={handleFind}
-              className="bg-gold hover:bg-gold-soft text-ocean-deep font-sans font-medium small-caps tracking-widest text-sm py-3 px-6 transition-colors duration-300 whitespace-nowrap"
+              className="cta-shimmer bg-gold hover:bg-gold-soft text-ocean-deep font-sans font-medium small-caps tracking-widest text-sm py-3 px-6 transition-all duration-300 whitespace-nowrap"
             >
               Find My Property
             </button>
@@ -182,12 +193,11 @@ function Marquee() {
     "Luxury Villas · Container Homes · Prefab Homes · Beachfront Estates · Investment Properties · Antigua & Barbuda · English Harbour · Jolly Harbour · Citizenship by Investment · ";
 
   return (
-    <div className="bg-sand-light py-4 overflow-hidden border-y border-sand">
+    <div className="bg-sand-light dark:bg-sand-light py-4 overflow-hidden border-y border-sand dark:border-gold/10">
       <div className="marquee-inner flex">
-        <span className="small-caps text-xs text-ocean-mid tracking-widest font-sans px-8">{text}</span>
-        <span className="small-caps text-xs text-ocean-mid tracking-widest font-sans px-8">{text}</span>
-        <span className="small-caps text-xs text-ocean-mid tracking-widest font-sans px-8">{text}</span>
-        <span className="small-caps text-xs text-ocean-mid tracking-widest font-sans px-8">{text}</span>
+        {[text, text, text, text].map((t, i) => (
+          <span key={i} className="small-caps text-xs text-ocean-mid dark:text-foreground/60 tracking-widest font-sans px-8">{t}</span>
+        ))}
       </div>
     </div>
   );
@@ -195,38 +205,42 @@ function Marquee() {
 
 // ---------- About Preview ----------
 function AboutPreview() {
+  const sectionRef = useScrollReveal();
+
   return (
-    <section className="py-28 bg-off-white">
+    <section className="py-28 bg-off-white dark:bg-background" ref={sectionRef}>
       <div className="max-w-[1280px] mx-auto px-6 md:px-10">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
           {/* Image */}
-          <div className="relative">
+          <div className="relative reveal">
             <div className="relative z-10">
               <img
                 src={ashanteImg}
                 alt="Ashante Lindsay"
                 className="w-full max-w-md object-cover aspect-[4/5]"
+                loading="lazy"
+                decoding="async"
               />
             </div>
             {/* Gold offset border */}
             <div className="absolute top-6 left-6 w-full max-w-md aspect-[4/5] border border-gold z-0" />
             {/* Badge */}
-            <div className="absolute bottom-8 -right-4 md:-right-10 z-20 bg-ocean-deep text-off-white px-6 py-4">
+            <div className="absolute bottom-8 -right-2 md:-right-10 z-20 bg-ocean-deep text-off-white px-6 py-4">
               <p className="font-serif text-2xl font-medium text-gold">10+</p>
               <p className="small-caps text-xs text-off-white/70 tracking-widest font-sans">Years Experience</p>
             </div>
           </div>
 
           {/* Text */}
-          <div>
+          <div className="reveal reveal-delay-2">
             <SectionLabel text="Meet Your Agent" />
-            <h2 className="font-serif text-4xl md:text-5xl text-ocean-deep mb-6 leading-tight">
+            <h2 className="font-serif text-4xl md:text-5xl text-ocean-deep dark:text-foreground mb-6 leading-tight">
               About Ashante
             </h2>
-            <p className="font-sans text-ocean-mid text-base leading-relaxed mb-4">
+            <p className="font-sans text-ocean-mid dark:text-foreground/70 text-base leading-relaxed mb-4">
               Born and raised in the Caribbean, Ashante Lindsay brings over a decade of expertise and an intimate understanding of Antigua's most coveted properties. She has built a reputation for white-glove service, discretion, and an unmatched ability to match clients with their perfect island home.
             </p>
-            <p className="font-sans text-ocean-mid text-base leading-relaxed mb-8">
+            <p className="font-sans text-ocean-mid dark:text-foreground/70 text-base leading-relaxed mb-8">
               From waterfront estates to innovative container builds, Ashante navigates every corner of Antigua's real estate market with passion and precision — guiding buyers, sellers, and investors with equal dedication.
             </p>
 
@@ -242,7 +256,7 @@ function AboutPreview() {
               ].map((tag) => (
                 <span
                   key={tag}
-                  className="border border-sand text-teal small-caps text-xs font-sans tracking-wider px-3 py-1.5"
+                  className="border border-sand dark:border-gold/30 text-teal dark:text-foreground/70 small-caps text-xs font-sans tracking-wider px-3 py-1.5"
                 >
                   {tag}
                 </span>
@@ -251,7 +265,7 @@ function AboutPreview() {
 
             <a
               href="/about"
-              className="inline-flex items-center gap-3 text-ocean-deep font-sans font-medium small-caps tracking-widest text-sm hover:text-gold transition-colors duration-300 group"
+              className="inline-flex items-center gap-3 text-ocean-deep dark:text-foreground font-sans font-medium small-caps tracking-widest text-sm hover:text-gold transition-colors duration-300 group"
             >
               My Full Story
               <span className="gold-line w-8 group-hover:w-14 transition-all duration-300" />
@@ -265,15 +279,17 @@ function AboutPreview() {
 
 // ---------- Featured Listings ----------
 function FeaturedListings() {
+  const sectionRef = useScrollReveal();
+
   return (
-    <section className="py-28 bg-sand-light">
+    <section className="py-28 bg-sand-light dark:bg-sand-light" ref={sectionRef}>
       <div className="max-w-[1280px] mx-auto px-6 md:px-10">
-        <div className="mb-12">
+        <div className="mb-12 reveal">
           <SectionLabel text="Curated Collection" />
-          <h2 className="font-serif text-4xl md:text-5xl text-ocean-deep">Featured Listings</h2>
+          <h2 className="font-serif text-4xl md:text-5xl text-ocean-deep dark:text-foreground">Featured Listings</h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 reveal reveal-delay-2">
           {/* Large card */}
           <div className="md:row-span-2">
             <PropertyCard
@@ -323,18 +339,20 @@ const services = [
 ];
 
 function Services() {
+  const sectionRef = useScrollReveal();
+
   return (
-    <section className="py-28 bg-ocean-deep">
+    <section className="py-28 bg-ocean-deep dark:bg-ocean-deep" ref={sectionRef}>
       <div className="max-w-[1280px] mx-auto px-6 md:px-10">
-        <div className="mb-16">
+        <div className="mb-16 reveal">
           <SectionLabel text="What We Offer" light />
           <h2 className="font-serif text-4xl md:text-5xl text-off-white">Services</h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-gold/10">
-          {services.map((s) => (
+          {services.map((s, i) => (
             <div
               key={s.num}
-              className="group bg-ocean-deep p-8 border-t-2 border-transparent hover:border-gold transition-colors duration-300"
+              className={`reveal reveal-delay-${Math.min(i + 1, 6)} group bg-ocean-deep dark:bg-ocean-deep p-8 border-t-2 border-transparent hover:border-gold transition-colors duration-300`}
             >
               <p className="font-serif text-5xl text-off-white/10 font-light mb-4 group-hover:text-gold/20 transition-colors duration-300">
                 {s.num}
@@ -371,6 +389,7 @@ const testimonials = [
 function Testimonials() {
   const [active, setActive] = useState(0);
   const [fading, setFading] = useState(false);
+  const sectionRef = useScrollReveal();
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -394,28 +413,24 @@ function Testimonials() {
   const t = testimonials[active];
 
   return (
-    <section className="py-28 bg-off-white relative overflow-hidden">
+    <section className="py-28 bg-off-white dark:bg-background relative overflow-hidden" ref={sectionRef}>
       {/* Watermark */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none">
-        <span
-          className="font-serif text-[20vw] font-light text-ocean-deep/[0.03] leading-none"
-        >
+        <span className="font-serif text-[20vw] font-light text-ocean-deep/[0.03] dark:text-off-white/[0.04] leading-none">
           AL
         </span>
       </div>
 
-      <div className="max-w-[800px] mx-auto px-6 md:px-10 text-center relative">
+      <div className="max-w-[800px] mx-auto px-6 md:px-10 text-center relative reveal">
         {/* Quote mark */}
         <p className="font-serif text-8xl text-gold leading-none mb-6 -mt-8">"</p>
 
-        <div
-          className={`transition-opacity duration-400 ${fading ? "opacity-0" : "opacity-100"}`}
-        >
-          <blockquote className="font-serif italic text-xl md:text-2xl text-ocean-deep leading-relaxed mb-8">
+        <div className={`transition-opacity duration-400 ${fading ? "opacity-0" : "opacity-100"}`}>
+          <blockquote className="font-serif italic text-xl md:text-2xl text-ocean-deep dark:text-foreground leading-relaxed mb-8">
             {t.quote}
           </blockquote>
           <p className="small-caps text-xs text-gold tracking-widest font-sans mb-1">{t.author}</p>
-          <p className="font-sans text-sm text-ocean-mid/60">{t.location}</p>
+          <p className="font-sans text-sm text-ocean-mid/60 dark:text-foreground/50">{t.location}</p>
         </div>
 
         {/* Dot nav */}
@@ -424,8 +439,8 @@ function Testimonials() {
             <button
               key={i}
               onClick={() => switchTo(i)}
-              className={`w-1.5 h-1.5 transition-all duration-300 ${
-                i === active ? "bg-gold w-6" : "bg-sand"
+              className={`h-1.5 transition-all duration-300 ${
+                i === active ? "bg-gold w-6" : "bg-sand dark:bg-sand w-1.5"
               }`}
               aria-label={`Testimonial ${i + 1}`}
             />
@@ -439,7 +454,7 @@ function Testimonials() {
 // ---------- Index ----------
 export default function Index() {
   return (
-    <div className="bg-off-white">
+    <div className="bg-off-white dark:bg-background">
       <Hero />
       <SearchBar />
       <Marquee />
