@@ -43,7 +43,7 @@ const App = () => (
             </a>
             <Routes>
               {/* Admin routes — no public nav/whatsapp */}
-              <Route path="/admin/login" element={<AdminLogin />} />
+              <Route path="/admin/login" element={<AdminDashboard />} />
               <Route path="/admin/*" element={
                 <AdminGuard>
                   <AdminLayout />
