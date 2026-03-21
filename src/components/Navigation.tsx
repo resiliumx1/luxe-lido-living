@@ -1,7 +1,10 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Sun, Moon } from "lucide-react";
+import { Menu, X, Sun, Moon, Heart } from "lucide-react";
 import { useTheme } from "next-themes";
+import { useWishlist } from "@/contexts/WishlistContext";
+import WishlistDrawer from "./WishlistDrawer";
+import BookingModal from "./BookingModal";
 
 const navLinks = [
   { label: "Luxury Homes", href: "/luxury-homes" },
@@ -11,23 +14,13 @@ const navLinks = [
   { label: "Contact", href: "/contact" },
 ];
 
-function ThemeToggle() {
-  const { theme, setTheme } = useTheme();
-  const isDark = theme === "dark";
-  return (
-    <button
-      onClick={() => setTheme(isDark ? "light" : "dark")}
-      aria-label="Toggle theme"
-      className="p-2 text-off-white/70 hover:text-gold transition-colors duration-300"
-    >
-      {isDark ? <Sun size={18} /> : <Moon size={18} />}
-    </button>
-  );
-}
-
 export default function Navigation() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [wishlistOpen, setWishlistOpen] = useState(false);
+  const [bookingOpen, setBookingOpen] = useState(false);
+  const { theme, setTheme } = useTheme();
+  const { count } = useWishlist();
   const location = useLocation();
   const isHome = location.pathname === "/";
 
@@ -42,6 +35,7 @@ export default function Navigation() {
   }, [location]);
 
   const isTransparent = isHome && !scrolled;
+  const isDark = theme === "dark";
 
   return (
     <>
@@ -53,7 +47,7 @@ export default function Navigation() {
         }`}
       >
         <div className="max-w-[1280px] mx-auto px-6 md:px-10 flex items-center justify-between h-20">
-          {/* Logo — left */}
+          {/* Logo */}
           <Link to="/" className="flex items-center gap-2 group shrink-0">
             <span className="text-gold font-serif text-lg leading-none group-hover:text-gold-soft transition-colors duration-300">◆</span>
             <span
@@ -77,15 +71,40 @@ export default function Navigation() {
             ))}
           </div>
 
-          {/* Right — CTA + theme + mobile hamburger */}
-          <div className="flex items-center gap-3 shrink-0">
-            <Link
-              to="/contact"
+          {/* Right — icons + CTA + mobile hamburger */}
+          <div className="flex items-center gap-2 shrink-0">
+            {/* Wishlist */}
+            <button
+              onClick={() => setWishlistOpen(true)}
+              aria-label={`Saved properties: ${count}`}
+              className="relative p-2 text-gold hover:text-gold-soft transition-colors duration-300"
+            >
+              <Heart size={18} fill={count > 0 ? "currentColor" : "none"} strokeWidth={2} />
+              {count > 0 && (
+                <span className="absolute -top-0.5 -right-0.5 w-4 h-4 rounded-full bg-gold text-ocean-deep text-[9px] font-bold flex items-center justify-center">
+                  {count}
+                </span>
+              )}
+            </button>
+
+            {/* Theme toggle */}
+            <button
+              onClick={() => setTheme(isDark ? "light" : "dark")}
+              aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
+              className="p-2 text-off-white/70 hover:text-gold transition-colors duration-300"
+            >
+              {isDark ? <Sun size={18} /> : <Moon size={18} />}
+            </button>
+
+            {/* Book a Viewing */}
+            <button
+              onClick={() => setBookingOpen(true)}
               className="hidden md:inline-flex cta-shimmer bg-gold hover:bg-gold-soft text-ocean-deep font-sans font-medium small-caps tracking-widest text-xs px-5 py-2.5 transition-all duration-300 items-center gap-1.5"
             >
               Book a Viewing
-            </Link>
-            <ThemeToggle />
+            </button>
+
+            {/* Mobile hamburger */}
             <button
               className="lg:hidden text-off-white p-2 min-w-[44px] min-h-[44px] flex items-center justify-center"
               onClick={() => setMenuOpen(!menuOpen)}
@@ -119,14 +138,19 @@ export default function Navigation() {
             {link.label}
           </Link>
         ))}
-        <Link
-          to="/contact"
+        <button
+          onClick={() => { setMenuOpen(false); setBookingOpen(true); }}
           className="mt-4 cta-shimmer bg-gold hover:bg-gold-soft text-ocean-deep font-sans font-medium small-caps tracking-widest text-sm px-8 py-3 transition-all duration-300"
-          onClick={() => setMenuOpen(false)}
         >
           Book a Viewing
-        </Link>
+        </button>
       </div>
+
+      {/* Wishlist Drawer */}
+      <WishlistDrawer isOpen={wishlistOpen} onClose={() => setWishlistOpen(false)} />
+
+      {/* Booking Modal */}
+      <BookingModal isOpen={bookingOpen} onClose={() => setBookingOpen(false)} />
     </>
   );
 }
