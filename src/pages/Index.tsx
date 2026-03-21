@@ -292,7 +292,7 @@ function Testimonials() {
 export default function Index() {
   return (
     <div className="bg-off-white dark:bg-background">
-      <Hero />
+      <HeroSection />
       <SearchBar />
       <Marquee />
       <FeaturedListings />
