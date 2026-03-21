@@ -4,104 +4,116 @@
 
 @layer base {
   :root {
-    /* Core brand palette */
-    --ocean-deep: 210 63% 13%;       /* #0d2137 */
-    --ocean-mid: 207 52% 21%;        /* #1a3a52 */
-    --teal: 193 42% 31%;             /* #2d5f6f */
-    --sand: 33 21% 72%;              /* #c4b8a8 */
-    --sand-light: 36 23% 88%;        /* #e8e2d9 */
-    --off-white: 40 33% 97%;         /* #faf9f7 */
-    --gold: 40 48% 59%;              /* #c9a962 */
-    --gold-soft: 42 52% 65%;         /* #d4bc7a */
+    /* Core brand palette — luxury Caribbean */
+    --primary-dark: 220 42% 10%;      /* #0A1628 */
+    --accent-gold: 38 44% 61%;        /* #C9A96E */
+    --accent-gold-soft: 40 48% 68%;   /* #D4BC7A */
+    --warm-neutral: 33 43% 93%;       /* #F5EFE6 */
+    --pure-white: 0 0% 100%;          /* #FFFFFF */
+    --text-dark: 0 0% 10%;            /* #1A1A1A */
+    --text-light: 0 0% 100%;          /* white at 0.85 for dark bg usage */
+
+    /* Legacy aliases — keeping compatibility */
+    --ocean-deep: 220 42% 10%;
+    --ocean-mid: 220 30% 25%;
+    --teal: 193 42% 31%;
+    --sand: 33 25% 75%;
+    --sand-light: 33 43% 93%;
+    --off-white: 33 43% 97%;
+    --gold: 38 44% 61%;
+    --gold-soft: 40 48% 68%;
 
     /* Shadcn semantic tokens */
-    --background: 40 33% 97%;
-    --foreground: 210 63% 13%;
+    --background: 33 43% 97%;
+    --foreground: 0 0% 10%;
 
     --card: 0 0% 100%;
-    --card-foreground: 210 63% 13%;
+    --card-foreground: 0 0% 10%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 210 63% 13%;
+    --popover-foreground: 0 0% 10%;
 
-    --primary: 40 48% 59%;
-    --primary-foreground: 210 63% 13%;
+    --primary: 38 44% 61%;
+    --primary-foreground: 220 42% 10%;
 
-    --secondary: 36 23% 88%;
-    --secondary-foreground: 210 63% 13%;
+    --secondary: 33 43% 93%;
+    --secondary-foreground: 0 0% 10%;
 
-    --muted: 36 23% 88%;
-    --muted-foreground: 207 52% 21%;
+    --muted: 33 43% 93%;
+    --muted-foreground: 220 30% 25%;
 
-    --accent: 40 48% 59%;
-    --accent-foreground: 210 63% 13%;
+    --accent: 38 44% 61%;
+    --accent-foreground: 220 42% 10%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 33 21% 72%;
-    --input: 33 21% 72%;
-    --ring: 40 48% 59%;
+    --border: 33 25% 75%;
+    --input: 33 25% 75%;
+    --ring: 38 44% 61%;
 
     --radius: 0rem;
 
-    --sidebar-background: 210 63% 13%;
-    --sidebar-foreground: 40 33% 97%;
-    --sidebar-primary: 40 48% 59%;
-    --sidebar-primary-foreground: 210 63% 13%;
-    --sidebar-accent: 207 52% 21%;
-    --sidebar-accent-foreground: 40 33% 97%;
-    --sidebar-border: 207 52% 21%;
-    --sidebar-ring: 40 48% 59%;
+    --sidebar-background: 220 42% 10%;
+    --sidebar-foreground: 33 43% 97%;
+    --sidebar-primary: 38 44% 61%;
+    --sidebar-primary-foreground: 220 42% 10%;
+    --sidebar-accent: 220 30% 25%;
+    --sidebar-accent-foreground: 33 43% 97%;
+    --sidebar-border: 220 30% 25%;
+    --sidebar-ring: 38 44% 61%;
   }
 
   /* ========== DARK MODE ========== */
   .dark {
-    --ocean-deep: 220 60% 7%;        /* deep near-black navy */
-    --ocean-mid: 210 30% 65%;        /* muted steel blue */
-    --teal: 193 35% 50%;             /* lighter teal */
-    --sand: 220 20% 28%;             /* dark stone */
-    --sand-light: 220 20% 13%;       /* very dark bg variant */
-    --off-white: 220 15% 92%;        /* near white */
-    --gold: 40 48% 59%;              /* gold unchanged */
-    --gold-soft: 42 52% 65%;         /* gold-soft unchanged */
+    --primary-dark: 222 50% 5%;
+    --ocean-deep: 222 50% 5%;
+    --ocean-mid: 210 30% 65%;
+    --teal: 193 35% 50%;
+    --sand: 220 20% 28%;
+    --sand-light: 220 20% 13%;
+    --off-white: 220 15% 92%;
+    --gold: 38 44% 61%;
+    --gold-soft: 40 48% 68%;
+    --warm-neutral: 220 20% 13%;
+    --text-dark: 220 15% 92%;
 
-    --background: 222 47% 6%;        /* #070d18 */
-    --foreground: 40 33% 93%;        /* near off-white */
+    --background: 222 47% 5%;
+    --foreground: 220 15% 92%;
 
-    --card: 220 40% 10%;             /* dark card */
-    --card-foreground: 40 33% 93%;
+    --card: 220 40% 10%;
+    --card-foreground: 220 15% 92%;
 
     --popover: 220 40% 10%;
-    --popover-foreground: 40 33% 93%;
+    --popover-foreground: 220 15% 92%;
 
-    --primary: 40 48% 59%;
-    --primary-foreground: 222 47% 6%;
+    --primary: 38 44% 61%;
+    --primary-foreground: 222 47% 5%;
 
     --secondary: 220 20% 13%;
-    --secondary-foreground: 40 33% 93%;
+    --secondary-foreground: 220 15% 92%;
 
     --muted: 220 20% 13%;
     --muted-foreground: 210 30% 65%;
 
-    --accent: 40 48% 59%;
-    --accent-foreground: 222 47% 6%;
+    --accent: 38 44% 61%;
+    --accent-foreground: 222 47% 5%;
 
     --destructive: 0 62.8% 50%;
     --destructive-foreground: 210 40% 98%;
 
     --border: 220 20% 20%;
     --input: 220 20% 20%;
-    --ring: 40 48% 59%;
+    --ring: 38 44% 61%;
 
-    --sidebar-background: 222 47% 6%;
-    --sidebar-foreground: 40 33% 93%;
-    --sidebar-primary: 40 48% 59%;
-    --sidebar-primary-foreground: 222 47% 6%;
+    --sidebar-background: 222 47% 5%;
+    --sidebar-foreground: 220 15% 92%;
+    --sidebar-primary: 38 44% 61%;
+    --sidebar-primary-foreground: 222 47% 5%;
     --sidebar-accent: 220 40% 10%;
-    --sidebar-accent-foreground: 40 33% 93%;
+    --sidebar-accent-foreground: 220 15% 92%;
     --sidebar-border: 220 20% 20%;
-    --sidebar-ring: 40 48% 59%;
+    --sidebar-ring: 38 44% 61%;
   }
 }
 
@@ -116,13 +128,21 @@
 
   body {
     @apply bg-background text-foreground;
-    font-family: 'Outfit', sans-serif;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 17px;
+    line-height: 1.75;
     -webkit-font-smoothing: antialiased;
   }
 
   h1, h2, h3, h4, h5 {
     font-family: 'Cormorant Garamond', serif;
+    letter-spacing: 0.02em;
   }
+
+  h1 { font-size: clamp(40px, 7vw, 72px); line-height: 1.05; }
+  h2 { font-size: clamp(32px, 5vw, 48px); line-height: 1.1; }
+  h3 { font-size: 32px; line-height: 1.2; }
+  h4 { font-size: 24px; line-height: 1.3; }
 }
 
 @layer utilities {
@@ -130,7 +150,7 @@
     font-family: 'Cormorant Garamond', serif;
   }
   .font-sans {
-    font-family: 'Outfit', sans-serif;
+    font-family: 'DM Sans', sans-serif;
   }
 
   /* Parallax hero effect */

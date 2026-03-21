@@ -15,7 +15,14 @@ export default {
     extend: {
       fontFamily: {
         serif: ["'Cormorant Garamond'", "Georgia", "serif"],
-        sans: ["'Outfit'", "system-ui", "sans-serif"],
+        sans: ["'DM Sans'", "system-ui", "sans-serif"],
+      },
+      fontSize: {
+        "display": ["72px", { lineHeight: "1.05", letterSpacing: "0.02em" }],
+        "h2":      ["48px", { lineHeight: "1.1",  letterSpacing: "0.02em" }],
+        "h3":      ["32px", { lineHeight: "1.2",  letterSpacing: "0.02em" }],
+        "h4":      ["24px", { lineHeight: "1.3",  letterSpacing: "0.02em" }],
+        "body":    ["17px", { lineHeight: "1.75" }],
       },
       colors: {
         border: "hsl(var(--border))",
