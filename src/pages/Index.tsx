@@ -20,7 +20,7 @@ function Hero() {
     const handleScroll = () => {
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
       rafRef.current = requestAnimationFrame(() => {
-        setOffset(window.scrollY * 0.38);
+        setOffset(window.scrollY * 0.35);
       });
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -31,10 +31,10 @@ function Hero() {
   }, []);
 
   return (
-    <section className="relative h-screen overflow-hidden">
+    <section className="relative min-h-screen overflow-hidden flex items-center justify-center">
       {/* Parallax bg */}
       <div
-        className="absolute inset-0 w-full h-[120%] -top-[10%]"
+        className="absolute inset-0 w-full h-[130%] -top-[15%]"
         style={{
           backgroundImage: `url(${heroImg})`,
           backgroundSize: "cover",
@@ -43,64 +43,66 @@ function Hero() {
           willChange: "transform",
         }}
       />
-      {/* Gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-ocean-deep/20 via-ocean-deep/30 to-ocean-deep/70" />
+      {/* Warm cinematic overlay */}
+      <div className="absolute inset-0" style={{ background: "rgba(10, 22, 40, 0.52)" }} />
+      {/* Bottom gradient for depth */}
+      <div className="absolute inset-0 bg-gradient-to-t from-ocean-deep/40 via-transparent to-transparent" />
 
-      {/* Content */}
-      <div className="relative h-full flex flex-col justify-center px-6 md:px-16 lg:px-24">
-        <div className="max-w-[900px]">
-          {/* Agent name — big editorial */}
-          <div className="mb-0 leading-none">
-            <h1 className="font-serif text-[clamp(56px,12vw,160px)] text-off-white font-light leading-none tracking-tight">
-              Ashante
-            </h1>
-            <h1
-              className="font-serif text-[clamp(56px,12vw,160px)] font-light leading-none tracking-tight italic"
-              style={{
-                color: "transparent",
-                WebkitTextStroke: "1.5px #faf9f7",
-              }}
-            >
-              Lindsay
-            </h1>
-          </div>
+      {/* Content — centered */}
+      <div className="relative z-10 text-center px-6 max-w-[960px] mx-auto">
+        {/* Gold line above headline */}
+        <div className="w-16 h-px bg-gold mx-auto mb-8" />
 
-          {/* Gold line */}
-          <div className="w-32 h-px bg-gold my-8" />
+        {/* Main headline */}
+        <h1
+          className="font-serif text-off-white font-light leading-[1.05] mb-6"
+          style={{ fontSize: "clamp(40px, 7vw, 72px)", letterSpacing: "0.02em" }}
+        >
+          Your Caribbean Life
+          <br />
+          Starts Here
+        </h1>
 
-          {/* Subtitle */}
-          <p className="small-caps text-xs text-off-white/80 tracking-[0.25em] font-sans mb-3">
-            Licensed Real Estate Agent · Antigua &amp; Barbuda
-          </p>
+        {/* Sub-headline */}
+        <p className="font-sans text-off-white/80 text-base md:text-lg mb-4 tracking-wide">
+          Discover Antigua's Most Extraordinary Homes
+        </p>
 
-          {/* Tagline */}
-          <p className="font-serif italic text-off-white/90 text-xl md:text-2xl mb-10">
-            Your doorway to Caribbean paradise.
-          </p>
+        {/* Agent attribution */}
+        <p className="small-caps text-xs text-gold tracking-[0.25em] font-sans mb-10">
+          Ashante Lindsay · Licensed Agent · Antigua &amp; Barbuda
+        </p>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-wrap gap-4">
-            <a
-              href="/luxury-homes"
-              className="cta-shimmer relative bg-gold hover:bg-gold-soft text-ocean-deep font-sans font-medium small-caps tracking-widest text-sm px-8 py-4 transition-all duration-300 hover:scale-[1.02] flex items-center gap-2 group"
-            >
-              View Listings
-              <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
-            </a>
-            <a
-              href="/contact"
-              className="cta-fill-sweep border border-off-white text-off-white font-sans font-medium small-caps tracking-widest text-sm px-8 py-4 transition-all duration-300 hover:border-gold hover:text-gold"
-            >
-              Get In Touch
-            </a>
-          </div>
+        {/* CTA Buttons */}
+        <div className="flex flex-col sm:flex-row justify-center gap-4">
+          <a
+            href="/luxury-homes"
+            className="cta-shimmer relative bg-gold hover:bg-gold-soft text-ocean-deep font-sans font-medium small-caps tracking-widest text-sm px-10 py-4 transition-all duration-300 hover:scale-[1.02] inline-flex items-center justify-center gap-2 group"
+          >
+            Explore Properties
+            <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
+          </a>
+          <a
+            href="/contact"
+            className="cta-fill-sweep border border-off-white/70 text-off-white font-sans font-medium small-caps tracking-widest text-sm px-10 py-4 transition-all duration-300 hover:border-gold hover:text-gold inline-flex items-center justify-center"
+          >
+            Book a Consultation
+          </a>
         </div>
       </div>
 
       {/* Scroll indicator */}
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
-        <span className="small-caps text-xs text-off-white/50 tracking-widest font-sans">Scroll</span>
-        <div className="w-px h-12 bg-off-white/30 scroll-line" />
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
+        <span className="small-caps text-[10px] text-off-white/40 tracking-widest font-sans">Scroll</span>
+        <svg
+          className="w-5 h-5 text-off-white/40 animate-bounce"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          strokeWidth={1.5}
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+        </svg>
       </div>
     </section>
   );
@@ -425,7 +427,7 @@ function Testimonials() {
         {/* Quote mark */}
         <p className="font-serif text-8xl text-gold leading-none mb-6 -mt-8">"</p>
 
-        <div className={`transition-opacity duration-400 ${fading ? "opacity-0" : "opacity-100"}`}>
+        <div className={`transition-opacity duration-300 ${fading ? "opacity-0" : "opacity-100"}`}>
           <blockquote className="font-serif italic text-xl md:text-2xl text-ocean-deep dark:text-foreground leading-relaxed mb-8">
             {t.quote}
           </blockquote>
