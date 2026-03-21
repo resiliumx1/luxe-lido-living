@@ -1,6 +1,5 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import heroImg from "@/assets/hero_villa.jpg";
 import villaTerraceImg from "@/assets/villa_terrace.jpg";
 import containerExteriorImg from "@/assets/container_exterior.jpg";
 import containerCourtyardImg from "@/assets/container_courtyard.jpg";
@@ -12,6 +11,7 @@ import NeighborhoodGuide from "@/components/NeighborhoodGuide";
 import LeadCapture from "@/components/LeadCapture";
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
+import HeroSection from "@/components/HeroSection";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 // ---------- Hero ----------
