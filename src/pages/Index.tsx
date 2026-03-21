@@ -379,10 +379,12 @@ export default function Index() {
       <Marquee />
       <FeaturedListings />
       <WhyAntigua />
+      <NeighborhoodGuide />
       <AgentAuthority />
       <Services />
       <Testimonials />
       <ContactForm dark />
+      <LeadCapture />
       <Footer />
     </div>
   );
