@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Bed, Bath, Maximize } from "lucide-react";
+import { HeartButton } from "@/components/ui/HeartButton";
 
 interface PropertyCardProps {
   image: string;
@@ -12,13 +13,21 @@ interface PropertyCardProps {
   href: string;
   large?: boolean;
   badge?: "New Listing" | "Featured" | "Under Offer";
+  id?: string;
 }
 
 const badgeColors: Record<string, string> = {
-  "New Listing": "bg-gold text-ocean-deep",
+  "New Listing": "bg-primary text-primary-foreground",
   "Featured": "bg-ocean-deep text-off-white",
   "Under Offer": "bg-amber-500 text-white",
 };
+
+function nameToId(name: string) {
+  return name
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
+}
 
 export default function PropertyCard({
   image,
@@ -31,7 +40,10 @@ export default function PropertyCard({
   href,
   large = false,
   badge,
+  id,
 }: PropertyCardProps) {
+  const propertyId = id || nameToId(name);
+
   return (
     <Link
       to={href}
@@ -57,10 +69,15 @@ export default function PropertyCard({
           </span>
         </div>
 
+        {/* Heart button */}
+        <div className="absolute top-3 right-3 z-[2]">
+          <HeartButton propertyId={propertyId} size="sm" />
+        </div>
+
         {/* Badge */}
         {badge && (
           <span
-            className={`absolute top-4 right-4 ${badgeColors[badge] || "bg-gold text-ocean-deep"} font-sans text-xs font-medium px-3 py-1.5 z-10`}
+            className={`absolute top-4 left-4 ${badgeColors[badge] || "bg-primary text-primary-foreground"} font-sans text-xs font-medium px-3 py-1.5 z-10`}
             style={{ borderRadius: "6px" }}
           >
             {badge}
@@ -71,10 +88,10 @@ export default function PropertyCard({
       {/* Card body */}
       <div className="p-6">
         {/* Location */}
-        <p className="small-caps text-xs text-gold tracking-widest font-sans mb-1">{location}</p>
+        <p className="small-caps text-xs text-primary tracking-widest font-sans mb-1">{location}</p>
 
         {/* Price */}
-        <p className="font-serif text-ocean-deep dark:text-foreground font-medium mb-1" style={{ fontSize: "22px" }}>
+        <p className="font-serif text-foreground dark:text-foreground font-medium mb-1" style={{ fontSize: "22px" }}>
           {price}
         </p>
 
@@ -86,14 +103,14 @@ export default function PropertyCard({
         {/* Specs row */}
         <div className="flex items-center gap-4 text-muted-foreground" style={{ fontSize: "13px" }}>
           <span className="flex items-center gap-1.5 font-sans">
-            <Bed size={14} className="text-gold" /> {beds} Beds
+            <Bed size={14} className="text-primary" /> {beds} Beds
           </span>
           <span className="flex items-center gap-1.5 font-sans">
-            <Bath size={14} className="text-gold" /> {baths} Baths
+            <Bath size={14} className="text-primary" /> {baths} Baths
           </span>
           {sqft && (
             <span className="flex items-center gap-1.5 font-sans">
-              <Maximize size={14} className="text-gold" /> {sqft}
+              <Maximize size={14} className="text-primary" /> {sqft}
             </span>
           )}
         </div>
