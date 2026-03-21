@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Sun, Moon, Heart } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useWishlist } from "@/contexts/WishlistContext";
+import { LuxeLogo } from "@/components/ui/LuxeLogo";
 import WishlistDrawer from "./WishlistDrawer";
 import BookingModal from "./BookingModal";
 
@@ -45,18 +46,11 @@ export default function Navigation() {
             ? "bg-transparent"
             : "bg-ocean-deep/95 backdrop-blur-md shadow-lg shadow-black/10"
         }`}
+        aria-label="Main navigation"
       >
         <div className="max-w-[1280px] mx-auto px-6 md:px-10 flex items-center justify-between h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2 group shrink-0">
-            <span className="text-gold font-serif text-lg leading-none group-hover:text-gold-soft transition-colors duration-300">◆</span>
-            <span
-              className="font-serif text-base md:text-xl font-medium tracking-wide whitespace-nowrap text-off-white group-hover:text-gold-soft transition-colors duration-300"
-              style={{ textShadow: isTransparent ? "0 1px 12px rgba(0,0,0,0.5)" : "none" }}
-            >
-              A. Lindsay Luxe Estates
-            </span>
-          </Link>
+          <LuxeLogo size="md" as="link" />
 
           {/* Nav links — center */}
           <div className="hidden lg:flex items-center gap-6">
@@ -64,7 +58,7 @@ export default function Navigation() {
               <Link
                 key={link.href}
                 to={link.href}
-                className="nav-link-gold font-sans text-off-white hover:text-gold transition-colors duration-300 small-caps text-sm tracking-wider pb-0.5"
+                className="nav-link-gold text-nav text-off-white hover:text-gold transition-colors duration-300 pb-0.5"
               >
                 {link.label}
               </Link>
@@ -122,12 +116,9 @@ export default function Navigation() {
           menuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
       >
-        <Link to="/" className="flex items-center gap-2 mb-4" onClick={() => setMenuOpen(false)}>
-          <span className="text-gold font-serif text-xl">◆</span>
-          <span className="font-serif text-off-white text-2xl font-medium tracking-wider">
-            A. Lindsay Luxe Estates
-          </span>
-        </Link>
+        <div className="mb-4" onClick={() => setMenuOpen(false)}>
+          <LuxeLogo size="lg" as="link" />
+        </div>
         {navLinks.map((link) => (
           <Link
             key={link.href}
@@ -146,10 +137,7 @@ export default function Navigation() {
         </button>
       </div>
 
-      {/* Wishlist Drawer */}
       <WishlistDrawer isOpen={wishlistOpen} onClose={() => setWishlistOpen(false)} />
-
-      {/* Booking Modal */}
       <BookingModal isOpen={bookingOpen} onClose={() => setBookingOpen(false)} />
     </>
   );
