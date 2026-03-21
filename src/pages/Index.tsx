@@ -8,6 +8,8 @@ import SectionLabel from "@/components/SectionLabel";
 import PropertyCard from "@/components/PropertyCard";
 import WhyAntigua from "@/components/WhyAntigua";
 import AgentAuthority from "@/components/AgentAuthority";
+import NeighborhoodGuide from "@/components/NeighborhoodGuide";
+import LeadCapture from "@/components/LeadCapture";
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
@@ -44,38 +46,31 @@ function Hero() {
           willChange: "transform",
         }}
       />
-      {/* Warm cinematic overlay */}
       <div className="absolute inset-0" style={{ background: "rgba(10, 22, 40, 0.52)" }} />
-      {/* Bottom gradient for depth */}
       <div className="absolute inset-0 bg-gradient-to-t from-ocean-deep/40 via-transparent to-transparent" />
 
-      {/* Content — centered */}
+      {/* Content — staggered entrance */}
       <div className="relative z-10 text-center px-6 max-w-[960px] mx-auto">
-        {/* Gold line above headline */}
-        <div className="w-16 h-px bg-gold mx-auto mb-8" />
+        <div className="w-16 h-px bg-gold mx-auto mb-8 hero-stagger" style={{ animationDelay: "0s" }} />
 
-        {/* Main headline */}
         <h1
-          className="font-serif text-off-white font-light leading-[1.05] mb-6"
-          style={{ fontSize: "clamp(40px, 7vw, 72px)", letterSpacing: "0.02em" }}
+          className="font-serif text-off-white font-light leading-[1.05] mb-6 hero-stagger"
+          style={{ fontSize: "clamp(40px, 7vw, 72px)", letterSpacing: "0.02em", animationDelay: "0.15s" }}
         >
           Your Caribbean Life
           <br />
           Starts Here
         </h1>
 
-        {/* Sub-headline */}
-        <p className="font-sans text-off-white/80 text-base md:text-lg mb-4 tracking-wide">
+        <p className="font-sans text-off-white/80 text-base md:text-lg mb-4 tracking-wide hero-stagger" style={{ animationDelay: "0.3s" }}>
           Discover Antigua's Most Extraordinary Homes
         </p>
 
-        {/* Agent attribution */}
-        <p className="small-caps text-xs text-gold tracking-[0.25em] font-sans mb-10">
+        <p className="small-caps text-xs text-gold tracking-[0.25em] font-sans mb-10 hero-stagger" style={{ animationDelay: "0.4s" }}>
           Ashante Lindsay · Licensed Agent · Antigua &amp; Barbuda
         </p>
 
-        {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row justify-center gap-4">
+        <div className="flex flex-col sm:flex-row justify-center gap-4 hero-stagger" style={{ animationDelay: "0.55s" }}>
           <a
             href="/luxury-homes"
             className="cta-shimmer relative bg-gold hover:bg-gold-soft text-ocean-deep font-sans font-medium small-caps tracking-widest text-sm px-10 py-4 transition-all duration-300 hover:scale-[1.02] inline-flex items-center justify-center gap-2 group"
@@ -93,15 +88,9 @@ function Hero() {
       </div>
 
       {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 hero-stagger" style={{ animationDelay: "0.7s" }}>
         <span className="small-caps text-[10px] text-off-white/40 tracking-widest font-sans">Scroll</span>
-        <svg
-          className="w-5 h-5 text-off-white/40 animate-bounce"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          strokeWidth={1.5}
-        >
+        <svg className="w-5 h-5 text-off-white/40 animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
         </svg>
       </div>
@@ -390,10 +379,12 @@ export default function Index() {
       <Marquee />
       <FeaturedListings />
       <WhyAntigua />
+      <NeighborhoodGuide />
       <AgentAuthority />
       <Services />
       <Testimonials />
       <ContactForm dark />
+      <LeadCapture />
       <Footer />
     </div>
   );
