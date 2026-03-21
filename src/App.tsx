@@ -15,6 +15,14 @@ import PropertyDetail from "./pages/PropertyDetail";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
+import AdminLogin from "./pages/admin/AdminLogin";
+import AdminGuard from "./components/admin/AdminGuard";
+import AdminLayout from "./pages/admin/AdminLayout";
+import AdminDashboard from "./pages/admin/AdminDashboard";
+import PropertiesAdmin from "./pages/admin/PropertiesAdmin";
+import PhotoManager from "./pages/admin/PhotoManager";
+import InquiriesAdmin from "./pages/admin/InquiriesAdmin";
+import AdminSettings from "./pages/admin/AdminSettings";
 
 const queryClient = new QueryClient();
 
@@ -33,18 +41,32 @@ const App = () => (
             >
               Skip to main content
             </a>
-            <Navigation />
-            <WhatsAppWidget />
             <Routes>
-              <Route path="/" element={<Index />} />
-              <Route path="/luxury-homes" element={<LuxuryHomes />} />
-              <Route path="/container-homes" element={<ContainerHomes />} />
-              <Route path="/prefab-homes" element={<PrefabHomes />} />
-              <Route path="/properties/:id" element={<PropertyDetail />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/contact" element={<Contact />} />
-              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-              <Route path="*" element={<NotFound />} />
+              {/* Admin routes — no public nav/whatsapp */}
+              <Route path="/admin/login" element={<AdminLogin />} />
+              <Route path="/admin/*" element={
+                <AdminGuard>
+                  <AdminLayout />
+                </AdminGuard>
+              }>
+                <Route index element={<AdminDashboard />} />
+                <Route path="properties" element={<PropertiesAdmin />} />
+                <Route path="photos" element={<PhotoManager />} />
+                <Route path="inquiries" element={<InquiriesAdmin />} />
+                <Route path="viewings" element={<InquiriesAdmin />} />
+                <Route path="leads" element={<InquiriesAdmin />} />
+                <Route path="settings" element={<AdminSettings />} />
+              </Route>
+
+              {/* Public routes */}
+              <Route path="/" element={<><Navigation /><WhatsAppWidget /><Index /></>} />
+              <Route path="/luxury-homes" element={<><Navigation /><WhatsAppWidget /><LuxuryHomes /></>} />
+              <Route path="/container-homes" element={<><Navigation /><WhatsAppWidget /><ContainerHomes /></>} />
+              <Route path="/prefab-homes" element={<><Navigation /><WhatsAppWidget /><PrefabHomes /></>} />
+              <Route path="/properties/:id" element={<><Navigation /><WhatsAppWidget /><PropertyDetail /></>} />
+              <Route path="/about" element={<><Navigation /><WhatsAppWidget /><About /></>} />
+              <Route path="/contact" element={<><Navigation /><WhatsAppWidget /><Contact /></>} />
+              <Route path="*" element={<><Navigation /><WhatsAppWidget /><NotFound /></>} />
             </Routes>
           </BrowserRouter>
         </TooltipProvider>
