@@ -8,6 +8,8 @@ import SectionLabel from "@/components/SectionLabel";
 import PropertyCard from "@/components/PropertyCard";
 import WhyAntigua from "@/components/WhyAntigua";
 import AgentAuthority from "@/components/AgentAuthority";
+import NeighborhoodGuide from "@/components/NeighborhoodGuide";
+import LeadCapture from "@/components/LeadCapture";
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
