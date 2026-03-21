@@ -23,10 +23,7 @@ const badgeColors: Record<string, string> = {
 };
 
 function nameToId(name: string) {
-  return name
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/(^-|-$)/g, "");
+  return name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
 }
 
 export default function PropertyCard({
@@ -43,21 +40,21 @@ export default function PropertyCard({
   id,
 }: PropertyCardProps) {
   const propertyId = id || nameToId(name);
+  // Always link to property detail page
+  const detailHref = `/properties/${propertyId}`;
 
   return (
     <Link
-      to={href}
+      to={detailHref}
       className={`group block overflow-hidden bg-card dark:bg-card ${large ? "row-span-2" : ""}`}
-      style={{
-        borderRadius: "12px",
-        boxShadow: "0 4px 24px rgba(0,0,0,0.08)",
-      }}
+      style={{ borderRadius: "12px", boxShadow: "0 4px 24px rgba(0,0,0,0.08)" }}
+      aria-label={`View ${name} — ${beds} bedroom ${location} property, ${price}`}
     >
-      {/* Image container */}
+      {/* Image */}
       <div className="relative overflow-hidden" style={{ aspectRatio: large ? "4/5" : "16/9" }}>
         <img
           src={image}
-          alt={name}
+          alt={`${beds}-bedroom property in ${location}, Antigua`}
           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
           loading="lazy"
           decoding="async"
@@ -69,7 +66,7 @@ export default function PropertyCard({
           </span>
         </div>
 
-        {/* Heart button */}
+        {/* Heart */}
         <div className="absolute top-3 right-3 z-[2]">
           <HeartButton propertyId={propertyId} size="sm" />
         </div>
@@ -87,32 +84,13 @@ export default function PropertyCard({
 
       {/* Card body */}
       <div className="p-6">
-        {/* Location */}
         <p className="small-caps text-xs text-primary tracking-widest font-sans mb-1">{location}</p>
-
-        {/* Price */}
-        <p className="font-serif text-foreground dark:text-foreground font-medium mb-1" style={{ fontSize: "22px" }}>
-          {price}
-        </p>
-
-        {/* Name */}
-        <h3 className="font-sans text-foreground dark:text-foreground/90 font-medium mb-3" style={{ fontSize: "16px" }}>
-          {name}
-        </h3>
-
-        {/* Specs row */}
+        <p className="font-serif text-foreground font-medium mb-1" style={{ fontSize: "22px" }}>{price}</p>
+        <h3 className="font-sans text-foreground/90 font-medium mb-3" style={{ fontSize: "16px" }}>{name}</h3>
         <div className="flex items-center gap-4 text-muted-foreground" style={{ fontSize: "13px" }}>
-          <span className="flex items-center gap-1.5 font-sans">
-            <Bed size={14} className="text-primary" /> {beds} Beds
-          </span>
-          <span className="flex items-center gap-1.5 font-sans">
-            <Bath size={14} className="text-primary" /> {baths} Baths
-          </span>
-          {sqft && (
-            <span className="flex items-center gap-1.5 font-sans">
-              <Maximize size={14} className="text-primary" /> {sqft}
-            </span>
-          )}
+          <span className="flex items-center gap-1.5 font-sans"><Bed size={14} className="text-primary" /> {beds} Beds</span>
+          <span className="flex items-center gap-1.5 font-sans"><Bath size={14} className="text-primary" /> {baths} Baths</span>
+          {sqft && <span className="flex items-center gap-1.5 font-sans"><Maximize size={14} className="text-primary" /> {sqft}</span>}
         </div>
       </div>
     </Link>
