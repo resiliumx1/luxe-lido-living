@@ -12,7 +12,9 @@ export default function Contact() {
         title="Contact"
         subtitle="Begin Your Journey"
       />
-      <ContactForm />
+      <main id="main-content">
+        <ContactForm />
+      </main>
       <Footer />
     </div>
   );
