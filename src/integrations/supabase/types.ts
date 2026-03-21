@@ -14,7 +14,210 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      enquiries: {
+        Row: {
+          created_at: string | null
+          email: string
+          id: string
+          message: string
+          name: string
+          notes: string | null
+          phone: string | null
+          property_id: string | null
+          property_name: string | null
+          status: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          email: string
+          id?: string
+          message: string
+          name: string
+          notes?: string | null
+          phone?: string | null
+          property_id?: string | null
+          property_name?: string | null
+          status?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          email?: string
+          id?: string
+          message?: string
+          name?: string
+          notes?: string | null
+          phone?: string | null
+          property_id?: string | null
+          property_name?: string | null
+          status?: string | null
+        }
+        Relationships: []
+      }
+      leads: {
+        Row: {
+          created_at: string | null
+          email: string
+          id: string
+          source: string | null
+          status: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          email: string
+          id?: string
+          source?: string | null
+          status?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          email?: string
+          id?: string
+          source?: string | null
+          status?: string | null
+        }
+        Relationships: []
+      }
+      properties: {
+        Row: {
+          area: string
+          badge: string | null
+          baths: number
+          beds: number
+          category_href: string | null
+          created_at: string | null
+          description: string
+          featured: boolean | null
+          features: string[] | null
+          google_maps_url: string | null
+          id: string
+          image_urls: string[] | null
+          location: string
+          name: string
+          new_listing: boolean | null
+          parking: number | null
+          pool: boolean | null
+          price: string
+          sqft: string | null
+          status: string | null
+          type: string
+          updated_at: string | null
+          virtual_tour_url: string | null
+        }
+        Insert: {
+          area: string
+          badge?: string | null
+          baths?: number
+          beds?: number
+          category_href?: string | null
+          created_at?: string | null
+          description?: string
+          featured?: boolean | null
+          features?: string[] | null
+          google_maps_url?: string | null
+          id?: string
+          image_urls?: string[] | null
+          location: string
+          name: string
+          new_listing?: boolean | null
+          parking?: number | null
+          pool?: boolean | null
+          price: string
+          sqft?: string | null
+          status?: string | null
+          type?: string
+          updated_at?: string | null
+          virtual_tour_url?: string | null
+        }
+        Update: {
+          area?: string
+          badge?: string | null
+          baths?: number
+          beds?: number
+          category_href?: string | null
+          created_at?: string | null
+          description?: string
+          featured?: boolean | null
+          features?: string[] | null
+          google_maps_url?: string | null
+          id?: string
+          image_urls?: string[] | null
+          location?: string
+          name?: string
+          new_listing?: boolean | null
+          parking?: number | null
+          pool?: boolean | null
+          price?: string
+          sqft?: string | null
+          status?: string | null
+          type?: string
+          updated_at?: string | null
+          virtual_tour_url?: string | null
+        }
+        Relationships: []
+      }
+      site_settings: {
+        Row: {
+          key: string
+          updated_at: string | null
+          value: string
+        }
+        Insert: {
+          key: string
+          updated_at?: string | null
+          value?: string
+        }
+        Update: {
+          key?: string
+          updated_at?: string | null
+          value?: string
+        }
+        Relationships: []
+      }
+      viewings: {
+        Row: {
+          admin_notes: string | null
+          created_at: string | null
+          email: string
+          id: string
+          message: string | null
+          method: string
+          name: string
+          preferred_date: string
+          property_id: string | null
+          property_name: string | null
+          status: string | null
+          whatsapp: string
+        }
+        Insert: {
+          admin_notes?: string | null
+          created_at?: string | null
+          email: string
+          id?: string
+          message?: string | null
+          method: string
+          name: string
+          preferred_date: string
+          property_id?: string | null
+          property_name?: string | null
+          status?: string | null
+          whatsapp: string
+        }
+        Update: {
+          admin_notes?: string | null
+          created_at?: string | null
+          email?: string
+          id?: string
+          message?: string | null
+          method?: string
+          name?: string
+          preferred_date?: string
+          property_id?: string | null
+          property_name?: string | null
+          status?: string | null
+          whatsapp?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
