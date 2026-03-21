@@ -1,12 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import heroImg from "@/assets/hero_villa.jpg";
-import ashanteImg from "@/assets/ashante_portrait.jpg";
 import villaTerraceImg from "@/assets/villa_terrace.jpg";
 import containerExteriorImg from "@/assets/container_exterior.jpg";
 import containerCourtyardImg from "@/assets/container_courtyard.jpg";
 import SectionLabel from "@/components/SectionLabel";
 import PropertyCard from "@/components/PropertyCard";
+import WhyAntigua from "@/components/WhyAntigua";
+import AgentAuthority from "@/components/AgentAuthority";
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
