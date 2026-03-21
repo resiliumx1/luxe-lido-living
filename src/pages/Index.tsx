@@ -388,8 +388,9 @@ export default function Index() {
       <Hero />
       <SearchBar />
       <Marquee />
-      <AboutPreview />
       <FeaturedListings />
+      <WhyAntigua />
+      <AgentAuthority />
       <Services />
       <Testimonials />
       <ContactForm dark />
