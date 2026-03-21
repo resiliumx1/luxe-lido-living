@@ -1,12 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import heroImg from "@/assets/hero_villa.jpg";
-import ashanteImg from "@/assets/ashante_portrait.jpg";
 import villaTerraceImg from "@/assets/villa_terrace.jpg";
 import containerExteriorImg from "@/assets/container_exterior.jpg";
 import containerCourtyardImg from "@/assets/container_courtyard.jpg";
 import SectionLabel from "@/components/SectionLabel";
 import PropertyCard from "@/components/PropertyCard";
+import WhyAntigua from "@/components/WhyAntigua";
+import AgentAuthority from "@/components/AgentAuthority";
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
@@ -205,80 +206,7 @@ function Marquee() {
   );
 }
 
-// ---------- About Preview ----------
-function AboutPreview() {
-  const sectionRef = useScrollReveal();
-
-  return (
-    <section className="py-28 bg-off-white dark:bg-background" ref={sectionRef}>
-      <div className="max-w-[1280px] mx-auto px-6 md:px-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-          {/* Image */}
-          <div className="relative reveal">
-            <div className="relative z-10">
-              <img
-                src={ashanteImg}
-                alt="Ashante Lindsay"
-                className="w-full max-w-md object-cover aspect-[4/5]"
-                loading="lazy"
-                decoding="async"
-              />
-            </div>
-            {/* Gold offset border */}
-            <div className="absolute top-6 left-6 w-full max-w-md aspect-[4/5] border border-gold z-0" />
-            {/* Badge */}
-            <div className="absolute bottom-8 -right-2 md:-right-10 z-20 bg-ocean-deep text-off-white px-6 py-4">
-              <p className="font-serif text-2xl font-medium text-gold">10+</p>
-              <p className="small-caps text-xs text-off-white/70 tracking-widest font-sans">Years Experience</p>
-            </div>
-          </div>
-
-          {/* Text */}
-          <div className="reveal reveal-delay-2">
-            <SectionLabel text="Meet Your Agent" />
-            <h2 className="font-serif text-4xl md:text-5xl text-ocean-deep dark:text-foreground mb-6 leading-tight">
-              About Ashante
-            </h2>
-            <p className="font-sans text-ocean-mid dark:text-foreground/70 text-base leading-relaxed mb-4">
-              Born and raised in the Caribbean, Ashante Lindsay brings over a decade of expertise and an intimate understanding of Antigua's most coveted properties. She has built a reputation for white-glove service, discretion, and an unmatched ability to match clients with their perfect island home.
-            </p>
-            <p className="font-sans text-ocean-mid dark:text-foreground/70 text-base leading-relaxed mb-8">
-              From waterfront estates to innovative container builds, Ashante navigates every corner of Antigua's real estate market with passion and precision — guiding buyers, sellers, and investors with equal dedication.
-            </p>
-
-            {/* Tags */}
-            <div className="flex flex-wrap gap-2 mb-8">
-              {[
-                "Luxury Villas",
-                "Container Homes",
-                "Prefab Homes",
-                "Investment Properties",
-                "Citizenship by Investment",
-                "Property Management",
-              ].map((tag) => (
-                <span
-                  key={tag}
-                  className="border border-sand dark:border-gold/30 text-teal dark:text-foreground/70 small-caps text-xs font-sans tracking-wider px-3 py-1.5"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
-
-            <a
-              href="/about"
-              className="inline-flex items-center gap-3 text-ocean-deep dark:text-foreground font-sans font-medium small-caps tracking-widest text-sm hover:text-gold transition-colors duration-300 group"
-            >
-              My Full Story
-              <span className="gold-line w-8 group-hover:w-14 transition-all duration-300" />
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
+// AboutPreview removed — replaced by AgentAuthority component
 // ---------- Featured Listings ----------
 function FeaturedListings() {
   const sectionRef = useScrollReveal();
@@ -460,8 +388,9 @@ export default function Index() {
       <Hero />
       <SearchBar />
       <Marquee />
-      <AboutPreview />
       <FeaturedListings />
+      <WhyAntigua />
+      <AgentAuthority />
       <Services />
       <Testimonials />
       <ContactForm dark />
