@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Instagram, Facebook, Linkedin, Phone, Mail } from "lucide-react";
+import { LuxeLogo } from "@/components/ui/LuxeLogo";
 
 const quickLinks = [
   { label: "Luxury Homes", href: "/luxury-homes" },
@@ -11,7 +12,7 @@ const quickLinks = [
 
 export default function Footer() {
   return (
-    <footer className="relative overflow-hidden border-t border-gold/40">
+    <footer className="relative overflow-hidden border-t border-gold/40" aria-label="Site footer">
       {/* Video background */}
       <video
         autoPlay
@@ -27,15 +28,15 @@ export default function Footer() {
       <div className="relative z-10">
         {/* Top row */}
         <div className="max-w-[1280px] mx-auto px-6 md:px-10 pt-20 pb-12">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-8 mb-16">
-            {/* Logo */}
-            <Link to="/" className="flex items-center gap-2 group">
-              <span className="text-gold font-serif text-lg">◆</span>
-              <span className="font-serif text-white text-xl font-medium tracking-wider drop-shadow-sm">
-                A. Lindsay Luxe Estates
-              </span>
-            </Link>
+          {/* Logo centered with tagline */}
+          <div className="flex flex-col items-center mb-16">
+            <LuxeLogo size="lg" />
+            <p className="font-sans text-off-white/50 text-sm mt-4 text-center max-w-md">
+              Connecting discerning buyers with Antigua's finest properties since 2010
+            </p>
+          </div>
 
+          <div className="flex flex-col md:flex-row items-center justify-between gap-8 mb-16">
             {/* Tagline */}
             <p className="font-serif italic text-gold text-sm hidden md:block">
               Luxury Real Estate in Antigua &amp; Barbuda
@@ -74,14 +75,11 @@ export default function Footer() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
             {/* Quick Links */}
             <div>
-              <h4 className="small-caps text-xs text-gold tracking-widest font-sans mb-5">Quick Links</h4>
+              <h4 className="text-eyebrow mb-5">Quick Links</h4>
               <ul className="space-y-3">
                 {quickLinks.map((l) => (
                   <li key={l.href}>
-                    <Link
-                      to={l.href}
-                      className="font-sans text-sm text-white/60 hover:text-gold transition-colors duration-300"
-                    >
+                    <Link to={l.href} className="font-sans text-sm text-white/60 hover:text-gold transition-colors duration-300">
                       {l.label}
                     </Link>
                   </li>
@@ -91,7 +89,7 @@ export default function Footer() {
 
             {/* Contact Details */}
             <div>
-              <h4 className="small-caps text-xs text-gold tracking-widest font-sans mb-5">Contact</h4>
+              <h4 className="text-eyebrow mb-5">Contact</h4>
               <ul className="space-y-3">
                 <li>
                   <a href="tel:+12684000000" className="flex items-center gap-2 font-sans text-sm text-white/60 hover:text-gold transition-colors duration-300">
@@ -117,7 +115,7 @@ export default function Footer() {
 
             {/* Office Hours */}
             <div>
-              <h4 className="small-caps text-xs text-gold tracking-widest font-sans mb-5">Office Hours</h4>
+              <h4 className="text-eyebrow mb-5">Office Hours</h4>
               <ul className="space-y-3 font-sans text-sm text-white/60">
                 <li>Monday – Friday: 9:00am – 6:00pm</li>
                 <li>Saturday: 10:00am – 4:00pm</li>
