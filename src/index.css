@@ -143,6 +143,13 @@
   h2 { font-size: clamp(32px, 5vw, 48px); line-height: 1.1; }
   h3 { font-size: 32px; line-height: 1.2; }
   h4 { font-size: 24px; line-height: 1.3; }
+
+  /* Accessibility: focus indicators */
+  *:focus-visible {
+    outline: 2px solid hsl(var(--gold));
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
 }
 
 @layer utilities {
