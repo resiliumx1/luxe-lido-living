@@ -427,7 +427,7 @@ function Testimonials() {
         {/* Quote mark */}
         <p className="font-serif text-8xl text-gold leading-none mb-6 -mt-8">"</p>
 
-        <div className={`transition-opacity duration-400 ${fading ? "opacity-0" : "opacity-100"}`}>
+        <div className={`transition-opacity duration-300 ${fading ? "opacity-0" : "opacity-100"}`}>
           <blockquote className="font-serif italic text-xl md:text-2xl text-ocean-deep dark:text-foreground leading-relaxed mb-8">
             {t.quote}
           </blockquote>

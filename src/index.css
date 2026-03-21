@@ -209,10 +209,14 @@
   }
   .cta-fill-sweep::before {
     content: '';
-    @apply absolute inset-0 w-0 bg-off-white/15 transition-all duration-400;
+    position: absolute;
+    inset: 0;
+    width: 0;
+    background: hsla(var(--off-white) / 0.15);
+    transition: all 0.4s ease;
   }
   .cta-fill-sweep:hover::before {
-    @apply w-full;
+    width: 100%;
   }
 
   /* Dark mode select fix */
