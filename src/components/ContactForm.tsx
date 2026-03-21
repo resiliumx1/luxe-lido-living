@@ -1,29 +1,42 @@
 import { useState } from "react";
 import { Phone, Mail, MapPin, Clock, CheckCircle, MessageCircle } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
 import SectionLabel from "./SectionLabel";
+import { OptionSelector } from "./ui/OptionSelector";
+
+const interestOptions = [
+  { value: "luxury", label: "Luxury Homes" },
+  { value: "container", label: "Container Homes" },
+  { value: "prefab", label: "Prefab Homes" },
+  { value: "container-business", label: "Container Businesses" },
+  { value: "investment", label: "Investment Consulting" },
+  { value: "citizenship", label: "Citizenship by Investment" },
+];
 
 export default function ContactForm({ dark = false }: { dark?: boolean }) {
   const [form, setForm] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    interest: "",
-    message: "",
+    firstName: "", lastName: "", email: "", interest: "", message: "",
   });
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setSubmitting(true);
+    await supabase.from("enquiries").insert({
+      name: `${form.firstName} ${form.lastName}`.trim(),
+      email: form.email,
+      message: form.message || "General enquiry",
+      property_name: interestOptions.find((o) => o.value === form.interest)?.label || "",
+    });
     setSubmitted(true);
+    setSubmitting(false);
   };
 
   const textColor = dark ? "text-off-white" : "text-foreground";
-  const subTextColor = dark ? "text-off-white/70" : "text-ocean-mid";
-  const labelColor = "text-gold";
-  const inputBorder = dark
-    ? "border-gold/30 text-off-white placeholder:text-off-white/30 bg-transparent"
-    : "border-sand dark:border-gold/20 text-foreground placeholder:text-muted-foreground bg-transparent";
-  const lineColor = dark ? "border-gold/20" : "border-sand dark:border-gold/10";
+  const subTextColor = dark ? "text-off-white/70" : "text-muted-foreground";
+  const inputClass = "w-full bg-card border-[1.5px] border-sand dark:border-muted px-4 py-3 outline-none font-sans text-sm text-foreground placeholder:text-muted-foreground transition-all focus:border-primary focus:ring-2 focus:ring-ring/20";
+  const inputStyle = { borderRadius: "8px" };
 
   return (
     <section className={`py-24 ${dark ? "bg-ocean-deep" : "bg-off-white dark:bg-background"}`}>
@@ -35,77 +48,43 @@ export default function ContactForm({ dark = false }: { dark?: boolean }) {
           {/* Contact details */}
           <div className="space-y-8">
             {[
-              {
-                Icon: Phone,
-                label: "Phone",
-                value: "+1 (268) 400-0000",
-                href: "tel:+12684000000",
-              },
-              {
-                Icon: Mail,
-                label: "Email",
-                value: "ashante@alinsayluxe.com",
-                href: "mailto:ashante@alinsayluxe.com",
-              },
-              {
-                Icon: MapPin,
-                label: "Office",
-                value: "English Harbour, Antigua & Barbuda",
-                href: null,
-              },
-              {
-                Icon: Clock,
-                label: "Hours",
-                value: "Mon–Sat · 9am–6pm AST",
-                href: null,
-              },
+              { Icon: Phone, label: "Phone", value: "+1 (268) 400-0000", href: "tel:+12684000000" },
+              { Icon: Mail, label: "Email", value: "ashante@alindsayluxe.com", href: "mailto:ashante@alindsayluxe.com" },
+              { Icon: MapPin, label: "Office", value: "English Harbour, Antigua & Barbuda", href: null },
+              { Icon: Clock, label: "Hours", value: "Mon–Sat · 9am–6pm AST", href: null },
             ].map(({ Icon, label, value, href }, i) => (
               <div key={i}>
                 <div className="flex items-start gap-4">
-                  <Icon size={16} className="text-gold mt-0.5 flex-shrink-0" />
+                  <Icon size={16} className="text-primary mt-0.5 flex-shrink-0" />
                   <div>
-                    <p className={`small-caps text-xs tracking-widest font-sans ${labelColor} mb-1`}>{label}</p>
+                    <p className="small-caps text-xs tracking-widest font-sans text-primary mb-1">{label}</p>
                     {href ? (
-                      <a href={href} className={`font-serif text-lg ${textColor} hover:text-gold transition-colors`}>
-                        {value}
-                      </a>
+                      <a href={href} className={`font-serif text-lg ${textColor} hover:text-primary transition-colors`}>{value}</a>
                     ) : (
                       <p className={`font-serif text-lg ${textColor}`}>{value}</p>
                     )}
                   </div>
                 </div>
-                {i < 3 && <div className={`mt-6 border-b ${lineColor}`} />}
+                {i < 3 && <div className={`mt-6 border-b ${dark ? "border-primary/20" : "border-sand dark:border-primary/10"}`} />}
               </div>
             ))}
-
-            {/* WhatsApp direct */}
-            <a
-              href="https://wa.me/12684000000?text=Hello%20Ashante%2C%20I%27m%20interested%20in%20a%20property."
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 bg-[#25D366] text-white font-sans font-medium small-caps tracking-wider text-sm px-6 py-3 transition-opacity hover:opacity-90"
-            >
-              <MessageCircle size={16} />
-              Chat on WhatsApp
+            <a href="https://wa.me/12684000000?text=Hello%20Ashante%2C%20I%27m%20interested%20in%20a%20property." target="_blank" rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 bg-[#25D366] text-white font-sans font-medium small-caps tracking-wider text-sm px-6 py-3 transition-opacity hover:opacity-90">
+              <MessageCircle size={16} /> Chat on WhatsApp
             </a>
-
-            <p className={`font-sans text-sm ${subTextColor} italic`}>
-              Typically responds within 24 hours.
-            </p>
+            <p className={`font-sans text-sm ${subTextColor} italic`}>Typically responds within 24 hours.</p>
           </div>
 
           {/* Form or success */}
           {submitted ? (
             <div className="flex flex-col items-center justify-center text-center gap-6 py-12">
-              <CheckCircle size={56} className="text-gold" />
+              <CheckCircle size={56} className="text-primary" />
               <h3 className={`font-serif text-3xl ${textColor}`}>Thank You</h3>
               <p className={`font-sans text-base ${subTextColor} max-w-sm`}>
                 Your enquiry has been received. Ashante will be in touch within 24 hours.
               </p>
-              <button
-                onClick={() => { setSubmitted(false); setForm({ firstName: "", lastName: "", email: "", interest: "", message: "" }); }}
-                className="border border-gold text-gold font-sans small-caps tracking-widest text-sm px-6 py-3 hover:bg-gold hover:text-ocean-deep transition-all duration-300"
-              >
+              <button onClick={() => { setSubmitted(false); setForm({ firstName: "", lastName: "", email: "", interest: "", message: "" }); }}
+                className="border border-primary text-primary font-sans small-caps tracking-widest text-sm px-6 py-3 hover:bg-primary hover:text-primary-foreground transition-all duration-300">
                 Send Another Message
               </button>
             </div>
@@ -113,80 +92,33 @@ export default function ContactForm({ dark = false }: { dark?: boolean }) {
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className={`small-caps text-xs font-sans tracking-widest ${labelColor} block mb-2`}>
-                    First Name <span className="text-gold">*</span>
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="Olivia"
-                    required
-                    className={`w-full border-b pb-2 outline-none font-sans text-sm transition-colors focus:border-gold ${inputBorder}`}
-                    value={form.firstName}
-                    onChange={(e) => setForm({ ...form, firstName: e.target.value })}
-                  />
+                  <label className="text-label block mb-2 text-foreground">First Name <span className="text-primary">*</span></label>
+                  <input type="text" required placeholder="Olivia" className={inputClass} style={inputStyle}
+                    value={form.firstName} onChange={(e) => setForm({ ...form, firstName: e.target.value })} />
                 </div>
                 <div>
-                  <label className={`small-caps text-xs font-sans tracking-widest ${labelColor} block mb-2`}>
-                    Last Name <span className="text-gold">*</span>
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="Bennett"
-                    required
-                    className={`w-full border-b pb-2 outline-none font-sans text-sm transition-colors focus:border-gold ${inputBorder}`}
-                    value={form.lastName}
-                    onChange={(e) => setForm({ ...form, lastName: e.target.value })}
-                  />
+                  <label className="text-label block mb-2 text-foreground">Last Name <span className="text-primary">*</span></label>
+                  <input type="text" required placeholder="Bennett" className={inputClass} style={inputStyle}
+                    value={form.lastName} onChange={(e) => setForm({ ...form, lastName: e.target.value })} />
                 </div>
               </div>
-
               <div>
-                <label className={`small-caps text-xs font-sans tracking-widest ${labelColor} block mb-2`}>
-                  Email <span className="text-gold">*</span>
-                </label>
-                <input
-                  type="email"
-                  placeholder="olivia@email.com"
-                  required
-                  className={`w-full border-b pb-2 outline-none font-sans text-sm transition-colors focus:border-gold ${inputBorder}`}
-                  value={form.email}
-                  onChange={(e) => setForm({ ...form, email: e.target.value })}
-                />
+                <label className="text-label block mb-2 text-foreground">Email <span className="text-primary">*</span></label>
+                <input type="email" required placeholder="olivia@email.com" className={inputClass} style={inputStyle}
+                  value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} />
               </div>
-
               <div>
-                <label className={`small-caps text-xs font-sans tracking-widest ${labelColor} block mb-2`}>I'm interested in</label>
-                <select
-                  className={`w-full border-b pb-2 outline-none font-sans text-sm transition-colors focus:border-gold ${inputBorder}`}
-                  value={form.interest}
-                  onChange={(e) => setForm({ ...form, interest: e.target.value })}
-                >
-                  <option value="">Select an option...</option>
-                  <option>Luxury Homes</option>
-                  <option>Container Homes</option>
-                  <option>Prefab Homes</option>
-                  <option>Container Businesses</option>
-                  <option>Investment Consulting</option>
-                  <option>Citizenship by Investment</option>
-                </select>
+                <label className="text-label block mb-2 text-foreground">I'm interested in</label>
+                <OptionSelector name="interest" options={interestOptions} value={form.interest} onChange={(v) => setForm({ ...form, interest: v })} />
               </div>
-
               <div>
-                <label className={`small-caps text-xs font-sans tracking-widest ${labelColor} block mb-2`}>Message</label>
-                <textarea
-                  placeholder="Tell us about your dream property..."
-                  rows={4}
-                  className={`w-full border-b pb-2 outline-none font-sans text-sm resize-none transition-colors focus:border-gold ${inputBorder}`}
-                  value={form.message}
-                  onChange={(e) => setForm({ ...form, message: e.target.value })}
-                />
+                <label className="text-label block mb-2 text-foreground">Message</label>
+                <textarea placeholder="Tell us about your dream property..." rows={4} className={`${inputClass} resize-none`} style={inputStyle}
+                  value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} />
               </div>
-
-              <button
-                type="submit"
-                className="cta-shimmer w-full bg-gold hover:bg-gold-soft text-ocean-deep font-sans font-medium small-caps tracking-widest text-sm py-4 transition-colors duration-300"
-              >
-                Send Message
+              <button type="submit" disabled={submitting}
+                className="cta-shimmer w-full bg-primary hover:bg-accent text-primary-foreground font-sans font-medium small-caps tracking-widest text-sm py-4 transition-colors duration-300 disabled:opacity-50">
+                {submitting ? "Sending..." : "Send Message"}
               </button>
             </form>
           )}
