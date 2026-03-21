@@ -2,31 +2,15 @@ import { useEffect, useState } from "react";
 import { Plus, Pencil, Trash2, X } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "@/hooks/use-toast";
+import type { Database } from "@/integrations/supabase/types";
 
-interface PropertyRow {
-  id: string;
-  name: string;
-  area: string;
-  price: string;
-  status: string;
-  type: string;
-  beds: number;
-  baths: number;
-  sqft: string | null;
-  description: string;
-  features: string[];
-  image_urls: string[];
-  featured: boolean;
-  new_listing: boolean;
-  google_maps_url: string | null;
-  virtual_tour_url: string | null;
-  category_href: string;
-}
+type PropertyRow = Database["public"]["Tables"]["properties"]["Row"];
+type PropertyInsert = Database["public"]["Tables"]["properties"]["Insert"];
 
-const emptyProperty: Omit<PropertyRow, "id"> = {
-  name: "", area: "", price: "", status: "active", type: "luxury",
+const emptyForm: PropertyInsert = {
+  name: "", area: "", price: "", location: "", type: "luxury",
   beds: 0, baths: 0, sqft: "", description: "", features: [],
-  image_urls: [], featured: false, new_listing: false,
+  image_urls: [], featured: false, new_listing: false, status: "active",
   google_maps_url: "", virtual_tour_url: "", category_href: "/luxury-homes",
 };
 
@@ -34,33 +18,36 @@ export default function PropertiesAdmin() {
   const [properties, setProperties] = useState<PropertyRow[]>([]);
   const [loading, setLoading] = useState(true);
   const [modalOpen, setModalOpen] = useState(false);
-  const [editing, setEditing] = useState<PropertyRow | null>(null);
-  const [form, setForm] = useState<Omit<PropertyRow, "id">>(emptyProperty);
+  const [editingId, setEditingId] = useState<string | null>(null);
+  const [form, setForm] = useState<PropertyInsert>({ ...emptyForm });
   const [featureInput, setFeatureInput] = useState("");
   const [saving, setSaving] = useState(false);
 
   const fetchProperties = async () => {
     const { data } = await supabase.from("properties").select("*").order("created_at", { ascending: false });
-    setProperties((data as PropertyRow[]) || []);
+    setProperties(data || []);
     setLoading(false);
   };
 
   useEffect(() => { fetchProperties(); }, []);
 
-  const openNew = () => {
-    setEditing(null);
-    setForm(emptyProperty);
-    setModalOpen(true);
-  };
+  const openNew = () => { setEditingId(null); setForm({ ...emptyForm }); setModalOpen(true); };
 
   const openEdit = (p: PropertyRow) => {
-    setEditing(p);
-    setForm({ ...p });
+    setEditingId(p.id);
+    setForm({
+      name: p.name, area: p.area, price: p.price, location: p.location, type: p.type,
+      beds: p.beds, baths: p.baths, sqft: p.sqft, description: p.description,
+      features: p.features || [], image_urls: p.image_urls || [],
+      featured: p.featured, new_listing: p.new_listing, status: p.status,
+      google_maps_url: p.google_maps_url, virtual_tour_url: p.virtual_tour_url,
+      category_href: p.category_href,
+    });
     setModalOpen(true);
   };
 
   const handleDelete = async (id: string) => {
-    if (!confirm("Delete this property? This cannot be undone.")) return;
+    if (!confirm("Delete this property?")) return;
     await supabase.from("properties").delete().eq("id", id);
     toast({ title: "Property deleted" });
     fetchProperties();
@@ -68,11 +55,12 @@ export default function PropertiesAdmin() {
 
   const handleSave = async () => {
     setSaving(true);
-    if (editing) {
-      await supabase.from("properties").update(form).eq("id", editing.id);
+    const data = { ...form, location: form.location || form.area };
+    if (editingId) {
+      await supabase.from("properties").update(data).eq("id", editingId);
       toast({ title: "Property updated" });
     } else {
-      await supabase.from("properties").insert(form);
+      await supabase.from("properties").insert(data);
       toast({ title: "Property created" });
     }
     setSaving(false);
@@ -82,13 +70,13 @@ export default function PropertiesAdmin() {
 
   const addFeature = () => {
     if (featureInput.trim()) {
-      setForm({ ...form, features: [...form.features, featureInput.trim()] });
+      setForm({ ...form, features: [...(form.features || []), featureInput.trim()] });
       setFeatureInput("");
     }
   };
 
   const removeFeature = (i: number) => {
-    setForm({ ...form, features: form.features.filter((_, idx) => idx !== i) });
+    setForm({ ...form, features: (form.features || []).filter((_, idx) => idx !== i) });
   };
 
   const statusColors: Record<string, string> = {
@@ -122,20 +110,18 @@ export default function PropertiesAdmin() {
             {loading ? (
               <tr><td colSpan={5} className="px-4 py-8 text-center text-muted-foreground">Loading...</td></tr>
             ) : properties.length === 0 ? (
-              <tr><td colSpan={5} className="px-4 py-8 text-center text-muted-foreground">No properties yet. Click "Add New Property" to get started.</td></tr>
+              <tr><td colSpan={5} className="px-4 py-8 text-center text-muted-foreground">No properties yet.</td></tr>
             ) : properties.map((p) => (
               <tr key={p.id} className="border-b border-border hover:bg-muted/30 cursor-pointer" onClick={() => openEdit(p)}>
                 <td className="px-4 py-3 font-sans font-medium text-foreground">{p.name}</td>
                 <td className="px-4 py-3 text-muted-foreground hidden md:table-cell">{p.area}</td>
                 <td className="px-4 py-3 text-primary font-medium">{p.price}</td>
                 <td className="px-4 py-3 hidden sm:table-cell">
-                  <span className={`px-2 py-0.5 text-xs font-medium rounded-full ${statusColors[p.status] || statusColors.active}`}>
-                    {p.status}
-                  </span>
+                  <span className={`px-2 py-0.5 text-xs font-medium rounded-full ${statusColors[p.status || "active"]}`}>{p.status}</span>
                 </td>
                 <td className="px-4 py-3 text-right" onClick={(e) => e.stopPropagation()}>
-                  <button onClick={() => openEdit(p)} className="p-1.5 text-muted-foreground hover:text-foreground transition-colors" aria-label="Edit"><Pencil size={14} /></button>
-                  <button onClick={() => handleDelete(p.id)} className="p-1.5 text-muted-foreground hover:text-destructive transition-colors ml-1" aria-label="Delete"><Trash2 size={14} /></button>
+                  <button onClick={() => openEdit(p)} className="p-1.5 text-muted-foreground hover:text-foreground" aria-label="Edit"><Pencil size={14} /></button>
+                  <button onClick={() => handleDelete(p.id)} className="p-1.5 text-muted-foreground hover:text-destructive ml-1" aria-label="Delete"><Trash2 size={14} /></button>
                 </td>
               </tr>
             ))}
@@ -143,16 +129,14 @@ export default function PropertiesAdmin() {
         </table>
       </div>
 
-      {/* Modal */}
       {modalOpen && (
         <div className="fixed inset-0 z-50 flex items-start justify-center p-4 pt-20 overflow-y-auto">
           <div className="absolute inset-0 bg-black/50" onClick={() => setModalOpen(false)} />
           <div className="relative bg-card w-full max-w-lg p-6 space-y-4" style={{ borderRadius: "16px", boxShadow: "0 16px 48px rgba(0,0,0,0.18)" }}>
             <div className="flex items-center justify-between">
-              <h3 className="font-serif text-xl text-foreground">{editing ? "Edit Property" : "New Property"}</h3>
+              <h3 className="font-serif text-xl text-foreground">{editingId ? "Edit Property" : "New Property"}</h3>
               <button onClick={() => setModalOpen(false)} className="text-muted-foreground hover:text-foreground"><X size={20} /></button>
             </div>
-
             <div className="space-y-3 max-h-[60vh] overflow-y-auto pr-1">
               <div>
                 <label className="text-label block mb-1">Name *</label>
@@ -161,7 +145,7 @@ export default function PropertiesAdmin() {
               <div className="grid grid-cols-2 gap-3">
                 <div>
                   <label className="text-label block mb-1">Area *</label>
-                  <select className="w-full h-10 px-3 bg-background border border-input text-foreground text-sm" style={{ borderRadius: "6px" }} value={form.area} onChange={(e) => setForm({ ...form, area: e.target.value })}>
+                  <select className="w-full h-10 px-3 bg-background border border-input text-foreground text-sm" style={{ borderRadius: "6px" }} value={form.area} onChange={(e) => setForm({ ...form, area: e.target.value, location: e.target.value })}>
                     <option value="">Select</option>
                     <option>English Harbour</option><option>Jolly Harbour</option><option>Dickenson Bay</option><option>Galley Bay</option><option>Hodges Bay</option><option>Half Moon Bay</option><option>St. John's</option>
                   </select>
@@ -180,16 +164,12 @@ export default function PropertiesAdmin() {
                 </div>
                 <div>
                   <label className="text-label block mb-1">Beds</label>
-                  <input type="number" className="w-full h-10 px-3 bg-background border border-input text-foreground text-sm" style={{ borderRadius: "6px" }} value={form.beds} onChange={(e) => setForm({ ...form, beds: +e.target.value })} />
+                  <input type="number" className="w-full h-10 px-3 bg-background border border-input text-foreground text-sm" style={{ borderRadius: "6px" }} value={form.beds ?? 0} onChange={(e) => setForm({ ...form, beds: +e.target.value })} />
                 </div>
                 <div>
                   <label className="text-label block mb-1">Baths</label>
-                  <input type="number" className="w-full h-10 px-3 bg-background border border-input text-foreground text-sm" style={{ borderRadius: "6px" }} value={form.baths} onChange={(e) => setForm({ ...form, baths: +e.target.value })} />
+                  <input type="number" className="w-full h-10 px-3 bg-background border border-input text-foreground text-sm" style={{ borderRadius: "6px" }} value={form.baths ?? 0} onChange={(e) => setForm({ ...form, baths: +e.target.value })} />
                 </div>
-              </div>
-              <div>
-                <label className="text-label block mb-1">Sq Ft</label>
-                <input className="w-full h-10 px-3 bg-background border border-input text-foreground text-sm" style={{ borderRadius: "6px" }} value={form.sqft || ""} onChange={(e) => setForm({ ...form, sqft: e.target.value })} />
               </div>
               <div>
                 <label className="text-label block mb-1">Description *</label>
@@ -198,11 +178,11 @@ export default function PropertiesAdmin() {
               <div>
                 <label className="text-label block mb-1">Features</label>
                 <div className="flex gap-2 mb-2">
-                  <input className="flex-1 h-9 px-3 bg-background border border-input text-foreground text-sm" style={{ borderRadius: "6px" }} value={featureInput} onChange={(e) => setFeatureInput(e.target.value)} onKeyDown={(e) => { if (e.key === "Enter") { e.preventDefault(); addFeature(); } }} placeholder="Add feature and press Enter" />
+                  <input className="flex-1 h-9 px-3 bg-background border border-input text-foreground text-sm" style={{ borderRadius: "6px" }} value={featureInput} onChange={(e) => setFeatureInput(e.target.value)} onKeyDown={(e) => { if (e.key === "Enter") { e.preventDefault(); addFeature(); } }} placeholder="Type and press Enter" />
                   <button onClick={addFeature} className="px-3 h-9 bg-primary/10 text-primary text-xs font-medium" style={{ borderRadius: "6px" }}>Add</button>
                 </div>
                 <div className="flex flex-wrap gap-1.5">
-                  {form.features.map((f, i) => (
+                  {(form.features || []).map((f, i) => (
                     <span key={i} className="flex items-center gap-1 bg-muted text-foreground px-2 py-0.5 text-xs" style={{ borderRadius: "4px" }}>
                       {f} <button onClick={() => removeFeature(i)} className="text-muted-foreground hover:text-foreground"><X size={12} /></button>
                     </span>
@@ -212,23 +192,22 @@ export default function PropertiesAdmin() {
               <div className="grid grid-cols-2 gap-3">
                 <div>
                   <label className="text-label block mb-1">Status</label>
-                  <select className="w-full h-10 px-3 bg-background border border-input text-foreground text-sm" style={{ borderRadius: "6px" }} value={form.status} onChange={(e) => setForm({ ...form, status: e.target.value })}>
+                  <select className="w-full h-10 px-3 bg-background border border-input text-foreground text-sm" style={{ borderRadius: "6px" }} value={form.status || "active"} onChange={(e) => setForm({ ...form, status: e.target.value })}>
                     <option value="active">Active</option><option value="sold">Sold</option><option value="off-market">Off Market</option><option value="coming-soon">Coming Soon</option>
                   </select>
                 </div>
                 <div className="space-y-2 pt-5">
                   <label className="flex items-center gap-2 text-sm text-foreground cursor-pointer">
-                    <input type="checkbox" checked={form.featured} onChange={(e) => setForm({ ...form, featured: e.target.checked })} className="accent-[hsl(var(--primary))]" /> Featured
+                    <input type="checkbox" checked={!!form.featured} onChange={(e) => setForm({ ...form, featured: e.target.checked })} className="accent-[hsl(var(--primary))]" /> Featured
                   </label>
                   <label className="flex items-center gap-2 text-sm text-foreground cursor-pointer">
-                    <input type="checkbox" checked={form.new_listing} onChange={(e) => setForm({ ...form, new_listing: e.target.checked })} className="accent-[hsl(var(--primary))]" /> New Listing
+                    <input type="checkbox" checked={!!form.new_listing} onChange={(e) => setForm({ ...form, new_listing: e.target.checked })} className="accent-[hsl(var(--primary))]" /> New Listing
                   </label>
                 </div>
               </div>
             </div>
-
-            <button onClick={handleSave} disabled={saving || !form.name || !form.price} className="w-full bg-primary text-primary-foreground font-sans font-medium text-sm py-3 transition-all hover:opacity-90 disabled:opacity-50" style={{ borderRadius: "8px" }}>
-              {saving ? "Saving..." : editing ? "Save Changes" : "Create Property"}
+            <button onClick={handleSave} disabled={saving || !form.name || !form.price} className="w-full bg-primary text-primary-foreground font-sans font-medium text-sm py-3 hover:opacity-90 disabled:opacity-50" style={{ borderRadius: "8px" }}>
+              {saving ? "Saving..." : editingId ? "Save Changes" : "Create Property"}
             </button>
           </div>
         </div>
