@@ -440,6 +440,12 @@
   100% { transform: translateX(200%) skewX(-15deg); }
 }
 
+/* Gold CTA sweep keyframe */
+@keyframes goldSweep {
+  0% { left: -100%; }
+  100% { left: 200%; }
+}
+
 /* Ken Burns hero animation */
 @keyframes heroKenBurns {
   0%   { transform: scale(1.04) translate(0px, 0px); }
