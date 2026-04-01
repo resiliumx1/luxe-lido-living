@@ -22,6 +22,7 @@ import AdminDashboard from "./pages/admin/AdminDashboard";
 import PropertiesAdmin from "./pages/admin/PropertiesAdmin";
 import PhotoManager from "./pages/admin/PhotoManager";
 import InquiriesAdmin from "./pages/admin/InquiriesAdmin";
+import AdminContainers from "./pages/admin/AdminContainers";
 import AdminSettings from "./pages/admin/AdminSettings";
 
 const queryClient = new QueryClient();
@@ -51,6 +52,7 @@ const App = () => (
               }>
                 <Route index element={<AdminDashboard />} />
                 <Route path="properties" element={<PropertiesAdmin />} />
+                <Route path="containers" element={<AdminContainers />} />
                 <Route path="photos" element={<PhotoManager />} />
                 <Route path="inquiries" element={<InquiriesAdmin />} />
                 <Route path="viewings" element={<InquiriesAdmin />} />

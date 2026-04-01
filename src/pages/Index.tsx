@@ -12,6 +12,7 @@ import LeadCapture from "@/components/LeadCapture";
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 import HeroSection from "@/components/HeroSection";
+import ContainerPreview from "@/components/ContainerPreview";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 // Hero is now in src/components/HeroSection.tsx
@@ -297,6 +298,7 @@ export default function Index() {
       <Marquee />
       <FeaturedListings />
       <WhyAntigua />
+      <ContainerPreview />
       <NeighborhoodGuide />
       <AgentAuthority />
       <Services />
