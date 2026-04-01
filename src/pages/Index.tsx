@@ -298,6 +298,7 @@ export default function Index() {
       <Marquee />
       <FeaturedListings />
       <WhyAntigua />
+      <ContainerPreview />
       <NeighborhoodGuide />
       <AgentAuthority />
       <Services />

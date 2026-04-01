@@ -7,6 +7,7 @@ import { supabase } from "@/integrations/supabase/client";
 const navItems = [
   { label: "Dashboard", href: "/admin", icon: LayoutDashboard },
   { label: "Properties", href: "/admin/properties", icon: Home },
+  { label: "Containers", href: "/admin/containers", icon: Container },
   { label: "Photo Manager", href: "/admin/photos", icon: Image },
   { label: "Inquiries", href: "/admin/inquiries", icon: MessageSquare, badge: "inquiries" },
   { label: "Viewings", href: "/admin/viewings", icon: Calendar, badge: "viewings" },
