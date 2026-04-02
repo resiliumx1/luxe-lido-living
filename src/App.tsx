@@ -35,8 +35,9 @@ function PublicLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
       <Navigation />
+      <ScrollProgress />
       <WhatsAppWidget />
-      <main id="main-content">{children}</main>
+      {children}
       <Footer />
     </>
   );
