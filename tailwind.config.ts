@@ -8,21 +8,13 @@ export default {
     container: {
       center: true,
       padding: "2rem",
-      screens: {
-        "2xl": "1280px",
-      },
+      screens: { "2xl": "1280px" },
     },
     extend: {
       fontFamily: {
-        serif: ["'Cormorant Garamond'", "Georgia", "serif"],
-        sans: ["'DM Sans'", "system-ui", "sans-serif"],
-      },
-      fontSize: {
-        "display": ["72px", { lineHeight: "1.05", letterSpacing: "0.02em" }],
-        "h2":      ["48px", { lineHeight: "1.1",  letterSpacing: "0.02em" }],
-        "h3":      ["32px", { lineHeight: "1.2",  letterSpacing: "0.02em" }],
-        "h4":      ["24px", { lineHeight: "1.3",  letterSpacing: "0.02em" }],
-        "body":    ["17px", { lineHeight: "1.75" }],
+        display: ["'Playfair Display'", "Georgia", "serif"],
+        body: ["'Plus Jakarta Sans'", "system-ui", "sans-serif"],
+        logo: ["'Dela Gothic One'", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -59,14 +51,14 @@ export default {
           foreground: "hsl(var(--card-foreground))",
         },
         // Brand tokens
-        "ocean-deep": "hsl(var(--ocean-deep))",
+        "luxury-gold": "hsl(var(--luxury-gold))",
+        "luxury-gold-light": "hsl(var(--luxury-gold-light))",
+        "luxury-gold-dark": "hsl(var(--luxury-gold-dark))",
+        "deep-ocean": "hsl(var(--deep-ocean))",
         "ocean-mid": "hsl(var(--ocean-mid))",
-        teal: "hsl(var(--teal))",
-        sand: "hsl(var(--sand))",
-        "sand-light": "hsl(var(--sand-light))",
-        "off-white": "hsl(var(--off-white))",
-        gold: "hsl(var(--gold))",
-        "gold-soft": "hsl(var(--gold-soft))",
+        "warm-sand": "hsl(var(--warm-sand))",
+        "warm-black": "hsl(var(--warm-black))",
+        "caribbean-teal": "hsl(var(--caribbean-teal))",
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
@@ -79,12 +71,9 @@ export default {
         },
       },
       borderRadius: {
-        lg: "0",
-        md: "0",
-        sm: "0",
-      },
-      transitionDuration: {
-        "400": "400ms",
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 2px)",
+        sm: "calc(var(--radius) - 4px)",
       },
       keyframes: {
         "accordion-down": {
@@ -95,15 +84,10 @@ export default {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
-        shimmer: {
-          "0%": { transform: "translateX(-100%) skewX(-15deg)" },
-          "100%": { transform: "translateX(200%) skewX(-15deg)" },
-        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        shimmer: "shimmer 0.7s ease-in-out",
       },
     },
   },
