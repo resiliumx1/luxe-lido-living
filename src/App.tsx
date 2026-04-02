@@ -2,12 +2,14 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { ThemeProvider } from "next-themes";
+import { AnimatePresence, motion } from "framer-motion";
 import { WishlistProvider } from "@/contexts/WishlistContext";
 import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
 import WhatsAppWidget from "./components/WhatsAppWidget";
+import ScrollProgress from "./components/ScrollProgress";
 import Index from "./pages/Index";
 import Properties from "./pages/Properties";
 import PropertyDetail from "./pages/PropertyDetail";
@@ -33,8 +35,9 @@ function PublicLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
       <Navigation />
+      <ScrollProgress />
       <WhatsAppWidget />
-      <main id="main-content">{children}</main>
+      {children}
       <Footer />
     </>
   );
