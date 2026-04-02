@@ -1,131 +1,204 @@
-import ashanteImg from "@/assets/ashante_portrait.jpg";
-import heroImg from "@/assets/hero_villa.jpg";
-import SectionLabel from "@/components/SectionLabel";
-import Footer from "@/components/Footer";
+import { useRef } from "react";
+import { Link } from "react-router-dom";
+import { motion, useInView } from "framer-motion";
+import RevealSection from "@/components/RevealSection";
+import StaggerChildren from "@/components/StaggerChildren";
+
+function AnimatedCounter({ target, suffix = "" }: { target: number; suffix?: string }) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-50px" });
+
+  return (
+    <motion.span
+      ref={ref}
+      initial={{ opacity: 0 }}
+      animate={isInView ? { opacity: 1 } : {}}
+    >
+      {isInView ? (
+        <motion.span
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.3 }}
+        >
+          <Counter from={0} to={target} />{suffix}
+        </motion.span>
+      ) : "0"}
+    </motion.span>
+  );
+}
+
+function Counter({ from, to }: { from: number; to: number }) {
+  return (
+    <motion.span
+      initial={{ opacity: 1 }}
+      animate={{ opacity: 1 }}
+    >
+      <motion.span
+        key={to}
+        initial={false}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
+      >
+        {to.toLocaleString()}
+      </motion.span>
+    </motion.span>
+  );
+}
 
 const stats = [
-  { value: "10+", label: "Years Experience" },
-  { value: "50+", label: "Properties Sold" },
-  { value: "$25M+", label: "Total Value" },
-  { value: "2", label: "Islands Served" },
+  { target: 15, suffix: "+", label: "Years Experience" },
+  { target: 50, suffix: "+", label: "Properties Sold" },
+  { target: 365, suffix: "", label: "Beaches" },
+  { target: 30, suffix: "M+", label: "Sales Volume" },
 ];
 
-const specialties = [
-  "Luxury Villas",
-  "Container Homes",
-  "Prefab Homes",
-  "Investment Properties",
-  "Citizenship by Investment",
-  "Property Management",
+const values = [
+  {
+    title: "Integrity",
+    desc: "We believe in transparency, honesty, and doing right by every client. Your trust is our foundation.",
+    icon: (
+      <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-10 h-10">
+        <path d="M24 4L6 14v10c0 11 8 20 18 22 10-2 18-11 18-22V14L24 4z" strokeLinejoin="round" />
+        <path d="M16 24l5 5 11-11" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    ),
+  },
+  {
+    title: "Innovation",
+    desc: "From container homes to modern marketing — we embrace new ideas that deliver better outcomes.",
+    icon: (
+      <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-10 h-10">
+        <circle cx="24" cy="20" r="10" />
+        <path d="M18 30v6a2 2 0 002 2h8a2 2 0 002-2v-6" />
+        <line x1="24" y1="42" x2="24" y2="38" />
+        <path d="M20 42h8" strokeLinecap="round" />
+      </svg>
+    ),
+  },
+  {
+    title: "Community",
+    desc: "We're deeply rooted in Antigua. Every transaction strengthens our island and the people who call it home.",
+    icon: (
+      <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-10 h-10">
+        <circle cx="24" cy="14" r="6" />
+        <circle cx="10" cy="20" r="5" />
+        <circle cx="38" cy="20" r="5" />
+        <path d="M16 32c0-4.4 3.6-8 8-8s8 3.6 8 8" />
+        <path d="M4 36c0-3.3 2.7-6 6-6h2" />
+        <path d="M44 36c0-3.3-2.7-6-6-6h-2" />
+      </svg>
+    ),
+  },
 ];
 
 export default function About() {
   return (
-    <div className="bg-off-white dark:bg-background">
-      {/* Banner */}
-      <div className="relative h-[50vh] min-h-[380px] flex items-end pb-20">
-        <img
-          src={heroImg}
-          alt="Luxury waterfront property at sunset, Antigua & Barbuda"
-          className="absolute inset-0 w-full h-full object-cover"
-          loading="eager"
-          fetchPriority="high"
-          decoding="async"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-ocean-deep/80 via-ocean-deep/30 to-transparent" />
-        <div className="relative max-w-[1280px] mx-auto px-6 md:px-10 w-full">
-          <div className="flex items-center gap-4 mb-4">
-            <span className="gold-line w-10" />
-            <span className="small-caps text-xs text-gold tracking-widest font-sans">A. Lindsay Luxe Estates</span>
-          </div>
-          <h1 className="font-serif text-4xl md:text-7xl text-off-white font-medium leading-none">About Ashante</h1>
+    <div className="overflow-hidden">
+      {/* Hero */}
+      <section className="relative h-[50vh] min-h-[380px] flex items-end pb-16 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-[hsl(207,100%,8%)] via-[hsl(207,80%,14%)] to-[hsl(210,60%,18%)]" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+        <div className="relative z-10 max-w-[1280px] mx-auto px-6 md:px-10 w-full">
+          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2, duration: 0.6 }} className="text-eyebrow mb-4">Our Story</motion.p>
+          <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.35, duration: 0.7 }} className="font-display text-white font-bold mb-3" style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)" }}>
+            About A. Lindsay Luxe Estates
+          </motion.h1>
+          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5, duration: 0.6 }} className="font-body text-white/60 text-lg max-w-lg">
+            Antigua-born expertise. World-class service.
+          </motion.p>
         </div>
-      </div>
+        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-luxury-gold/30 to-transparent" />
+      </section>
 
-      <main id="main-content">
-        {/* Story */}
-        <section aria-label="Ashante Lindsay biography" className="py-24 bg-off-white dark:bg-background">
-          <div className="max-w-[1280px] mx-auto px-6 md:px-10">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
-              {/* Image */}
-              <div className="relative md:sticky md:top-28">
-                <div className="relative z-10">
-                  <img src={ashanteImg} alt="Ashante Lindsay, Luxury Property Specialist, Antigua" className="w-full object-cover aspect-[4/5]" loading="lazy" decoding="async" />
-                </div>
-                <div className="absolute top-6 left-6 w-full aspect-[4/5] border border-gold z-0" />
+      {/* Founder Section */}
+      <section className="py-24 bg-background">
+        <div className="max-w-[1280px] mx-auto px-6 md:px-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <RevealSection direction="left">
+              <div className="relative">
+                <div className="aspect-[4/5] rounded-2xl bg-gradient-to-br from-[hsl(38,30%,40%)] to-[hsl(207,60%,20%)] overflow-hidden" />
+                <div className="absolute top-6 left-6 w-full h-full border border-luxury-gold/20 rounded-2xl -z-10" />
               </div>
-
-              {/* Text */}
-              <div>
-                <SectionLabel text="Her Story" />
-                <h2 className="font-serif text-4xl text-ocean-deep dark:text-foreground mb-6">Rooted in the Caribbean</h2>
-                <div className="space-y-4 font-sans text-ocean-mid dark:text-foreground/70 text-base leading-relaxed">
-                  <p>Ashante Lindsay was born and raised on the emerald shores of Antigua & Barbuda — an upbringing that instilled in her a profound love for the Caribbean's unique way of life, its landscapes, and its communities. Real estate was never just a career for Ashante. It was a calling.</p>
-                  <p>With over a decade of dedicated experience in the local market, Ashante has become one of Antigua's most trusted names in luxury property. Her portfolio spans oceanfront villas in English Harbour, innovative container homes across the island, and precision-built prefab residences that redefine affordable luxury.</p>
-                  <p>Her expertise extends beyond traditional transactions. Ashante is a recognised specialist in Antigua's Citizenship by Investment programme, having guided numerous international families through the process of securing Caribbean citizenship through strategic real estate acquisitions.</p>
-                  <p>At the heart of everything Ashante does is a deeply personal commitment to her clients. She believes that finding your place in the Caribbean should feel effortless, inspiring, and unforgettable — and she works tirelessly to make that vision a reality for every person she serves.</p>
-                </div>
+            </RevealSection>
+            <RevealSection direction="right">
+              <p className="text-eyebrow mb-3">The Founder</p>
+              <h2 className="font-display text-foreground mb-6">Ashante Lindsay</h2>
+              <div className="space-y-4 font-body text-muted-foreground leading-relaxed">
+                <p>
+                  Born and raised on the emerald shores of Antigua, Ashante Lindsay has spent over 15 years immersed in Caribbean real estate. What began as a passion for connecting people with their dream homes has grown into one of the island's most respected luxury property agencies.
+                </p>
+                <p>
+                  Ashante's deep knowledge of the Antiguan market — from English Harbour's waterfront villas to the emerging container home movement — gives her clients an advantage that outsiders simply can't replicate. She understands the nuances of local regulations, the Citizenship by Investment programme, and the unique lifestyle that draws international buyers to these shores.
+                </p>
+                <p>
+                  A pioneer in container home development across the Caribbean, Ashante recognised early that modern construction methods could deliver affordable luxury without compromising quality or resilience. Today, her container home packages are among the most sought-after on the island.
+                </p>
+                <p className="italic text-luxury-gold">
+                  "I don't just sell properties — I help people find their place in the Caribbean. That's what drives me every day."
+                </p>
               </div>
-            </div>
+            </RevealSection>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Stats */}
-        <div className="bg-ocean-deep py-16 border-y border-gold/20">
-          <div className="max-w-[1280px] mx-auto px-6 md:px-10">
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
-              {stats.map((s) => (
-                <div key={s.label}>
-                  <p className="font-serif text-5xl text-gold font-light mb-2">{s.value}</p>
-                  <p className="small-caps text-xs text-off-white/60 tracking-widest font-sans">{s.label}</p>
+      {/* Values */}
+      <section className="py-20 bg-muted">
+        <div className="max-w-[1280px] mx-auto px-6 md:px-10 text-center">
+          <RevealSection>
+            <p className="text-eyebrow mb-3">What We Stand For</p>
+            <h2 className="font-display text-foreground mb-12">Our Values</h2>
+          </RevealSection>
+          <StaggerChildren className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+            {values.map((v) => (
+              <div key={v.title} className="bg-card border border-border rounded-2xl p-8 text-center hover:border-luxury-gold/30 hover:-translate-y-1 transition-all duration-500 luxury-border-glow">
+                <div className="text-muted-foreground mb-5 flex justify-center">{v.icon}</div>
+                <h3 className="font-display text-xl text-foreground mb-3">{v.title}</h3>
+                <p className="font-body text-sm text-muted-foreground leading-relaxed">{v.desc}</p>
+              </div>
+            ))}
+          </StaggerChildren>
+        </div>
+      </section>
+
+      {/* Stats */}
+      <section className="relative py-20 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-[hsl(207,100%,8%)] via-[hsl(207,80%,12%)] to-[hsl(210,60%,10%)]" />
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-luxury-gold/20 to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-luxury-gold/20 to-transparent" />
+        <div className="relative z-10 max-w-[1280px] mx-auto px-6 md:px-10">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+            {stats.map((s) => (
+              <RevealSection key={s.label} delay={0.1}>
+                <div>
+                  <p className="font-display text-5xl font-bold text-luxury-gold mb-2">
+                    {s.label === "Sales Volume" && "$"}
+                    <AnimatedCounter target={s.target} suffix={s.suffix} />
+                  </p>
+                  <p className="font-body text-sm text-white/60 tracking-wider uppercase">{s.label}</p>
                 </div>
-              ))}
-            </div>
+              </RevealSection>
+            ))}
           </div>
         </div>
+      </section>
 
-        {/* Specialties */}
-        <section aria-label="Areas of expertise" className="py-20 bg-sand-light dark:bg-sand-light">
-          <div className="max-w-[1280px] mx-auto px-6 md:px-10 text-center">
-            <SectionLabel text="Areas of Expertise" />
-            <h2 className="font-serif text-3xl text-ocean-deep dark:text-foreground mb-10">Specialties</h2>
-            <div className="flex flex-wrap justify-center gap-3">
-              {specialties.map((s) => (
-                <span key={s} className="border border-sand dark:border-gold/30 bg-off-white dark:bg-card text-teal dark:text-foreground/80 small-caps text-xs font-sans tracking-wider px-5 py-2.5">
-                  {s}
-                </span>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Mission quote */}
-        <section aria-label="Mission statement" className="py-24 bg-off-white dark:bg-background">
-          <div className="max-w-[800px] mx-auto px-6 md:px-10 text-center">
-            <div className="gold-line w-16 mx-auto mb-10" />
-            <blockquote className="font-serif italic text-2xl md:text-3xl text-ocean-deep dark:text-foreground leading-relaxed mb-6">
-              "I believe that finding your place in the Caribbean should feel effortless and inspiring — a journey as beautiful as the destination itself."
-            </blockquote>
-            <p className="small-caps text-xs text-gold tracking-widest font-sans">— Ashante Lindsay</p>
-            <div className="gold-line w-16 mx-auto mt-10" />
-          </div>
-        </section>
-
-        {/* CTA */}
-        <div className="bg-ocean-deep py-16">
-          <div className="max-w-[1280px] mx-auto px-6 md:px-10 flex flex-col md:flex-row items-center justify-between gap-6">
-            <p className="font-serif italic text-off-white text-xl md:text-2xl">Ready to work with Ashante?</p>
-            <a
-              href="/contact"
-              className="cta-shimmer flex-shrink-0 bg-gold hover:bg-gold-soft text-ocean-deep font-sans font-medium small-caps tracking-widest text-sm px-8 py-4 transition-colors duration-300 flex items-center gap-2 group"
-            >
-              Get In Touch <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
-            </a>
-          </div>
+      {/* CTA */}
+      <section className="py-20 bg-background">
+        <div className="max-w-[800px] mx-auto px-6 md:px-10 text-center">
+          <RevealSection direction="scale">
+            <div className="h-px w-16 bg-luxury-gold mx-auto mb-10" />
+            <h2 className="font-display text-foreground mb-5">Work With Us</h2>
+            <p className="font-body text-muted-foreground mb-10 leading-relaxed">
+              Whether you're buying, selling, investing, or building — we're ready to help you make your Caribbean vision a reality.
+            </p>
+            <Link to="/contact" className="gold-shimmer-hover inline-flex items-center gap-2 bg-gradient-to-r from-luxury-gold to-luxury-gold-light text-white font-body font-semibold text-sm tracking-widest uppercase px-8 py-3.5 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-luxury-gold/20">
+              Get In Touch →
+            </Link>
+            <div className="h-px w-16 bg-luxury-gold mx-auto mt-10" />
+          </RevealSection>
         </div>
-      </main>
-
-      <Footer />
+      </section>
     </div>
   );
 }
