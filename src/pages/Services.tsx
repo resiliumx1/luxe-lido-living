@@ -2,8 +2,6 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import RevealSection from "@/components/RevealSection";
 import StaggerChildren from "@/components/StaggerChildren";
-import Navigation from "@/components/Navigation";
-import Footer from "@/components/Footer";
 
 function GoldCheck() {
   return (

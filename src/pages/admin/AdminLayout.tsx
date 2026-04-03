@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
-import { LayoutDashboard, Home, Image, MessageSquare, Calendar, Users, Settings, LogOut, ExternalLink, Container } from "lucide-react";
+import { LayoutDashboard, Home, Image, MessageSquare, Settings, LogOut, ExternalLink, Container } from "lucide-react";
 import { LuxeLogo } from "@/components/ui/LuxeLogo";
 import { supabase } from "@/integrations/supabase/client";
 
