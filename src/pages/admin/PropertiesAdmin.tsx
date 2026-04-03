@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Plus, Pencil, Trash2, X, Star, Image } from "lucide-react";
+import { Plus, Pencil, Trash2, X } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "@/hooks/use-toast";
 import type { Database } from "@/integrations/supabase/types";
@@ -12,19 +12,6 @@ const emptyForm: PropertyInsert = {
   beds: 0, baths: 0, sqft: "", description: "", features: [],
   image_urls: [], featured: false, new_listing: false, status: "active",
   google_maps_url: "", virtual_tour_url: "", category_href: "/luxury-homes",
-};
-
-const statusColors: Record<string, string> = {
-  active: "bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400",
-  sold: "bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400",
-  "off-market": "bg-gray-100 text-gray-600 dark:bg-gray-800 dark:text-gray-400",
-  "coming-soon": "bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-400",
-};
-
-const typeColors: Record<string, string> = {
-  luxury: "bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-400",
-  container: "bg-teal-100 text-teal-800 dark:bg-teal-900/30 dark:text-teal-400",
-  prefab: "bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400",
 };
 
 export default function PropertiesAdmin() {
@@ -44,7 +31,7 @@ export default function PropertiesAdmin() {
 
   useEffect(() => { fetchProperties(); }, []);
 
-  const openNew = () => { setEditingId(null); setForm({ ...emptyForm }); setFeatureInput(""); setModalOpen(true); };
+  const openNew = () => { setEditingId(null); setForm({ ...emptyForm }); setModalOpen(true); };
 
   const openEdit = (p: PropertyRow) => {
     setEditingId(p.id);
@@ -56,19 +43,13 @@ export default function PropertiesAdmin() {
       google_maps_url: p.google_maps_url, virtual_tour_url: p.virtual_tour_url,
       category_href: p.category_href,
     });
-    setFeatureInput("");
     setModalOpen(true);
   };
 
   const handleDelete = async (id: string) => {
-    if (!confirm("Delete this property? This cannot be undone.")) return;
+    if (!confirm("Delete this property?")) return;
     await supabase.from("properties").delete().eq("id", id);
     toast({ title: "Property deleted" });
-    fetchProperties();
-  };
-
-  const toggleFeatured = async (id: string, current: boolean | null) => {
-    await supabase.from("properties").update({ featured: !current }).eq("id", id);
     fetchProperties();
   };
 
@@ -98,71 +79,49 @@ export default function PropertiesAdmin() {
     setForm({ ...form, features: (form.features || []).filter((_, idx) => idx !== i) });
   };
 
-  const formatPrice = (price: string) => {
-    const num = parseInt(price.replace(/[^0-9]/g, ""));
-    if (isNaN(num)) return price;
-    return "$" + num.toLocaleString();
+  const statusColors: Record<string, string> = {
+    active: "bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400",
+    sold: "bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400",
+    "off-market": "bg-gray-100 text-gray-600 dark:bg-gray-800 dark:text-gray-400",
+    "coming-soon": "bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-400",
   };
 
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <div>
-          <h2 className="font-display text-2xl text-foreground">Properties</h2>
-          <p className="font-body text-sm text-muted-foreground mt-1">{properties.length} total listings</p>
-        </div>
-        <button onClick={openNew} className="gold-shimmer-hover flex items-center gap-2 bg-gradient-to-r from-luxury-gold to-luxury-gold-light text-white px-5 py-2.5 font-body text-sm font-semibold tracking-wider uppercase transition-all rounded-xl hover:shadow-lg hover:shadow-luxury-gold/20">
-          <Plus size={16} /> Add Property
+        <h2 className="font-serif text-2xl text-foreground">Properties</h2>
+        <button onClick={openNew} className="flex items-center gap-2 bg-primary text-primary-foreground px-4 py-2.5 font-sans text-sm font-medium transition-colors hover:opacity-90" style={{ borderRadius: "8px" }}>
+          <Plus size={16} /> Add New Property
         </button>
       </div>
 
-      <div className="bg-card border border-border overflow-hidden rounded-xl">
+      <div className="bg-card border border-border overflow-hidden" style={{ borderRadius: "12px" }}>
         <table className="w-full text-sm">
           <thead>
             <tr className="border-b border-border bg-muted/50">
-              <th className="text-left px-4 py-3 font-body font-medium text-muted-foreground w-10"></th>
-              <th className="text-left px-4 py-3 font-body font-medium text-muted-foreground">Property</th>
-              <th className="text-left px-4 py-3 font-body font-medium text-muted-foreground hidden md:table-cell">Location</th>
-              <th className="text-left px-4 py-3 font-body font-medium text-muted-foreground">Price</th>
-              <th className="text-left px-4 py-3 font-body font-medium text-muted-foreground hidden sm:table-cell">Type</th>
-              <th className="text-left px-4 py-3 font-body font-medium text-muted-foreground hidden sm:table-cell">Status</th>
-              <th className="text-center px-4 py-3 font-body font-medium text-muted-foreground hidden md:table-cell">★</th>
-              <th className="text-right px-4 py-3 font-body font-medium text-muted-foreground">Actions</th>
+              <th className="text-left px-4 py-3 font-sans font-medium text-muted-foreground">Name</th>
+              <th className="text-left px-4 py-3 font-sans font-medium text-muted-foreground hidden md:table-cell">Area</th>
+              <th className="text-left px-4 py-3 font-sans font-medium text-muted-foreground">Price</th>
+              <th className="text-left px-4 py-3 font-sans font-medium text-muted-foreground hidden sm:table-cell">Status</th>
+              <th className="text-right px-4 py-3 font-sans font-medium text-muted-foreground">Actions</th>
             </tr>
           </thead>
           <tbody>
             {loading ? (
-              <tr><td colSpan={8} className="px-4 py-8 text-center text-muted-foreground">Loading...</td></tr>
+              <tr><td colSpan={5} className="px-4 py-8 text-center text-muted-foreground">Loading...</td></tr>
             ) : properties.length === 0 ? (
-              <tr><td colSpan={8} className="px-4 py-8 text-center text-muted-foreground">No properties yet. Click "Add Property" to get started.</td></tr>
+              <tr><td colSpan={5} className="px-4 py-8 text-center text-muted-foreground">No properties yet.</td></tr>
             ) : properties.map((p) => (
-              <tr key={p.id} className="border-b border-border hover:bg-muted/30 cursor-pointer transition-colors" onClick={() => openEdit(p)}>
-                <td className="px-4 py-3">
-                  <div className="w-10 h-10 rounded-lg bg-muted flex items-center justify-center overflow-hidden">
-                    {p.image_urls && p.image_urls.length > 0 ? (
-                      <img src={p.image_urls[0]} alt="" className="w-full h-full object-cover" />
-                    ) : (
-                      <Image size={16} className="text-muted-foreground" />
-                    )}
-                  </div>
-                </td>
-                <td className="px-4 py-3 font-body font-medium text-foreground">{p.name}</td>
+              <tr key={p.id} className="border-b border-border hover:bg-muted/30 cursor-pointer" onClick={() => openEdit(p)}>
+                <td className="px-4 py-3 font-sans font-medium text-foreground">{p.name}</td>
                 <td className="px-4 py-3 text-muted-foreground hidden md:table-cell">{p.area}</td>
-                <td className="px-4 py-3 text-luxury-gold font-semibold">{formatPrice(p.price)}</td>
-                <td className="px-4 py-3 hidden sm:table-cell">
-                  <span className={`px-2 py-0.5 text-xs font-medium rounded-full ${typeColors[p.type] || "bg-muted text-muted-foreground"}`}>{p.type}</span>
-                </td>
+                <td className="px-4 py-3 text-primary font-medium">{p.price}</td>
                 <td className="px-4 py-3 hidden sm:table-cell">
                   <span className={`px-2 py-0.5 text-xs font-medium rounded-full ${statusColors[p.status || "active"]}`}>{p.status}</span>
                 </td>
-                <td className="px-4 py-3 text-center hidden md:table-cell" onClick={(e) => e.stopPropagation()}>
-                  <button onClick={() => toggleFeatured(p.id, p.featured)} className={`p-1 transition-colors ${p.featured ? "text-luxury-gold" : "text-muted-foreground/30 hover:text-luxury-gold/50"}`} aria-label="Toggle featured">
-                    <Star size={16} fill={p.featured ? "currentColor" : "none"} />
-                  </button>
-                </td>
                 <td className="px-4 py-3 text-right" onClick={(e) => e.stopPropagation()}>
-                  <button onClick={() => openEdit(p)} className="p-1.5 text-muted-foreground hover:text-foreground transition-colors" aria-label="Edit"><Pencil size={14} /></button>
-                  <button onClick={() => handleDelete(p.id)} className="p-1.5 text-muted-foreground hover:text-destructive ml-1 transition-colors" aria-label="Delete"><Trash2 size={14} /></button>
+                  <button onClick={() => openEdit(p)} className="p-1.5 text-muted-foreground hover:text-foreground" aria-label="Edit"><Pencil size={14} /></button>
+                  <button onClick={() => handleDelete(p.id)} className="p-1.5 text-muted-foreground hover:text-destructive ml-1" aria-label="Delete"><Trash2 size={14} /></button>
                 </td>
               </tr>
             ))}
@@ -170,50 +129,61 @@ export default function PropertiesAdmin() {
         </table>
       </div>
 
-      {/* Modal */}
       {modalOpen && (
         <div className="fixed inset-0 z-50 flex items-start justify-center p-4 pt-20 overflow-y-auto">
-          <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" onClick={() => setModalOpen(false)} />
-          <div className="relative bg-card w-full max-w-lg p-6 space-y-4 rounded-2xl shadow-2xl">
+          <div className="absolute inset-0 bg-black/50" onClick={() => setModalOpen(false)} />
+          <div className="relative bg-card w-full max-w-lg p-6 space-y-4" style={{ borderRadius: "16px", boxShadow: "0 16px 48px rgba(0,0,0,0.18)" }}>
             <div className="flex items-center justify-between">
-              <h3 className="font-display text-xl text-foreground">{editingId ? "Edit Property" : "New Property"}</h3>
-              <button onClick={() => setModalOpen(false)} className="text-muted-foreground hover:text-foreground transition-colors"><X size={20} /></button>
+              <h3 className="font-serif text-xl text-foreground">{editingId ? "Edit Property" : "New Property"}</h3>
+              <button onClick={() => setModalOpen(false)} className="text-muted-foreground hover:text-foreground"><X size={20} /></button>
             </div>
             <div className="space-y-3 max-h-[60vh] overflow-y-auto pr-1">
-              <Field label="Name *" value={form.name} onChange={(v) => setForm({ ...form, name: v })} />
+              <div>
+                <label className="text-label block mb-1">Name *</label>
+                <input className="w-full h-10 px-3 bg-background border border-input text-foreground text-sm" style={{ borderRadius: "6px" }} value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} />
+              </div>
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block font-body text-xs font-medium text-muted-foreground mb-1">Area *</label>
-                  <select className="w-full h-10 px-3 bg-background border border-input text-foreground text-sm rounded-lg" value={form.area} onChange={(e) => setForm({ ...form, area: e.target.value, location: e.target.value })}>
+                  <label className="text-label block mb-1">Area *</label>
+                  <select className="w-full h-10 px-3 bg-background border border-input text-foreground text-sm" style={{ borderRadius: "6px" }} value={form.area} onChange={(e) => setForm({ ...form, area: e.target.value, location: e.target.value })}>
                     <option value="">Select</option>
-                    <option>English Harbour</option><option>Jolly Harbour</option><option>Dickenson Bay</option><option>Galley Bay</option><option>Hodges Bay</option><option>Half Moon Bay</option><option>St. John's</option><option>Darkwood Beach</option><option>Fig Tree Drive</option>
+                    <option>English Harbour</option><option>Jolly Harbour</option><option>Dickenson Bay</option><option>Galley Bay</option><option>Hodges Bay</option><option>Half Moon Bay</option><option>St. John's</option>
                   </select>
                 </div>
                 <div>
-                  <label className="block font-body text-xs font-medium text-muted-foreground mb-1">Type *</label>
-                  <select className="w-full h-10 px-3 bg-background border border-input text-foreground text-sm rounded-lg" value={form.type} onChange={(e) => setForm({ ...form, type: e.target.value })}>
+                  <label className="text-label block mb-1">Type *</label>
+                  <select className="w-full h-10 px-3 bg-background border border-input text-foreground text-sm" style={{ borderRadius: "6px" }} value={form.type} onChange={(e) => setForm({ ...form, type: e.target.value })}>
                     <option value="luxury">Luxury</option><option value="container">Container</option><option value="prefab">Prefab</option>
                   </select>
                 </div>
               </div>
               <div className="grid grid-cols-3 gap-3">
-                <Field label="Price *" value={form.price} onChange={(v) => setForm({ ...form, price: v })} placeholder="$1,200,000" />
-                <Field label="Beds" value={String(form.beds ?? 0)} onChange={(v) => setForm({ ...form, beds: +v })} type="number" />
-                <Field label="Baths" value={String(form.baths ?? 0)} onChange={(v) => setForm({ ...form, baths: +v })} type="number" />
+                <div>
+                  <label className="text-label block mb-1">Price *</label>
+                  <input className="w-full h-10 px-3 bg-background border border-input text-foreground text-sm" style={{ borderRadius: "6px" }} value={form.price} onChange={(e) => setForm({ ...form, price: e.target.value })} placeholder="$1,200,000" />
+                </div>
+                <div>
+                  <label className="text-label block mb-1">Beds</label>
+                  <input type="number" className="w-full h-10 px-3 bg-background border border-input text-foreground text-sm" style={{ borderRadius: "6px" }} value={form.beds ?? 0} onChange={(e) => setForm({ ...form, beds: +e.target.value })} />
+                </div>
+                <div>
+                  <label className="text-label block mb-1">Baths</label>
+                  <input type="number" className="w-full h-10 px-3 bg-background border border-input text-foreground text-sm" style={{ borderRadius: "6px" }} value={form.baths ?? 0} onChange={(e) => setForm({ ...form, baths: +e.target.value })} />
+                </div>
               </div>
               <div>
-                <label className="block font-body text-xs font-medium text-muted-foreground mb-1">Description</label>
-                <textarea className="w-full px-3 py-2 bg-background border border-input text-foreground text-sm min-h-[80px] rounded-lg" value={form.description} onChange={(e) => setForm({ ...form, description: e.target.value })} />
+                <label className="text-label block mb-1">Description *</label>
+                <textarea className="w-full px-3 py-2 bg-background border border-input text-foreground text-sm min-h-[80px]" style={{ borderRadius: "6px" }} value={form.description} onChange={(e) => setForm({ ...form, description: e.target.value })} />
               </div>
               <div>
-                <label className="block font-body text-xs font-medium text-muted-foreground mb-1">Features</label>
+                <label className="text-label block mb-1">Features</label>
                 <div className="flex gap-2 mb-2">
-                  <input className="flex-1 h-9 px-3 bg-background border border-input text-foreground text-sm rounded-lg" value={featureInput} onChange={(e) => setFeatureInput(e.target.value)} onKeyDown={(e) => { if (e.key === "Enter") { e.preventDefault(); addFeature(); } }} placeholder="Type and press Enter" />
-                  <button onClick={addFeature} className="px-3 h-9 bg-luxury-gold/10 text-luxury-gold text-xs font-medium rounded-lg">Add</button>
+                  <input className="flex-1 h-9 px-3 bg-background border border-input text-foreground text-sm" style={{ borderRadius: "6px" }} value={featureInput} onChange={(e) => setFeatureInput(e.target.value)} onKeyDown={(e) => { if (e.key === "Enter") { e.preventDefault(); addFeature(); } }} placeholder="Type and press Enter" />
+                  <button onClick={addFeature} className="px-3 h-9 bg-primary/10 text-primary text-xs font-medium" style={{ borderRadius: "6px" }}>Add</button>
                 </div>
                 <div className="flex flex-wrap gap-1.5">
                   {(form.features || []).map((f, i) => (
-                    <span key={i} className="flex items-center gap-1 bg-muted text-foreground px-2 py-0.5 text-xs rounded">
+                    <span key={i} className="flex items-center gap-1 bg-muted text-foreground px-2 py-0.5 text-xs" style={{ borderRadius: "4px" }}>
                       {f} <button onClick={() => removeFeature(i)} className="text-muted-foreground hover:text-foreground"><X size={12} /></button>
                     </span>
                   ))}
@@ -221,36 +191,27 @@ export default function PropertiesAdmin() {
               </div>
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block font-body text-xs font-medium text-muted-foreground mb-1">Status</label>
-                  <select className="w-full h-10 px-3 bg-background border border-input text-foreground text-sm rounded-lg" value={form.status || "active"} onChange={(e) => setForm({ ...form, status: e.target.value })}>
+                  <label className="text-label block mb-1">Status</label>
+                  <select className="w-full h-10 px-3 bg-background border border-input text-foreground text-sm" style={{ borderRadius: "6px" }} value={form.status || "active"} onChange={(e) => setForm({ ...form, status: e.target.value })}>
                     <option value="active">Active</option><option value="sold">Sold</option><option value="off-market">Off Market</option><option value="coming-soon">Coming Soon</option>
                   </select>
                 </div>
                 <div className="space-y-2 pt-5">
-                  <label className="flex items-center gap-2 text-sm text-foreground cursor-pointer font-body">
-                    <input type="checkbox" checked={!!form.featured} onChange={(e) => setForm({ ...form, featured: e.target.checked })} className="accent-[hsl(var(--luxury-gold))]" /> Featured
+                  <label className="flex items-center gap-2 text-sm text-foreground cursor-pointer">
+                    <input type="checkbox" checked={!!form.featured} onChange={(e) => setForm({ ...form, featured: e.target.checked })} className="accent-[hsl(var(--primary))]" /> Featured
                   </label>
-                  <label className="flex items-center gap-2 text-sm text-foreground cursor-pointer font-body">
-                    <input type="checkbox" checked={!!form.new_listing} onChange={(e) => setForm({ ...form, new_listing: e.target.checked })} className="accent-[hsl(var(--luxury-gold))]" /> New Listing
+                  <label className="flex items-center gap-2 text-sm text-foreground cursor-pointer">
+                    <input type="checkbox" checked={!!form.new_listing} onChange={(e) => setForm({ ...form, new_listing: e.target.checked })} className="accent-[hsl(var(--primary))]" /> New Listing
                   </label>
                 </div>
               </div>
             </div>
-            <button onClick={handleSave} disabled={saving || !form.name || !form.price} className="gold-shimmer-hover w-full bg-gradient-to-r from-luxury-gold to-luxury-gold-light text-white font-body font-semibold text-sm tracking-wider uppercase py-3 rounded-xl hover:shadow-lg hover:shadow-luxury-gold/20 disabled:opacity-50 transition-all">
+            <button onClick={handleSave} disabled={saving || !form.name || !form.price} className="w-full bg-primary text-primary-foreground font-sans font-medium text-sm py-3 hover:opacity-90 disabled:opacity-50" style={{ borderRadius: "8px" }}>
               {saving ? "Saving..." : editingId ? "Save Changes" : "Create Property"}
             </button>
           </div>
         </div>
       )}
-    </div>
-  );
-}
-
-function Field({ label, value, onChange, placeholder, type = "text" }: { label: string; value: string; onChange: (v: string) => void; placeholder?: string; type?: string }) {
-  return (
-    <div>
-      <label className="block font-body text-xs font-medium text-muted-foreground mb-1">{label}</label>
-      <input type={type} className="w-full h-10 px-3 bg-background border border-input text-foreground text-sm rounded-lg" value={value} onChange={(e) => onChange(e.target.value)} placeholder={placeholder} />
     </div>
   );
 }
