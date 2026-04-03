@@ -1,47 +1,35 @@
-import { useRef } from "react";
+import { useRef, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion, useInView } from "framer-motion";
 import RevealSection from "@/components/RevealSection";
 import StaggerChildren from "@/components/StaggerChildren";
 
-function AnimatedCounter({ target, suffix = "" }: { target: number; suffix?: string }) {
+function AnimatedCounter({ target, suffix = "", prefix = "" }: { target: number; suffix?: string; prefix?: string }) {
   const ref = useRef<HTMLSpanElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-50px" });
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    if (!isInView) return;
+    let start = 0;
+    const duration = 2000;
+    const step = Math.ceil(target / (duration / 16));
+    const timer = setInterval(() => {
+      start += step;
+      if (start >= target) {
+        setCount(target);
+        clearInterval(timer);
+      } else {
+        setCount(start);
+      }
+    }, 16);
+    return () => clearInterval(timer);
+  }, [isInView, target]);
 
   return (
-    <motion.span
-      ref={ref}
-      initial={{ opacity: 0 }}
-      animate={isInView ? { opacity: 1 } : {}}
-    >
-      {isInView ? (
-        <motion.span
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.3 }}
-        >
-          <Counter from={0} to={target} />{suffix}
-        </motion.span>
-      ) : "0"}
-    </motion.span>
-  );
-}
-
-function Counter({ from, to }: { from: number; to: number }) {
-  return (
-    <motion.span
-      initial={{ opacity: 1 }}
-      animate={{ opacity: 1 }}
-    >
-      <motion.span
-        key={to}
-        initial={false}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5 }}
-      >
-        {to.toLocaleString()}
-      </motion.span>
-    </motion.span>
+    <span ref={ref}>
+      {prefix}{count.toLocaleString()}{suffix}
+    </span>
   );
 }
 
@@ -49,7 +37,7 @@ const stats = [
   { target: 15, suffix: "+", label: "Years Experience" },
   { target: 50, suffix: "+", label: "Properties Sold" },
   { target: 365, suffix: "", label: "Beaches" },
-  { target: 30, suffix: "M+", label: "Sales Volume" },
+  { target: 30, suffix: "M+", prefix: "$", label: "Sales Volume" },
 ];
 
 const values = [
@@ -168,12 +156,11 @@ export default function About() {
         <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-luxury-gold/20 to-transparent" />
         <div className="relative z-10 max-w-[1280px] mx-auto px-6 md:px-10">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
-            {stats.map((s) => (
-              <RevealSection key={s.label} delay={0.1}>
+            {stats.map((s, i) => (
+              <RevealSection key={s.label} delay={i * 0.1}>
                 <div>
                   <p className="font-display text-5xl font-bold text-luxury-gold mb-2">
-                    {s.label === "Sales Volume" && "$"}
-                    <AnimatedCounter target={s.target} suffix={s.suffix} />
+                    <AnimatedCounter target={s.target} suffix={s.suffix} prefix={s.prefix || ""} />
                   </p>
                   <p className="font-body text-sm text-white/60 tracking-wider uppercase">{s.label}</p>
                 </div>
