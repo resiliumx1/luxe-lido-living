@@ -1,11 +1,9 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import villaTerraceImg from "@/assets/villa_terrace.jpg";
-import containerExteriorImg from "@/assets/container_exterior.jpg";
-import containerCourtyardImg from "@/assets/container_courtyard.jpg";
 import SectionLabel from "@/components/SectionLabel";
 import PropertyCard from "@/components/PropertyCard";
 import WhyAntigua from "@/components/WhyAntigua";
+import properties from "@/data/properties";
 import AgentAuthority from "@/components/AgentAuthority";
 import NeighborhoodGuide from "@/components/NeighborhoodGuide";
 import LeadCapture from "@/components/LeadCapture";
