@@ -1,16 +1,18 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
-import { LayoutDashboard, Home, Image, MessageSquare, Calendar, Users, Settings, LogOut, ExternalLink, Container } from "lucide-react";
-import { LuxeLogo } from "@/components/ui/LuxeLogo";
-import { supabase } from "@/integrations/supabase/client";
+import {
+  LayoutDashboard, Home, Container, MessageSquare, Calendar, Users,
+  Settings, Image, LogOut, ExternalLink, Menu, X, ArrowLeft,
+} from "lucide-react";
+import { useAdminAuth } from "@/contexts/AdminAuthContext";
 
 const navItems = [
   { label: "Dashboard", href: "/admin", icon: LayoutDashboard },
   { label: "Properties", href: "/admin/properties", icon: Home },
   { label: "Containers", href: "/admin/containers", icon: Container },
   { label: "Photo Manager", href: "/admin/photos", icon: Image },
-  { label: "Inquiries", href: "/admin/inquiries", icon: MessageSquare, badge: "inquiries" },
-  { label: "Viewings", href: "/admin/viewings", icon: Calendar, badge: "viewings" },
+  { label: "Inquiries", href: "/admin/inquiries", icon: MessageSquare },
+  { label: "Viewings", href: "/admin/viewings", icon: Calendar },
   { label: "Leads", href: "/admin/leads", icon: Users },
   { label: "Settings", href: "/admin/settings", icon: Settings },
 ];
@@ -18,104 +20,129 @@ const navItems = [
 export default function AdminLayout() {
   const location = useLocation();
   const navigate = useNavigate();
-  const [counts, setCounts] = useState({ inquiries: 0, viewings: 0 });
-  const [userEmail, setUserEmail] = useState("");
+  const { logout } = useAdminAuth();
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
-  useEffect(() => {
-    const fetchCounts = async () => {
-      const [enq, view] = await Promise.all([
-        supabase.from("enquiries").select("id", { count: "exact", head: true }).eq("status", "unread"),
-        supabase.from("viewings").select("id", { count: "exact", head: true }).eq("status", "pending"),
-      ]);
-      setCounts({ inquiries: enq.count || 0, viewings: view.count || 0 });
-    };
-    fetchCounts();
-
-    supabase.auth.getUser().then(({ data }) => {
-      if (data.user) setUserEmail(data.user.email || "");
-    });
-  }, [location]);
-
-  const handleSignOut = async () => {
-    await supabase.auth.signOut();
-    navigate("/admin/login");
+  const handleSignOut = () => {
+    logout();
+    navigate("/");
   };
 
   const pageTitle = navItems.find(
     (n) => location.pathname === n.href || (n.href !== "/admin" && location.pathname.startsWith(n.href))
   )?.label || "Dashboard";
 
+  const sidebarContent = (
+    <>
+      <nav className="flex-1 py-4 space-y-0.5 px-3 overflow-y-auto">
+        {navItems.map((item) => {
+          const active = location.pathname === item.href || (item.href !== "/admin" && location.pathname.startsWith(item.href));
+          return (
+            <Link
+              key={item.href}
+              to={item.href}
+              onClick={() => setSidebarOpen(false)}
+              className={`flex items-center gap-3 px-3 py-2.5 font-sans text-[13px] transition-colors duration-200 ${
+                active
+                  ? "text-gold bg-gold/10 border-l-2 border-gold"
+                  : "text-white/50 hover:text-white/80 hover:bg-white/[0.03] border-l-2 border-transparent"
+              }`}
+              style={{ borderRadius: "0 6px 6px 0" }}
+            >
+              <item.icon size={16} />
+              {item.label}
+            </Link>
+          );
+        })}
+      </nav>
+
+      {/* Bottom: View public site */}
+      <div className="p-3 border-t border-white/[0.06]">
+        <a
+          href="/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-2 px-3 py-2 font-sans text-[11px] text-white/30 hover:text-gold transition-colors duration-200"
+        >
+          View Public Site <ExternalLink size={11} />
+        </a>
+      </div>
+    </>
+  );
+
   return (
-    <div className="flex min-h-screen bg-background">
-      {/* Sidebar */}
-      <aside className="hidden md:flex flex-col w-60 bg-ocean-deep shrink-0 fixed inset-y-0 left-0 z-30">
-        <div className="p-5 border-b border-white/10">
-          <LuxeLogo size="sm" />
+    <div className="min-h-screen" style={{ backgroundColor: "hsl(210 40% 5%)" }}>
+      {/* Fixed top bar */}
+      <header
+        className="fixed top-0 left-0 right-0 z-50 h-14 flex items-center justify-between px-4 md:px-6 border-b border-white/[0.06]"
+        style={{ backgroundColor: "hsl(210 40% 6%)" }}
+      >
+        <div className="flex items-center gap-3">
+          {/* Mobile hamburger */}
+          <button
+            className="md:hidden text-white/60 hover:text-white p-1"
+            onClick={() => setSidebarOpen(!sidebarOpen)}
+            aria-label="Toggle sidebar"
+          >
+            {sidebarOpen ? <X size={20} /> : <Menu size={20} />}
+          </button>
+
+          <img src="/logo-dark.svg" className="h-7" alt="A. Lindsay Luxe Estates" />
+          <span className="font-sans text-[11px] font-semibold tracking-[0.15em] uppercase text-white/40">
+            Admin
+          </span>
         </div>
-        <nav className="flex-1 py-4 space-y-1 px-3">
-          {navItems.map((item) => {
-            const active = location.pathname === item.href || (item.href !== "/admin" && location.pathname.startsWith(item.href));
-            const badgeCount = item.badge === "inquiries" ? counts.inquiries : item.badge === "viewings" ? counts.viewings : 0;
-            return (
-              <Link
-                key={item.href}
-                to={item.href}
-                className={`flex items-center gap-3 px-3 py-2.5 font-sans text-sm transition-colors ${
-                  active
-                    ? "text-primary border-l-2 border-primary bg-primary/10"
-                    : "text-off-white/60 hover:text-off-white hover:bg-white/5 border-l-2 border-transparent"
-                }`}
-                style={{ borderRadius: "0 6px 6px 0" }}
-              >
-                <item.icon size={18} />
-                {item.label}
-                {badgeCount > 0 && (
-                  <span className="ml-auto bg-primary text-primary-foreground text-[10px] font-bold px-1.5 py-0.5 rounded-full min-w-[18px] text-center">
-                    {badgeCount}
-                  </span>
-                )}
-              </Link>
-            );
-          })}
-        </nav>
-        <div className="p-3 border-t border-white/10">
+
+        <div className="flex items-center gap-2">
+          {/* Back to Site — always visible */}
+          <a
+            href="/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-1.5 px-3 py-1.5 border border-gold/40 text-gold font-sans text-xs font-medium tracking-wide hover:bg-gold hover:text-[hsl(210_40%_5%)] transition-all duration-200"
+            style={{ borderRadius: "6px" }}
+          >
+            <ArrowLeft size={13} />
+            <span className="hidden sm:inline">Back to Site</span>
+          </a>
+
+          {/* Logout */}
           <button
             onClick={handleSignOut}
-            className="flex items-center gap-3 w-full px-3 py-2.5 text-off-white/60 hover:text-off-white font-sans text-sm transition-colors"
+            className="p-2 text-white/40 hover:text-white transition-colors duration-200"
+            aria-label="Sign out"
           >
-            <LogOut size={18} /> Sign Out
+            <LogOut size={16} />
           </button>
         </div>
+      </header>
+
+      {/* Sidebar — desktop: fixed, mobile: overlay */}
+      {/* Mobile overlay */}
+      {sidebarOpen && (
+        <div
+          className="fixed inset-0 z-30 bg-black/60 md:hidden"
+          onClick={() => setSidebarOpen(false)}
+        />
+      )}
+
+      <aside
+        className={`fixed top-14 bottom-0 left-0 z-40 w-56 flex flex-col border-r border-white/[0.06] transition-transform duration-300 md:translate-x-0 ${
+          sidebarOpen ? "translate-x-0" : "-translate-x-full"
+        }`}
+        style={{ backgroundColor: "hsl(210 40% 5%)" }}
+      >
+        {sidebarContent}
       </aside>
 
-      {/* Main area */}
-      <div className="flex-1 md:ml-60">
-        {/* Top bar */}
-        <header className="sticky top-0 z-20 h-[60px] bg-card border-b border-border flex items-center justify-between px-6">
-          <h1 className="font-serif text-xl text-foreground">{pageTitle}</h1>
-          <div className="flex items-center gap-4">
-            <a
-              href="/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hidden sm:flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground font-sans transition-colors"
-            >
-              View Live Site <ExternalLink size={14} />
-            </a>
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-primary/20 text-primary font-sans font-bold text-xs flex items-center justify-center" style={{ borderRadius: "50%" }}>
-                {userEmail.charAt(0).toUpperCase()}
-              </div>
-              <span className="hidden sm:block text-xs text-muted-foreground font-sans truncate max-w-[160px]">{userEmail}</span>
-            </div>
-          </div>
-        </header>
-
-        {/* Content */}
-        <main className="p-6 md:p-8">
+      {/* Main content */}
+      <main className="pt-14 md:pl-56">
+        <div className="p-5 md:p-8">
+          {/* Page title */}
+          <h1 className="font-serif text-xl text-white mb-6">{pageTitle}</h1>
           <Outlet />
-        </main>
-      </div>
+        </div>
+      </main>
     </div>
   );
 }
