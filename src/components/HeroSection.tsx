@@ -1,63 +1,103 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSiteSettings } from "@/hooks/useSiteSettings";
 import BookingModal from "@/components/BookingModal";
 
+type HeroMode = "video-desktop" | "video-tablet" | "poster";
+
+function getHeroMode(): HeroMode {
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (prefersReducedMotion) return "poster";
+
+  const conn = (navigator as any).connection;
+  if (conn?.effectiveType === "slow-2g" || conn?.effectiveType === "2g") return "poster";
+
+  const width = window.innerWidth;
+  if (width < 768) return "poster";
+  if (width < 1024) return "video-tablet";
+  return "video-desktop";
+}
+
 export default function HeroSection() {
   const navigate = useNavigate();
   const { settings } = useSiteSettings();
-  const heroImageUrl = settings?.hero_image || "";
-  const [imgLoaded, setImgLoaded] = useState(false);
   const [bookingOpen, setBookingOpen] = useState(false);
+  const [mode, setMode] = useState<HeroMode>(() =>
+    typeof window !== "undefined" ? getHeroMode() : "poster"
+  );
+
+  useEffect(() => {
+    const update = () => setMode(getHeroMode());
+    const mqlMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const mqlMobile = window.matchMedia("(max-width: 767px)");
+    const mqlTablet = window.matchMedia("(max-width: 1023px)");
+
+    mqlMotion.addEventListener("change", update);
+    mqlMobile.addEventListener("change", update);
+    mqlTablet.addEventListener("change", update);
+
+    return () => {
+      mqlMotion.removeEventListener("change", update);
+      mqlMobile.removeEventListener("change", update);
+      mqlTablet.removeEventListener("change", update);
+    };
+  }, []);
 
   return (
     <>
       <section className="relative min-h-screen min-h-[100svh] overflow-hidden flex items-center">
-        {/* Ken Burns background layer */}
-        <div
-          className="absolute inset-0 hero-kb-layer"
-          style={{
-            backgroundImage: heroImageUrl
-              ? `url(${heroImageUrl})`
-              : "linear-gradient(135deg, hsl(var(--ocean-deep)) 0%, hsl(220 30% 18%) 50%, hsl(var(--ocean-deep)) 100%)",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            opacity: heroImageUrl ? (imgLoaded ? 1 : 0) : 1,
-            transition: "opacity 0.8s ease",
-          }}
-        />
-        {/* Hidden img to detect load */}
-        {heroImageUrl && (
+        {/* Background layer */}
+        {mode === "poster" ? (
           <img
-            src={heroImageUrl}
+            src="/hero/hero-poster.jpg"
             alt=""
-            className="hidden"
-            onLoad={() => setImgLoaded(true)}
+            className="absolute inset-0 w-full h-full object-cover"
+            fetchPriority="high"
           />
+        ) : (
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="auto"
+            poster="/hero/hero-poster.jpg"
+            className="absolute inset-0 w-full h-full object-cover"
+          >
+            <source src="/hero/hero-loop.webm" type="video/webm" />
+            {mode === "video-tablet" ? (
+              <source src="/hero/hero-loop-mobile.mp4" type="video/mp4" />
+            ) : (
+              <source src="/hero/hero-loop.mp4" type="video/mp4" />
+            )}
+          </video>
         )}
 
-        {/* Overlay 1 — directional gradient */}
+        {/* Overlay — right-biased directional gradient */}
         <div
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(115deg, rgba(5,12,28,0.75) 0%, rgba(5,12,28,0.50) 45%, rgba(5,12,28,0.20) 100%)",
+              "linear-gradient(100deg, rgba(5,12,28,0.85) 0%, rgba(5,12,28,0.70) 25%, rgba(5,12,28,0.40) 55%, rgba(5,12,28,0.15) 85%, rgba(5,12,28,0.10) 100%)",
           }}
         />
 
-        {/* Overlay 2 — bottom vignette */}
+        {/* Bottom vignette */}
         <div
           className="absolute bottom-0 left-0 right-0"
           style={{
-            height: "35%",
+            height: "40%",
             background:
-              "linear-gradient(to top, rgba(5,12,28,0.85) 0%, rgba(5,12,28,0.40) 60%, transparent 100%)",
+              "linear-gradient(to top, rgba(5,12,28,0.60) 0%, transparent 40%)",
           }}
         />
 
-        {/* Content */}
-        <div className="relative z-10 w-full px-5 sm:px-[clamp(24px,8vw,96px)] pt-24 pb-32">
-          <div className="max-w-[600px]">
+        {/* Content — left-anchored */}
+        <div
+          className="relative z-10 w-full pt-24 pb-32"
+          style={{ paddingLeft: "clamp(2rem, 6vw, 6rem)", paddingRight: "1.5rem" }}
+        >
+          <div className="max-w-[560px]">
             {/* Eyebrow */}
             <div
               className="flex items-center gap-3 mb-4 hero-stagger"
@@ -136,7 +176,8 @@ export default function HeroSection() {
         </div>
 
         {/* Stats bar — hidden on mobile */}
-        <div className="hidden sm:flex absolute bottom-0 left-0 right-0 h-[72px] items-center justify-center border-t border-gold/25 backdrop-blur-sm z-10"
+        <div
+          className="hidden sm:flex absolute bottom-0 left-0 right-0 h-[72px] items-center justify-center border-t border-gold/25 backdrop-blur-sm z-10"
           style={{ background: "rgba(5,12,28,0.78)" }}
         >
           {[
