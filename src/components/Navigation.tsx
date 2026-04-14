@@ -1,15 +1,16 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Heart } from "lucide-react";
+import { Menu, X, Heart, Sun, Moon, DollarSign } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useWishlist } from "@/contexts/WishlistContext";
+import { useCurrency, CurrencyCode } from "@/contexts/CurrencyContext";
 import { LuxeLogo } from "@/components/ui/LuxeLogo";
 import WishlistDrawer from "./WishlistDrawer";
 import BookingModal from "./BookingModal";
 
 const navLinks = [
   { label: "Luxury Homes", href: "/luxury-homes" },
-  { label: "Container Homes", href: "/container-homes" },
+  { label: "Container Solutions", href: "/container-solutions" },
   { label: "Prefab Homes", href: "/prefab-homes" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
@@ -22,6 +23,7 @@ export default function Navigation() {
   const [bookingOpen, setBookingOpen] = useState(false);
   const { theme, setTheme } = useTheme();
   const { count } = useWishlist();
+  const { currency, setCurrency } = useCurrency();
   const location = useLocation();
   const isHome = location.pathname === "/";
 
@@ -38,6 +40,10 @@ export default function Navigation() {
   const isTransparent = isHome && !scrolled;
   const isDark = theme === "dark";
 
+  const toggleCurrency = () => {
+    setCurrency(currency === "USD" ? "XCD" : "USD");
+  };
+
   return (
     <>
       <nav
@@ -50,7 +56,7 @@ export default function Navigation() {
       >
         <div className="max-w-[1280px] mx-auto px-6 md:px-10 flex items-center justify-between h-20">
           {/* Logo */}
-          <LuxeLogo size="md" as="link" variant={isTransparent ? "dark" : "dark"} />
+          <LuxeLogo size="md" as="link" variant="dark" />
 
           {/* Nav links — center */}
           <div className="hidden lg:flex items-center gap-6">
@@ -66,7 +72,25 @@ export default function Navigation() {
           </div>
 
           {/* Right — icons + CTA + mobile hamburger */}
-          <div className="flex items-center gap-2 shrink-0">
+          <div className="flex items-center gap-1 shrink-0">
+            {/* Currency toggle */}
+            <button
+              onClick={toggleCurrency}
+              aria-label={`Switch to ${currency === "USD" ? "XCD" : "USD"}`}
+              className="p-2 text-gold/70 hover:text-gold transition-colors duration-300 font-sans text-xs font-bold tracking-wide"
+            >
+              {currency === "USD" ? "USD" : "XCD"}
+            </button>
+
+            {/* Theme toggle */}
+            <button
+              onClick={() => setTheme(isDark ? "light" : "dark")}
+              aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
+              className="p-2 text-gold/70 hover:text-gold transition-colors duration-300"
+            >
+              {isDark ? <Sun size={16} /> : <Moon size={16} />}
+            </button>
+
             {/* Wishlist */}
             <button
               onClick={() => setWishlistOpen(true)}
@@ -80,8 +104,6 @@ export default function Navigation() {
                 </span>
               )}
             </button>
-
-            {/* Theme toggle removed — dark nav always */}
 
             {/* Book a Viewing */}
             <button
@@ -122,6 +144,17 @@ export default function Navigation() {
             {link.label}
           </Link>
         ))}
+
+        {/* Mobile toggles */}
+        <div className="flex items-center gap-6 mt-4">
+          <button onClick={toggleCurrency} className="font-sans text-gold text-sm font-bold">
+            {currency === "USD" ? "Switch to XCD" : "Switch to USD"}
+          </button>
+          <button onClick={() => setTheme(isDark ? "light" : "dark")} className="text-gold">
+            {isDark ? <Sun size={20} /> : <Moon size={20} />}
+          </button>
+        </div>
+
         <button
           onClick={() => { setMenuOpen(false); setBookingOpen(true); }}
           className="mt-4 cta-shimmer bg-gold hover:bg-gold-soft text-ocean-deep font-sans font-medium small-caps tracking-widest text-sm px-8 py-3 transition-all duration-300"
