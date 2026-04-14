@@ -61,12 +61,12 @@ export default function AdminLayout() {
       </nav>
 
       {/* Bottom: View public site */}
-      <div className="p-3 border-t border-white/[0.06]">
+      <div className="p-3 border-t border-border">
         <a
           href="/"
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-2 px-3 py-2 font-sans text-[11px] text-white/30 hover:text-gold transition-colors duration-200"
+          className="flex items-center gap-2 px-3 py-2 font-sans text-[11px] text-muted-foreground hover:text-gold transition-colors duration-200"
         >
           View Public Site <ExternalLink size={11} />
         </a>
