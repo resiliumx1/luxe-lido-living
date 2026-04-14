@@ -2,8 +2,9 @@ import { useState } from "react";
 import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
 import {
   LayoutDashboard, Home, Container, MessageSquare,
-  Settings, Image, LogOut, ExternalLink, Menu, X, ArrowLeft,
+  Settings, Image, LogOut, ExternalLink, Menu, X, Sun, Moon,
 } from "lucide-react";
+import { useTheme } from "next-themes";
 import { useAdminAuth } from "@/contexts/AdminAuthContext";
 
 const navItems = [
