@@ -35,6 +35,7 @@ export default function ContactForm({ dark = false }: { dark?: boolean }) {
 
   const textColor = dark ? "text-off-white" : "text-foreground";
   const subTextColor = dark ? "text-off-white/70" : "text-muted-foreground";
+  const labelColor = dark ? "text-off-white/85" : "text-foreground";
   const inputCls = "input-luxe";
 
   return (
