@@ -3,7 +3,7 @@ import { Phone, Mail, MapPin, Clock, CheckCircle, MessageCircle } from "lucide-r
 import { supabase } from "@/integrations/supabase/client";
 import SectionLabel from "./SectionLabel";
 import { OptionSelector } from "./ui/OptionSelector";
-
+import { WHATSAPP_NUMBER, ASHANTE_EMAIL, ASHANTE_PHONE, ASHANTE_PHONE_RAW } from "@/lib/contact";
 const interestOptions = [
   { value: "luxury", label: "Luxury Homes" },
   { value: "container", label: "Container Homes" },
@@ -48,8 +48,8 @@ export default function ContactForm({ dark = false }: { dark?: boolean }) {
           {/* Contact details */}
           <div className="space-y-8">
             {[
-              { Icon: Phone, label: "Phone", value: "+1 (268) 400-0000", href: "tel:+12684000000" },
-              { Icon: Mail, label: "Email", value: "ashante@alindsayluxe.com", href: "mailto:ashante@alindsayluxe.com" },
+              { Icon: Phone, label: "Phone", value: ASHANTE_PHONE, href: `tel:${ASHANTE_PHONE_RAW}` },
+              { Icon: Mail, label: "Email", value: ASHANTE_EMAIL, href: `mailto:${ASHANTE_EMAIL}` },
               { Icon: MapPin, label: "Office", value: "English Harbour, Antigua & Barbuda", href: null },
               { Icon: Clock, label: "Hours", value: "Mon–Sat · 9am–6pm AST", href: null },
             ].map(({ Icon, label, value, href }, i) => (
@@ -68,7 +68,7 @@ export default function ContactForm({ dark = false }: { dark?: boolean }) {
                 {i < 3 && <div className={`mt-6 border-b ${dark ? "border-primary/20" : "border-sand dark:border-primary/10"}`} />}
               </div>
             ))}
-            <a href="https://wa.me/12684000000?text=Hello%20Ashante%2C%20I%27m%20interested%20in%20a%20property." target="_blank" rel="noopener noreferrer"
+            <a href={`https://wa.me/${WHATSAPP_NUMBER}?text=Hello%20Ashante%2C%20I%27m%20interested%20in%20a%20property.`} target="_blank" rel="noopener noreferrer"
               className="inline-flex items-center gap-3 bg-[#25D366] text-white font-sans font-medium small-caps tracking-wider text-sm px-6 py-3 transition-opacity hover:opacity-90">
               <MessageCircle size={16} /> Chat on WhatsApp
             </a>
