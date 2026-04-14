@@ -2,6 +2,7 @@ export interface Property {
   id: string;
   name: string;
   price: string;
+  priceUSD: number;
   location: string;
   area: string;
   beds: number;
