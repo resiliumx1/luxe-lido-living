@@ -34,7 +34,7 @@ export default function LuxuryHomes() {
                   image={l.images[0]}
                   location={l.location}
                   name={l.name}
-                  price={l.price}
+                  priceUSD={l.priceUSD}
                   beds={l.beds}
                   baths={l.baths}
                   sqft={l.sqft}
