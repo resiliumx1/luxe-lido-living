@@ -75,45 +75,43 @@ export default function AdminLayout() {
   );
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: "hsl(210 40% 5%)" }}>
+    <div className="min-h-screen bg-background">
       {/* Fixed top bar */}
       <header
-        className="fixed top-0 left-0 right-0 z-50 h-14 flex items-center justify-between px-4 md:px-6 border-b border-white/[0.06]"
-        style={{ backgroundColor: "hsl(210 40% 6%)" }}
+        className="fixed top-0 left-0 right-0 z-50 h-14 flex items-center justify-between px-4 md:px-6 border-b border-border"
+        style={{ backgroundColor: "hsl(var(--background))" }}
       >
         <div className="flex items-center gap-3">
           {/* Mobile hamburger */}
           <button
-            className="md:hidden text-white/60 hover:text-white p-1"
+            className="md:hidden text-muted-foreground hover:text-foreground p-1"
             onClick={() => setSidebarOpen(!sidebarOpen)}
             aria-label="Toggle sidebar"
           >
             {sidebarOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
 
-          <img src="/logo-dark.svg" className="h-7" alt="A. Lindsay Luxe Estates" />
-          <span className="font-sans text-[11px] font-semibold tracking-[0.15em] uppercase text-white/40">
+          <img src="/logo-dark.svg" className="h-7 dark:block hidden" alt="A. Lindsay Luxe Estates" />
+          <img src="/logo-light.svg" className="h-7 dark:hidden block" alt="A. Lindsay Luxe Estates" />
+          <span className="font-sans text-[11px] font-semibold tracking-[0.15em] uppercase text-muted-foreground">
             Admin
           </span>
         </div>
 
         <div className="flex items-center gap-2">
-          {/* Back to Site — always visible */}
-          <a
-            href="/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-1.5 px-3 py-1.5 border border-gold/40 text-gold font-sans text-xs font-medium tracking-wide hover:bg-gold hover:text-[hsl(210_40%_5%)] transition-all duration-200"
-            style={{ borderRadius: "6px" }}
+          {/* Theme toggle */}
+          <button
+            onClick={toggleTheme}
+            className="p-2 text-muted-foreground hover:text-foreground transition-colors duration-200"
+            aria-label="Toggle theme"
           >
-            <ArrowLeft size={13} />
-            <span className="hidden sm:inline">Back to Site</span>
-          </a>
+            {theme === "dark" ? <Sun size={16} /> : <Moon size={16} />}
+          </button>
 
           {/* Logout */}
           <button
             onClick={handleSignOut}
-            className="p-2 text-white/40 hover:text-white transition-colors duration-200"
+            className="p-2 text-muted-foreground hover:text-foreground transition-colors duration-200"
             aria-label="Sign out"
           >
             <LogOut size={16} />
@@ -131,10 +129,9 @@ export default function AdminLayout() {
       )}
 
       <aside
-        className={`fixed top-14 bottom-0 left-0 z-40 w-56 flex flex-col border-r border-white/[0.06] transition-transform duration-300 md:translate-x-0 ${
+        className={`fixed top-14 bottom-0 left-0 z-40 w-56 flex flex-col border-r border-border bg-background transition-transform duration-300 md:translate-x-0 ${
           sidebarOpen ? "translate-x-0" : "-translate-x-full"
         }`}
-        style={{ backgroundColor: "hsl(210 40% 5%)" }}
       >
         {sidebarContent}
       </aside>
@@ -143,7 +140,7 @@ export default function AdminLayout() {
       <main className="pt-14 md:pl-56">
         <div className="p-5 md:p-8">
           {/* Page title */}
-          <h1 className="font-serif text-xl text-white mb-6">{pageTitle}</h1>
+          <h1 className="font-serif text-xl text-foreground mb-6">{pageTitle}</h1>
           <Outlet />
         </div>
       </main>
