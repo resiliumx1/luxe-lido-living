@@ -1,12 +1,27 @@
-import { useNavigate } from "react-router-dom";
-import containerCourtyardImg from "@/assets/container_courtyard.jpg";
+import { Link } from "react-router-dom";
+import { ArrowRight, Shield, Clock, DollarSign } from "lucide-react";
+import ResponsiveImage from "@/components/ResponsiveImage";
 import SectionLabel from "@/components/SectionLabel";
 import GoldCTA from "@/components/container/GoldCTA";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { useNavigate } from "react-router-dom";
+
+const verticals = [
+  { key: "homes", label: "Homes", pitch: "Private residences from studios to estates", image: "estate-home/hero", href: "/container-solutions/homes" },
+  { key: "commercial", label: "Commercial", pitch: "Cafés, retail, restaurants, offices", image: "bar-lounge/hero", href: "/container-solutions/commercial" },
+  { key: "hospitality", label: "Hospitality", pitch: "Guest cabins, cabanas, bars, glamping", image: "beach-bar/hero", href: "/container-solutions/hospitality" },
+  { key: "utility", label: "Utility", pitch: "Storage, workshops, site offices", image: "storage-unit/hero", href: "/container-solutions/utility" },
+];
+
+const stats = [
+  { icon: DollarSign, label: "40% Lower Cost", desc: "vs traditional build" },
+  { icon: Clock, label: "3-14 Weeks", desc: "build time" },
+  { icon: Shield, label: "Hurricane Rated", desc: "Category 4 standard" },
+];
 
 export default function ContainerPreview() {
-  const navigate = useNavigate();
   const sectionRef = useScrollReveal();
+  const navigate = useNavigate();
 
   return (
     <section className="py-28 bg-ocean-deep relative overflow-hidden" ref={sectionRef}>
@@ -16,57 +31,60 @@ export default function ContainerPreview() {
       </div>
 
       <div className="relative max-w-[1280px] mx-auto px-6 md:px-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center reveal">
-          {/* Left — image */}
-          <div className="relative group overflow-hidden rounded-2xl">
-            <img
-              src={containerCourtyardImg}
-              alt="Container home courtyard in Antigua"
-              className="w-full h-[400px] object-cover transition-transform duration-700 group-hover:scale-105"
-              loading="lazy"
-            />
-            <div className="absolute top-4 left-4 bg-ocean-deep/80 backdrop-blur-sm text-gold font-sans text-[10px] font-bold tracking-[0.2em] uppercase px-4 py-2 rounded-md">
-              A. Lindsay Luxe Estates
+        <div className="mb-12 reveal">
+          <SectionLabel text="Container Solutions" light />
+          <h2 className="font-serif text-4xl md:text-5xl text-off-white mb-4">
+            Modern Modular Architecture
+          </h2>
+          <p className="font-sans text-off-white/50 text-body max-w-2xl">
+            Homes, commercial spaces, hospitality units, utility buildings — all engineered for Caribbean conditions.
+          </p>
+        </div>
+
+        {/* 4 vertical cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-12 reveal reveal-delay-2">
+          {verticals.map((v) => (
+            <Link
+              key={v.key}
+              to={v.href}
+              className="group relative block aspect-[3/4] overflow-hidden"
+            >
+              <ResponsiveImage
+                basePath={v.image}
+                size="card"
+                alt={v.label}
+                className="absolute inset-0 transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-ocean-deep/90 via-ocean-deep/20 to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-5">
+                <h3 className="font-serif text-xl text-off-white mb-1">{v.label}</h3>
+                <p className="font-sans text-off-white/50 text-xs mb-3">{v.pitch}</p>
+                <span className="inline-flex items-center gap-1 text-gold font-sans text-xs group-hover:gap-2 transition-all">
+                  Explore <ArrowRight size={12} />
+                </span>
+              </div>
+            </Link>
+          ))}
+        </div>
+
+        {/* Stats strip */}
+        <div className="flex flex-wrap items-center justify-center gap-10 mb-10 reveal reveal-delay-3">
+          {stats.map((s) => (
+            <div key={s.label} className="flex items-center gap-2.5">
+              <s.icon size={16} className="text-gold/60" />
+              <div>
+                <span className="font-sans text-sm text-off-white font-medium">{s.label}</span>
+                <span className="font-sans text-xs text-off-white/40 ml-1.5">{s.desc}</span>
+              </div>
             </div>
-          </div>
+          ))}
+        </div>
 
-          {/* Right — content */}
-          <div>
-            <SectionLabel text="Container Homes" light />
-            <h2 className="font-serif text-4xl md:text-5xl text-off-white mb-4">
-              Modern Living,{" "}
-              <span
-                style={{
-                  background: "linear-gradient(135deg, hsl(var(--gold)), hsl(var(--gold-soft)))",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                }}
-              >
-                Delivered.
-              </span>
-            </h2>
-            <p className="font-sans text-off-white/60 text-base leading-relaxed mb-8 max-w-md">
-              Own a fully completed container home starting from $88,000 XCD. Factory-built, hurricane-resilient, and delivered to your doorstep in weeks — not months.
-            </p>
-
-            {/* Stats */}
-            <div className="flex items-center gap-8 mb-8">
-              {[
-                { num: "$88K", label: "Starting" },
-                { num: "3", label: "Packages" },
-                { num: "8 Wks", label: "Delivery" },
-              ].map((s) => (
-                <div key={s.label}>
-                  <span className="font-serif text-2xl text-gold block leading-none">{s.num}</span>
-                  <span className="font-sans text-[10px] text-off-white/40 tracking-wider uppercase mt-1 block">{s.label}</span>
-                </div>
-              ))}
-            </div>
-
-            <GoldCTA variant="solid" onClick={() => navigate("/container-homes")}>
-              Explore Container Homes
-            </GoldCTA>
-          </div>
+        {/* CTA */}
+        <div className="text-center reveal reveal-delay-4">
+          <GoldCTA variant="solid" onClick={() => navigate("/container-solutions")}>
+            Explore the Catalog <ArrowRight size={14} className="inline ml-1" />
+          </GoldCTA>
         </div>
       </div>
     </section>
