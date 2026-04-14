@@ -411,7 +411,6 @@
   .dark .input-luxe:focus {
     border-color: hsl(var(--gold));
   }
-  }
 }
 
 /* Marquee animation */
