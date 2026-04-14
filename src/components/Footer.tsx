@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Instagram, Facebook, Linkedin, Phone, Mail } from "lucide-react";
-import { LuxeLogo } from "@/components/ui/LuxeLogo";
+
 
 const quickLinks = [
   { label: "Luxury Homes", href: "/luxury-homes" },
