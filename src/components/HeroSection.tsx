@@ -131,7 +131,7 @@ export default function HeroSection() {
                 animationDelay: "0.8s",
               }}
             >
-              Oceanfront villas, hillside estates, and island investments — held by a licensed Antiguan broker who grew up here.
+              Oceanfront villas, hillside estates, and island investments — held by a licensed Antiguan Real Estate Agent who grew up here.
             </p>
 
             {/* CTAs */}
