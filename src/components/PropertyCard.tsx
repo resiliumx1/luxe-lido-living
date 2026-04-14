@@ -1,12 +1,13 @@
 import { Link } from "react-router-dom";
 import { Bed, Bath, Maximize } from "lucide-react";
 import { HeartButton } from "@/components/ui/HeartButton";
+import { useCurrency } from "@/contexts/CurrencyContext";
 
 interface PropertyCardProps {
   image: string;
   location: string;
   name: string;
-  price: string;
+  priceUSD: number;
   beds: number;
   baths: number;
   sqft?: string;
@@ -30,7 +31,7 @@ export default function PropertyCard({
   image,
   location,
   name,
-  price,
+  priceUSD,
   beds,
   baths,
   sqft,
@@ -40,15 +41,16 @@ export default function PropertyCard({
   id,
 }: PropertyCardProps) {
   const propertyId = id || nameToId(name);
-  // Always link to property detail page
+  const { formatPrice } = useCurrency();
   const detailHref = `/properties/${propertyId}`;
+  const displayPrice = formatPrice(priceUSD);
 
   return (
     <Link
       to={detailHref}
       className={`group block overflow-hidden bg-card dark:bg-card ${large ? "row-span-2" : ""}`}
       style={{ borderRadius: "12px", boxShadow: "0 4px 24px rgba(0,0,0,0.08)" }}
-      aria-label={`View ${name} — ${beds} bedroom ${location} property, ${price}`}
+      aria-label={`View ${name} — ${beds} bedroom ${location} property, ${displayPrice}`}
     >
       {/* Image */}
       <div className="relative overflow-hidden" style={{ aspectRatio: large ? "4/5" : "16/9" }}>
@@ -85,7 +87,7 @@ export default function PropertyCard({
       {/* Card body */}
       <div className="p-6">
         <p className="small-caps text-xs text-primary tracking-widest font-sans mb-1">{location}</p>
-        <p className="font-serif text-foreground font-medium mb-1" style={{ fontSize: "22px" }}>{price}</p>
+        <p className="font-serif text-foreground font-medium mb-1" style={{ fontSize: "22px" }}>{displayPrice}</p>
         <h3 className="font-sans text-foreground/90 font-medium mb-3" style={{ fontSize: "16px" }}>{name}</h3>
         <div className="flex items-center gap-4 text-muted-foreground" style={{ fontSize: "13px" }}>
           <span className="flex items-center gap-1.5 font-sans"><Bed size={14} className="text-primary" /> {beds} Beds</span>

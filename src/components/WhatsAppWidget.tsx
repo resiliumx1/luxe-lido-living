@@ -1,7 +1,9 @@
+import { WHATSAPP_NUMBER } from "@/lib/contact";
+
 export default function WhatsAppWidget() {
   return (
     <a
-      href="https://wa.me/12684000000?text=Hello%20Ashante%2C%20I%27m%20interested%20in%20a%20property."
+      href={`https://wa.me/${WHATSAPP_NUMBER}?text=Hello%20Ashante%2C%20I%27m%20interested%20in%20a%20property.`}
       target="_blank"
       rel="noopener noreferrer"
       className="fixed z-[9999] group"

@@ -41,7 +41,7 @@ export default function PrefabHomes() {
                   image={p.images[0]}
                   location={p.location}
                   name={p.name}
-                  price={p.price}
+                  priceUSD={p.priceUSD}
                   beds={p.beds}
                   baths={p.baths}
                   sqft={p.sqft}

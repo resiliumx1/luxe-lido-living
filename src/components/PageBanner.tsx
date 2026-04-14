@@ -6,7 +6,7 @@ interface PageBannerProps {
 
 export default function PageBanner({ image, title, subtitle }: PageBannerProps) {
   return (
-    <div className="relative h-[60vh] min-h-[420px] flex items-end pb-20">
+    <div className="relative pt-20 h-[calc(60vh+5rem)] min-h-[500px] flex items-end pb-20">
       <img
         src={image}
         alt={title}
