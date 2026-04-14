@@ -394,6 +394,24 @@
     background-color: hsl(var(--card));
     color: hsl(var(--foreground));
   }
+
+  /* Luxe form input — visible in both themes */
+  .input-luxe {
+    @apply w-full bg-card border-[1.5px] px-4 py-3 outline-none font-sans text-sm text-foreground placeholder:text-muted-foreground transition-all;
+    border-color: hsl(var(--border));
+    border-radius: 8px;
+  }
+  .input-luxe:focus {
+    border-color: hsl(var(--gold));
+    box-shadow: 0 0 0 3px hsl(var(--gold) / 0.15);
+  }
+  .dark .input-luxe {
+    border-color: hsl(var(--gold) / 0.30);
+  }
+  .dark .input-luxe:focus {
+    border-color: hsl(var(--gold));
+  }
+  }
 }
 
 /* Marquee animation */
