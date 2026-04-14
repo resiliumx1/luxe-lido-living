@@ -152,9 +152,14 @@ export default function Footer() {
             <p className="font-sans text-white/40 text-xs">
               © 2025 A. Lindsay Luxe Estates. All rights reserved.
             </p>
-            <p className="font-sans text-white/40 text-xs">
-              Licensed Real Estate Agent, Antigua &amp; Barbuda
-            </p>
+            <div className="flex items-center gap-4">
+              <p className="font-sans text-white/40 text-xs">
+                Licensed Real Estate Agent, Antigua &amp; Barbuda
+              </p>
+              <Link to="/admin/login" className="font-sans text-[11px] text-white/30 hover:text-gold transition-colors duration-300">
+                Admin
+              </Link>
+            </div>
           </div>
         </div>
       </div>
