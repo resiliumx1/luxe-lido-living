@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180" fill="none">
+  <!-- Gold stacked blocks mark -->
+  <g transform="translate(120, 8)">
+    <!-- Top block -->
+    <rect x="22" y="0" width="36" height="14" rx="1" fill="url(#gold-grad)"/>
+    <!-- Middle blocks -->
+    <rect x="12" y="18" width="56" height="14" rx="1" fill="url(#gold-grad)"/>
+    <!-- Bottom block -->
+    <rect x="0" y="36" width="80" height="14" rx="1" fill="url(#gold-grad)"/>
+    <!-- Swoosh -->
+    <path d="M-8 58 Q40 64 88 58" stroke="url(#gold-grad)" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+  </g>
+  <!-- Wordmark for dark backgrounds -->
+  <text x="160" y="100" text-anchor="middle" font-family="'Cormorant Garamond', Georgia, serif" font-size="32" font-weight="400" letter-spacing="3" fill="#D4B87A">A. LINDSAY</text>
+  <text x="160" y="125" text-anchor="middle" font-family="'DM Sans', sans-serif" font-size="12" font-weight="400" letter-spacing="4" fill="rgba(255,255,255,0.6)">LUXE ESTATES</text>
+  <defs>
+    <linearGradient id="gold-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#C9A96E"/>
+      <stop offset="50%" stop-color="#D4BC7A"/>
+      <stop offset="100%" stop-color="#B8944F"/>
+    </linearGradient>
+  </defs>
+</svg>
