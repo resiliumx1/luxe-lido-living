@@ -19,6 +19,7 @@ const navLinks = [
   { label: "Luxury Homes", href: "/luxury-homes" },
   { label: "Container Solutions", href: "/container-solutions", hasDropdown: true },
   { label: "Prefab Homes", href: "/prefab-homes" },
+  { label: "Services", href: "/services" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
 ];
@@ -173,7 +174,7 @@ export default function Navigation() {
             <button
               onClick={() => setTheme(isDark ? "light" : "dark")}
               aria-label={`Toggle theme — currently ${isDark ? "dark" : "light"} mode`}
-              className={`hidden md:flex p-2 transition-colors duration-300 ${utilMuted} hover:${utilActive}`}
+              className={`hidden md:flex p-2 transition-colors duration-300 ${utilMuted} hover:text-gold`}
             >
               {isDark ? <Sun size={16} /> : <Moon size={16} />}
             </button>

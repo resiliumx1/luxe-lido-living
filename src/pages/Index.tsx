@@ -8,7 +8,6 @@ import AgentAuthority from "@/components/AgentAuthority";
 import NeighborhoodGuide from "@/components/NeighborhoodGuide";
 import LeadCapture from "@/components/LeadCapture";
 import ContactForm from "@/components/ContactForm";
-import Footer from "@/components/Footer";
 import HeroSection from "@/components/HeroSection";
 import ContainerPreview from "@/components/ContainerPreview";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
@@ -27,7 +26,8 @@ function SearchBar() {
     if (propType === "Luxury Homes") navigate("/luxury-homes");
     else if (propType === "Container Homes") navigate("/container-homes");
     else if (propType === "Prefab Homes") navigate("/prefab-homes");
-    else if (propType === "Container Businesses") navigate("/container-homes#container-businesses");
+    else if (propType === "Container Businesses") navigate("/container-solutions/commercial");
+    else if (propType === "Land") navigate("/contact?interest=land");
     else navigate("/luxury-homes");
   };
 
@@ -274,10 +274,49 @@ function Testimonials() {
 }
 
 // ---------- Index ----------
+function StatsStrip() {
+  const stats = [
+    { num: "50+", label: "Properties Sold" },
+    { num: "15+", label: "Years Experience" },
+    { num: "365", label: "Days of Sunshine" },
+    { num: "100%", label: "Client Satisfaction" },
+  ];
+  return (
+    <div className="bg-ocean-deep border-t border-gold/25">
+      <div className="max-w-[1280px] mx-auto px-6 md:px-10">
+        <div className="hidden sm:flex items-center justify-center h-[72px]">
+          {stats.map((stat, i, arr) => (
+            <div
+              key={stat.label}
+              className={`flex-1 max-w-[180px] flex flex-col items-center justify-center px-4 ${
+                i < arr.length - 1 ? "border-r border-gold/15" : ""
+              }`}
+            >
+              <span
+                className="font-serif font-normal text-gold leading-none"
+                style={{
+                  fontSize: "clamp(20px, 2.5vw, 26px)",
+                  textShadow: "0 0 20px rgba(240,192,96,0.3)",
+                }}
+              >
+                {stat.num}
+              </span>
+              <span className="font-sans text-[10px] tracking-[0.1em] uppercase text-white/50 mt-1">
+                {stat.label}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function Index() {
   return (
     <div className="bg-off-white dark:bg-background">
       <HeroSection />
+      <StatsStrip />
       <SearchBar />
       <Marquee />
       <FeaturedListings />
@@ -289,7 +328,6 @@ export default function Index() {
       <Testimonials />
       <ContactForm dark />
       <LeadCapture />
-      <Footer />
     </div>
   );
 }

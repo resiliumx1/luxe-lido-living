@@ -3,7 +3,6 @@ import villaTerraceImg from "@/assets/villa_terrace.jpg";
 import PageBanner from "@/components/PageBanner";
 import PropertyCard from "@/components/PropertyCard";
 import SectionLabel from "@/components/SectionLabel";
-import Footer from "@/components/Footer";
 import { getPropertiesByType } from "@/data/properties";
 
 const listings = getPropertiesByType("luxury");
@@ -62,8 +61,6 @@ export default function LuxuryHomes() {
           </div>
         </div>
       </main>
-
-      <Footer />
     </div>
   );
 }

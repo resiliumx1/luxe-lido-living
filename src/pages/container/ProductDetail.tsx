@@ -7,7 +7,6 @@ import "yet-another-react-lightbox/styles.css";
 import ResponsiveImage from "@/components/ResponsiveImage";
 import { getProductById, getProductsByVertical, ContainerProduct } from "@/data/containerProducts";
 import { useCurrency } from "@/contexts/CurrencyContext";
-import Footer from "@/components/Footer";
 import SectionLabel from "@/components/SectionLabel";
 
 function RelatedCard({ product }: { product: ContainerProduct }) {
@@ -238,7 +237,6 @@ export default function ProductDetail() {
         </section>
       )}
 
-      <Footer />
     </main>
   );
 }

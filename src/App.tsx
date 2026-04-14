@@ -7,8 +7,7 @@ import { ThemeProvider } from "next-themes";
 import { WishlistProvider } from "@/contexts/WishlistContext";
 import { CurrencyProvider } from "@/contexts/CurrencyContext";
 import { AdminAuthProvider } from "@/contexts/AdminAuthContext";
-import Navigation from "./components/Navigation";
-import WhatsAppWidget from "./components/WhatsAppWidget";
+import PublicShell from "./components/PublicShell";
 import Index from "./pages/Index";
 import LuxuryHomes from "./pages/LuxuryHomes";
 import ContainerHomes from "./pages/ContainerHomes";
@@ -16,6 +15,8 @@ import PrefabHomes from "./pages/PrefabHomes";
 import PropertyDetail from "./pages/PropertyDetail";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
+import Services from "./pages/Services";
+import Properties from "./pages/Properties";
 import NotFound from "./pages/NotFound";
 import AdminLogin from "./pages/admin/AdminLogin";
 import AdminGuard from "./components/admin/AdminGuard";
@@ -65,27 +66,27 @@ const App = () => (
                     <Route path="containers" element={<AdminContainers />} />
                     <Route path="photos" element={<PhotoManager />} />
                     <Route path="inquiries" element={<InquiriesAdmin />} />
-                    <Route path="viewings" element={<InquiriesAdmin />} />
-                    <Route path="leads" element={<InquiriesAdmin />} />
                     <Route path="settings" element={<AdminSettings />} />
                   </Route>
 
                   {/* Public routes */}
-                  <Route path="/" element={<><Navigation /><WhatsAppWidget /><Index /></>} />
-                  <Route path="/luxury-homes" element={<><Navigation /><WhatsAppWidget /><LuxuryHomes /></>} />
-                  <Route path="/container-homes" element={<><Navigation /><WhatsAppWidget /><ContainerHomes /></>} />
-                  <Route path="/prefab-homes" element={<><Navigation /><WhatsAppWidget /><PrefabHomes /></>} />
-                  <Route path="/properties/:id" element={<><Navigation /><WhatsAppWidget /><PropertyDetail /></>} />
-                  <Route path="/about" element={<><Navigation /><WhatsAppWidget /><About /></>} />
-                  <Route path="/contact" element={<><Navigation /><WhatsAppWidget /><Contact /></>} />
+                  <Route path="/" element={<PublicShell><Index /></PublicShell>} />
+                  <Route path="/luxury-homes" element={<PublicShell><LuxuryHomes /></PublicShell>} />
+                  <Route path="/container-homes" element={<PublicShell><ContainerHomes /></PublicShell>} />
+                  <Route path="/prefab-homes" element={<PublicShell><PrefabHomes /></PublicShell>} />
+                  <Route path="/properties" element={<PublicShell><Properties /></PublicShell>} />
+                  <Route path="/properties/:id" element={<PublicShell><PropertyDetail /></PublicShell>} />
+                  <Route path="/services" element={<PublicShell><Services /></PublicShell>} />
+                  <Route path="/about" element={<PublicShell><About /></PublicShell>} />
+                  <Route path="/contact" element={<PublicShell><Contact /></PublicShell>} />
 
                   {/* Container Solutions */}
-                  <Route path="/container-solutions" element={<><Navigation /><WhatsAppWidget /><ContainerHub /></>} />
-                  <Route path="/container-solutions/:vertical" element={<><Navigation /><WhatsAppWidget /><ContainerVerticalPage /></>} />
-                  <Route path="/container-solutions/:vertical/:productId" element={<><Navigation /><WhatsAppWidget /><ContainerProductDetail /></>} />
-                  <Route path="/container-solutions/:vertical/:productId/configure" element={<><Navigation /><WhatsAppWidget /><ContainerConfigure /></>} />
+                  <Route path="/container-solutions" element={<PublicShell><ContainerHub /></PublicShell>} />
+                  <Route path="/container-solutions/:vertical" element={<PublicShell><ContainerVerticalPage /></PublicShell>} />
+                  <Route path="/container-solutions/:vertical/:productId" element={<PublicShell><ContainerProductDetail /></PublicShell>} />
+                  <Route path="/container-solutions/:vertical/:productId/configure" element={<PublicShell><ContainerConfigure /></PublicShell>} />
 
-                  <Route path="*" element={<><Navigation /><WhatsAppWidget /><NotFound /></>} />
+                  <Route path="*" element={<PublicShell><NotFound /></PublicShell>} />
                 </Routes>
               </BrowserRouter>
             </TooltipProvider>

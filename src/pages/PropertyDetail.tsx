@@ -6,7 +6,6 @@ import { HeartButton } from "@/components/ui/HeartButton";
 import { useWishlist } from "@/contexts/WishlistContext";
 import PropertyCard from "@/components/PropertyCard";
 import BookingModal from "@/components/BookingModal";
-import Footer from "@/components/Footer";
 import { toast } from "@/hooks/use-toast";
 
 import ashanteImg from "@/assets/ashante_portrait.jpg";
@@ -255,7 +254,6 @@ export default function PropertyDetail() {
         </div>
       </main>
 
-      <Footer />
       <BookingModal isOpen={bookingOpen} onClose={() => setBookingOpen(false)} propertyName={property.name} />
     </>
   );

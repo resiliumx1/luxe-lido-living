@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
 import {
-  LayoutDashboard, Home, Container, MessageSquare, Calendar, Users,
+  LayoutDashboard, Home, Container, MessageSquare,
   Settings, Image, LogOut, ExternalLink, Menu, X, ArrowLeft,
 } from "lucide-react";
 import { useAdminAuth } from "@/contexts/AdminAuthContext";
@@ -12,8 +12,6 @@ const navItems = [
   { label: "Containers", href: "/admin/containers", icon: Container },
   { label: "Photo Manager", href: "/admin/photos", icon: Image },
   { label: "Inquiries", href: "/admin/inquiries", icon: MessageSquare },
-  { label: "Viewings", href: "/admin/viewings", icon: Calendar },
-  { label: "Leads", href: "/admin/leads", icon: Users },
   { label: "Settings", href: "/admin/settings", icon: Settings },
 ];
 

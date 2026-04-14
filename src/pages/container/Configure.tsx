@@ -7,7 +7,7 @@ import { getProductById, ContainerAddOn } from "@/data/containerProducts";
 import { useCurrency } from "@/contexts/CurrencyContext";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
-import Footer from "@/components/Footer";
+
 
 const parishes = ["Saint John", "Saint Peter", "Saint George", "Saint Philip", "Saint Mary", "Saint Paul", "Barbuda", "Other Caribbean"];
 const timelines = ["0-3 months", "3-6 months", "6-12 months", "Just exploring"];
@@ -300,7 +300,6 @@ export default function Configure() {
         </div>
       </div>
 
-      <Footer />
     </main>
   );
 }

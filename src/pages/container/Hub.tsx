@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import { ArrowRight, Shield, DollarSign, Clock, Move } from "lucide-react";
 import ResponsiveImage from "@/components/ResponsiveImage";
 import { verticalMeta, ContainerVertical } from "@/data/containerProducts";
-import Footer from "@/components/Footer";
 import SectionLabel from "@/components/SectionLabel";
 
 const verticals: { key: ContainerVertical; pitch: string }[] = [
@@ -210,8 +209,6 @@ export default function Hub() {
           </Link>
         </div>
       </section>
-
-      <Footer />
     </main>
   );
 }
