@@ -145,7 +145,7 @@ export default function HeroSection() {
             >
               <button
                 onClick={() => navigate("/luxury-homes")}
-                className="hero-cta-primary font-sans text-sm font-semibold tracking-[0.06em] px-7 py-3.5 bg-gold text-primary-foreground border-none cursor-pointer transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(201,169,110,0.4)] inline-flex items-center justify-center gap-2"
+                className="group hero-cta-primary font-sans text-sm font-semibold tracking-[0.06em] px-7 py-3.5 bg-gold text-primary-foreground border-none cursor-pointer transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(201,169,110,0.4)] inline-flex items-center justify-center gap-2"
                 style={{ borderRadius: "6px" }}
               >
                 Explore Properties
@@ -175,38 +175,6 @@ export default function HeroSection() {
           <span className="block w-px h-6 bg-gold/50 scroll-line" />
         </div>
 
-        {/* Stats bar — hidden on mobile */}
-        <div
-          className="hidden sm:flex absolute bottom-0 left-0 right-0 h-[72px] items-center justify-center border-t border-gold/25 backdrop-blur-sm z-10"
-          style={{ background: "rgba(5,12,28,0.78)" }}
-        >
-          {[
-            { num: "50+", label: "Properties Sold" },
-            { num: "15+", label: "Years Experience" },
-            { num: "365", label: "Days of Sunshine" },
-            { num: "100%", label: "Client Satisfaction" },
-          ].map((stat, i, arr) => (
-            <div
-              key={stat.label}
-              className={`flex-1 max-w-[180px] flex flex-col items-center justify-center px-4 ${
-                i < arr.length - 1 ? "border-r border-gold/15" : ""
-              }`}
-            >
-              <span
-                className="font-serif font-normal text-gold leading-none"
-                style={{
-                  fontSize: "clamp(20px, 2.5vw, 26px)",
-                  textShadow: "0 0 20px rgba(240,192,96,0.3)",
-                }}
-              >
-                {stat.num}
-              </span>
-              <span className="font-sans text-[10px] tracking-[0.1em] uppercase text-white/50 mt-1">
-                {stat.label}
-              </span>
-            </div>
-          ))}
-        </div>
       </section>
 
       <BookingModal
