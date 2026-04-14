@@ -49,7 +49,7 @@ export default function AdminLayout() {
               className={`flex items-center gap-3 px-3 py-2.5 font-sans text-[13px] transition-colors duration-200 ${
                 active
                   ? "text-gold bg-gold/10 border-l-2 border-gold"
-                  : "text-white/50 hover:text-white/80 hover:bg-white/[0.03] border-l-2 border-transparent"
+                  : "text-muted-foreground hover:text-foreground hover:bg-muted/50 border-l-2 border-transparent"
               }`}
               style={{ borderRadius: "0 6px 6px 0" }}
             >
