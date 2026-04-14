@@ -14,6 +14,57 @@ export type Database = {
   }
   public: {
     Tables: {
+      container_leads: {
+        Row: {
+          contact_email: string | null
+          contact_name: string | null
+          contact_whatsapp: string | null
+          created_at: string | null
+          id: string
+          parish: string | null
+          product_id: string
+          product_name: string
+          selected_addons: Json | null
+          site_situation: string | null
+          status: string | null
+          timeline: string | null
+          total_price_usd: number | null
+          use_case: string | null
+        }
+        Insert: {
+          contact_email?: string | null
+          contact_name?: string | null
+          contact_whatsapp?: string | null
+          created_at?: string | null
+          id?: string
+          parish?: string | null
+          product_id: string
+          product_name: string
+          selected_addons?: Json | null
+          site_situation?: string | null
+          status?: string | null
+          timeline?: string | null
+          total_price_usd?: number | null
+          use_case?: string | null
+        }
+        Update: {
+          contact_email?: string | null
+          contact_name?: string | null
+          contact_whatsapp?: string | null
+          created_at?: string | null
+          id?: string
+          parish?: string | null
+          product_id?: string
+          product_name?: string
+          selected_addons?: Json | null
+          site_situation?: string | null
+          status?: string | null
+          timeline?: string | null
+          total_price_usd?: number | null
+          use_case?: string | null
+        }
+        Relationships: []
+      }
       enquiries: {
         Row: {
           created_at: string | null
