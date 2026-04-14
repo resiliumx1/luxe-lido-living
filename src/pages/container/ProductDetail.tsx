@@ -206,7 +206,7 @@ export default function ProductDetail() {
       {product.addOns.length > 0 && (
         <section className="bg-secondary py-16 px-6">
           <div className="max-w-[1280px] mx-auto">
-            <SectionLabel>Available Add-Ons</SectionLabel>
+            <SectionLabel text="Available Add-Ons" />
             <h2 className="font-serif text-h3 text-foreground mt-3 mb-8">Customise Your Build</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {product.addOns.map((addon) => (
@@ -227,7 +227,7 @@ export default function ProductDetail() {
       {related.length > 0 && (
         <section className="bg-background py-16 px-6">
           <div className="max-w-[1280px] mx-auto">
-            <SectionLabel>Related Products</SectionLabel>
+            <SectionLabel text="Related Products" />
             <h2 className="font-serif text-h3 text-foreground mt-3 mb-8">More in {product.category}</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {related.map((p) => (

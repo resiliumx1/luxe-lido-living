@@ -65,7 +65,7 @@ export default function VerticalPage() {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-ocean-deep/80 via-ocean-deep/40 to-transparent" />
         <div className="relative z-10 flex flex-col items-center justify-end h-full pb-16 px-6 text-center">
-          <SectionLabel>Container Solutions</SectionLabel>
+          <SectionLabel text="Container Solutions" />
           <h1 className="font-serif text-h2 md:text-display text-off-white mt-4">{meta.label}</h1>
           <p className="font-sans text-off-white/60 text-body mt-3 max-w-xl">{meta.tagline}</p>
         </div>

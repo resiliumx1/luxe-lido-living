@@ -69,7 +69,7 @@ export default function Hub() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <SectionLabel>Container Solutions</SectionLabel>
+            <SectionLabel text="Container Solutions" />
             <h1 className="font-serif text-display text-off-white mt-4 max-w-3xl">
               Modern Modular Architecture
             </h1>
@@ -85,7 +85,7 @@ export default function Hub() {
       {/* Verticals Grid */}
       <section className="bg-background py-24 px-6">
         <div className="max-w-[1280px] mx-auto">
-          <SectionLabel>Explore by Category</SectionLabel>
+          <SectionLabel text="Explore by Category" />
           <h2 className="font-serif text-h2 text-foreground mt-4 mb-12">Four Verticals, Sixteen Products</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {verticals.map((v, i) => {
@@ -128,7 +128,7 @@ export default function Hub() {
       {/* Why Modular */}
       <section className="bg-ocean-deep py-24 px-6">
         <div className="max-w-[1280px] mx-auto text-center">
-          <SectionLabel>Why Modular</SectionLabel>
+          <SectionLabel text="Why Modular" />
           <h2 className="font-serif text-h2 text-off-white mt-4 mb-16">
             The Case for Container Architecture
           </h2>
@@ -149,7 +149,7 @@ export default function Hub() {
       {/* Process */}
       <section className="bg-background py-24 px-6">
         <div className="max-w-[1280px] mx-auto">
-          <SectionLabel>Our Process</SectionLabel>
+          <SectionLabel text="Our Process" />
           <h2 className="font-serif text-h2 text-foreground mt-4 mb-16">From Conversation to Keys</h2>
           <div className="flex flex-col lg:flex-row items-start gap-4">
             {processSteps.map((step, i) => (
@@ -174,7 +174,7 @@ export default function Hub() {
       {/* Vignettes */}
       <section className="bg-secondary py-24 px-6">
         <div className="max-w-[1280px] mx-auto">
-          <SectionLabel>Real Scenarios</SectionLabel>
+          <SectionLabel text="Real Scenarios" />
           <h2 className="font-serif text-h2 text-foreground mt-4 mb-12">Built for Builders Like You</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {vignettes.map((v, i) => (
