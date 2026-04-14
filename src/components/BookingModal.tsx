@@ -48,8 +48,7 @@ export default function BookingModal({ isOpen, onClose, propertyName }: BookingM
   tomorrow.setDate(tomorrow.getDate() + 1);
   const minDate = tomorrow.toISOString().split("T")[0];
 
-  const inputClass = "w-full bg-card border-[1.5px] border-sand dark:border-muted px-4 py-3 outline-none font-sans text-sm text-foreground placeholder:text-muted-foreground transition-all focus:border-primary focus:ring-2 focus:ring-ring/20";
-  const inputStyle = { borderRadius: "8px" };
+  const inputCls = "input-luxe";
 
   if (!isOpen) return null;
 
@@ -83,17 +82,17 @@ export default function BookingModal({ isOpen, onClose, propertyName }: BookingM
               <div>
                 <label className="text-label block mb-2 text-foreground">Full Name <span className="text-primary">*</span></label>
                 <input type="text" required placeholder="Your full name" value={form.name}
-                  onChange={(e) => setForm({ ...form, name: e.target.value })} className={inputClass} style={inputStyle} />
+                  onChange={(e) => setForm({ ...form, name: e.target.value })} className={inputCls} />
               </div>
               <div>
                 <label className="text-label block mb-2 text-foreground">Email <span className="text-primary">*</span></label>
                 <input type="email" required placeholder="you@email.com" value={form.email}
-                  onChange={(e) => setForm({ ...form, email: e.target.value })} className={inputClass} style={inputStyle} />
+                  onChange={(e) => setForm({ ...form, email: e.target.value })} className={inputCls} />
               </div>
               <div>
                 <label className="text-label block mb-2 text-foreground">WhatsApp Number <span className="text-primary">*</span></label>
                 <input type="tel" required placeholder="+1 (268) ..." value={form.whatsapp}
-                  onChange={(e) => setForm({ ...form, whatsapp: e.target.value })} className={inputClass} style={inputStyle} />
+                  onChange={(e) => setForm({ ...form, whatsapp: e.target.value })} className={inputCls} />
               </div>
               <div>
                 <label className="text-label block mb-2 text-foreground">Viewing Preference</label>
@@ -105,14 +104,14 @@ export default function BookingModal({ isOpen, onClose, propertyName }: BookingM
                   <Calendar size={14} className="absolute left-4 top-1/2 -translate-y-1/2 text-primary" />
                   <input type="date" min={minDate} value={form.date}
                     onChange={(e) => setForm({ ...form, date: e.target.value })}
-                    className={`${inputClass} pl-10`} style={inputStyle} />
+                    className={`${inputCls} pl-10`} />
                 </div>
               </div>
               <div>
                 <label className="text-label block mb-2 text-foreground">Message</label>
                 <textarea rows={3} placeholder="Any specific questions..." value={form.message}
                   onChange={(e) => setForm({ ...form, message: e.target.value })}
-                  className={`${inputClass} resize-none`} style={inputStyle} />
+                  className={`${inputCls} resize-none`} />
               </div>
               <button type="submit" disabled={submitting}
                 className="cta-shimmer w-full bg-primary text-primary-foreground font-sans font-medium small-caps tracking-widest text-sm py-4 transition-all duration-300 disabled:opacity-50 flex items-center justify-center gap-2"

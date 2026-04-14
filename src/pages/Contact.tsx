@@ -10,7 +10,7 @@ export default function Contact() {
       <PageBanner
         image={villaTerraceImg}
         title="Contact"
-        subtitle="Begin Your Journey"
+        subtitle="Start a conversation"
       />
       <main id="main-content">
         <ContactForm />

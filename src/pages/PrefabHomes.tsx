@@ -20,7 +20,7 @@ export default function PrefabHomes() {
       <PageBanner
         image={heroImg}
         title="Prefab Homes"
-        subtitle="Precision-built. Rapidly delivered. Caribbean-ready."
+        subtitle="Factory-engineered homes, assembled on your site in weeks rather than years."
       />
 
       <main id="main-content">
@@ -53,7 +53,7 @@ export default function PrefabHomes() {
 
             {/* Key Benefits */}
             <SectionLabel text="Why Prefab" />
-            <h2 className="font-serif text-4xl text-ocean-deep dark:text-foreground mb-12">Key Benefits</h2>
+            <h2 className="text-h2 text-ocean-deep dark:text-foreground mb-12">Key Benefits</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
               {benefits.map(({ Icon, label, desc }) => (
                 <div key={label} className="border-t border-gold pt-6">
@@ -70,7 +70,7 @@ export default function PrefabHomes() {
         <div className="bg-ocean-deep py-16 border-t border-gold/20">
           <div className="max-w-[1280px] mx-auto px-6 md:px-10 flex flex-col md:flex-row items-center justify-between gap-6">
             <p className="font-serif italic text-off-white text-xl md:text-2xl">
-              Interested in a Prefab Home? Let's talk.
+              Ready to plan your build timeline? Start with a call.
             </p>
             <a
               href="/contact"

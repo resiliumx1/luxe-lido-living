@@ -31,9 +31,6 @@ function SearchBar() {
     else navigate("/luxury-homes");
   };
 
-  const selectClass =
-    "w-full bg-transparent outline-none font-sans text-sm text-foreground border-b border-sand dark:border-gold/20 pb-2 cursor-pointer";
-
   return (
     <section className="bg-off-white dark:bg-background shadow-xl py-0">
       <div className="max-w-[1280px] mx-auto px-6 md:px-10">
@@ -41,7 +38,7 @@ function SearchBar() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 items-end">
             <div>
               <label className="small-caps text-xs text-gold tracking-widest font-sans block mb-2">Property Type</label>
-              <select className={selectClass} value={propType} onChange={(e) => setPropType(e.target.value)}>
+              <select className="input-luxe" value={propType} onChange={(e) => setPropType(e.target.value)}>
                 <option value="">All Types</option>
                 <option>Luxury Homes</option>
                 <option>Container Homes</option>
@@ -52,7 +49,7 @@ function SearchBar() {
             </div>
             <div>
               <label className="small-caps text-xs text-gold tracking-widest font-sans block mb-2">Location</label>
-              <select className={selectClass} value={location} onChange={(e) => setLocation(e.target.value)}>
+              <select className="input-luxe" value={location} onChange={(e) => setLocation(e.target.value)}>
                 <option value="">All Locations</option>
                 <option>Jolly Harbour</option>
                 <option>English Harbour</option>
@@ -63,7 +60,7 @@ function SearchBar() {
             </div>
             <div>
               <label className="small-caps text-xs text-gold tracking-widest font-sans block mb-2">Bedrooms</label>
-              <select className={selectClass} value={beds} onChange={(e) => setBeds(e.target.value)}>
+              <select className="input-luxe" value={beds} onChange={(e) => setBeds(e.target.value)}>
                 <option value="">Any</option>
                 <option>1+</option>
                 <option>2+</option>
@@ -74,7 +71,7 @@ function SearchBar() {
             </div>
             <div>
               <label className="small-caps text-xs text-gold tracking-widest font-sans block mb-2">Price Range</label>
-              <select className={selectClass} value={price} onChange={(e) => setPrice(e.target.value)}>
+              <select className="input-luxe" value={price} onChange={(e) => setPrice(e.target.value)}>
                 <option value="">Any</option>
                 <option>Under $200K</option>
                 <option>$200K–$500K</option>
@@ -99,7 +96,7 @@ function SearchBar() {
 // ---------- Marquee ----------
 function Marquee() {
   const text =
-    "Luxury Villas · Container Homes · Prefab Homes · Beachfront Estates · Investment Properties · Antigua & Barbuda · English Harbour · Jolly Harbour · Citizenship by Investment · ";
+    "Jolly Harbour · English Harbour · Falmouth · Half Moon Bay · Nonsuch Bay · Long Bay · Willoughby Bay · Barbuda · ";
 
   return (
     <div className="bg-sand-light dark:bg-sand-light py-4 overflow-hidden border-y border-sand dark:border-gold/10">
@@ -123,7 +120,7 @@ function FeaturedListings() {
       <div className="max-w-[1280px] mx-auto px-6 md:px-10">
         <div className="mb-12 reveal">
           <SectionLabel text="Curated Collection" />
-          <h2 className="font-serif text-4xl md:text-5xl text-ocean-deep dark:text-foreground">Featured Listings</h2>
+          <h2 className="text-h2 text-ocean-deep dark:text-foreground">Currently Represented</h2>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 reveal reveal-delay-2">
@@ -152,12 +149,12 @@ function FeaturedListings() {
 
 // ---------- Services ----------
 const services = [
-  { num: "01", name: "Property Acquisition", desc: "Expert guidance for buyers navigating Antigua's competitive luxury real estate market with confidence." },
-  { num: "02", name: "Luxury Home Sales", desc: "Bespoke marketing strategies to present your property to the world's most discerning buyers." },
-  { num: "03", name: "Investment Consulting", desc: "Data-driven insights and local market expertise to maximise your Caribbean property investment returns." },
-  { num: "04", name: "Relocation Services", desc: "Full-service support for international clients making Antigua their permanent or seasonal home." },
-  { num: "05", name: "Citizenship by Investment", desc: "Structured guidance through Antigua's CBI programme, unlocking Caribbean citizenship through real estate." },
-  { num: "06", name: "Property Management", desc: "End-to-end management of your investment property, from rental income to ongoing maintenance." },
+  { num: "01", name: "Property Acquisition", desc: "Representing buyers from first showing through closing, across luxury, container, and prefab inventory." },
+  { num: "02", name: "Luxury Home Sales", desc: "Marketing seven-figure Antiguan properties to qualified international buyers — discreetly and on a timeline that suits you." },
+  { num: "03", name: "Investment Consulting", desc: "Yield analysis and market intelligence for investors evaluating Antiguan residential and short-term rental opportunities." },
+  { num: "04", name: "Relocation Services", desc: "Guiding international buyers through residency logistics — banking, schools, healthcare, import of household goods." },
+  { num: "05", name: "Citizenship by Investment", desc: "End-to-end support for Antigua's CBI programme through qualifying real estate. Licensed broker, pre-vetted developments." },
+  { num: "06", name: "Property Management", desc: "Full-service management for absentee owners — maintenance, rentals, staff oversight, quarterly reporting." },
 ];
 
 function Services() {
@@ -168,7 +165,7 @@ function Services() {
       <div className="max-w-[1280px] mx-auto px-6 md:px-10">
         <div className="mb-16 reveal">
           <SectionLabel text="What We Offer" light />
-          <h2 className="font-serif text-4xl md:text-5xl text-off-white">Services</h2>
+          <h2 className="text-h2 text-off-white">Services</h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-gold/10">
           {services.map((s, i) => (
@@ -192,17 +189,17 @@ function Services() {
 // ---------- Testimonials ----------
 const testimonials = [
   {
-    quote: "Ashante didn't just find us a villa — she found us a life. The process was seamless, the service extraordinary, and English Harbour is now our forever home.",
+    quote: "We'd been watching Antigua for six years. Ashante closed our villa in eleven weeks. Nothing about the process was complicated.",
     author: "James & Caroline R.",
     location: "English Harbour",
   },
   {
-    quote: "As an international investor, I needed someone who truly understood Antigua's market. Ashante delivered beyond every expectation with precision and grace.",
+    quote: "I needed someone who understood both the legal side and the market side. She's one of the only brokers in the region who knows both cold.",
     author: "Marcus T.",
-    location: "London, UK",
+    location: "London",
   },
   {
-    quote: "Our container home is everything we dreamed of. Ashante guided us from concept to keys — I cannot recommend her highly enough.",
+    quote: "The container home cost less than we'd budgeted for a down payment elsewhere. We moved in two months after signing.",
     author: "Sofia & David M.",
     location: "Jolly Harbour",
   },
@@ -276,10 +273,10 @@ function Testimonials() {
 // ---------- Index ----------
 function StatsStrip() {
   const stats = [
-    { num: "50+", label: "Properties Sold" },
-    { num: "15+", label: "Years Experience" },
-    { num: "365", label: "Days of Sunshine" },
-    { num: "100%", label: "Client Satisfaction" },
+    { num: "50+", label: "Homes Placed" },
+    { num: "15+", label: "Years on Island" },
+    { num: "$80M+", label: "In Transactions" },
+    { num: "94%", label: "Client Retention" },
   ];
   return (
     <div className="bg-ocean-deep border-t border-gold/25">
@@ -292,16 +289,10 @@ function StatsStrip() {
                 i < arr.length - 1 ? "border-r border-gold/15" : ""
               }`}
             >
-              <span
-                className="font-serif font-normal text-gold leading-none"
-                style={{
-                  fontSize: "clamp(20px, 2.5vw, 26px)",
-                  textShadow: "0 0 20px rgba(240,192,96,0.3)",
-                }}
-              >
+              <span className="text-stat-number" style={{ fontSize: "clamp(20px, 2.5vw, 26px)", textShadow: "0 0 20px rgba(240,192,96,0.3)" }}>
                 {stat.num}
               </span>
-              <span className="font-sans text-[10px] tracking-[0.1em] uppercase text-white/50 mt-1">
+              <span className="text-stat-label text-white/50">
                 {stat.label}
               </span>
             </div>

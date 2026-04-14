@@ -60,7 +60,7 @@ export default function AgentAuthority() {
                 From oceanfront villas to innovative container builds, she navigates every corner of the market with passion — guiding international buyers, investors, and families with equal dedication.
               </p>
               <p className="font-sans text-off-white/80 leading-relaxed" style={{ fontSize: "17px" }}>
-                Whether you're seeking a permanent residence, a vacation retreat, or a strategic investment, Ashante ensures the journey is as extraordinary as the destination.
+                Whether you're seeking a permanent residence, a vacation retreat, or a strategic investment, Ashante ensures the process is as considered as the destination.
               </p>
             </div>
 
