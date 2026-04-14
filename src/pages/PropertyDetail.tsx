@@ -4,9 +4,11 @@ import { Bed, Bath, Maximize, Car, Waves, Check, ChevronRight, ArrowLeft, Share2
 import { getPropertyById, getSimilarProperties } from "@/data/properties";
 import { HeartButton } from "@/components/ui/HeartButton";
 import { useWishlist } from "@/contexts/WishlistContext";
+import { useCurrency } from "@/contexts/CurrencyContext";
 import PropertyCard from "@/components/PropertyCard";
 import BookingModal from "@/components/BookingModal";
 import { toast } from "@/hooks/use-toast";
+import { WHATSAPP_NUMBER } from "@/lib/contact";
 
 import ashanteImg from "@/assets/ashante_portrait.jpg";
 
@@ -16,6 +18,7 @@ export default function PropertyDetail() {
   const [activeImg, setActiveImg] = useState(0);
   const [bookingOpen, setBookingOpen] = useState(false);
   const { isLiked } = useWishlist();
+  const { formatPrice } = useCurrency();
 
   const property = id ? getPropertyById(id) : undefined;
 
@@ -41,7 +44,7 @@ export default function PropertyDetail() {
     toast({ title: "Link copied!", description: "Property link copied to clipboard." });
   };
 
-  const whatsappMsg = encodeURIComponent(`Hi Ashante, I'm interested in ${property.name} (${property.price}) in ${property.location}.`);
+  const whatsappMsg = encodeURIComponent(`Hi Ashante, I'm interested in ${property.name} (${formatPrice(property.priceUSD)}) in ${property.location}.`);
 
   const specs = [
     { icon: Bed, value: property.beds, label: "Bedrooms" },
@@ -176,7 +179,7 @@ export default function PropertyDetail() {
             <div className="lg:col-span-2">
               <div className="lg:sticky lg:top-28 bg-card border border-border p-8 space-y-6" style={{ borderRadius: "16px", boxShadow: "0 4px 24px rgba(0,0,0,0.08)" }}>
                 {/* Price */}
-                <p className="font-serif text-3xl text-primary font-medium">{property.price}</p>
+                <p className="font-serif text-3xl text-primary font-medium">{formatPrice(property.priceUSD)}</p>
                 <div className="w-full h-px bg-border" />
 
                 {/* CTAs */}
@@ -188,7 +191,7 @@ export default function PropertyDetail() {
                 </button>
 
                 <a
-                  href={`https://wa.me/12684000000?text=${whatsappMsg}`}
+                  href={`https://wa.me/${WHATSAPP_NUMBER}?text=${whatsappMsg}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full inline-flex items-center justify-center gap-2 border border-[#25D366] text-[#25D366] font-sans font-medium small-caps tracking-widest text-sm py-4 transition-all duration-300 hover:bg-[#25D366] hover:text-white"
