@@ -24,12 +24,6 @@ const stats = [
   },
 ];
 
-const lifestyleImages = [
-  "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80",
-  "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80",
-  "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80",
-];
-
 export default function WhyAntigua() {
   const sectionRef = useScrollReveal();
 
@@ -47,7 +41,7 @@ export default function WhyAntigua() {
         </div>
 
         {/* 4-column grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-20">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {stats.map((s, i) => (
             <div
               key={s.title}
@@ -58,21 +52,6 @@ export default function WhyAntigua() {
               </div>
               <h3 className="font-serif text-ocean-deep dark:text-foreground text-xl mb-2">{s.title}</h3>
               <p className="font-sans text-muted-foreground text-sm leading-relaxed">{s.desc}</p>
-            </div>
-          ))}
-        </div>
-
-        {/* Lifestyle image strip */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 reveal reveal-delay-2">
-          {lifestyleImages.map((src, i) => (
-            <div key={i} className="overflow-hidden group" style={{ borderRadius: "12px" }}>
-              <img
-                src={src}
-                alt={`Antigua lifestyle ${i + 1}`}
-                className="w-full h-56 md:h-64 object-cover transition-transform duration-700 group-hover:scale-110"
-                loading="lazy"
-                decoding="async"
-              />
             </div>
           ))}
         </div>

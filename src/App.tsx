@@ -8,6 +8,7 @@ import { WishlistProvider } from "@/contexts/WishlistContext";
 import { CurrencyProvider } from "@/contexts/CurrencyContext";
 import { AdminAuthProvider } from "@/contexts/AdminAuthContext";
 import PublicShell from "./components/PublicShell";
+import ScrollToTop from "./components/ScrollToTop";
 import Index from "./pages/Index";
 import LuxuryHomes from "./pages/LuxuryHomes";
 import ContainerHomes from "./pages/ContainerHomes";
@@ -44,8 +45,9 @@ const App = () => (
               <Toaster />
               <Sonner />
               <BrowserRouter>
+                <ScrollToTop />
                 {/* Skip link */}
-                <a
+                <
                   href="#main-content"
                   className="sr-only focus:not-sr-only focus:fixed focus:top-0 focus:left-0 focus:z-[99999] focus:bg-primary focus:text-primary-foreground focus:px-4 focus:py-2 font-sans font-semibold text-sm"
                 >

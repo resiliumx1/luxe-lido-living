@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Instagram, Facebook, Phone, Mail } from "lucide-react";
+import { Instagram, Facebook, Phone, Mail, Lock } from "lucide-react";
 import { WHATSAPP_NUMBER, ASHANTE_EMAIL, ASHANTE_PHONE, ASHANTE_PHONE_RAW } from "@/lib/contact";
 
 const quickLinks = [
@@ -23,22 +23,40 @@ export default function Footer() {
     <footer className="relative overflow-hidden border-t border-gold/40" aria-label="Site footer">
       {/* Static background image */}
       <img
-        src="/hero/hero-poster.jpg"
+        src="/footer/footer-bg.jpg"
         alt=""
         className="absolute inset-0 w-full h-full object-cover"
         loading="lazy"
         aria-hidden="true"
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-ocean-deep/92 to-ocean-deep/98" />
+      {/* Primary gradient overlay */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background: "linear-gradient(180deg, hsl(var(--ocean-deep) / 0.88) 0%, hsl(var(--ocean-deep) / 0.95) 60%, hsl(var(--ocean-deep) / 0.98) 100%)"
+        }}
+      />
+      {/* Radial darkening behind content */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background: "radial-gradient(ellipse at center 70%, hsl(var(--ocean-deep) / 0.70) 0%, transparent 70%)"
+        }}
+      />
 
       <div className="relative z-10">
         {/* Top row */}
         <div className="max-w-[1280px] mx-auto px-6 md:px-10 pt-20 pb-12">
           {/* Logo centered with tagline */}
           <div className="flex flex-col items-center mb-16">
-            <img src="/logo-dark.svg" className="h-14 mb-4" alt="A. Lindsay Luxe Estates" />
+            <span className="inline-block transition-transform duration-500 hover:scale-105" style={{ filter: "drop-shadow(0 0 24px hsl(var(--gold) / 0.35))" }}>
+              <img src="/logo-dark.svg" className="h-14" alt="A. Lindsay Luxe Estates" />
+            </span>
             <p className="font-sans text-off-white/50 text-sm mt-4 text-center max-w-md">
-              Connecting discerning buyers with Antigua's finest properties since 2010
+              Antigua &amp; Barbuda's finest residences, represented with precision since 2010.
+            </p>
+            <p className="font-serif italic text-gold/70 text-sm tracking-wide mt-3">
+              Licensed · Discreet · On-island
             </p>
           </div>
 
@@ -162,8 +180,8 @@ export default function Footer() {
               <p className="font-sans text-white/40 text-xs">
                 Licensed Real Estate Agent, Antigua &amp; Barbuda
               </p>
-              <Link to="/admin/login" className="font-sans text-[11px] text-white/30 hover:text-gold transition-colors duration-300">
-                Admin
+              <Link to="/admin/login" className="font-sans text-[11px] tracking-wider uppercase text-gold/60 hover:text-gold transition-colors duration-300 flex items-center gap-1.5">
+                <Lock size={10} /> Admin
               </Link>
             </div>
           </div>

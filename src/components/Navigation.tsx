@@ -99,10 +99,12 @@ export default function Navigation() {
                   </button>
 
                   {/* Dropdown */}
+                  {/* Dropdown */}
                   <div
-                    className={`absolute top-full left-0 mt-2 w-56 bg-ocean-deep/98 backdrop-blur-xl border border-gold/10 shadow-xl transition-all duration-200 origin-top ${
+                    className={`absolute top-full left-0 mt-2 w-56 backdrop-blur-2xl border border-gold/25 shadow-2xl shadow-black/40 transition-all duration-200 origin-top ${
                       containerDropdownOpen ? "opacity-100 scale-100 pointer-events-auto" : "opacity-0 scale-95 pointer-events-none"
                     }`}
+                    style={{ background: "linear-gradient(180deg, hsl(var(--ocean-deep) / 0.92) 0%, hsl(var(--ocean-deep) / 0.96) 100%)" }}
                     onMouseLeave={() => setContainerDropdownOpen(false)}
                   >
                     <div className="py-2">
@@ -110,16 +112,16 @@ export default function Navigation() {
                         <Link
                           key={v.href}
                           to={v.href}
-                          className="block px-5 py-2.5 font-sans text-sm text-off-white/70 hover:text-gold hover:bg-gold/5 transition-colors duration-200"
+                          className="block px-5 py-2.5 font-sans text-sm font-medium text-off-white hover:text-gold hover:bg-gold/10 transition-colors duration-200"
                           onClick={() => setContainerDropdownOpen(false)}
                         >
                           {v.label}
                         </Link>
                       ))}
-                      <div className="border-t border-gold/10 my-1" />
+                      <div className="border-t border-gold/25 my-1" />
                       <Link
                         to="/container-solutions"
-                        className="flex items-center gap-1.5 px-5 py-2.5 font-sans text-sm text-gold hover:bg-gold/5 transition-colors duration-200"
+                        className="flex items-center gap-1.5 px-5 py-2.5 font-sans text-sm text-gold font-semibold hover:bg-gold/10 transition-colors duration-200"
                         onClick={() => setContainerDropdownOpen(false)}
                       >
                         View All Catalog <ArrowRight size={12} />
@@ -275,7 +277,7 @@ export default function Navigation() {
                     <Link
                       key={v.href}
                       to={v.href}
-                      className="font-sans text-off-white/60 hover:text-gold text-lg transition-colors"
+                      className="font-sans text-off-white/90 font-medium hover:text-gold text-lg transition-colors"
                       onClick={() => setMenuOpen(false)}
                     >
                       {v.label}
