@@ -56,9 +56,9 @@ export default function AdminDashboard() {
     return (
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {[1, 2, 3, 4].map((i) => (
-          <div key={i} className="bg-white/[0.03] border border-white/[0.06] p-5 animate-pulse" style={{ borderRadius: "10px" }}>
-            <div className="h-3 w-20 bg-white/10 rounded mb-4" />
-            <div className="h-8 w-12 bg-white/10 rounded" />
+          <div key={i} className="bg-card border border-border p-5 animate-pulse" style={{ borderRadius: "10px" }}>
+            <div className="h-3 w-20 bg-muted rounded mb-4" />
+            <div className="h-8 w-12 bg-muted rounded" />
           </div>
         ))}
       </div>
@@ -70,34 +70,34 @@ export default function AdminDashboard() {
       {/* Stat cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {stats.map((s) => (
-          <div key={s.label} className="bg-white/[0.03] border border-white/[0.06] p-5" style={{ borderRadius: "10px" }}>
+          <div key={s.label} className="bg-card border border-border p-5" style={{ borderRadius: "10px" }}>
             <div className="flex items-center gap-2 mb-3">
               <s.icon size={16} className="text-gold" />
-              <span className="font-sans text-[11px] font-medium uppercase tracking-wider text-white/40">{s.label}</span>
+              <span className="font-sans text-[11px] font-medium uppercase tracking-wider text-muted-foreground">{s.label}</span>
             </div>
-            <p className="font-serif text-3xl text-white">{s.value}</p>
-            <p className="font-sans text-[11px] text-white/30 mt-1">{s.sub}</p>
+            <p className="font-serif text-3xl text-foreground">{s.value}</p>
+            <p className="font-sans text-[11px] text-muted-foreground mt-1">{s.sub}</p>
           </div>
         ))}
       </div>
 
       {/* Two columns */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div className="bg-white/[0.03] border border-white/[0.06] p-6" style={{ borderRadius: "10px" }}>
-          <h2 className="font-serif text-base text-white mb-4">Recent Inquiries</h2>
+        <div className="bg-card border border-border p-6" style={{ borderRadius: "10px" }}>
+          <h2 className="font-serif text-base text-foreground mb-4">Recent Inquiries</h2>
           {recentInquiries.length === 0 ? (
-            <p className="font-sans text-sm text-white/30">No inquiries yet.</p>
+            <p className="font-sans text-sm text-muted-foreground">No inquiries yet.</p>
           ) : (
             <div className="space-y-2">
               {recentInquiries.map((inq) => (
-                <div key={inq.id} className="flex items-center justify-between py-2 border-b border-white/[0.04] last:border-0">
+                <div key={inq.id} className="flex items-center justify-between py-2 border-b border-border last:border-0">
                   <div>
-                    <p className="font-sans text-sm text-white/80">{inq.name}</p>
-                    <p className="font-sans text-[11px] text-white/30">{inq.property_name || "General"}</p>
+                    <p className="font-sans text-sm text-foreground/80">{inq.name}</p>
+                    <p className="font-sans text-[11px] text-muted-foreground">{inq.property_name || "General"}</p>
                   </div>
                   <div className="flex items-center gap-2">
                     {inq.status === "unread" && <span className="w-1.5 h-1.5 bg-gold rounded-full" />}
-                    <span className="font-sans text-[11px] text-white/25">{timeAgo(inq.created_at)}</span>
+                    <span className="font-sans text-[11px] text-muted-foreground/60">{timeAgo(inq.created_at)}</span>
                   </div>
                 </div>
               ))}
@@ -105,21 +105,21 @@ export default function AdminDashboard() {
           )}
         </div>
 
-        <div className="bg-white/[0.03] border border-white/[0.06] p-6" style={{ borderRadius: "10px" }}>
-          <h2 className="font-serif text-base text-white mb-4">Upcoming Viewings</h2>
+        <div className="bg-card border border-border p-6" style={{ borderRadius: "10px" }}>
+          <h2 className="font-serif text-base text-foreground mb-4">Upcoming Viewings</h2>
           {upcomingViewings.length === 0 ? (
-            <p className="font-sans text-sm text-white/30">No pending viewings.</p>
+            <p className="font-sans text-sm text-muted-foreground">No pending viewings.</p>
           ) : (
             <div className="space-y-2">
               {upcomingViewings.map((v) => (
-                <div key={v.id} className="flex items-center justify-between py-2 border-b border-white/[0.04] last:border-0">
+                <div key={v.id} className="flex items-center justify-between py-2 border-b border-border last:border-0">
                   <div>
-                    <p className="font-sans text-sm text-white/80">{v.name}</p>
-                    <p className="font-sans text-[11px] text-white/30">{v.property_name || "General"}</p>
+                    <p className="font-sans text-sm text-foreground/80">{v.name}</p>
+                    <p className="font-sans text-[11px] text-muted-foreground">{v.property_name || "General"}</p>
                   </div>
                   <div className="text-right">
                     <p className="font-sans text-[11px] text-gold">{new Date(v.preferred_date).toLocaleDateString()}</p>
-                    <p className="font-sans text-[11px] text-white/25 capitalize">{v.method?.replace("-", " ")}</p>
+                    <p className="font-sans text-[11px] text-muted-foreground/60 capitalize">{v.method?.replace("-", " ")}</p>
                   </div>
                 </div>
               ))}
