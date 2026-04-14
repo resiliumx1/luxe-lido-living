@@ -2,7 +2,6 @@ import heroImg from "@/assets/hero_villa.jpg";
 import PageBanner from "@/components/PageBanner";
 import PropertyCard from "@/components/PropertyCard";
 import SectionLabel from "@/components/SectionLabel";
-import Footer from "@/components/Footer";
 import { Zap, DollarSign, Shield, Sliders } from "lucide-react";
 import { getPropertiesByType } from "@/data/properties";
 
@@ -82,8 +81,6 @@ export default function PrefabHomes() {
           </div>
         </div>
       </main>
-
-      <Footer />
     </div>
   );
 }

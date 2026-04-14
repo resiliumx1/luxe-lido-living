@@ -1,7 +1,7 @@
 import ashanteImg from "@/assets/ashante_portrait.jpg";
 import heroImg from "@/assets/hero_villa.jpg";
 import SectionLabel from "@/components/SectionLabel";
-import Footer from "@/components/Footer";
+
 
 const stats = [
   { value: "10+", label: "Years Experience" },
@@ -124,8 +124,6 @@ export default function About() {
           </div>
         </div>
       </main>
-
-      <Footer />
     </div>
   );
 }

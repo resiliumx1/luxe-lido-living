@@ -4,7 +4,6 @@ import { ArrowRight } from "lucide-react";
 import ResponsiveImage from "@/components/ResponsiveImage";
 import { verticalMeta, getProductsByVertical, ContainerVertical, ContainerProduct } from "@/data/containerProducts";
 import { useCurrency } from "@/contexts/CurrencyContext";
-import Footer from "@/components/Footer";
 import SectionLabel from "@/components/SectionLabel";
 
 function ProductCard({ product }: { product: ContainerProduct }) {
@@ -104,8 +103,6 @@ export default function VerticalPage() {
           Get in Touch <ArrowRight size={16} />
         </Link>
       </section>
-
-      <Footer />
     </main>
   );
 }
