@@ -19,7 +19,7 @@ const neighborhoods = [
   {
     name: "Galley Bay",
     desc: "Secluded luxury on the west coast",
-    image: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?w=800&q=80",
   },
   {
     name: "Hodges Bay",
