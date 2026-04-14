@@ -1,11 +1,9 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import villaTerraceImg from "@/assets/villa_terrace.jpg";
-import containerExteriorImg from "@/assets/container_exterior.jpg";
-import containerCourtyardImg from "@/assets/container_courtyard.jpg";
 import SectionLabel from "@/components/SectionLabel";
 import PropertyCard from "@/components/PropertyCard";
 import WhyAntigua from "@/components/WhyAntigua";
+import properties from "@/data/properties";
 import AgentAuthority from "@/components/AgentAuthority";
 import NeighborhoodGuide from "@/components/NeighborhoodGuide";
 import LeadCapture from "@/components/LeadCapture";
@@ -118,6 +116,7 @@ function Marquee() {
 // ---------- Featured Listings ----------
 function FeaturedListings() {
   const sectionRef = useScrollReveal();
+  const featured = properties.filter((p) => p.type === "luxury").slice(0, 4);
 
   return (
     <section className="py-28 bg-sand-light dark:bg-sand-light" ref={sectionRef}>
@@ -128,38 +127,23 @@ function FeaturedListings() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 reveal reveal-delay-2">
-          {/* Large card */}
-          <div className="md:row-span-2">
-            <PropertyCard
-              image={villaTerraceImg}
-              location="English Harbour"
-              name="Sunset Ridge Estate"
-              price="$3,200,000"
-              beds={5}
-              baths={4}
-              href="/luxury-homes"
-              large
-            />
-          </div>
-          {/* Two smaller */}
-          <PropertyCard
-            image={containerExteriorImg}
-            location="Jolly Harbour"
-            name="The Cove Container Residence"
-            price="$680,000"
-            beds={3}
-            baths={2}
-            href="/container-homes"
-          />
-          <PropertyCard
-            image={containerCourtyardImg}
-            location="Half Moon Bay"
-            name="Courtyard Oasis"
-            price="$1,100,000"
-            beds={4}
-            baths={3}
-            href="/container-homes"
-          />
+          {featured.map((p, i) => (
+            <div key={p.id} className={i === 0 ? "md:row-span-2" : ""}>
+              <PropertyCard
+                id={p.id}
+                image={p.images[0]}
+                location={p.location}
+                name={p.name}
+                price={p.price}
+                beds={p.beds}
+                baths={p.baths}
+                sqft={p.sqft}
+                href={p.categoryHref}
+                large={i === 0}
+                badge={p.badge}
+              />
+            </div>
+          ))}
         </div>
       </div>
     </section>
