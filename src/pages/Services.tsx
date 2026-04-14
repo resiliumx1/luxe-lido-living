@@ -107,7 +107,7 @@ export default function Services() {
               href="/contact"
               className="cta-shimmer flex-shrink-0 bg-gold hover:bg-gold-soft text-ocean-deep font-sans font-medium small-caps tracking-widest text-sm px-8 py-4 transition-colors duration-300 flex items-center gap-2 group"
             >
-              Get In Touch <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+              Get in touch <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
             </a>
           </div>
         </div>
