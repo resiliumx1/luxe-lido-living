@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Sun, Moon, Heart } from "lucide-react";
+import { Menu, X, Heart } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useWishlist } from "@/contexts/WishlistContext";
 import { LuxeLogo } from "@/components/ui/LuxeLogo";
@@ -50,7 +50,7 @@ export default function Navigation() {
       >
         <div className="max-w-[1280px] mx-auto px-6 md:px-10 flex items-center justify-between h-20">
           {/* Logo */}
-          <LuxeLogo size="md" as="link" />
+          <LuxeLogo size="md" as="link" variant={isTransparent ? "dark" : "dark"} />
 
           {/* Nav links — center */}
           <div className="hidden lg:flex items-center gap-6">
@@ -81,14 +81,7 @@ export default function Navigation() {
               )}
             </button>
 
-            {/* Theme toggle */}
-            <button
-              onClick={() => setTheme(isDark ? "light" : "dark")}
-              aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
-              className="p-2 text-off-white/70 hover:text-gold transition-colors duration-300"
-            >
-              {isDark ? <Sun size={18} /> : <Moon size={18} />}
-            </button>
+            {/* Theme toggle removed — dark nav always */}
 
             {/* Book a Viewing */}
             <button

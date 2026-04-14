@@ -30,7 +30,7 @@ export default function Footer() {
         <div className="max-w-[1280px] mx-auto px-6 md:px-10 pt-20 pb-12">
           {/* Logo centered with tagline */}
           <div className="flex flex-col items-center mb-16">
-            <LuxeLogo size="lg" />
+            <img src="/logo-dark.svg" className="h-14 mb-4" alt="A. Lindsay Luxe Estates" />
             <p className="font-sans text-off-white/50 text-sm mt-4 text-center max-w-md">
               Connecting discerning buyers with Antigua's finest properties since 2010
             </p>
