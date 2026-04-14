@@ -100,7 +100,7 @@ export default function VerticalPage() {
           to="/contact"
           className="inline-flex items-center gap-2 cta-shimmer bg-gold hover:bg-gold-soft text-ocean-deep font-sans font-semibold tracking-widest text-sm px-8 py-4 transition-all duration-300 uppercase"
         >
-          Get in Touch <ArrowRight size={16} />
+          Get in touch <ArrowRight size={16} />
         </Link>
       </section>
     </main>

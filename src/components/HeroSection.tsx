@@ -111,14 +111,11 @@ export default function HeroSection() {
 
             {/* Headline */}
             <h1
-              className="font-serif font-normal text-white mb-3 hero-stagger"
-              style={{
-                fontSize: "clamp(40px, 6vw, 68px)",
-                lineHeight: 1.1,
-                letterSpacing: "0.01em",
-                textShadow: "0 2px 20px rgba(0,0,0,0.35)",
-                animationDelay: "0.5s",
-              }}
+              className="text-display font-normal text-white mb-3 hero-stagger"
+            style={{
+              textShadow: "0 2px 20px rgba(0,0,0,0.35)",
+              animationDelay: "0.5s",
+            }}
             >
               Your Caribbean Life
               <br />
@@ -134,8 +131,7 @@ export default function HeroSection() {
                 animationDelay: "0.8s",
               }}
             >
-              Discover Antigua's most extraordinary properties, where every
-              sunrise belongs to you.
+              Oceanfront villas, hillside estates, and island investments — held by a licensed Antiguan broker who grew up here.
             </p>
 
             {/* CTAs */}

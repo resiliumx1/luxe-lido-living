@@ -50,7 +50,7 @@ export default function LuxuryHomes() {
         <div className="bg-ocean-deep py-16 border-t border-gold/20">
           <div className="max-w-[1280px] mx-auto px-6 md:px-10 flex flex-col md:flex-row items-center justify-between gap-6">
             <p className="font-serif italic text-off-white text-xl md:text-2xl">
-              Looking for something specific? Let Ashante find it for you.
+              Off-market, new build, or not yet listed — Ashante sees inventory before it reaches the public.
             </p>
             <a
               href="/contact"

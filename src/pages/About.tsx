@@ -4,10 +4,10 @@ import SectionLabel from "@/components/SectionLabel";
 
 
 const stats = [
-  { value: "10+", label: "Years Experience" },
-  { value: "50+", label: "Properties Sold" },
-  { value: "$25M+", label: "Total Value" },
-  { value: "2", label: "Islands Served" },
+  { value: "50+", label: "Homes Placed" },
+  { value: "15+", label: "Years on Island" },
+  { value: "$80M+", label: "In Transactions" },
+  { value: "94%", label: "Client Retention" },
 ];
 
 const specialties = [
@@ -38,7 +38,7 @@ export default function About() {
             <span className="gold-line w-10" />
             <span className="small-caps text-xs text-gold tracking-widest font-sans">A. Lindsay Luxe Estates</span>
           </div>
-          <h1 className="font-serif text-4xl md:text-7xl text-off-white font-medium leading-none">About Ashante</h1>
+          <h1 className="text-display text-off-white font-medium leading-none">About Ashante</h1>
         </div>
       </div>
 
@@ -58,12 +58,12 @@ export default function About() {
               {/* Text */}
               <div>
                 <SectionLabel text="Her Story" />
-                <h2 className="font-serif text-4xl text-ocean-deep dark:text-foreground mb-6">Rooted in the Caribbean</h2>
+                <h2 className="text-h2 text-ocean-deep dark:text-foreground mb-6">Rooted in the Caribbean</h2>
                 <div className="space-y-4 font-sans text-ocean-mid dark:text-foreground/70 text-base leading-relaxed">
-                  <p>Ashante Lindsay was born and raised on the emerald shores of Antigua & Barbuda — an upbringing that instilled in her a profound love for the Caribbean's unique way of life, its landscapes, and its communities. Real estate was never just a career for Ashante. It was a calling.</p>
-                  <p>With over a decade of dedicated experience in the local market, Ashante has become one of Antigua's most trusted names in luxury property. Her portfolio spans oceanfront villas in English Harbour, innovative container homes across the island, and precision-built prefab residences that redefine affordable luxury.</p>
-                  <p>Her expertise extends beyond traditional transactions. Ashante is a recognised specialist in Antigua's Citizenship by Investment programme, having guided numerous international families through the process of securing Caribbean citizenship through strategic real estate acquisitions.</p>
-                  <p>At the heart of everything Ashante does is a deeply personal commitment to her clients. She believes that finding your place in the Caribbean should feel effortless, inspiring, and unforgettable — and she works tirelessly to make that vision a reality for every person she serves.</p>
+                  <p>Ashante was licensed in Antigua at twenty-four. Fifteen years and fifty-plus closings later, she's one of the few brokers on the island who can walk a buyer through both a seven-figure English Harbour villa and the full Citizenship by Investment application without handing off to a lawyer.</p>
+                  <p>Her portfolio is deliberately small: six to eight active listings at any given time, each personally inspected, photographed, and represented. She turns down more instructions than she accepts — a habit that has made her the quiet first call for returning Antiguans and for international buyers introduced through London, New York, and Toronto networks.</p>
+                  <p>The container and prefab divisions came later, born from watching too many young Antiguans locked out of the traditional housing market. Today she represents both sides of the island's real estate economy: the hillside villa and the factory-built starter home, held to the same standards of service.</p>
+                  <p>Her clients stay in touch long after closing. Most eventually send a second buyer. That's the work.</p>
                 </div>
               </div>
             </div>
@@ -76,8 +76,8 @@ export default function About() {
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
               {stats.map((s) => (
                 <div key={s.label}>
-                  <p className="font-serif text-5xl text-gold font-light mb-2">{s.value}</p>
-                  <p className="small-caps text-xs text-off-white/60 tracking-widest font-sans">{s.label}</p>
+                  <p className="text-stat-number mb-2">{s.value}</p>
+                  <p className="text-stat-label text-off-white/60">{s.label}</p>
                 </div>
               ))}
             </div>
@@ -88,7 +88,7 @@ export default function About() {
         <section aria-label="Areas of expertise" className="py-20 bg-sand-light dark:bg-sand-light">
           <div className="max-w-[1280px] mx-auto px-6 md:px-10 text-center">
             <SectionLabel text="Areas of Expertise" />
-            <h2 className="font-serif text-3xl text-ocean-deep dark:text-foreground mb-10">Specialties</h2>
+            <h2 className="text-h2 text-ocean-deep dark:text-foreground mb-10">Specialties</h2>
             <div className="flex flex-wrap justify-center gap-3">
               {specialties.map((s) => (
                 <span key={s} className="border border-sand dark:border-gold/30 bg-off-white dark:bg-card text-teal dark:text-foreground/80 small-caps text-xs font-sans tracking-wider px-5 py-2.5">
@@ -104,7 +104,7 @@ export default function About() {
           <div className="max-w-[800px] mx-auto px-6 md:px-10 text-center">
             <div className="gold-line w-16 mx-auto mb-10" />
             <blockquote className="font-serif italic text-2xl md:text-3xl text-ocean-deep dark:text-foreground leading-relaxed mb-6">
-              "I believe that finding your place in the Caribbean should feel effortless and inspiring — a journey as beautiful as the destination itself."
+              "Most of my clients aren't buying a house. They're buying a life they've been quietly planning for ten years. My job is to make the last mile easy."
             </blockquote>
             <p className="small-caps text-xs text-gold tracking-widest font-sans">— Ashante Lindsay</p>
             <div className="gold-line w-16 mx-auto mt-10" />
@@ -114,12 +114,12 @@ export default function About() {
         {/* CTA */}
         <div className="bg-ocean-deep py-16">
           <div className="max-w-[1280px] mx-auto px-6 md:px-10 flex flex-col md:flex-row items-center justify-between gap-6">
-            <p className="font-serif italic text-off-white text-xl md:text-2xl">Ready to work with Ashante?</p>
+            <p className="font-serif italic text-off-white text-xl md:text-2xl">Ready to start looking?</p>
             <a
               href="/contact"
               className="cta-shimmer flex-shrink-0 bg-gold hover:bg-gold-soft text-ocean-deep font-sans font-medium small-caps tracking-widest text-sm px-8 py-4 transition-colors duration-300 flex items-center gap-2 group"
             >
-              Get In Touch <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+              Get in touch <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
             </a>
           </div>
         </div>

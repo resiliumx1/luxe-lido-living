@@ -79,11 +79,8 @@ function ContainerHero() {
             </span>
           </div>
           <h1
-            className="font-serif font-normal text-off-white mb-3 hero-stagger"
+           className="text-display font-normal text-off-white mb-3 hero-stagger"
             style={{
-              fontSize: "clamp(40px, 6vw, 68px)",
-              lineHeight: 1.1,
-              letterSpacing: "0.01em",
               textShadow: "0 2px 20px rgba(0,0,0,0.35)",
               animationDelay: "0.5s",
             }}
@@ -105,14 +102,14 @@ function ContainerHero() {
             className="font-sans text-off-white/[0.84] max-w-[440px] mb-8 hero-stagger"
             style={{ fontSize: "clamp(15px, 1.8vw, 18px)", lineHeight: 1.75, animationDelay: "0.8s" }}
           >
-            Own a fully completed container home without the stress of traditional building. More affordable. Faster. Smarter.
+            Fully-built container homes, delivered and installed. Half the time of traditional construction, with none of the project-management overhead.
           </p>
           <div className="flex flex-col sm:flex-row gap-3.5 hero-stagger" style={{ animationDelay: "1.0s" }}>
             <GoldCTA variant="solid" onClick={() => document.getElementById("packages")?.scrollIntoView({ behavior: "smooth" })}>
               View Packages
             </GoldCTA>
             <GoldCTA variant="outline" href="https://wa.me/12687755221?text=Hi%20Ashante%2C%20I'm%20interested%20in%20container%20homes">
-              Message "Home" on WhatsApp
+              WhatsApp Ashante
             </GoldCTA>
           </div>
           <div className="mt-8 hero-stagger flex items-center gap-6" style={{ animationDelay: "1.2s" }}>
@@ -150,7 +147,7 @@ function WhyContainerHomes() {
       <div className="max-w-[1280px] mx-auto px-6 md:px-10">
         <div className="mb-14">
           <SectionLabel text="The Advantage" />
-          <h2 className="font-serif text-4xl md:text-5xl text-foreground">Why Container Homes?</h2>
+          <h2 className="text-h2 text-foreground">Why Container Homes?</h2>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {whyCards.map(({ Icon, title, desc }) => (
@@ -244,7 +241,7 @@ function PackagesSection() {
       <div className="relative max-w-[1280px] mx-auto px-6 md:px-10">
         <div className="mb-14">
           <SectionLabel text="Packages" light />
-          <h2 className="font-serif text-4xl md:text-5xl text-off-white">Container Home Packages</h2>
+          <h2 className="text-h2 text-off-white">Container Home Packages</h2>
         </div>
         <div className="flex flex-wrap gap-2 mb-12">
           {packagesData.map((pkg) => (
@@ -563,7 +560,7 @@ function FinalCTA() {
           <GoldCTA variant="solid" href="https://wa.me/12687755221?text=Hi%20Ashante%2C%20I'd%20like%20to%20discuss%20container%20homes">
             WhatsApp +1 268 775-5221
           </GoldCTA>
-          <GoldCTA variant="glass" href="mailto:lindsayashante@gmail.com">
+          <GoldCTA variant="glass" href="mailto:ashante@alindsayluxe.com">
             Email Ashante
           </GoldCTA>
         </div>

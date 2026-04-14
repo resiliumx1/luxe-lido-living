@@ -35,14 +35,13 @@ export default function ContactForm({ dark = false }: { dark?: boolean }) {
 
   const textColor = dark ? "text-off-white" : "text-foreground";
   const subTextColor = dark ? "text-off-white/70" : "text-muted-foreground";
-  const inputClass = "w-full bg-card border-[1.5px] border-sand dark:border-muted px-4 py-3 outline-none font-sans text-sm text-foreground placeholder:text-muted-foreground transition-all focus:border-primary focus:ring-2 focus:ring-ring/20";
-  const inputStyle = { borderRadius: "8px" };
+  const inputCls = "input-luxe";
 
   return (
     <section className={`py-24 ${dark ? "bg-ocean-deep" : "bg-off-white dark:bg-background"}`}>
       <div className="max-w-[1280px] mx-auto px-6 md:px-10">
-        <SectionLabel text="Get In Touch" light={dark} />
-        <h2 className={`font-serif text-4xl md:text-5xl mb-16 ${textColor}`}>Begin Your Journey</h2>
+        <SectionLabel text="Get in touch" light={dark} />
+        <h2 className={`text-h2 mb-16 ${textColor}`}>How can we help?</h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
           {/* Contact details */}
@@ -93,18 +92,18 @@ export default function ContactForm({ dark = false }: { dark?: boolean }) {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="text-label block mb-2 text-foreground">First Name <span className="text-primary">*</span></label>
-                  <input type="text" required placeholder="Olivia" className={inputClass} style={inputStyle}
+                  <input type="text" required placeholder="Olivia" className={inputCls}
                     value={form.firstName} onChange={(e) => setForm({ ...form, firstName: e.target.value })} />
                 </div>
                 <div>
                   <label className="text-label block mb-2 text-foreground">Last Name <span className="text-primary">*</span></label>
-                  <input type="text" required placeholder="Bennett" className={inputClass} style={inputStyle}
+                  <input type="text" required placeholder="Bennett" className={inputCls}
                     value={form.lastName} onChange={(e) => setForm({ ...form, lastName: e.target.value })} />
                 </div>
               </div>
               <div>
                 <label className="text-label block mb-2 text-foreground">Email <span className="text-primary">*</span></label>
-                <input type="email" required placeholder="olivia@email.com" className={inputClass} style={inputStyle}
+                <input type="email" required placeholder="olivia@email.com" className={inputCls}
                   value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} />
               </div>
               <div>
@@ -113,7 +112,7 @@ export default function ContactForm({ dark = false }: { dark?: boolean }) {
               </div>
               <div>
                 <label className="text-label block mb-2 text-foreground">Message</label>
-                <textarea placeholder="Tell us about your dream property..." rows={4} className={`${inputClass} resize-none`} style={inputStyle}
+                <textarea placeholder="Tell us about your dream property..." rows={4} className={`${inputCls} resize-none`}
                   value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} />
               </div>
               <button type="submit" disabled={submitting}
