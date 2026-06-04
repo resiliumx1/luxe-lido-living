@@ -11,6 +11,7 @@ import ContactForm from "@/components/ContactForm";
 import HeroSection from "@/components/HeroSection";
 import ContainerPreview from "@/components/ContainerPreview";
 import BuildYourHome from "@/components/BuildYourHome";
+import { LOCATIONS } from "@/data/locations";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 // Hero is now in src/components/HeroSection.tsx
