@@ -9,7 +9,7 @@ const interestOptions = [
   { value: "container", label: "Container Homes" },
   { value: "prefab", label: "Prefab Homes" },
   { value: "container-business", label: "Container Businesses" },
-  { value: "investment", label: "Investment Consulting" },
+  { value: "investment", label: "Luxury Investment Consulting" },
   { value: "citizenship", label: "Citizenship by Investment" },
 ];
 

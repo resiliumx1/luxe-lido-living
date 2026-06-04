@@ -16,7 +16,7 @@ const specialties = [
   "Prefab Homes",
   "Investment Properties",
   "Citizenship by Investment",
-  "Property Management",
+  "Real Estate Development",
 ];
 
 export default function About() {
