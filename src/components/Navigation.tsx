@@ -8,16 +8,9 @@ import { LuxeLogo } from "@/components/ui/LuxeLogo";
 import WishlistDrawer from "./WishlistDrawer";
 import BookingModal from "./BookingModal";
 
-const containerVerticals = [
-  { label: "Homes", href: "/container-solutions/homes" },
-  { label: "Commercial", href: "/container-solutions/commercial" },
-  { label: "Hospitality", href: "/container-solutions/hospitality" },
-  { label: "Utility", href: "/container-solutions/utility" },
-];
-
 const navLinks = [
   { label: "Luxury Homes", href: "/luxury-homes" },
-  { label: "Container Solutions", href: "/container-solutions", hasDropdown: true },
+  { label: "Container Solutions", href: "/container-solutions" },
   { label: "Prefab Homes", href: "/prefab-homes" },
   { label: "Services", href: "/services" },
   { label: "About", href: "/about" },

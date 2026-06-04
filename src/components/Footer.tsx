@@ -11,12 +11,6 @@ const quickLinks = [
   { label: "Contact", href: "/contact" },
 ];
 
-const containerLinks = [
-  { label: "Homes", href: "/container-solutions/homes" },
-  { label: "Commercial", href: "/container-solutions/commercial" },
-  { label: "Hospitality", href: "/container-solutions/hospitality" },
-  { label: "Utility", href: "/container-solutions/utility" },
-];
 
 export default function Footer() {
   return (
