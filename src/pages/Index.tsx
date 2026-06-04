@@ -317,6 +317,7 @@ export default function Index() {
       <NeighborhoodGuide />
       <AgentAuthority />
       <Services />
+      <BuildYourHome />
       <Testimonials />
       <ContactForm dark />
       <LeadCapture />
