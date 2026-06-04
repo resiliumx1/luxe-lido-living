@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Instagram, Facebook, Phone, Mail, Lock } from "lucide-react";
-import { WHATSAPP_NUMBER, ASHANTE_EMAIL, ASHANTE_PHONE, ASHANTE_PHONE_RAW } from "@/lib/contact";
+import { WHATSAPP_NUMBER, ASHANTE_EMAIL, ASHANTE_PHONE, ASHANTE_PHONE_RAW, OFFICE_HOURS, OFFICE_LOCATION } from "@/lib/contact";
 
 const quickLinks = [
   { label: "Luxury Homes", href: "/luxury-homes" },
@@ -161,10 +161,8 @@ export default function Footer() {
             <div>
               <h4 className="text-eyebrow mb-5">Office Hours</h4>
               <ul className="space-y-3 font-sans text-sm text-white/60">
-                <li>Monday – Friday: 9:00am – 6:00pm</li>
-                <li>Saturday: 10:00am – 4:00pm</li>
-                <li>Sunday: By Appointment</li>
-                <li className="text-white/40 text-xs mt-2">English Harbour, Antigua</li>
+                <li>{OFFICE_HOURS}</li>
+                <li className="text-white/40 text-xs mt-2">{OFFICE_LOCATION}</li>
               </ul>
             </div>
           </div>
