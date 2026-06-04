@@ -111,12 +111,12 @@ export default function Hub() {
               Cargo-worthy steel containers — for storage, business, conversion, or your next project.
               Inspected, wind &amp; watertight, available in standard and high-cube.
             </p>
-            <a
-              href="/order-container"
+            <Link
+              to="/order-container"
               className="inline-flex items-center gap-2 mt-10 cta-shimmer bg-gold hover:bg-gold-soft text-ocean-deep font-sans font-semibold tracking-widest text-sm px-8 py-4 transition-all duration-300 uppercase"
             >
               Order a Container <ArrowRight size={16} />
-            </a>
+            </Link>
           </motion.div>
         </div>
       </section>
@@ -158,12 +158,12 @@ export default function Hub() {
                       <p className="font-sans text-xs text-muted-foreground">Starting from</p>
                       <p className="font-serif text-h3 text-foreground">{formatPriceFromXCD(c.priceXCD)}</p>
                     </div>
-                    <a
-                      href="/order-container"
+                    <Link
+                      to="/order-container"
                       className="inline-flex items-center gap-1 cta-shimmer bg-gold hover:bg-gold-soft text-ocean-deep font-sans font-semibold tracking-widest text-xs px-5 py-3 transition-all duration-300 uppercase"
                     >
                       Order <ArrowRight size={12} />
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </motion.div>
