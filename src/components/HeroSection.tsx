@@ -117,21 +117,21 @@ export default function HeroSection() {
               animationDelay: "0.5s",
             }}
             >
-              Your Caribbean Life
+              Your Caribbean dream,
               <br />
-              <span className="italic text-gold">Starts Here</span>
+              <span className="italic text-gold">within reach</span>
             </h1>
 
             {/* Sub-headline */}
             <p
-              className="font-sans text-white/[0.84] max-w-[440px] mb-8 hero-stagger"
+              className="font-sans text-white/[0.84] max-w-[480px] mb-8 hero-stagger"
               style={{
                 fontSize: "clamp(15px, 1.8vw, 18px)",
                 lineHeight: 1.75,
                 animationDelay: "0.8s",
               }}
             >
-              Oceanfront villas, hillside estates, and island investments — held by a licensed Antiguan Real Estate Agent who grew up here.
+              Oceanfront villas, attainable homes, containers, and custom builds — guided by a licensed Antiguan agent who grew up here and believes paradise should be possible for you.
             </p>
 
             {/* CTAs */}
