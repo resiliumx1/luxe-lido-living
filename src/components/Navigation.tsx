@@ -12,6 +12,7 @@ const navLinks = [
   { label: "Luxury Homes", href: "/luxury-homes" },
   { label: "Container Solutions", href: "/container-solutions" },
   { label: "Prefab Homes", href: "/prefab-homes" },
+  { label: "Trailers", href: "/trailers" },
   { label: "Services", href: "/services" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },

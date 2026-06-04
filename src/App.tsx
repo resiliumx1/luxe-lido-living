@@ -29,6 +29,7 @@ import InquiriesAdmin from "./pages/admin/InquiriesAdmin";
 import AdminContainers from "./pages/admin/AdminContainers";
 import AdminSettings from "./pages/admin/AdminSettings";
 import ContainerHub from "./pages/container/Hub";
+import Trailers from "./pages/Trailers";
 
 const queryClient = new QueryClient();
 
@@ -81,6 +82,9 @@ const App = () => (
 
                   {/* Container Solutions */}
                   <Route path="/container-solutions" element={<PublicShell><ContainerHub /></PublicShell>} />
+
+                  {/* Trailers & Mobile Kitchens */}
+                  <Route path="/trailers" element={<PublicShell><Trailers /></PublicShell>} />
 
                   <Route path="*" element={<PublicShell><NotFound /></PublicShell>} />
                 </Routes>
