@@ -6,11 +6,12 @@ import GoldCTA from "@/components/container/GoldCTA";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { useNavigate } from "react-router-dom";
 
+// Use-case inspiration — NOT product categories. All link to the single hub.
 const verticals = [
-  { key: "homes", label: "Homes", pitch: "Private residences from studios to estates", image: "estate-home/hero", href: "/container-solutions/homes" },
-  { key: "commercial", label: "Commercial", pitch: "Cafés, retail, restaurants, offices", image: "bar-lounge/hero", href: "/container-solutions/commercial" },
-  { key: "hospitality", label: "Hospitality", pitch: "Guest cabins, cabanas, bars, glamping", image: "beach-bar/hero", href: "/container-solutions/hospitality" },
-  { key: "utility", label: "Utility", pitch: "Storage, workshops, site offices", image: "storage-unit/hero", href: "/container-solutions/utility" },
+  { key: "storage", label: "Storage", pitch: "Secure, weather-tight, lockable", image: "storage-unit/hero" },
+  { key: "business", label: "Business", pitch: "Cafés, retail, offices, pop-ups", image: "bar-lounge/hero" },
+  { key: "home", label: "Home Conversion", pitch: "Studios, family homes, guest cottages", image: "estate-home/hero" },
+  { key: "hospitality", label: "Hospitality", pitch: "Beach bars, cabins, glamping", image: "beach-bar/hero" },
 ];
 
 const stats = [
@@ -46,7 +47,7 @@ export default function ContainerPreview() {
           {verticals.map((v) => (
             <Link
               key={v.key}
-              to={v.href}
+              to="/container-solutions"
               className="group relative block aspect-[3/4] overflow-hidden"
             >
               <ResponsiveImage

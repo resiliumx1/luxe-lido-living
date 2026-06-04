@@ -29,9 +29,6 @@ import InquiriesAdmin from "./pages/admin/InquiriesAdmin";
 import AdminContainers from "./pages/admin/AdminContainers";
 import AdminSettings from "./pages/admin/AdminSettings";
 import ContainerHub from "./pages/container/Hub";
-import ContainerVerticalPage from "./pages/container/VerticalPage";
-import ContainerProductDetail from "./pages/container/ProductDetail";
-import ContainerConfigure from "./pages/container/Configure";
 
 const queryClient = new QueryClient();
 
@@ -84,9 +81,6 @@ const App = () => (
 
                   {/* Container Solutions */}
                   <Route path="/container-solutions" element={<PublicShell><ContainerHub /></PublicShell>} />
-                  <Route path="/container-solutions/:vertical" element={<PublicShell><ContainerVerticalPage /></PublicShell>} />
-                  <Route path="/container-solutions/:vertical/:productId" element={<PublicShell><ContainerProductDetail /></PublicShell>} />
-                  <Route path="/container-solutions/:vertical/:productId/configure" element={<PublicShell><ContainerConfigure /></PublicShell>} />
 
                   <Route path="*" element={<PublicShell><NotFound /></PublicShell>} />
                 </Routes>

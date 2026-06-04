@@ -28,7 +28,7 @@ function SearchBar() {
     if (propType === "Luxury Homes") navigate("/luxury-homes");
     else if (propType === "Container Homes") navigate("/container-homes");
     else if (propType === "Prefab Homes") navigate("/prefab-homes");
-    else if (propType === "Container Businesses") navigate("/container-solutions/commercial");
+    else if (propType === "Container Businesses") navigate("/container-solutions");
     else if (propType === "Land") navigate("/contact?interest=land");
     else navigate("/luxury-homes");
   };

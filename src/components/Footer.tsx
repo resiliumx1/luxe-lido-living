@@ -11,12 +11,6 @@ const quickLinks = [
   { label: "Contact", href: "/contact" },
 ];
 
-const containerLinks = [
-  { label: "Homes", href: "/container-solutions/homes" },
-  { label: "Commercial", href: "/container-solutions/commercial" },
-  { label: "Hospitality", href: "/container-solutions/hospitality" },
-  { label: "Utility", href: "/container-solutions/utility" },
-];
 
 export default function Footer() {
   return (
@@ -101,27 +95,13 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Middle row — 4 columns */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+          {/* Middle row — 3 columns */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
             {/* Quick Links */}
             <div>
               <h4 className="text-eyebrow mb-5">Quick Links</h4>
               <ul className="space-y-3">
                 {quickLinks.map((l) => (
-                  <li key={l.href}>
-                    <Link to={l.href} className="font-sans text-sm text-white/60 hover:text-gold transition-colors duration-300">
-                      {l.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Container Solutions */}
-            <div>
-              <h4 className="text-eyebrow mb-5">Container Solutions</h4>
-              <ul className="space-y-3">
-                {containerLinks.map((l) => (
                   <li key={l.href}>
                     <Link to={l.href} className="font-sans text-sm text-white/60 hover:text-gold transition-colors duration-300">
                       {l.label}
