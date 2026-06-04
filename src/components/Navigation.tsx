@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Menu, X, Heart, Sun, Moon, ChevronDown, ArrowRight } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useWishlist } from "@/contexts/WishlistContext";
@@ -7,6 +7,29 @@ import { useCurrency } from "@/contexts/CurrencyContext";
 import { LuxeLogo } from "@/components/ui/LuxeLogo";
 import WishlistDrawer from "./WishlistDrawer";
 import BookingModal from "./BookingModal";
+
+type CtaAction = { label: string; type: "modal" } | { label: string; type: "route"; to: string };
+
+function getCtaForPath(pathname: string): CtaAction {
+  if (pathname.startsWith("/container-solutions") || pathname.startsWith("/order-container")) {
+    return { label: "Order a Container", type: "route", to: "/order-container" };
+  }
+  if (pathname.startsWith("/trailers") || pathname.startsWith("/build-trailer")) {
+    return { label: "Start Your Trailer Build", type: "route", to: "/build-trailer" };
+  }
+  if (pathname.startsWith("/prefab-homes") || pathname.startsWith("/build-your-home")) {
+    return { label: "Start Your Build", type: "route", to: "/contact" };
+  }
+  if (
+    pathname.startsWith("/services") ||
+    pathname.startsWith("/about") ||
+    pathname.startsWith("/contact")
+  ) {
+    return { label: "Book a Consultation", type: "modal" };
+  }
+  // Luxury homes, listings, property details, home — default to viewing
+  return { label: "Book a Viewing", type: "modal" };
+}
 
 const navLinks = [
   { label: "Luxury Homes", href: "/luxury-homes" },
