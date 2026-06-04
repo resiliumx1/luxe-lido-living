@@ -149,12 +149,12 @@ function FeaturedListings() {
 
 // ---------- Services ----------
 const services = [
-  { num: "01", name: "Property Acquisition", desc: "Representing buyers from first showing through closing, across luxury, container, and prefab inventory." },
+  { num: "01", name: "Concierge Acquisition", desc: "A dedicated agent guiding you end to end — private previews, off-market access, negotiation, and closing handled with white-glove discretion." },
   { num: "02", name: "Luxury Home Sales", desc: "Marketing seven-figure Antiguan properties to qualified international buyers — discreetly and on a timeline that suits you." },
-  { num: "03", name: "Investment Consulting", desc: "Yield analysis and market intelligence for investors evaluating Antiguan residential and short-term rental opportunities." },
+  { num: "03", name: "Luxury Investment Consulting", desc: "Strategic counsel for high-net-worth investors — yield modelling, portfolio positioning, and access to vetted opportunities across Antigua's premium market." },
   { num: "04", name: "Relocation Services", desc: "Guiding international buyers through residency logistics — banking, schools, healthcare, import of household goods." },
   { num: "05", name: "Citizenship by Investment", desc: "End-to-end support for Antigua's CBI programme through qualifying real estate. Licensed broker, pre-vetted developments." },
-  { num: "06", name: "Property Management", desc: "Full-service management for absentee owners — maintenance, rentals, staff oversight, quarterly reporting." },
+  { num: "06", name: "Real Estate Development", desc: "Ground-up residential and commercial development. Land-to-build projects and partnerships with buyers and investors bringing new property to market." },
 ];
 
 function Services() {
