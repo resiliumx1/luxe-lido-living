@@ -241,10 +241,10 @@ export default function Navigation() {
         ))}
 
         <button
-          onClick={() => { setMenuOpen(false); setBookingOpen(true); }}
+          onClick={() => { setMenuOpen(false); handleCta(); }}
           className="mt-4 cta-shimmer bg-gold hover:bg-gold-soft text-ocean-deep font-sans font-medium small-caps tracking-widest text-sm px-8 py-3 transition-all duration-300"
         >
-          Book a Viewing
+          {cta.label}
         </button>
       </div>
 
