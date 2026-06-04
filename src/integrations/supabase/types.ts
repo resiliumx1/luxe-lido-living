@@ -206,6 +206,63 @@ export type Database = {
         }
         Relationships: []
       }
+      service_requests: {
+        Row: {
+          also_interested: string[]
+          country: string | null
+          created_at: string
+          currency: string | null
+          email: string
+          estimated_total: number | null
+          first_name: string
+          id: string
+          last_name: string
+          notes: string | null
+          payload: Json
+          phone: string | null
+          preferred_contact: string | null
+          request_type: string
+          status: string
+          updated_at: string
+        }
+        Insert: {
+          also_interested?: string[]
+          country?: string | null
+          created_at?: string
+          currency?: string | null
+          email: string
+          estimated_total?: number | null
+          first_name: string
+          id?: string
+          last_name: string
+          notes?: string | null
+          payload?: Json
+          phone?: string | null
+          preferred_contact?: string | null
+          request_type: string
+          status?: string
+          updated_at?: string
+        }
+        Update: {
+          also_interested?: string[]
+          country?: string | null
+          created_at?: string
+          currency?: string | null
+          email?: string
+          estimated_total?: number | null
+          first_name?: string
+          id?: string
+          last_name?: string
+          notes?: string | null
+          payload?: Json
+          phone?: string | null
+          preferred_contact?: string | null
+          request_type?: string
+          status?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       site_settings: {
         Row: {
           key: string
