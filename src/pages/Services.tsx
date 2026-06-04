@@ -7,9 +7,9 @@ import { useScrollReveal } from "@/hooks/useScrollReveal";
 const services = [
   {
     num: "01",
-    name: "Property Acquisition",
-    desc: "Expert guidance for buyers navigating Antigua's competitive luxury real estate market with confidence.",
-    details: "Whether you're seeking a beachfront villa, a hillside estate, or a smart investment property, we provide end-to-end acquisition support. From market analysis and property shortlisting to negotiation and closing, Ashante ensures every step is handled with precision and discretion.",
+    name: "Concierge Acquisition",
+    desc: "A dedicated agent guiding you end to end — a white-glove concierge experience from first conversation to keys in hand.",
+    details: "We pair you with a dedicated agent who acts as your single point of contact throughout the journey of acquiring property in Antigua. Private previews, off-market introductions, negotiation, due diligence, and closing are all coordinated discreetly on your behalf — so the experience feels less like a transaction and more like a curated introduction to the island.",
   },
   {
     num: "02",
@@ -19,9 +19,9 @@ const services = [
   },
   {
     num: "03",
-    name: "Investment Consulting",
-    desc: "Data-driven insights and local market expertise to maximise your Caribbean property investment returns.",
-    details: "Our consulting services cover rental yield analysis, capital appreciation forecasts, tax planning considerations, and portfolio diversification strategies specific to the Antigua & Barbuda market. We help you make informed decisions backed by real data.",
+    name: "Luxury Investment Consulting",
+    desc: "Strategic counsel for high-net-worth investors evaluating Antigua's premium residential, hospitality, and land opportunities.",
+    details: "We advise private investors and family offices on positioning capital within Antigua's luxury market — from trophy villa acquisitions and boutique hospitality plays to land banking and development partnerships. Engagements include yield modelling, comparable analysis, off-market deal flow, and structuring guidance, all delivered with the discretion expected at this level.",
   },
   {
     num: "04",
@@ -37,9 +37,9 @@ const services = [
   },
   {
     num: "06",
-    name: "Property Management",
-    desc: "End-to-end management of your investment property, from rental income to ongoing maintenance.",
-    details: "For owners who want hands-off income, our property management service covers guest booking management, housekeeping coordination, maintenance scheduling, financial reporting, and emergency response — ensuring your asset is protected and profitable year-round.",
+    name: "Real Estate Development",
+    desc: "Ground-up residential and commercial development — land-to-build projects and partnerships with buyers and investors.",
+    details: "We originate and shepherd development projects across Antigua, from sourcing the right parcel through design, permitting, construction oversight, and delivery. Whether you're an end-user building a private residence, an investor backing a multi-unit or commercial scheme, or a partner co-developing land we already control, we structure the build to your objectives and manage every stakeholder in between.",
   },
 ];
 
