@@ -149,27 +149,21 @@ export default function Navigation() {
               role="radiogroup"
               aria-label="Currency"
             >
-              <button
-                role="radio"
-                aria-checked={currency === "USD"}
-                onClick={() => setCurrency("USD")}
-                className={`px-2.5 h-full font-sans text-[11px] font-bold tracking-wide transition-colors duration-200 ${
-                  currency === "USD" ? utilActive : utilMuted
-                }`}
-              >
-                USD
-              </button>
-              <span className="w-px h-4 bg-gold/20" aria-hidden="true" />
-              <button
-                role="radio"
-                aria-checked={currency === "XCD"}
-                onClick={() => setCurrency("XCD")}
-                className={`px-2.5 h-full font-sans text-[11px] font-bold tracking-wide transition-colors duration-200 ${
-                  currency === "XCD" ? utilActive : utilMuted
-                }`}
-              >
-                XCD
-              </button>
+              {(["USD", "XCD", "CAD"] as const).map((c, idx) => (
+                <div key={c} className="flex items-center h-full">
+                  {idx > 0 && <span className="w-px h-4 bg-gold/20" aria-hidden="true" />}
+                  <button
+                    role="radio"
+                    aria-checked={currency === c}
+                    onClick={() => setCurrency(c)}
+                    className={`px-2.5 h-full font-sans text-[11px] font-bold tracking-wide transition-colors duration-200 ${
+                      currency === c ? utilActive : utilMuted
+                    }`}
+                  >
+                    {c}
+                  </button>
+                </div>
+              ))}
             </div>
 
             {/* Theme toggle */}
