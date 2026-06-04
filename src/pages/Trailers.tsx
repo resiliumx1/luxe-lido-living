@@ -137,7 +137,7 @@ export default function Trailers() {
               business-ready the day they arrive.
             </p>
             <Link
-              to="/contact"
+              to="/build-trailer"
               className="inline-flex items-center gap-2 mt-10 cta-shimmer bg-gold hover:bg-gold-soft text-ocean-deep font-sans font-semibold tracking-widest text-sm px-8 py-4 transition-all duration-300 uppercase"
             >
               Start Your Trailer Build <ArrowRight size={16} />
@@ -293,7 +293,7 @@ export default function Trailers() {
             timeline, and a quote.
           </p>
           <Link
-            to="/contact"
+            to="/build-trailer"
             className="inline-flex items-center gap-2 cta-shimmer bg-gold hover:bg-gold-soft text-ocean-deep font-sans font-semibold tracking-widest text-sm px-8 py-4 transition-all duration-300 uppercase"
           >
             Start Your Trailer Build <ArrowRight size={16} />
