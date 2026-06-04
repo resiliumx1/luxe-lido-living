@@ -220,23 +220,19 @@ export default function Navigation() {
           <div className="flex items-center gap-3">
             <span className="font-sans text-xs text-off-white/40 uppercase tracking-widest">Currency</span>
             <div className="flex items-center h-8 border border-gold/20" role="radiogroup" aria-label="Currency">
-              <button
-                role="radio"
-                aria-checked={currency === "USD"}
-                onClick={() => setCurrency("USD")}
-                className={`px-3 h-full font-sans text-xs font-bold ${currency === "USD" ? "text-gold" : "text-off-white/40"}`}
-              >
-                USD
-              </button>
-              <span className="w-px h-4 bg-gold/20" aria-hidden="true" />
-              <button
-                role="radio"
-                aria-checked={currency === "XCD"}
-                onClick={() => setCurrency("XCD")}
-                className={`px-3 h-full font-sans text-xs font-bold ${currency === "XCD" ? "text-gold" : "text-off-white/40"}`}
-              >
-                XCD
-              </button>
+              {(["USD", "XCD", "CAD"] as const).map((c, idx) => (
+                <div key={c} className="flex items-center h-full">
+                  {idx > 0 && <span className="w-px h-4 bg-gold/20" aria-hidden="true" />}
+                  <button
+                    role="radio"
+                    aria-checked={currency === c}
+                    onClick={() => setCurrency(c)}
+                    className={`px-3 h-full font-sans text-xs font-bold ${currency === c ? "text-gold" : "text-off-white/40"}`}
+                  >
+                    {c}
+                  </button>
+                </div>
+              ))}
             </div>
           </div>
           <div className="flex items-center gap-3">
