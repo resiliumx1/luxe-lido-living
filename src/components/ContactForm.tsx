@@ -6,11 +6,12 @@ import { OptionSelector } from "./ui/OptionSelector";
 import { WHATSAPP_NUMBER, ASHANTE_EMAIL, ASHANTE_PHONE, ASHANTE_PHONE_RAW, OFFICE_HOURS, OFFICE_LOCATION } from "@/lib/contact";
 const interestOptions = [
   { value: "luxury", label: "Luxury Homes" },
-  { value: "container", label: "Container Homes" },
-  { value: "prefab", label: "Prefab Homes" },
-  { value: "container-business", label: "Container Businesses" },
+  { value: "containers", label: "Shipping Containers" },
+  { value: "trailers", label: "Custom Trailers & Mobile Kitchens" },
+  { value: "build", label: "Build / Real Estate Development" },
   { value: "investment", label: "Luxury Investment Consulting" },
   { value: "citizenship", label: "Citizenship by Investment" },
+  { value: "relocation", label: "Relocation" },
 ];
 
 export default function ContactForm({ dark = false }: { dark?: boolean }) {
