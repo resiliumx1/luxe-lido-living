@@ -1,8 +1,24 @@
 import { createContext, useContext, useState, useEffect, ReactNode } from "react";
 
-export type CurrencyCode = "USD" | "XCD";
+export type CurrencyCode = "USD" | "XCD" | "CAD";
 
+// Conversion rates expressed as units per 1 USD.
+// XCD is pegged at 2.70. CAD is an indicative rate — refresh if it drifts.
 export const XCD_RATE = 2.70;
+export const CAD_RATE = 1.38;
+
+const RATES: Record<CurrencyCode, number> = {
+  USD: 1,
+  XCD: XCD_RATE,
+  CAD: CAD_RATE,
+};
+
+// Symbols use distinct prefixes so it's unambiguous which currency is shown.
+const SYMBOLS: Record<CurrencyCode, string> = {
+  USD: "$",
+  XCD: "EC$",
+  CAD: "CA$",
+};
 
 interface CurrencyContextType {
   currency: CurrencyCode;
@@ -16,7 +32,8 @@ const CurrencyContext = createContext<CurrencyContextType | undefined>(undefined
 export function CurrencyProvider({ children }: { children: ReactNode }) {
   const [currency, setCurrencyState] = useState<CurrencyCode>(() => {
     if (typeof window !== "undefined") {
-      return (localStorage.getItem("luxe-currency") as CurrencyCode) || "USD";
+      const stored = localStorage.getItem("luxe-currency") as CurrencyCode | null;
+      if (stored && stored in RATES) return stored;
     }
     return "USD";
   });
@@ -27,12 +44,12 @@ export function CurrencyProvider({ children }: { children: ReactNode }) {
   };
 
   const convert = (usdAmount: number) =>
-    currency === "USD" ? usdAmount : Math.round(usdAmount * XCD_RATE);
+    currency === "USD" ? usdAmount : Math.round(usdAmount * RATES[currency]);
 
   const formatPrice = (usdAmount: number) => {
     const value = convert(usdAmount);
     const formatted = value.toLocaleString("en-US");
-    return currency === "USD" ? `$${formatted}` : `EC$${formatted}`;
+    return `${SYMBOLS[currency]}${formatted}`;
   };
 
   return (

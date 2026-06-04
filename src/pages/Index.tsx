@@ -11,6 +11,7 @@ import ContactForm from "@/components/ContactForm";
 import HeroSection from "@/components/HeroSection";
 import ContainerPreview from "@/components/ContainerPreview";
 import BuildYourHome from "@/components/BuildYourHome";
+import { LOCATIONS } from "@/data/locations";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 // Hero is now in src/components/HeroSection.tsx
@@ -52,10 +53,9 @@ function SearchBar() {
               <label className="small-caps text-xs text-gold tracking-widest font-sans block mb-2">Location</label>
               <select className="input-luxe" value={location} onChange={(e) => setLocation(e.target.value)}>
                 <option value="">All Locations</option>
-                <option>Jolly Harbour</option>
-                <option>English Harbour</option>
-                <option>Half Moon Bay</option>
-                <option>St. John's</option>
+                {LOCATIONS.map((loc) => (
+                  <option key={loc}>{loc}</option>
+                ))}
                 <option>Island-Wide</option>
               </select>
             </div>
@@ -96,8 +96,7 @@ function SearchBar() {
 
 // ---------- Marquee ----------
 function Marquee() {
-  const text =
-    "Jolly Harbour · English Harbour · Falmouth · Half Moon Bay · Nonsuch Bay · Long Bay · Willoughby Bay · Barbuda · ";
+  const text = LOCATIONS.join(" · ") + " · ";
 
   return (
     <div className="bg-sand-light dark:bg-sand-light py-4 overflow-hidden border-y border-sand dark:border-gold/10">

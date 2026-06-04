@@ -3,7 +3,7 @@ import { Phone, Mail, MapPin, Clock, CheckCircle, MessageCircle } from "lucide-r
 import { supabase } from "@/integrations/supabase/client";
 import SectionLabel from "./SectionLabel";
 import { OptionSelector } from "./ui/OptionSelector";
-import { WHATSAPP_NUMBER, ASHANTE_EMAIL, ASHANTE_PHONE, ASHANTE_PHONE_RAW } from "@/lib/contact";
+import { WHATSAPP_NUMBER, ASHANTE_EMAIL, ASHANTE_PHONE, ASHANTE_PHONE_RAW, OFFICE_HOURS, OFFICE_LOCATION } from "@/lib/contact";
 const interestOptions = [
   { value: "luxury", label: "Luxury Homes" },
   { value: "container", label: "Container Homes" },
@@ -50,8 +50,8 @@ export default function ContactForm({ dark = false }: { dark?: boolean }) {
             {[
               { Icon: Phone, label: "Phone", value: ASHANTE_PHONE, href: `tel:${ASHANTE_PHONE_RAW}` },
               { Icon: Mail, label: "Email", value: ASHANTE_EMAIL, href: `mailto:${ASHANTE_EMAIL}` },
-              { Icon: MapPin, label: "Office", value: "English Harbour, Antigua & Barbuda", href: null },
-              { Icon: Clock, label: "Hours", value: "Mon–Sat · 9am–6pm AST", href: null },
+              { Icon: MapPin, label: "Office", value: OFFICE_LOCATION, href: null },
+              { Icon: Clock, label: "Hours", value: OFFICE_HOURS, href: null },
             ].map(({ Icon, label, value, href }, i) => (
               <div key={i}>
                 <div className="flex items-start gap-4">
