@@ -167,12 +167,12 @@ export default function Navigation() {
               )}
             </button>
 
-            {/* Book a Viewing */}
+            {/* Context-aware primary CTA */}
             <button
-              onClick={() => setBookingOpen(true)}
+              onClick={handleCta}
               className="hidden md:inline-flex cta-shimmer bg-gold hover:bg-gold-soft text-ocean-deep font-sans font-medium small-caps tracking-widest text-xs px-5 py-2.5 transition-all duration-300 items-center gap-1.5"
             >
-              Book a Viewing
+              {cta.label}
             </button>
 
             {/* Mobile hamburger */}
