@@ -198,49 +198,16 @@ export default function Navigation() {
           <LuxeLogo size="lg" as="link" />
         </div>
 
-        {navLinks.map((link) =>
-          link.hasDropdown ? (
-            <div key={link.href} className="flex flex-col items-center">
-              <button
-                className="font-serif text-off-white/90 hover:text-gold transition-colors duration-300 text-3xl italic flex items-center gap-2"
-                onClick={() => setMobileContainerOpen(!mobileContainerOpen)}
-              >
-                {link.label}
-                <ChevronDown size={18} className={`transition-transform duration-200 ${mobileContainerOpen ? "rotate-180" : ""}`} />
-              </button>
-              {mobileContainerOpen && (
-                <div className="flex flex-col items-center gap-3 mt-3">
-                  {containerVerticals.map((v) => (
-                    <Link
-                      key={v.href}
-                      to={v.href}
-                      className="font-sans text-off-white/90 font-medium hover:text-gold text-lg transition-colors"
-                      onClick={() => setMenuOpen(false)}
-                    >
-                      {v.label}
-                    </Link>
-                  ))}
-                  <Link
-                    to="/container-solutions"
-                    className="font-sans text-gold text-sm flex items-center gap-1 mt-1"
-                    onClick={() => setMenuOpen(false)}
-                  >
-                    View All Catalog <ArrowRight size={12} />
-                  </Link>
-                </div>
-              )}
-            </div>
-          ) : (
-            <Link
-              key={link.href}
-              to={link.href}
-              className="font-serif text-off-white/90 hover:text-gold transition-colors duration-300 text-3xl italic"
-              onClick={() => setMenuOpen(false)}
-            >
-              {link.label}
-            </Link>
-          )
-        )}
+        {navLinks.map((link) => (
+          <Link
+            key={link.href}
+            to={link.href}
+            className="font-serif text-off-white/90 hover:text-gold transition-colors duration-300 text-3xl italic"
+            onClick={() => setMenuOpen(false)}
+          >
+            {link.label}
+          </Link>
+        ))}
 
         <button
           onClick={() => { setMenuOpen(false); setBookingOpen(true); }}
