@@ -5,7 +5,7 @@ import { useScrollReveal } from "@/hooks/useScrollReveal";
 const stats = [
   { num: "15+", label: "Years", sub: "Expert Knowledge" },
   { num: "50+", label: "Properties", sub: "Sold & Leased" },
-  { num: "100%", label: "Client", sub: "Satisfaction" },
+  { num: "94%", label: "Client", sub: "Client Retention" },
 ];
 
 export default function AgentAuthority() {
