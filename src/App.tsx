@@ -30,6 +30,8 @@ import AdminContainers from "./pages/admin/AdminContainers";
 import AdminSettings from "./pages/admin/AdminSettings";
 import ContainerHub from "./pages/container/Hub";
 import Trailers from "./pages/Trailers";
+import OrderContainer from "./pages/OrderContainer";
+import BuildTrailer from "./pages/BuildTrailer";
 
 const queryClient = new QueryClient();
 
