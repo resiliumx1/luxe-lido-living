@@ -47,7 +47,7 @@ export default function ContainerPreview() {
           {verticals.map((v) => (
             <Link
               key={v.key}
-              to={v.href}
+              to="/container-solutions"
               className="group relative block aspect-[3/4] overflow-hidden"
             >
               <ResponsiveImage
