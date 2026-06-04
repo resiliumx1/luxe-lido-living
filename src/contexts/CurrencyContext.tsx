@@ -24,6 +24,7 @@ interface CurrencyContextType {
   currency: CurrencyCode;
   setCurrency: (c: CurrencyCode) => void;
   formatPrice: (usdAmount: number) => string;
+  formatPriceFromXCD: (xcdAmount: number) => string;
   convert: (usdAmount: number) => number;
 }
 
@@ -52,8 +53,15 @@ export function CurrencyProvider({ children }: { children: ReactNode }) {
     return `${SYMBOLS[currency]}${formatted}`;
   };
 
+  // For prices quoted natively in XCD (container shells, etc.).
+  // Converts XCD → USD first, then applies the active display currency.
+  const formatPriceFromXCD = (xcdAmount: number) => {
+    const usd = xcdAmount / XCD_RATE;
+    return formatPrice(usd);
+  };
+
   return (
-    <CurrencyContext.Provider value={{ currency, setCurrency, formatPrice, convert }}>
+    <CurrencyContext.Provider value={{ currency, setCurrency, formatPrice, formatPriceFromXCD, convert }}>
       {children}
     </CurrencyContext.Provider>
   );
