@@ -84,9 +84,11 @@ const App = () => (
 
                   {/* Container Solutions */}
                   <Route path="/container-solutions" element={<PublicShell><ContainerHub /></PublicShell>} />
+                  <Route path="/order-container" element={<PublicShell><OrderContainer /></PublicShell>} />
 
                   {/* Trailers & Mobile Kitchens */}
                   <Route path="/trailers" element={<PublicShell><Trailers /></PublicShell>} />
+                  <Route path="/build-trailer" element={<PublicShell><BuildTrailer /></PublicShell>} />
 
                   <Route path="*" element={<PublicShell><NotFound /></PublicShell>} />
                 </Routes>
