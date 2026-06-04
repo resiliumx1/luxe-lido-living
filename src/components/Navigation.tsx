@@ -77,61 +77,15 @@ export default function Navigation() {
 
           {/* Nav links — center */}
           <div className="hidden lg:flex items-center gap-6">
-            {navLinks.map((link) =>
-              link.hasDropdown ? (
-                <div key={link.href} className="relative" ref={dropdownRef}>
-                  <button
-                    className="nav-link-gold text-nav text-off-white hover:text-gold transition-colors duration-300 pb-0.5 flex items-center gap-1"
-                    onClick={() => setContainerDropdownOpen(!containerDropdownOpen)}
-                    onMouseEnter={() => setContainerDropdownOpen(true)}
-                    aria-expanded={containerDropdownOpen}
-                    aria-haspopup="true"
-                  >
-                    {link.label}
-                    <ChevronDown size={12} className={`transition-transform duration-200 ${containerDropdownOpen ? "rotate-180" : ""}`} />
-                  </button>
-
-                  {/* Dropdown */}
-                  {/* Dropdown */}
-                  <div
-                    className={`absolute top-full left-0 mt-2 w-56 backdrop-blur-2xl border border-gold/25 shadow-2xl shadow-black/40 transition-all duration-200 origin-top ${
-                      containerDropdownOpen ? "opacity-100 scale-100 pointer-events-auto" : "opacity-0 scale-95 pointer-events-none"
-                    }`}
-                    style={{ background: "linear-gradient(180deg, hsl(var(--ocean-deep) / 0.92) 0%, hsl(var(--ocean-deep) / 0.96) 100%)" }}
-                    onMouseLeave={() => setContainerDropdownOpen(false)}
-                  >
-                    <div className="py-2">
-                      {containerVerticals.map((v) => (
-                        <Link
-                          key={v.href}
-                          to={v.href}
-                          className="block px-5 py-2.5 font-sans text-sm font-medium text-off-white hover:text-gold hover:bg-gold/10 transition-colors duration-200"
-                          onClick={() => setContainerDropdownOpen(false)}
-                        >
-                          {v.label}
-                        </Link>
-                      ))}
-                      <div className="border-t border-gold/25 my-1" />
-                      <Link
-                        to="/container-solutions"
-                        className="flex items-center gap-1.5 px-5 py-2.5 font-sans text-sm text-gold font-semibold hover:bg-gold/10 transition-colors duration-200"
-                        onClick={() => setContainerDropdownOpen(false)}
-                      >
-                        View All Catalog <ArrowRight size={12} />
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              ) : (
-                <Link
-                  key={link.href}
-                  to={link.href}
-                  className="nav-link-gold text-nav text-off-white hover:text-gold transition-colors duration-300 pb-0.5"
-                >
-                  {link.label}
-                </Link>
-              )
-            )}
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                to={link.href}
+                className="nav-link-gold text-nav text-off-white hover:text-gold transition-colors duration-300 pb-0.5"
+              >
+                {link.label}
+              </Link>
+            ))}
           </div>
 
           {/* Right — utilities + CTA + mobile hamburger */}
