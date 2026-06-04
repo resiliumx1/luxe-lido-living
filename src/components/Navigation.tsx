@@ -52,8 +52,15 @@ export default function Navigation() {
   const { count } = useWishlist();
   const { currency, setCurrency } = useCurrency();
   const location = useLocation();
+  const navigate = useNavigate();
   const isHome = location.pathname === "/";
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const cta = getCtaForPath(location.pathname);
+
+  const handleCta = () => {
+    if (cta.type === "modal") setBookingOpen(true);
+    else navigate(cta.to);
+  };
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 80);
