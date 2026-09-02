@@ -136,7 +136,7 @@ function ContainerHero() {
    ═══════════════════════════════════════════ */
 const whyCards = [
   { Icon: IconShield, title: "Built in Weeks", desc: "Factory-manufactured to precision — delivered and installed in a fraction of traditional build time." },
-  { Icon: IconDiamond, title: "Cost Efficient", desc: "Premium living at a fraction of the cost. No unexpected overruns or hidden fees." },
+  { Icon: IconDiamond, title: "Cost Efficient", desc: "Practical living at a lower cost, with a clear scope and fewer surprises." },
   { Icon: IconPillar, title: "Hurricane Resilient", desc: "Engineered from Corten steel — built to withstand Category 5 conditions." },
   { Icon: IconLeaf, title: "Eco-Friendly", desc: "Repurposed shipping containers reduce waste and lower your carbon footprint." },
 ];
@@ -210,8 +210,8 @@ const packagesData = [
   },
   {
     key: "premium" as PackageKey,
-    name: "Premium",
-    tagline: "Expanded luxury — two containers combined",
+    name: "Expanded",
+    tagline: "More space — two containers combined",
     Icon: IconPillar,
     prices: [{ unit: "Expanded 2-Container", price: "$360,000 XCD" }],
     includes: [
@@ -358,7 +358,7 @@ function ComparisonTable() {
                 <th className="font-sans text-xs tracking-wider uppercase text-muted-foreground py-4 pr-4">Feature</th>
                 <th className="font-sans text-xs tracking-wider uppercase text-muted-foreground py-4 px-4 text-center">Self-Service</th>
                 <th className="font-sans text-xs tracking-wider uppercase text-muted-foreground py-4 px-4 text-center">Full-Service</th>
-                <th className="font-sans text-xs tracking-wider uppercase text-muted-foreground py-4 px-4 text-center">Premium</th>
+                <th className="font-sans text-xs tracking-wider uppercase text-muted-foreground py-4 px-4 text-center">Expanded</th>
               </tr>
             </thead>
             <tbody>
@@ -389,7 +389,7 @@ function ComparisonTable() {
    ═══════════════════════════════════════════ */
 const processSteps = [
   { Icon: IconCompass, num: "01", title: "Consultation", desc: "Discuss your vision, land, and budget with Ashante" },
-  { Icon: IconBlueprint, num: "02", title: "Design & Build", desc: "Factory-built with premium finishes to your spec" },
+  { Icon: IconBlueprint, num: "02", title: "Design & Build", desc: "Factory-built with durable finishes to your specification" },
   { Icon: IconShip, num: "03", title: "Ship & Deliver", desc: "Import, customs clearance, and transport to your site" },
   { Icon: IconKey, num: "04", title: "Install & Setup", desc: "Foundation, utilities, and you move in" },
 ];

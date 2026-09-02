@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import SectionLabel from "@/components/SectionLabel";
 import PropertyCard from "@/components/PropertyCard";
 import WhyAntigua from "@/components/WhyAntigua";
@@ -149,12 +149,12 @@ function FeaturedListings() {
 
 // ---------- Services ----------
 const services = [
-  { num: "01", name: "Traditional Construction", desc: "Conventional block and concrete homes, coordinated around your land, needs and budget." },
-  { num: "02", name: "Container Builds", desc: "Shipping containers converted into homes, offices, shops and useful commercial spaces." },
-  { num: "03", name: "Insulated Panel Builds", desc: "Our recommended method for better thermal performance, faster erection and lower cost than concrete block." },
-  { num: "04", name: "Renovations & Trades", desc: "Vetted help with tiling, painting, plumbing, electrical work, roofing, drawings and design." },
-  { num: "05", name: "Property Sales & Land", desc: "Browse houses and land with clear details, then arrange a viewing or ask about the next steps." },
-  { num: "06", name: "Relocation Services", desc: "Local support for overseas buyers finding land, property and reliable people on the ground." },
+  { num: "01", name: "Traditional Construction", interest: "traditional-construction", desc: "Conventional block and concrete homes, coordinated around your land, needs and budget." },
+  { num: "02", name: "Container Builds", interest: "container-builds", desc: "Shipping containers converted into homes, offices, shops and useful commercial spaces." },
+  { num: "03", name: "Insulated Panel Builds", interest: "insulated-panel-builds", desc: "Our recommended method for better thermal performance, faster erection and lower cost than concrete block." },
+  { num: "04", name: "Renovations & Trades", interest: "renovations-trades", desc: "Vetted help with tiling, painting, plumbing, electrical work, roofing, drawings and design." },
+  { num: "05", name: "Property Sales & Land", interest: "property-sales-land", desc: "Browse houses and land with clear details, then arrange a viewing or ask about the next steps." },
+  { num: "06", name: "Relocation Services", interest: "relocation", desc: "Local support for overseas buyers finding land, property and reliable people on the ground." },
 ];
 
 function Services() {
@@ -178,6 +178,12 @@ function Services() {
               </p>
               <h3 className="font-serif text-xl text-off-white mb-3">{s.name}</h3>
               <p className="font-sans text-off-white/50 text-sm leading-relaxed">{s.desc}</p>
+              <Link
+                to={`/contact?interest=${s.interest}`}
+                className="inline-flex items-center gap-2 mt-5 font-sans text-xs text-gold hover:text-gold-soft transition-colors"
+              >
+                Enquire <span>→</span>
+              </Link>
             </div>
           ))}
         </div>
