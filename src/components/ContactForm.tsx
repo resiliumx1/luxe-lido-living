@@ -149,8 +149,6 @@ export default function ContactForm({ dark = false }: { dark?: boolean }) {
       if (form.need === "custom-build" && !form.designStatus) return "Tell us about your design or drawings.";
       if (form.need === "renovate-repair" && !form.trade) return "Choose the main trade needed.";
       if (form.need === "container-modular" && !form.containerSize) return "Choose a container size.";
-      if (!form.timeline) return "Choose a rough timeline.";
-      if (!form.budget) return "Choose a budget range.";
       if (!form.area.trim()) return "Add a parish or area.";
     }
     if (step === 1) {
