@@ -6,8 +6,8 @@ export default function WhatsAppWidget() {
       href={`https://wa.me/${WHATSAPP_NUMBER}?text=Hello%20Ashante%2C%20I%27m%20interested%20in%20a%20property.`}
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed z-[9999] group"
-      style={{ bottom: "24px", right: "24px" }}
+      className="fixed z-[9999] group left-4 right-auto md:left-auto md:right-6"
+      style={{ bottom: "calc(16px + env(safe-area-inset-bottom, 0px))" }}
       aria-label="Chat with Ashante on WhatsApp"
     >
       {/* Pulse ring */}
@@ -27,7 +27,7 @@ export default function WhatsAppWidget() {
 
       {/* Tooltip */}
       <span
-        className="absolute right-[68px] top-1/2 -translate-y-1/2 bg-ocean-deep text-off-white text-xs font-sans whitespace-nowrap px-3 py-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none shadow-lg"
+        className="hidden md:block absolute right-[68px] top-1/2 -translate-y-1/2 bg-ocean-deep text-off-white text-xs font-sans whitespace-nowrap px-3 py-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none shadow-lg"
         style={{ borderRadius: "6px" }}
       >
         Chat with Ashante directly

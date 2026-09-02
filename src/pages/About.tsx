@@ -3,12 +3,13 @@ import heroImg from "@/assets/hero_villa.jpg";
 import SectionLabel from "@/components/SectionLabel";
 
 
-const stats = [
-  { value: "50+", label: "Clients Helped" },
-  { value: "15+", label: "Years on Island" },
-  { value: "$80M+", label: "In Transactions" },
-  { value: "94%", label: "Client Retention" },
+const facts = [
+  { value: "Antigua & Barbuda", label: "Working island-wide" },
+  { value: "Built to order", label: "Every unit made to spec" },
+  { value: "Vetted local trades", label: "Coordinated and supervised" },
+  { value: "Owner-led", label: "Direct contact throughout" },
 ];
+
 
 const specialties = [
   "Traditional Construction",
@@ -70,19 +71,20 @@ export default function About() {
           </div>
         </section>
 
-        {/* Stats */}
+        {/* Facts */}
         <div className="bg-ocean-deep py-16 border-y border-gold/20">
           <div className="max-w-[1280px] mx-auto px-6 md:px-10">
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
-              {stats.map((s) => (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+              {facts.map((s) => (
                 <div key={s.label}>
-                  <p className="text-stat-number mb-2">{s.value}</p>
+                  <p className="font-serif text-gold font-medium mb-2" style={{ fontSize: "20px", lineHeight: 1.2 }}>{s.value}</p>
                   <p className="text-stat-label text-off-white/60">{s.label}</p>
                 </div>
               ))}
             </div>
           </div>
         </div>
+
 
         {/* Specialties */}
         <section aria-label="Areas of expertise" className="py-20 bg-sand-light dark:bg-sand-light">

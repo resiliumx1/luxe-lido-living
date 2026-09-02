@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import { ArrowLeft, ArrowRight, Check, CheckCircle, Clock, Mail, MapPin, MessageCircle, Paperclip, Phone, Upload } from "lucide-react";
+import { ArrowLeft, ArrowRight, Check, CheckCircle, Clock, Info, Mail, MapPin, MessageCircle, Paperclip, Phone, Upload } from "lucide-react";
 import { z } from "zod";
 import { supabase } from "@/integrations/supabase/client";
 import SectionLabel from "./SectionLabel";
@@ -38,7 +38,7 @@ const DESIGN_STATUS = [
   { value: "ideas-only", label: "Ideas only so far" },
 ];
 const CONTAINER_SIZES = [{ value: "20ft", label: "20ft" }, { value: "40ft", label: "40ft" }, { value: "unsure", label: "Not sure yet" }];
-const TIMELINES = [{ value: "asap", label: "As soon as possible" }, { value: "1-3-months", label: "1–3 months" }, { value: "3-6-months", label: "3–6 months" }, { value: "6-plus-months", label: "6+ months" }, { value: "exploring", label: "Just exploring" }];
+const TIMELINES = [{ value: "asap", label: "As soon as possible" }, { value: "1-3-months", label: "1–3 months" }, { value: "3-6-months", label: "3–6 months" }, { value: "6-plus-months", label: "6+ months" }, { value: "unsure", label: "Not sure yet" }];
 const BUDGETS = [{ value: "under-50k", label: "Under US$50k" }, { value: "50k-150k", label: "US$50k–150k" }, { value: "150k-300k", label: "US$150k–300k" }, { value: "300k-plus", label: "US$300k+" }, { value: "unsure", label: "Not sure yet" }];
 const CONTACT_METHODS = [{ value: "whatsapp", label: "WhatsApp" }, { value: "call", label: "Phone call" }, { value: "email", label: "Email" }];
 
@@ -77,9 +77,18 @@ const initialForm: FormState = {
   firstName: "", lastName: "", phone: "", email: "", preferredContact: "", assessmentAcknowledged: false, service: "",
 };
 
+const DRAFT_KEY = "luxe-enquiry-draft";
+
 export default function ContactForm({ dark = false }: { dark?: boolean }) {
   const [searchParams] = useSearchParams();
-  const [form, setForm] = useState<FormState>(initialForm);
+  const [form, setForm] = useState<FormState>(() => {
+    if (typeof window === "undefined") return initialForm;
+    try {
+      const saved = window.sessionStorage.getItem(DRAFT_KEY);
+      if (saved) return { ...initialForm, ...(JSON.parse(saved) as Partial<FormState>) };
+    } catch { /* ignore malformed draft */ }
+    return initialForm;
+  });
   const [step, setStep] = useState(0);
   const [photo, setPhoto] = useState<File | null>(null);
   const [error, setError] = useState("");
@@ -98,6 +107,14 @@ export default function ContactForm({ dark = false }: { dark?: boolean }) {
       }));
     }
   }, [searchParams]);
+
+  useEffect(() => {
+    if (submitted) return;
+    try {
+      window.sessionStorage.setItem(DRAFT_KEY, JSON.stringify(form));
+    } catch { /* storage unavailable */ }
+  }, [form, submitted]);
+
 
   const requiresAssessment = ["build-home", "managed-construction", "custom-build", "renovate-repair"].includes(form.need);
   const needsBuildMethod = ["build-home", "managed-construction", "custom-build"].includes(form.need);
@@ -132,8 +149,6 @@ export default function ContactForm({ dark = false }: { dark?: boolean }) {
       if (form.need === "custom-build" && !form.designStatus) return "Tell us about your design or drawings.";
       if (form.need === "renovate-repair" && !form.trade) return "Choose the main trade needed.";
       if (form.need === "container-modular" && !form.containerSize) return "Choose a container size.";
-      if (!form.timeline) return "Choose a rough timeline.";
-      if (!form.budget) return "Choose a budget range.";
       if (!form.area.trim()) return "Add a parish or area.";
     }
     if (step === 1) {
@@ -198,6 +213,7 @@ export default function ContactForm({ dark = false }: { dark?: boolean }) {
       setSubmitting(false);
       return;
     }
+    try { window.sessionStorage.removeItem(DRAFT_KEY); } catch { /* storage unavailable */ }
     setSubmitted(true);
     setSubmitting(false);
   };
@@ -214,8 +230,8 @@ export default function ContactForm({ dark = false }: { dark?: boolean }) {
       {form.need === "renovate-repair" && <div><label className={`text-label block mb-3 ${labelColor}`}>Which trade do you need? <span className="text-primary">*</span></label><OptionSelector name="trade" options={TRADES.map((trade) => ({ value: trade.toLowerCase().replace(/ /g, "-"), label: trade }))} value={form.trade} onChange={(trade) => setForm({ ...form, trade })} onDark={dark} /></div>}
       {form.need === "container-modular" && <div><label className={`text-label block mb-3 ${labelColor}`}>Container size <span className="text-primary">*</span></label><OptionSelector name="containerSize" options={CONTAINER_SIZES} value={form.containerSize} onChange={(containerSize) => setForm({ ...form, containerSize })} onDark={dark} /></div>}
       {form.need && <>
-        <div><label className={`text-label block mb-3 ${labelColor}`}>Rough timeline <span className="text-primary">*</span></label><OptionSelector name="timeline" options={TIMELINES} value={form.timeline} onChange={(timeline) => setForm({ ...form, timeline })} onDark={dark} /></div>
-        <div><label className={`text-label block mb-3 ${labelColor}`}>Budget range <span className="text-primary">*</span></label><OptionSelector name="budget" options={BUDGETS} value={form.budget} onChange={(budget) => setForm({ ...form, budget })} onDark={dark} /></div>
+        <div><label className={`text-label block mb-3 ${labelColor}`}>Rough timeline <span className={subTextColor}>(optional)</span></label><OptionSelector name="timeline" options={TIMELINES} value={form.timeline} onChange={(timeline) => setForm({ ...form, timeline })} onDark={dark} /></div>
+        <div><label className={`text-label block mb-3 ${labelColor}`}>Budget range <span className={subTextColor}>(optional)</span></label><OptionSelector name="budget" options={BUDGETS} value={form.budget} onChange={(budget) => setForm({ ...form, budget })} onDark={dark} /></div>
         <div><label className={`text-label block mb-2 ${labelColor}`}>Parish or area <span className="text-primary">*</span></label><input className={inputCls} value={form.area} maxLength={150} placeholder="e.g. St. John’s, Saint Mary" onChange={(event) => setForm({ ...form, area: event.target.value })} /></div>
       </>}
     </div>
@@ -223,6 +239,14 @@ export default function ContactForm({ dark = false }: { dark?: boolean }) {
 
   const renderStepTwo = () => (
     <div className="space-y-6">
+      {requiresAssessment && (
+        <div className={`flex items-start gap-3 border p-4 ${dark ? "border-primary/40 bg-primary/10" : "border-primary/40 bg-primary/5"}`} style={{ borderRadius: "8px" }}>
+          <Info size={18} className="text-primary mt-0.5 flex-shrink-0" />
+          <p className={`font-sans text-sm leading-relaxed ${textColor}`}>
+            Good to know: construction and renovation quotes carry a US$250 assessment fee, payable before any site visit, measurement or drawings. Nothing to pay now — you'll confirm you understand at the last step.
+          </p>
+        </div>
+      )}
       <div><label className={`text-label block mb-2 ${labelColor}`}>Project details <span className="text-primary">*</span></label><textarea className={`${inputCls} resize-none`} rows={7} maxLength={3000} placeholder="Tell us what you want to build, improve or find…" value={form.details} onChange={(event) => setForm({ ...form, details: event.target.value })} /></div>
       <div>
         <label className={`text-label block mb-2 ${labelColor}`}>Photo <span className={subTextColor}>(optional)</span></label>
@@ -271,7 +295,34 @@ export default function ContactForm({ dark = false }: { dark?: boolean }) {
           </div>
 
           {submitted ? (
-            <div className="flex flex-col items-center justify-center text-center gap-6 py-12"><CheckCircle size={56} className="text-primary" /><h3 className={`font-serif text-3xl ${textColor}`}>Thank You</h3><p className={`font-sans text-base ${subTextColor} max-w-sm`}>Your enquiry has been received. Ashante will be in touch within 24 hours.</p><Button variant="outline" onClick={() => { setSubmitted(false); setForm(initialForm); setPhoto(null); setStep(0); }}>Send another enquiry</Button></div>
+            <div className="flex flex-col items-center justify-center text-center gap-5 py-12">
+              <CheckCircle size={56} className="text-primary" />
+              <h3 className={`font-serif text-3xl ${textColor}`}>Enquiry received</h3>
+              <p className={`font-sans text-base ${subTextColor} max-w-sm`}>
+                Thank you{form.firstName ? `, ${form.firstName.trim()}` : ""} — your {selectedNeed.toLowerCase()} enquiry is with Ashante.
+              </p>
+              <ol className={`w-full max-w-sm space-y-3 text-left font-sans text-sm ${textColor}`}>
+                {[
+                  "She reads your answers and photo personally — usually the same working day.",
+                  `She replies by ${form.preferredContact === "call" ? "phone call" : form.preferredContact === "email" ? "email" : "WhatsApp"} within 24 hours, and by the next working day at the latest.`,
+                  "You'll get clarifying questions, indicative costs and next steps for your build, unit or property.",
+                ].map((line, index) => (
+                  <li key={line} className="flex items-start gap-3">
+                    <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground text-xs font-bold">{index + 1}</span>
+                    <span className={subTextColor}>{line}</span>
+                  </li>
+                ))}
+              </ol>
+              <a
+                href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(`Hello Ashante, I've just submitted an enquiry about ${selectedNeed.toLowerCase()}.`)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-3 bg-[#25D366] text-white font-sans font-medium small-caps tracking-wider text-sm px-6 py-3 transition-opacity hover:opacity-90"
+              >
+                <MessageCircle size={16} /> Continue on WhatsApp now
+              </a>
+              <Button variant="outline" onClick={() => { setSubmitted(false); setForm(initialForm); setPhoto(null); setStep(0); }}>Send another enquiry</Button>
+            </div>
           ) : (
             <div>
               <div className="mb-8" aria-label={`Step ${step + 1} of 3`}>

@@ -2,11 +2,12 @@ import { Link } from "react-router-dom";
 import ashanteImg from "@/assets/ashante_portrait.jpg";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
-const stats = [
-  { num: "15+", label: "Years", sub: "Expert Knowledge" },
-  { num: "50+", label: "Clients", sub: "Helped Locally & Abroad" },
-  { num: "94%", label: "Client", sub: "Client Retention" },
+const facts = [
+  { title: "Antigua & Barbuda", sub: "Working island-wide" },
+  { title: "Built to order", sub: "Every unit made to spec" },
+  { title: "Vetted local trades", sub: "Coordinated and supervised" },
 ];
+
 
 export default function AgentAuthority() {
   const sectionRef = useScrollReveal();
@@ -64,17 +65,18 @@ export default function AgentAuthority() {
               </p>
             </div>
 
-            {/* Stats row */}
-            <div className="grid grid-cols-3 gap-6 mb-10 py-8 border-t border-b border-gold/20">
-              {stats.map((s) => (
-                <div key={s.num} className="text-center">
-                  <p className="font-serif text-gold font-medium" style={{ fontSize: "36px", lineHeight: 1 }}>
-                    {s.num}
+            {/* Factual highlights */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-10 py-8 border-t border-b border-gold/20">
+              {facts.map((f) => (
+                <div key={f.title} className="text-center">
+                  <p className="font-serif text-gold font-medium" style={{ fontSize: "20px", lineHeight: 1.2 }}>
+                    {f.title}
                   </p>
-                  <p className="font-sans text-off-white/60 text-xs mt-2 tracking-wide">{s.sub}</p>
+                  <p className="font-sans text-off-white/60 text-xs mt-2 tracking-wide">{f.sub}</p>
                 </div>
               ))}
             </div>
+
 
             {/* CTA */}
             <Link

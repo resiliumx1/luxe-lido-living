@@ -220,115 +220,25 @@ function PropertiesRow() {
   );
 }
 
-// ---------- Testimonials ----------
-const testimonials = [
-  {
-    quote: "We'd been watching Antigua for six years. Ashante closed our villa in eleven weeks. Nothing about the process was complicated.",
-    author: "James & Caroline R.",
-    location: "English Harbour",
-  },
-  {
-    quote: "I needed someone who understood both the legal side and the market side. She's one of the only agents in the region who knows both cold.",
-    author: "Marcus T.",
-    location: "London",
-  },
-  {
-    quote: "The container home cost less than we'd budgeted for a down payment elsewhere. We moved in two months after signing.",
-    author: "Sofia & David M.",
-    location: "Jolly Harbour",
-  },
-];
-
-function Testimonials() {
-  const [active, setActive] = useState(0);
-  const [fading, setFading] = useState(false);
-  const sectionRef = useScrollReveal();
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setFading(true);
-      setTimeout(() => {
-        setActive((prev) => (prev + 1) % testimonials.length);
-        setFading(false);
-      }, 400);
-    }, 6000);
-    return () => clearInterval(timer);
-  }, []);
-
-  const switchTo = (i: number) => {
-    setFading(true);
-    setTimeout(() => {
-      setActive(i);
-      setFading(false);
-    }, 300);
-  };
-
-  const t = testimonials[active];
-
-  return (
-    <section className="py-28 bg-off-white dark:bg-background relative overflow-hidden" ref={sectionRef}>
-      {/* Watermark */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none">
-        <span className="font-serif text-[20vw] font-light text-ocean-deep/[0.03] dark:text-off-white/[0.04] leading-none">
-          AL
-        </span>
-      </div>
-
-      <div className="max-w-[800px] mx-auto px-6 md:px-10 text-center relative reveal">
-        {/* Quote mark */}
-        <p className="font-serif text-8xl text-gold leading-none mb-6 -mt-8">"</p>
-
-        <div className={`transition-opacity duration-300 ${fading ? "opacity-0" : "opacity-100"}`}>
-          <blockquote className="font-serif italic text-xl md:text-2xl text-ocean-deep dark:text-foreground leading-relaxed mb-8">
-            {t.quote}
-          </blockquote>
-          <p className="small-caps text-xs text-gold tracking-widest font-sans mb-1">{t.author}</p>
-          <p className="font-sans text-sm text-ocean-mid/60 dark:text-foreground/50">{t.location}</p>
-        </div>
-
-        {/* Dot nav */}
-        <div className="flex justify-center gap-3 mt-10">
-          {testimonials.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => switchTo(i)}
-              className={`h-1.5 transition-all duration-300 ${
-                i === active ? "bg-gold w-6" : "bg-sand dark:bg-sand w-1.5"
-              }`}
-              aria-label={`Testimonial ${i + 1}`}
-            />
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
 // ---------- Index ----------
-function StatsStrip() {
-  const stats = [
-    { num: "50+", label: "Clients Helped" },
-    { num: "15+", label: "Years on Island" },
-    { num: "$80M+", label: "In Transactions" },
-    { num: "94%", label: "Client Retention" },
+function FactsStrip() {
+  const facts = [
+    "Working across Antigua & Barbuda",
+    "Units built to order",
+    "Vetted local trades, coordinated on site",
   ];
   return (
     <div className="bg-ocean-deep border-t border-gold/25">
       <div className="max-w-[1280px] mx-auto px-6 md:px-10">
-        <div className="hidden sm:flex items-center justify-center h-[72px]">
-          {stats.map((stat, i, arr) => (
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-4 sm:gap-0 py-6 sm:py-0 sm:h-[72px]">
+          {facts.map((fact, i, arr) => (
             <div
-              key={stat.label}
-              className={`flex-1 max-w-[180px] flex flex-col items-center justify-center px-4 ${
-                i < arr.length - 1 ? "border-r border-gold/15" : ""
+              key={fact}
+              className={`flex-1 max-w-none sm:max-w-[300px] flex items-center justify-center px-4 text-center ${
+                i < arr.length - 1 ? "sm:border-r border-gold/15" : ""
               }`}
             >
-              <span className="text-stat-number" style={{ fontSize: "clamp(20px, 2.5vw, 26px)", textShadow: "0 0 20px rgba(240,192,96,0.3)" }}>
-                {stat.num}
-              </span>
-              <span className="text-stat-label text-white/50">
-                {stat.label}
-              </span>
+              <span className="font-sans text-xs sm:text-sm text-white/70 tracking-wide">{fact}</span>
             </div>
           ))}
         </div>
@@ -337,18 +247,19 @@ function StatsStrip() {
   );
 }
 
+
 export default function Index() {
   return (
     <div className="bg-off-white dark:bg-background">
       <HeroSection />
-      <StatsStrip />
+      <FactsStrip />
       <Services />
       <DeliveredWork />
       <HowItWorks />
       <BuildYourHome />
       <ContainerPreview />
       <AgentAuthority />
-      <Testimonials />
+
       <WhyAntigua />
       <Marquee />
       <PropertiesRow />
