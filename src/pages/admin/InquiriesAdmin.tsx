@@ -82,6 +82,7 @@ export default function InquiriesAdmin() {
     const labels: Record<string, string> = {
       need: "Need code",
       need_label: "What they need",
+      service_path: "Service selected",
       build_method: "Build method",
       trade: "Trade",
       container_size: "Container size",
