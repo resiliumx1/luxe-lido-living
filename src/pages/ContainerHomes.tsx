@@ -166,6 +166,41 @@ function WhyContainerHomes() {
   );
 }
 
+function RealUnits() {
+  return (
+    <section className="py-28 bg-background">
+      <div className="max-w-[1280px] mx-auto px-6 md:px-10">
+        <div className="mb-14">
+          <SectionLabel text="Finished Units" />
+          <h2 className="text-h2 text-foreground">Completed and Ready to Ship</h2>
+          <p className="font-sans text-muted-foreground text-body max-w-2xl mt-3">
+            Real photographs of completed modular units leaving the workshop — not renders. Tap to enlarge.
+          </p>
+        </div>
+        <PhotoGallery
+          photos={containerFinishedUnits}
+          className="grid-cols-1 sm:grid-cols-2 lg:grid-cols-2"
+          aspect="aspect-[16/11]"
+        />
+
+        <div className="mt-20 mb-10">
+          <SectionLabel text="How They're Built" />
+          <h2 className="text-h2 text-foreground">Steel Frame, Panel Skin, Full Fit-Out</h2>
+          <p className="font-sans text-muted-foreground text-body max-w-2xl mt-3">
+            Welded galvanised steel chassis, skinned in insulated foam-core panels — stronger and better
+            insulated than block, and far quicker to erect.
+          </p>
+        </div>
+        <PhotoGallery
+          photos={containerBuildSteps}
+          className="grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6"
+          aspect="aspect-[4/3]"
+        />
+      </div>
+    </section>
+  );
+}
+
 /* ═══════════════════════════════════════════
    PACKAGES — TABS
    ═══════════════════════════════════════════ */
