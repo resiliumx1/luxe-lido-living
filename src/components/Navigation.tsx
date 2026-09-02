@@ -154,19 +154,7 @@ export default function Navigation() {
               {isDark ? <Sun size={16} /> : <Moon size={16} />}
             </button>
 
-            {/* Wishlist */}
-            <button
-              onClick={() => setWishlistOpen(true)}
-              aria-label={`Saved properties: ${count}`}
-              className="relative p-2 text-gold hover:text-gold-soft transition-colors duration-300"
-            >
-              <Heart size={18} fill={count > 0 ? "currentColor" : "none"} strokeWidth={2} />
-              {count > 0 && (
-                <span className="absolute -top-0.5 -right-0.5 w-4 h-4 rounded-full bg-gold text-ocean-deep text-[9px] font-bold flex items-center justify-center">
-                  {count}
-                </span>
-              )}
-            </button>
+
 
             {/* Context-aware primary CTA */}
             <button
