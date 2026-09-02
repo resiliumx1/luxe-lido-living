@@ -179,6 +179,20 @@ export default function Trailers() {
         </div>
       </section>
 
+      {/* Real builds */}
+      <section className="bg-secondary py-24 px-6">
+        <div className="max-w-[1280px] mx-auto">
+          <SectionLabel text="Real Builds" />
+          <h2 className="font-serif text-h2 text-foreground mt-4 mb-3">Built, Shipped, Trading.</h2>
+          <p className="font-sans text-muted-foreground text-body max-w-2xl mb-12">
+            These are photographs of our actual work — not renders. The RumBurger trailer below was built to
+            the customer's brand and menu, then shipped and delivered to Antigua. Tap any photo to enlarge.
+          </p>
+          <PhotoGallery photos={trailerRealBuilds} />
+        </div>
+      </section>
+
+
       {/* Process */}
       <section className="bg-ocean-deep py-24 px-6">
         <div className="max-w-[1280px] mx-auto">
