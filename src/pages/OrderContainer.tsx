@@ -25,11 +25,11 @@ const USES = [
 
 const CROSS_SELL = [
   { value: "trailer", label: "Custom Food Trailer" },
-  { value: "luxury_home", label: "Luxury Home Purchase" },
-  { value: "development", label: "Build / Real Estate Development" },
-  { value: "investment", label: "Investment Consulting" },
-  { value: "cbi", label: "Citizenship by Investment" },
-  { value: "relocation", label: "Relocation" },
+  { value: "traditional_construction", label: "Traditional Construction" },
+  { value: "insulated_panels", label: "Insulated Panel Build" },
+  { value: "renovation", label: "Renovations & Trades" },
+  { value: "property_land", label: "Property Sales & Land" },
+  { value: "relocation", label: "Relocation Services" },
 ];
 
 export default function OrderContainer() {

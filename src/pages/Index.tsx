@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import SectionLabel from "@/components/SectionLabel";
 import PropertyCard from "@/components/PropertyCard";
 import WhyAntigua from "@/components/WhyAntigua";
@@ -27,7 +27,7 @@ function SearchBar() {
   const handleFind = () => {
     if (propType === "Luxury Homes") navigate("/luxury-homes");
     else if (propType === "Container Homes") navigate("/container-homes");
-    else if (propType === "Prefab Homes") navigate("/prefab-homes");
+    else if (propType === "Insulated Panel Builds") navigate("/prefab-homes");
     else if (propType === "Container Businesses") navigate("/container-solutions");
     else if (propType === "Land") navigate("/contact?interest=land");
     else navigate("/luxury-homes");
@@ -44,7 +44,7 @@ function SearchBar() {
                 <option value="">All Types</option>
                 <option>Luxury Homes</option>
                 <option>Container Homes</option>
-                <option>Prefab Homes</option>
+                <option>Insulated Panel Builds</option>
                 <option>Container Businesses</option>
                 <option>Land</option>
               </select>
@@ -119,8 +119,8 @@ function FeaturedListings() {
     <section className="py-28 bg-sand-light dark:bg-sand-light" ref={sectionRef}>
       <div className="max-w-[1280px] mx-auto px-6 md:px-10">
         <div className="mb-12 reveal">
-          <SectionLabel text="Curated Collection" />
-          <h2 className="text-h2 text-ocean-deep dark:text-foreground">Currently Represented</h2>
+          <SectionLabel text="Homes & Land" />
+          <h2 className="text-h2 text-ocean-deep dark:text-foreground">Properties to Explore</h2>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 reveal reveal-delay-2">
@@ -149,12 +149,12 @@ function FeaturedListings() {
 
 // ---------- Services ----------
 const services = [
-  { num: "01", name: "Concierge Acquisition", desc: "A dedicated agent guiding you end to end — private previews, off-market access, negotiation, and closing handled with white-glove discretion." },
-  { num: "02", name: "Luxury Home Sales", desc: "Marketing seven-figure Antiguan properties to qualified international buyers — discreetly and on a timeline that suits you." },
-  { num: "03", name: "Luxury Investment Consulting", desc: "Strategic counsel for high-net-worth investors — yield modelling, portfolio positioning, and access to vetted opportunities across Antigua's premium market." },
-  { num: "04", name: "Relocation Services", desc: "Guiding international buyers through residency logistics — banking, schools, healthcare, import of household goods." },
-  { num: "05", name: "Citizenship by Investment", desc: "End-to-end support for Antigua's CBI programme through qualifying real estate. Licensed broker, pre-vetted developments." },
-  { num: "06", name: "Real Estate Development", desc: "Ground-up residential and commercial development. Land-to-build projects and partnerships with buyers and investors bringing new property to market." },
+  { num: "01", name: "Traditional Construction", interest: "traditional-construction", desc: "Conventional block and concrete homes, coordinated around your land, needs and budget." },
+  { num: "02", name: "Container Builds", interest: "container-builds", desc: "Shipping containers converted into homes, offices, shops and useful commercial spaces." },
+  { num: "03", name: "Insulated Panel Builds", interest: "insulated-panel-builds", desc: "Our recommended method for better thermal performance, faster erection and lower cost than concrete block." },
+  { num: "04", name: "Renovations & Trades", interest: "renovations-trades", desc: "Vetted help with tiling, painting, plumbing, electrical work, roofing, drawings and design." },
+  { num: "05", name: "Property Sales & Land", interest: "property-sales-land", desc: "Browse houses and land with clear details, then arrange a viewing or ask about the next steps." },
+  { num: "06", name: "Relocation Services", interest: "relocation", desc: "Local support for overseas buyers finding land, property and reliable people on the ground." },
 ];
 
 function Services() {
@@ -178,6 +178,12 @@ function Services() {
               </p>
               <h3 className="font-serif text-xl text-off-white mb-3">{s.name}</h3>
               <p className="font-sans text-off-white/50 text-sm leading-relaxed">{s.desc}</p>
+              <Link
+                to={`/contact?interest=${s.interest}`}
+                className="inline-flex items-center gap-2 mt-5 font-sans text-xs text-gold hover:text-gold-soft transition-colors"
+              >
+                Enquire <span>→</span>
+              </Link>
             </div>
           ))}
         </div>
@@ -273,7 +279,7 @@ function Testimonials() {
 // ---------- Index ----------
 function StatsStrip() {
   const stats = [
-    { num: "50+", label: "Homes Placed" },
+    { num: "50+", label: "Clients Helped" },
     { num: "15+", label: "Years on Island" },
     { num: "$80M+", label: "In Transactions" },
     { num: "94%", label: "Client Retention" },

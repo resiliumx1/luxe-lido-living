@@ -4,7 +4,7 @@ import SectionLabel from "@/components/SectionLabel";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const highlights = [
-  { icon: Home, label: "Residential & Commercial", desc: "Private homes, rentals, retail, offices" },
+  { icon: Home, label: "Residential & Commercial", desc: "Homes, retail spaces and offices" },
   { icon: Hammer, label: "Concrete & Wood Builds", desc: "Traditional Caribbean construction" },
   { icon: Building2, label: "From ~US$400 / sq ft", desc: "Transparent, attainable pricing" },
   { icon: Sparkles, label: "Move-In Ready", desc: "Delivered fully equipped & furnished" },
@@ -41,9 +41,8 @@ export default function BuildYourHome() {
             Owning a home in Antigua is more attainable than you think.
           </h2>
           <p className="font-sans text-ocean-mid dark:text-foreground/70 text-body leading-relaxed">
-            Alongside our curated resale collection, we build ground-up — residential and commercial,
-            in concrete and wood. From approximately US$400 per square foot, delivered move-in ready
-            and, if you wish, fully furnished.
+            We build from the ground up — residential and commercial, in concrete, wood and insulated
+            panel systems. Projects can be delivered move-in ready and, if you wish, fully furnished.
           </p>
         </div>
 

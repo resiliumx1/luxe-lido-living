@@ -13,16 +13,16 @@ export default function LuxuryHomes() {
       <PageBanner
         image={heroImg}
         title="Luxury Homes"
-        subtitle="Antigua's Finest Residences"
+        subtitle="Homes for sale across Antigua & Barbuda"
       />
 
       <main id="main-content">
         <section aria-label="Luxury property listings" className="py-20 bg-off-white dark:bg-background">
           <div className="max-w-[1280px] mx-auto px-6 md:px-10">
             <div className="max-w-2xl mb-16">
-              <SectionLabel text="Exclusive Residences" />
+              <SectionLabel text="Homes for Sale" />
               <p className="font-sans text-ocean-mid dark:text-foreground/70 text-base leading-relaxed">
-                From oceanfront villas to private hilltop estates, discover Antigua's most exclusive residential properties. Each home is presented with white-glove service and unmatched local expertise.
+                Browse waterfront villas, family homes and hillside properties across Antigua. Review the details online, then ask Ashante a question or arrange a viewing when you are ready.
               </p>
             </div>
 
@@ -50,7 +50,7 @@ export default function LuxuryHomes() {
         <div className="bg-ocean-deep py-16 border-t border-gold/20">
           <div className="max-w-[1280px] mx-auto px-6 md:px-10 flex flex-col md:flex-row items-center justify-between gap-6">
             <p className="font-serif italic text-off-white text-xl md:text-2xl">
-              Off-market, new build, or not yet listed — Ashante sees inventory before it reaches the public.
+              Looking for a home, a new build or a plot of land? Tell Ashante what would work for you.
             </p>
             <a
               href="/contact"

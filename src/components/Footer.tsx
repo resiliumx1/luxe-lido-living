@@ -5,7 +5,7 @@ import { WHATSAPP_NUMBER, ASHANTE_EMAIL, ASHANTE_PHONE, ASHANTE_PHONE_RAW, OFFIC
 const quickLinks = [
   { label: "Luxury Homes", href: "/luxury-homes" },
   { label: "Container Solutions", href: "/container-solutions" },
-  { label: "Prefab Homes", href: "/prefab-homes" },
+  { label: "Insulated Panel Builds", href: "/prefab-homes" },
   { label: "Trailers", href: "/trailers" },
   { label: "Services", href: "/services" },
   { label: "About Ashante", href: "/about" },
@@ -48,17 +48,17 @@ export default function Footer() {
               <img src="/logo-dark.svg" className="h-14" alt="A. Lindsay Luxe Estates" />
             </span>
             <p className="font-sans text-off-white/50 text-sm mt-4 text-center max-w-md">
-              Antigua &amp; Barbuda's finest residences, represented with precision since 2010.
+              Construction, renovation, land and property support across Antigua &amp; Barbuda.
             </p>
             <p className="font-serif italic text-gold/70 text-sm tracking-wide mt-3">
-              Licensed · Discreet · On-island
+              Practical · Professional · On-island
             </p>
           </div>
 
           <div className="flex flex-col md:flex-row items-center justify-between gap-8 mb-16">
             {/* Tagline */}
             <p className="font-serif italic text-gold text-sm hidden md:block">
-              Luxury Real Estate in Antigua &amp; Barbuda
+              Homes, Construction &amp; Property in Antigua &amp; Barbuda
             </p>
 
             {/* Social */}
@@ -157,7 +157,7 @@ export default function Footer() {
             </p>
             <div className="flex items-center gap-4">
               <p className="font-sans text-white/40 text-xs">
-                Licensed Real Estate Agent, Antigua &amp; Barbuda
+                Construction &amp; Licensed Real Estate Services, Antigua &amp; Barbuda
               </p>
               <Link to="/admin/login" className="font-sans text-[11px] tracking-wider uppercase text-gold/60 hover:text-gold transition-colors duration-300 flex items-center gap-1.5">
                 <Lock size={10} /> Admin

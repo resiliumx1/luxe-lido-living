@@ -84,7 +84,7 @@ export default function ContainerPreview() {
         {/* CTA */}
         <div className="text-center reveal reveal-delay-4">
           <GoldCTA variant="solid" onClick={() => navigate("/container-solutions")}>
-            Explore the Catalog <ArrowRight size={14} className="inline ml-1" />
+             Explore Container Options <ArrowRight size={14} className="inline ml-1" />
           </GoldCTA>
         </div>
       </div>

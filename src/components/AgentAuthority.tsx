@@ -4,7 +4,7 @@ import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const stats = [
   { num: "15+", label: "Years", sub: "Expert Knowledge" },
-  { num: "50+", label: "Properties", sub: "Sold & Leased" },
+  { num: "50+", label: "Clients", sub: "Helped Locally & Abroad" },
   { num: "94%", label: "Client", sub: "Client Retention" },
 ];
 
@@ -20,7 +20,7 @@ export default function AgentAuthority() {
             <div className="relative">
               <img
                 src={ashanteImg}
-                alt="Ashante Lindsay — Luxury Property Specialist"
+                alt="Ashante Lindsay — construction and property advisor"
                 className="w-full object-cover aspect-[4/5]"
                 style={{ borderRadius: "12px" }}
                 loading="lazy"
@@ -38,7 +38,7 @@ export default function AgentAuthority() {
           <div className="reveal reveal-delay-2">
             {/* Eyebrow */}
             <p className="small-caps text-xs text-gold tracking-[0.25em] font-sans mb-4">
-              Your Guide to Antiguan Luxury
+              Local Construction &amp; Property Guidance
             </p>
 
             {/* Name */}
@@ -48,19 +48,19 @@ export default function AgentAuthority() {
 
             {/* Title */}
             <p className="font-sans text-gold font-medium mb-8" style={{ fontSize: "17px" }}>
-              Luxury Property Specialist, Antigua &amp; Barbuda
+              Construction Coordinator &amp; Licensed Real Estate Agent
             </p>
 
             {/* Bio */}
             <div className="space-y-4 mb-10">
               <p className="font-sans text-off-white/80 leading-relaxed" style={{ fontSize: "17px" }}>
-                Born and raised in the heart of the Caribbean, Ashante brings an intimate understanding of Antigua's most coveted properties and a reputation for white-glove service that exceeds every expectation.
+                Born and raised in the Caribbean, Ashante understands how homes are built, improved and bought in Antigua — and which local professionals can help get the work done properly.
               </p>
               <p className="font-sans text-off-white/80 leading-relaxed" style={{ fontSize: "17px" }}>
-                From oceanfront villas to innovative container builds, she navigates every corner of the market with passion — guiding international buyers, investors, and families with equal dedication.
+                From a first block-and-concrete home to an insulated panel build, container conversion, renovation or land purchase, she guides local families and overseas buyers with the same care.
               </p>
               <p className="font-sans text-off-white/80 leading-relaxed" style={{ fontSize: "17px" }}>
-                Whether you're seeking a permanent residence, a vacation retreat, or a strategic investment, Ashante ensures the process is as considered as the destination.
+                You can ask her to manage the full project, or manage it yourself with access to vetted trades, materials and practical on-island support.
               </p>
             </div>
 
@@ -81,7 +81,7 @@ export default function AgentAuthority() {
               to="/contact"
               className="inline-flex items-center gap-2 border border-gold text-gold font-sans font-medium small-caps tracking-widest text-sm px-8 py-4 transition-all duration-300 hover:bg-gold hover:text-ocean-deep group"
             >
-              Schedule a Private Consultation
+              Discuss Your Project
               <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
             </Link>
           </div>

@@ -25,16 +25,18 @@ function getCtaForPath(pathname: string): CtaAction {
     pathname.startsWith("/about") ||
     pathname.startsWith("/contact")
   ) {
-    return { label: "Book a Consultation", type: "modal" };
+    return { label: "Discuss Your Project", type: "route", to: "/contact" };
   }
-  // Luxury homes, listings, property details, home — default to viewing
-  return { label: "Book a Viewing", type: "modal" };
+  if (pathname.startsWith("/luxury-homes") || pathname.startsWith("/properties")) {
+    return { label: "Book a Viewing", type: "modal" };
+  }
+  return { label: "Discuss Your Project", type: "route", to: "/contact" };
 }
 
 const navLinks = [
   { label: "Luxury Homes", href: "/luxury-homes" },
   { label: "Container Solutions", href: "/container-solutions" },
-  { label: "Prefab Homes", href: "/prefab-homes" },
+  { label: "Insulated Panel Builds", href: "/prefab-homes" },
   { label: "Trailers", href: "/trailers" },
   { label: "Services", href: "/services" },
   { label: "About", href: "/about" },

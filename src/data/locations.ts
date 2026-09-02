@@ -35,7 +35,7 @@ export const NEIGHBORHOOD_DETAILS: Record<
     image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80",
   },
   "Galley Bay": {
-    desc: "Secluded luxury on the west coast",
+    desc: "Quiet west-coast living near the sea",
     image: "https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?w=800&q=80",
   },
   "Hodges Bay": {
