@@ -38,7 +38,7 @@ const DESIGN_STATUS = [
   { value: "ideas-only", label: "Ideas only so far" },
 ];
 const CONTAINER_SIZES = [{ value: "20ft", label: "20ft" }, { value: "40ft", label: "40ft" }, { value: "unsure", label: "Not sure yet" }];
-const TIMELINES = [{ value: "asap", label: "As soon as possible" }, { value: "1-3-months", label: "1–3 months" }, { value: "3-6-months", label: "3–6 months" }, { value: "6-plus-months", label: "6+ months" }, { value: "exploring", label: "Just exploring" }];
+const TIMELINES = [{ value: "asap", label: "As soon as possible" }, { value: "1-3-months", label: "1–3 months" }, { value: "3-6-months", label: "3–6 months" }, { value: "6-plus-months", label: "6+ months" }, { value: "unsure", label: "Not sure yet" }];
 const BUDGETS = [{ value: "under-50k", label: "Under US$50k" }, { value: "50k-150k", label: "US$50k–150k" }, { value: "150k-300k", label: "US$150k–300k" }, { value: "300k-plus", label: "US$300k+" }, { value: "unsure", label: "Not sure yet" }];
 const CONTACT_METHODS = [{ value: "whatsapp", label: "WhatsApp" }, { value: "call", label: "Phone call" }, { value: "email", label: "Email" }];
 
