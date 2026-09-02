@@ -93,7 +93,7 @@ export default function InquiriesAdmin() {
     };
     return Object.entries(value)
       .filter(([key]) => key !== "need")
-      .map(([key, item]) => [labels[key] || key.replaceAll("_", " "), typeof item === "boolean" ? (item ? "Yes" : "No") : String(item)]);
+      .map(([key, item]) => [labels[key] || key.replace(/_/g, " "), typeof item === "boolean" ? (item ? "Yes" : "No") : String(item)]);
   };
 
   const exportLeadsCsv = () => {
