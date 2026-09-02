@@ -19,17 +19,17 @@ export default function PrefabHomes() {
     <div className="bg-off-white dark:bg-background">
       <PageBanner
         image={heroImg}
-        title="Prefab Homes"
-        subtitle="Factory-engineered homes, assembled on your site in weeks rather than years."
+        title="Insulated Panel Builds"
+        subtitle="A faster, cooler and more cost-conscious way to build."
       />
 
       <main id="main-content">
         <section aria-label="Prefab home listings" className="py-20 bg-off-white dark:bg-background">
           <div className="max-w-[1280px] mx-auto px-6 md:px-10">
             <div className="max-w-2xl mb-16">
-              <SectionLabel text="Prefabricated Homes" />
+              <SectionLabel text="Our Recommended Method" />
               <p className="font-sans text-ocean-mid dark:text-foreground/70 text-base leading-relaxed">
-                Our prefabricated homes are precision-engineered in controlled factory environments before being shipped and assembled on your chosen site in Antigua &amp; Barbuda. Built for the Caribbean climate, they combine speed, affordability, and stunning design.
+                Foam-core insulated panels are manufactured with our partner and assembled on your site. They offer better thermal performance, faster erection and lower cost than concrete block, making them the method we recommend for many new homes in Antigua &amp; Barbuda.
               </p>
             </div>
 
@@ -52,7 +52,7 @@ export default function PrefabHomes() {
             </div>
 
             {/* Key Benefits */}
-            <SectionLabel text="Why Prefab" />
+            <SectionLabel text="Why Insulated Panels" />
             <h2 className="text-h2 text-ocean-deep dark:text-foreground mb-12">Key Benefits</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
               {benefits.map(({ Icon, label, desc }) => (

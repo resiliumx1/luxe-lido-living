@@ -33,10 +33,10 @@ export default function WhyAntigua() {
         {/* Header */}
         <div className="text-center mb-16 reveal">
           <h2 className="font-serif text-ocean-deep dark:text-foreground mb-4" style={{ fontSize: "clamp(32px, 5vw, 48px)" }}>
-            A Life Unlike Any Other
+            Build and Live in Antigua
           </h2>
           <p className="font-sans text-muted-foreground max-w-[640px] mx-auto" style={{ fontSize: "17px" }}>
-            Discover why discerning buyers from around the world choose Antigua as their permanent home.
+            Local families and overseas buyers alike can find land, build a home and put down roots with the right guidance.
           </p>
         </div>
 

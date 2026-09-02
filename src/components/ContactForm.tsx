@@ -1,25 +1,33 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import { Phone, Mail, MapPin, Clock, CheckCircle, MessageCircle } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import SectionLabel from "./SectionLabel";
 import { OptionSelector } from "./ui/OptionSelector";
 import { WHATSAPP_NUMBER, ASHANTE_EMAIL, ASHANTE_PHONE, ASHANTE_PHONE_RAW, OFFICE_HOURS, OFFICE_LOCATION } from "@/lib/contact";
 const interestOptions = [
-  { value: "luxury", label: "Luxury Homes" },
-  { value: "containers", label: "Shipping Containers" },
-  { value: "trailers", label: "Custom Trailers & Mobile Kitchens" },
-  { value: "build", label: "Build / Real Estate Development" },
-  { value: "investment", label: "Luxury Investment Consulting" },
-  { value: "citizenship", label: "Citizenship by Investment" },
-  { value: "relocation", label: "Relocation" },
+  { value: "traditional-construction", label: "Traditional Construction" },
+  { value: "container-builds", label: "Container Builds" },
+  { value: "insulated-panel-builds", label: "Insulated Panel Builds" },
+  { value: "renovations-trades", label: "Renovations & Trades" },
+  { value: "property-sales-land", label: "Property Sales & Land" },
+  { value: "relocation", label: "Relocation Services" },
 ];
 
 export default function ContactForm({ dark = false }: { dark?: boolean }) {
+  const [searchParams] = useSearchParams();
   const [form, setForm] = useState({
     firstName: "", lastName: "", email: "", interest: "", message: "",
   });
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+
+  useEffect(() => {
+    const interest = searchParams.get("interest");
+    if (interest && interestOptions.some((option) => option.value === interest)) {
+      setForm((current) => ({ ...current, interest }));
+    }
+  }, [searchParams]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -69,7 +77,7 @@ export default function ContactForm({ dark = false }: { dark?: boolean }) {
                 {i < 3 && <div className={`mt-6 border-b ${dark ? "border-primary/20" : "border-sand dark:border-primary/10"}`} />}
               </div>
             ))}
-            <a href={`https://wa.me/${WHATSAPP_NUMBER}?text=Hello%20Ashante%2C%20I%27m%20interested%20in%20a%20property.`} target="_blank" rel="noopener noreferrer"
+            <a href={`https://wa.me/${WHATSAPP_NUMBER}?text=Hello%20Ashante%2C%20I%27d%20like%20to%20discuss%20a%20project%20or%20property.`} target="_blank" rel="noopener noreferrer"
               className="inline-flex items-center gap-3 bg-[#25D366] text-white font-sans font-medium small-caps tracking-wider text-sm px-6 py-3 transition-opacity hover:opacity-90">
               <MessageCircle size={16} /> Chat on WhatsApp
             </a>
@@ -114,7 +122,7 @@ export default function ContactForm({ dark = false }: { dark?: boolean }) {
               </div>
               <div>
                 <label className={`text-label block mb-2 ${labelColor}`}>Message</label>
-                <textarea placeholder="Tell us about your dream property..." rows={4} className={`${inputCls} resize-none`}
+                <textarea placeholder="Tell us about your build, renovation, land or property needs..." rows={4} className={`${inputCls} resize-none`}
                   value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} />
               </div>
               <button type="submit" disabled={submitting}

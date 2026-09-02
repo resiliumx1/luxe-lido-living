@@ -37,16 +37,16 @@ export default function LeadCapture() {
     <section className="py-24 bg-ocean-deep" ref={sectionRef}>
       <div className="max-w-[640px] mx-auto px-6 md:px-10 text-center reveal">
         <h2 className="font-serif text-off-white font-medium mb-4" style={{ fontSize: "clamp(28px, 4vw, 40px)" }}>
-          Be First to Know
+          Keep Up With New Opportunities
         </h2>
         <p className="font-sans text-off-white/70 mb-10" style={{ fontSize: "17px" }}>
-          Receive exclusive listings, market insights and curated buying guides before they go public.
+          Receive new property listings, available land, building updates and practical buying guides.
         </p>
 
         {submitted ? (
           <div className="py-6">
             <p className="font-sans text-primary font-medium text-lg mb-2">You're on the list ✓</p>
-            <p className="font-sans text-off-white/60 text-sm">We'll be in touch with exclusive opportunities.</p>
+            <p className="font-sans text-off-white/60 text-sm">We'll be in touch with relevant updates.</p>
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 mb-4">
@@ -63,7 +63,7 @@ export default function LeadCapture() {
               disabled={submitting}
               className="cta-shimmer bg-primary hover:bg-accent text-primary-foreground font-sans font-medium small-caps tracking-widest text-sm px-6 py-3.5 transition-all duration-300 whitespace-nowrap disabled:opacity-50"
             >
-              {submitting ? "Joining..." : "Get Exclusive Access"}
+              {submitting ? "Joining..." : "Join the List"}
             </button>
           </form>
         )}

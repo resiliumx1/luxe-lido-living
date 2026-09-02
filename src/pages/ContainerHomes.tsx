@@ -432,7 +432,7 @@ const businessCards = [
   { Icon: IconStorefront, title: "Pop-Up Retail", desc: "Tourist area shops & boutiques" },
   { Icon: IconCup, title: "Cafe & Restaurant", desc: "Beachside bars & dining venues" },
   { Icon: IconTower, title: "Office & Workspace", desc: "Private offices with full AC" },
-  { Icon: IconPalm, title: "Airbnb & Rentals", desc: "Vacation rental with strong ROI" },
+  { Icon: IconPalm, title: "Guest & Staff Units", desc: "Practical extra space on your property" },
 ];
 
 function ContainersForBusiness() {

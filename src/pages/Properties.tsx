@@ -24,16 +24,16 @@ export default function Properties() {
       <PageBanner
         image={heroImg}
         title="Properties"
-        subtitle="Browse Our Full Portfolio"
+        subtitle="Browse homes, land and building options"
       />
 
       <main id="main-content">
         <section aria-label="All property listings" className="py-20 bg-off-white dark:bg-background">
           <div className="max-w-[1280px] mx-auto px-6 md:px-10">
             <div className="max-w-2xl mb-10">
-              <SectionLabel text="Full Portfolio" />
+              <SectionLabel text="Available Property" />
               <p className="font-sans text-ocean-mid dark:text-foreground/70 text-base leading-relaxed">
-                Explore our complete collection of luxury villas, container homes, and prefab residences across Antigua & Barbuda.
+                Explore houses and building options across Antigua & Barbuda, with clear details available before you make an enquiry.
               </p>
             </div>
 

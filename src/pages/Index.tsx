@@ -119,8 +119,8 @@ function FeaturedListings() {
     <section className="py-28 bg-sand-light dark:bg-sand-light" ref={sectionRef}>
       <div className="max-w-[1280px] mx-auto px-6 md:px-10">
         <div className="mb-12 reveal">
-          <SectionLabel text="Curated Collection" />
-          <h2 className="text-h2 text-ocean-deep dark:text-foreground">Currently Represented</h2>
+          <SectionLabel text="Homes & Land" />
+          <h2 className="text-h2 text-ocean-deep dark:text-foreground">Properties to Explore</h2>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 reveal reveal-delay-2">
@@ -149,12 +149,12 @@ function FeaturedListings() {
 
 // ---------- Services ----------
 const services = [
-  { num: "01", name: "Concierge Acquisition", desc: "A dedicated agent guiding you end to end — private previews, off-market access, negotiation, and closing handled with white-glove discretion." },
-  { num: "02", name: "Luxury Home Sales", desc: "Marketing seven-figure Antiguan properties to qualified international buyers — discreetly and on a timeline that suits you." },
-  { num: "03", name: "Luxury Investment Consulting", desc: "Strategic counsel for high-net-worth investors — yield modelling, portfolio positioning, and access to vetted opportunities across Antigua's premium market." },
-  { num: "04", name: "Relocation Services", desc: "Guiding international buyers through residency logistics — banking, schools, healthcare, import of household goods." },
-  { num: "05", name: "Citizenship by Investment", desc: "End-to-end support for Antigua's CBI programme through qualifying real estate. Licensed broker, pre-vetted developments." },
-  { num: "06", name: "Real Estate Development", desc: "Ground-up residential and commercial development. Land-to-build projects and partnerships with buyers and investors bringing new property to market." },
+  { num: "01", name: "Traditional Construction", desc: "Conventional block and concrete homes, coordinated around your land, needs and budget." },
+  { num: "02", name: "Container Builds", desc: "Shipping containers converted into homes, offices, shops and useful commercial spaces." },
+  { num: "03", name: "Insulated Panel Builds", desc: "Our recommended method for better thermal performance, faster erection and lower cost than concrete block." },
+  { num: "04", name: "Renovations & Trades", desc: "Vetted help with tiling, painting, plumbing, electrical work, roofing, drawings and design." },
+  { num: "05", name: "Property Sales & Land", desc: "Browse houses and land with clear details, then arrange a viewing or ask about the next steps." },
+  { num: "06", name: "Relocation Services", desc: "Local support for overseas buyers finding land, property and reliable people on the ground." },
 ];
 
 function Services() {
@@ -273,7 +273,7 @@ function Testimonials() {
 // ---------- Index ----------
 function StatsStrip() {
   const stats = [
-    { num: "50+", label: "Homes Placed" },
+    { num: "50+", label: "Clients Helped" },
     { num: "15+", label: "Years on Island" },
     { num: "$80M+", label: "In Transactions" },
     { num: "94%", label: "Client Retention" },

@@ -25,10 +25,12 @@ function getCtaForPath(pathname: string): CtaAction {
     pathname.startsWith("/about") ||
     pathname.startsWith("/contact")
   ) {
-    return { label: "Book a Consultation", type: "modal" };
+    return { label: "Discuss Your Project", type: "route", to: "/contact" };
   }
-  // Luxury homes, listings, property details, home — default to viewing
-  return { label: "Book a Viewing", type: "modal" };
+  if (pathname.startsWith("/luxury-homes") || pathname.startsWith("/properties")) {
+    return { label: "Book a Viewing", type: "modal" };
+  }
+  return { label: "Discuss Your Project", type: "route", to: "/contact" };
 }
 
 const navLinks = [

@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useSiteSettings } from "@/hooks/useSiteSettings";
 import BookingModal from "@/components/BookingModal";
 
 type HeroMode = "video-desktop" | "video-tablet" | "poster";
@@ -20,7 +19,6 @@ function getHeroMode(): HeroMode {
 
 export default function HeroSection() {
   const navigate = useNavigate();
-  const { settings } = useSiteSettings();
   const [bookingOpen, setBookingOpen] = useState(false);
   const [mode, setMode] = useState<HeroMode>(() =>
     typeof window !== "undefined" ? getHeroMode() : "poster"
@@ -105,7 +103,7 @@ export default function HeroSection() {
             >
               <span className="block w-8 h-px bg-gold" />
               <span className="font-sans text-xs font-bold tracking-[0.22em] uppercase text-gold">
-                Luxury Real Estate · Antigua &amp; Barbuda
+                Homes · Construction · Property · Antigua &amp; Barbuda
               </span>
             </div>
 
@@ -117,9 +115,9 @@ export default function HeroSection() {
               animationDelay: "0.5s",
             }}
             >
-              Your Caribbean dream,
+              Build the home you need,
               <br />
-              <span className="italic text-gold">within reach</span>
+              <span className="italic text-gold">right here in Antigua</span>
             </h1>
 
             {/* Sub-headline */}
@@ -131,7 +129,7 @@ export default function HeroSection() {
                 animationDelay: "0.8s",
               }}
             >
-              Oceanfront villas, attainable homes, containers, and custom builds — guided by a licensed Antiguan agent who grew up here and believes paradise should be possible for you.
+              Traditional, container and insulated panel builds — plus renovations, trusted trades, land and homes for sale, with practical local guidance from start to finish.
             </p>
 
             {/* CTAs */}
@@ -140,11 +138,11 @@ export default function HeroSection() {
               style={{ animationDelay: "1.0s" }}
             >
               <button
-                onClick={() => navigate("/luxury-homes")}
+                 onClick={() => navigate("/services")}
                 className="group hero-cta-primary font-sans text-sm font-semibold tracking-[0.06em] px-7 py-3.5 bg-gold text-primary-foreground border-none cursor-pointer transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(201,169,110,0.4)] inline-flex items-center justify-center gap-2"
                 style={{ borderRadius: "6px" }}
               >
-                Explore Properties
+                Explore Our Services
                 <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">
                   →
                 </span>

@@ -4,19 +4,19 @@ import SectionLabel from "@/components/SectionLabel";
 
 
 const stats = [
-  { value: "50+", label: "Homes Placed" },
+  { value: "50+", label: "Clients Helped" },
   { value: "15+", label: "Years on Island" },
   { value: "$80M+", label: "In Transactions" },
   { value: "94%", label: "Client Retention" },
 ];
 
 const specialties = [
-  "Luxury Villas",
-  "Container Homes",
-  "Prefab Homes",
-  "Investment Properties",
-  "Citizenship by Investment",
-  "Real Estate Development",
+  "Traditional Construction",
+  "Container Builds",
+  "Insulated Panel Builds",
+  "Renovations & Trades",
+  "Property Sales & Land",
+  "Relocation Services",
 ];
 
 export default function About() {
@@ -26,7 +26,7 @@ export default function About() {
       <div className="relative h-[50vh] min-h-[380px] flex items-end pb-20">
         <img
           src={heroImg}
-          alt="Luxury waterfront property at sunset, Antigua & Barbuda"
+          alt="Waterfront home at sunset in Antigua & Barbuda"
           className="absolute inset-0 w-full h-full object-cover"
           loading="eager"
           fetchPriority="high"
@@ -50,7 +50,7 @@ export default function About() {
               {/* Image */}
               <div className="relative md:sticky md:top-28">
                 <div className="relative z-10">
-                  <img src={ashanteImg} alt="Ashante Lindsay, Luxury Property Specialist, Antigua" className="w-full object-cover aspect-[4/5]" loading="lazy" decoding="async" />
+                  <img src={ashanteImg} alt="Ashante Lindsay, construction and property advisor in Antigua" className="w-full object-cover aspect-[4/5]" loading="lazy" decoding="async" />
                 </div>
                 <div className="absolute top-6 left-6 w-full aspect-[4/5] border border-gold z-0" />
               </div>
@@ -60,10 +60,10 @@ export default function About() {
                 <SectionLabel text="Her Story" />
                 <h2 className="text-h2 text-ocean-deep dark:text-foreground mb-6">Rooted in the Caribbean</h2>
                 <div className="space-y-4 font-sans text-ocean-mid dark:text-foreground/70 text-base leading-relaxed">
-                  <p>Ashante was licensed in Antigua at twenty-four. Fifteen years and fifty-plus closings later, she's one of the few brokers on the island who can walk a buyer through both a seven-figure English Harbour villa and the full Citizenship by Investment application without handing off to a lawyer.</p>
-                  <p>Her portfolio is deliberately small: six to eight active listings at any given time, each personally inspected, photographed, and represented. She turns down more instructions than she accepts — a habit that has made her the quiet first call for returning Antiguans and for international buyers introduced through London, New York, and Toronto networks.</p>
-                  <p>The container and prefab divisions came later, born from watching too many young Antiguans locked out of the traditional housing market. Today she represents both sides of the island's real estate economy: the hillside villa and the factory-built starter home, held to the same standards of service.</p>
-                  <p>Her clients stay in touch long after closing. Most eventually send a second buyer. That's the work.</p>
+                  <p>Ashante was licensed in Antigua at twenty-four and has spent more than fifteen years helping people make practical decisions about homes, land and property across the island.</p>
+                  <p>Today, her work is centred on residential construction. She coordinates conventional block and concrete builds, container conversions, insulated panel homes and renovation projects, drawing on vetted tradesmen and manufacturing partners.</p>
+                  <p>Some clients want Ashante to manage the entire project. Others already have a plan and need dependable trades, materials or local guidance. She supports both, whether the client is an Antiguan homeowner repainting or extending a house, a first-time builder buying a plot, or an overseas buyer planning a move.</p>
+                  <p>Property sales remain part of the business, with homes and land presented clearly online so buyers can review the details before they call. The aim is straightforward: make it easier to build, improve or buy the right place.</p>
                 </div>
               </div>
             </div>
@@ -104,7 +104,7 @@ export default function About() {
           <div className="max-w-[800px] mx-auto px-6 md:px-10 text-center">
             <div className="gold-line w-16 mx-auto mb-10" />
             <blockquote className="font-serif italic text-2xl md:text-3xl text-ocean-deep dark:text-foreground leading-relaxed mb-6">
-              "Most of my clients aren't buying a house. They're buying a life they've been quietly planning for ten years. My job is to make the last mile easy."
+              "Whether you are building from the ground up, renovating one room or buying a plot of land, my job is to help you find the right people and keep the work moving."
             </blockquote>
             <p className="small-caps text-xs text-gold tracking-widest font-sans">— Ashante Lindsay</p>
             <div className="gold-line w-16 mx-auto mt-10" />
@@ -114,7 +114,7 @@ export default function About() {
         {/* CTA */}
         <div className="bg-ocean-deep py-16">
           <div className="max-w-[1280px] mx-auto px-6 md:px-10 flex flex-col md:flex-row items-center justify-between gap-6">
-            <p className="font-serif italic text-off-white text-xl md:text-2xl">Ready to start looking?</p>
+            <p className="font-serif italic text-off-white text-xl md:text-2xl">Ready to discuss your build, renovation or property plans?</p>
             <a
               href="/contact"
               className="cta-shimmer flex-shrink-0 bg-gold hover:bg-gold-soft text-ocean-deep font-sans font-medium small-caps tracking-widest text-sm px-8 py-4 transition-colors duration-300 flex items-center gap-2 group"

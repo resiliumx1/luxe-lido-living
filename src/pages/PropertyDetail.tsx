@@ -217,14 +217,14 @@ export default function PropertyDetail() {
                 <div className="flex items-center gap-4">
                   <img
                     src={ashanteImg}
-                    alt="Ashante Lindsay, Luxury Property Specialist, Antigua"
+                    alt="Ashante Lindsay, licensed real estate agent in Antigua"
                     className="w-14 h-14 object-cover flex-shrink-0"
                     style={{ borderRadius: "50%" }}
                     loading="lazy"
                   />
                   <div>
                     <p className="font-serif text-foreground font-medium">Ashante Lindsay</p>
-                    <p className="font-sans text-xs text-muted-foreground">Luxury Property Specialist</p>
+                    <p className="font-sans text-xs text-muted-foreground">Licensed Real Estate Agent</p>
                   </div>
                 </div>
               </div>

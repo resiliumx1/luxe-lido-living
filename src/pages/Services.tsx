@@ -3,43 +3,61 @@ import PageBanner from "@/components/PageBanner";
 import SectionLabel from "@/components/SectionLabel";
 import ContactForm from "@/components/ContactForm";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { Link } from "react-router-dom";
 
 const services = [
   {
     num: "01",
-    name: "Concierge Acquisition",
-    desc: "A dedicated agent guiding you end to end — a white-glove concierge experience from first conversation to keys in hand.",
-    details: "We pair you with a dedicated agent who acts as your single point of contact throughout the journey of acquiring property in Antigua. Private previews, off-market introductions, negotiation, due diligence, and closing are all coordinated discreetly on your behalf — so the experience feels less like a transaction and more like a curated introduction to the island.",
+    name: "Traditional Construction",
+    interest: "traditional-construction",
+    desc: "Conventional block and concrete homes built for everyday life in Antigua & Barbuda.",
+    details: "From a first home or family extension to a complete new residence, we coordinate drawings, materials, skilled trades and construction around your site, budget and priorities. You receive clear guidance from early planning through handover.",
   },
   {
     num: "02",
-    name: "Luxury Home Sales",
-    desc: "Bespoke marketing strategies to present your property to the world's most discerning buyers.",
-    details: "We craft tailored marketing campaigns featuring professional photography, drone videography, virtual tours, and targeted digital advertising. Your property is presented to qualified international buyers through our global network and premium listing platforms.",
+    name: "Container Builds",
+    interest: "container-builds",
+    desc: "Shipping containers converted into practical homes, offices, shops and commercial units.",
+    details: "We help you select the right container, define the layout and coordinate the conversion for your intended use. Each project can include insulation, windows, doors, utilities, finishes and equipment suited to the Caribbean climate.",
   },
   {
     num: "03",
-    name: "Luxury Investment Consulting",
-    desc: "Strategic counsel for high-net-worth investors evaluating Antigua's premium residential, hospitality, and land opportunities.",
-    details: "We advise private investors and family offices on positioning capital within Antigua's luxury market — from trophy villa acquisitions and boutique hospitality plays to land banking and development partnerships. Engagements include yield modelling, comparable analysis, off-market deal flow, and structuring guidance, all delivered with the discretion expected at this level.",
+    name: "Insulated Panel Builds",
+    interest: "insulated-panel-builds",
+    desc: "Our recommended building method for better thermal performance, faster erection and lower cost than concrete block.",
+    details: "Through our manufacturing partner, we supply and build with foam-core insulated panels engineered for efficient construction in the Caribbean. The system reduces heat transfer, shortens time on site and gives homeowners a cost-conscious alternative without compromising a strong, comfortable finish.",
   },
   {
     num: "04",
-    name: "Relocation Services",
-    desc: "Full-service support for international clients making Antigua their permanent or seasonal home.",
-    details: "Moving to the Caribbean is a life-changing decision. We assist with everything beyond the property itself — school placements, healthcare orientation, banking introductions, utilities setup, and connecting you with the local expatriate community.",
+    name: "Renovations & Trades",
+    interest: "renovations-trades",
+    desc: "Reliable help for tiling, painting, plumbing, electrical work, roofing, drawings and design.",
+    details: "Ashante brings together vetted tradesmen and manages the work, whether you are refreshing one room, repainting a property, replacing a roof or carrying out a larger renovation. Architectural drawings and design support can be included where needed.",
   },
   {
     num: "05",
-    name: "Citizenship by Investment",
-    desc: "Structured guidance through Antigua's CBI programme, unlocking Caribbean citizenship through real estate.",
-    details: "Antigua & Barbuda's Citizenship by Investment Programme offers one of the most attractive pathways to Caribbean citizenship. We guide you through eligible property selection, application preparation, government liaison, and post-approval support for a seamless experience.",
+    name: "Property Sales & Land",
+    interest: "property-sales-land",
+    desc: "Houses and land for sale, with the details buyers need to explore their options online.",
+    details: "Browse homes and plots on the site before making an enquiry. Ashante can arrange viewings, answer questions about the property or area, and help buyers understand the practical next steps toward purchasing and building.",
   },
   {
     num: "06",
-    name: "Real Estate Development",
-    desc: "Ground-up residential and commercial development — land-to-build projects and partnerships with buyers and investors.",
-    details: "We originate and shepherd development projects across Antigua, from sourcing the right parcel through design, permitting, construction oversight, and delivery. Whether you're an end-user building a private residence, an investor backing a multi-unit or commercial scheme, or a partner co-developing land we already control, we structure the build to your objectives and manage every stakeholder in between.",
+    name: "Relocation Services",
+    interest: "relocation",
+    desc: "On-the-ground support for overseas buyers looking for land, a home or a place to build.",
+    details: "We help you understand locations, view suitable land and property, connect with trusted local professionals and plan the practical steps of moving to Antigua & Barbuda. You have a local point of contact before, during and after your purchase.",
+  },
+];
+
+const workStyles = [
+  {
+    title: "Done For You",
+    desc: "Ashante manages the project end to end — coordinating design, materials, trades, timelines and the work on site through to handover.",
+  },
+  {
+    title: "Buyer Managed",
+    desc: "You manage the build directly, while Ashante supplies trusted trades, materials and practical support where you need it.",
   },
 ];
 
@@ -51,7 +69,7 @@ export default function Services() {
       <PageBanner
         image={heroImg}
         title="Services"
-        subtitle="How We Serve You"
+        subtitle="Construction, renovation, land and property support"
       />
 
       <main id="main-content">
@@ -61,8 +79,8 @@ export default function Services() {
             <div className="max-w-2xl mb-16 reveal">
               <SectionLabel text="What We Offer" />
               <p className="font-sans text-ocean-mid dark:text-foreground/70 text-base leading-relaxed">
-                From your first enquiry to long after you've settled in, A. Lindsay Luxe Estates provides
-                comprehensive real estate services tailored to the unique needs of the Antigua & Barbuda market.
+                Whether you are building a home, improving the one you have, buying land or relocating,
+                Ashante brings the right people and practical local support together to move the work forward.
               </p>
             </div>
 
@@ -90,7 +108,28 @@ export default function Services() {
                   {/* Long description */}
                   <div className="md:col-span-7">
                     <p className="font-sans text-base text-ocean-mid dark:text-foreground/70 leading-relaxed">{s.details}</p>
+                    <Link
+                      to={`/contact?interest=${s.interest}`}
+                      className="inline-flex items-center gap-2 mt-5 font-sans text-sm text-gold hover:text-gold-soft transition-colors"
+                    >
+                      Enquire about this service <span>→</span>
+                    </Link>
                   </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="py-24 bg-sand-light dark:bg-sand-light">
+          <div className="max-w-[1280px] mx-auto px-6 md:px-10">
+            <SectionLabel text="Two Ways to Work" />
+            <h2 className="text-h2 text-ocean-deep dark:text-foreground mb-10">Choose the support that suits you.</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {workStyles.map((style) => (
+                <div key={style.title} className="bg-off-white dark:bg-card border border-sand dark:border-gold/15 p-8 md:p-10">
+                  <h3 className="font-serif text-2xl text-ocean-deep dark:text-foreground mb-4">{style.title}</h3>
+                  <p className="font-sans text-ocean-mid dark:text-foreground/70 leading-relaxed">{style.desc}</p>
                 </div>
               ))}
             </div>
@@ -101,7 +140,7 @@ export default function Services() {
         <div className="bg-ocean-deep py-16 border-t border-gold/20">
           <div className="max-w-[1280px] mx-auto px-6 md:px-10 flex flex-col md:flex-row items-center justify-between gap-6">
             <p className="font-serif italic text-off-white text-xl md:text-2xl">
-              Ready to get started? Let's discuss your needs.
+              Planning a build, renovation or property purchase? Let's discuss what you need.
             </p>
             <a
               href="/contact"
