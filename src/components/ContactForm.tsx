@@ -77,9 +77,18 @@ const initialForm: FormState = {
   firstName: "", lastName: "", phone: "", email: "", preferredContact: "", assessmentAcknowledged: false, service: "",
 };
 
+const DRAFT_KEY = "luxe-enquiry-draft";
+
 export default function ContactForm({ dark = false }: { dark?: boolean }) {
   const [searchParams] = useSearchParams();
-  const [form, setForm] = useState<FormState>(initialForm);
+  const [form, setForm] = useState<FormState>(() => {
+    if (typeof window === "undefined") return initialForm;
+    try {
+      const saved = window.sessionStorage.getItem(DRAFT_KEY);
+      if (saved) return { ...initialForm, ...(JSON.parse(saved) as Partial<FormState>) };
+    } catch { /* ignore malformed draft */ }
+    return initialForm;
+  });
   const [step, setStep] = useState(0);
   const [photo, setPhoto] = useState<File | null>(null);
   const [error, setError] = useState("");
@@ -98,6 +107,14 @@ export default function ContactForm({ dark = false }: { dark?: boolean }) {
       }));
     }
   }, [searchParams]);
+
+  useEffect(() => {
+    if (submitted) return;
+    try {
+      window.sessionStorage.setItem(DRAFT_KEY, JSON.stringify(form));
+    } catch { /* storage unavailable */ }
+  }, [form, submitted]);
+
 
   const requiresAssessment = ["build-home", "managed-construction", "custom-build", "renovate-repair"].includes(form.need);
   const needsBuildMethod = ["build-home", "managed-construction", "custom-build"].includes(form.need);
