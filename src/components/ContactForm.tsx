@@ -29,13 +29,15 @@ const TIMELINES = [{ value: "asap", label: "As soon as possible" }, { value: "1-
 const BUDGETS = [{ value: "under-50k", label: "Under US$50k" }, { value: "50k-150k", label: "US$50k–150k" }, { value: "150k-300k", label: "US$150k–300k" }, { value: "300k-plus", label: "US$300k+" }, { value: "unsure", label: "Not sure yet" }];
 const CONTACT_METHODS = [{ value: "whatsapp", label: "WhatsApp" }, { value: "call", label: "Phone call" }, { value: "email", label: "Email" }];
 
-const queryNeedMap: Record<string, { need: string; buildMethod?: string }> = {
+const queryNeedMap: Record<string, { need: string; buildMethod?: string; service?: string }> = {
   "traditional-construction": { need: "build-home", buildMethod: "traditional" },
   "container-builds": { need: "container-modular" },
   "insulated-panel-builds": { need: "build-home", buildMethod: "insulated-panel" },
   "renovations-trades": { need: "renovate-repair" },
   "property-sales-land": { need: "buy-property" },
   relocation: { need: "relocation-help" },
+  "managed-construction": { need: "build-home", service: "managed-construction" },
+  "custom-builds": { need: "build-home", service: "custom-builds" },
 };
 
 const detailsSchema = z.object({
