@@ -38,7 +38,6 @@ const navLinks = [
   { label: "Insulated Panel Builds", href: "/prefab-homes" },
   { label: "Trailers", href: "/trailers" },
   { label: "About", href: "/about" },
-  { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
 ];
 
