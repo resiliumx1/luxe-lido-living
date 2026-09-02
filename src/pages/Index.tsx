@@ -149,12 +149,14 @@ function FeaturedListings() {
 
 // ---------- Services ----------
 const services = [
-  { num: "01", name: "Traditional Construction", interest: "traditional-construction", desc: "Conventional block and concrete homes, coordinated around your land, needs and budget." },
-  { num: "02", name: "Container Builds", interest: "container-builds", desc: "Shipping containers converted into homes, offices, shops and useful commercial spaces." },
-  { num: "03", name: "Insulated Panel Builds", interest: "insulated-panel-builds", desc: "Our recommended method for better thermal performance, faster erection and lower cost than concrete block." },
-  { num: "04", name: "Renovations & Trades", interest: "renovations-trades", desc: "Vetted help with tiling, painting, plumbing, electrical work, roofing, drawings and design." },
-  { num: "05", name: "Property Sales & Land", interest: "property-sales-land", desc: "Browse houses and land with clear details, then arrange a viewing or ask about the next steps." },
-  { num: "06", name: "Relocation Services", interest: "relocation", desc: "Local support for overseas buyers finding land, property and reliable people on the ground." },
+  { num: "01", name: "Managed Construction", interest: "managed-construction", desc: "We take on your build as a single managed project — drawings, permits, materials, trades and site supervision through to handover." },
+  { num: "02", name: "Custom Builds", interest: "custom-builds", desc: "A home designed around your plot, budget and how you want to live — not chosen from a fixed catalogue." },
+  { num: "03", name: "Traditional Construction", interest: "traditional-construction", desc: "Conventional block and concrete homes, coordinated around your land, needs and budget." },
+  { num: "04", name: "Container Builds", interest: "container-builds", desc: "Shipping containers converted into homes, offices, shops and useful commercial spaces." },
+  { num: "05", name: "Insulated Panel Builds", interest: "insulated-panel-builds", desc: "Our recommended method for better thermal performance, faster erection and lower cost than concrete block." },
+  { num: "06", name: "Renovations & Trades", interest: "renovations-trades", desc: "Vetted help with tiling, painting, plumbing, electrical work, roofing, drawings and design." },
+  { num: "07", name: "Property Sales & Land", interest: "property-sales-land", desc: "Browse houses and land with clear details, then arrange a viewing or ask about the next steps." },
+  { num: "08", name: "Relocation Services", interest: "relocation", desc: "Local support for overseas buyers finding land, property and reliable people on the ground." },
 ];
 
 function Services() {
