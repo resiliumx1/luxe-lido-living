@@ -252,14 +252,14 @@ export default function Index() {
   return (
     <div className="bg-off-white dark:bg-background">
       <HeroSection />
-      <StatsStrip />
+      <FactsStrip />
       <Services />
       <DeliveredWork />
       <HowItWorks />
       <BuildYourHome />
       <ContainerPreview />
       <AgentAuthority />
-      <Testimonials />
+
       <WhyAntigua />
       <Marquee />
       <PropertiesRow />
