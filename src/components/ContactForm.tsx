@@ -80,6 +80,7 @@ export default function ContactForm({ dark = false }: { dark?: boolean }) {
         ...current,
         need: preset.need,
         buildMethod: preset.buildMethod ?? current.buildMethod,
+        service: preset.service ?? current.service,
       }));
     }
   }, [searchParams]);
