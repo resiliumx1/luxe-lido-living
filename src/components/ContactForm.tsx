@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import { ArrowLeft, ArrowRight, Check, CheckCircle, Clock, Mail, MapPin, MessageCircle, Paperclip, Phone, Upload } from "lucide-react";
+import { ArrowLeft, ArrowRight, Check, CheckCircle, Clock, Info, Mail, MapPin, MessageCircle, Paperclip, Phone, Upload } from "lucide-react";
 import { z } from "zod";
 import { supabase } from "@/integrations/supabase/client";
 import SectionLabel from "./SectionLabel";
