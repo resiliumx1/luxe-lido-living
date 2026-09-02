@@ -45,12 +45,11 @@ const navLinks = [
 export default function Navigation() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [wishlistOpen, setWishlistOpen] = useState(false);
   const [bookingOpen, setBookingOpen] = useState(false);
   const [containerDropdownOpen, setContainerDropdownOpen] = useState(false);
   const [mobileContainerOpen, setMobileContainerOpen] = useState(false);
   const { theme, setTheme } = useTheme();
-  const { count } = useWishlist();
+
   const { currency, setCurrency } = useCurrency();
   const location = useLocation();
   const navigate = useNavigate();
