@@ -4,4 +4,4 @@
 - [x] Add branch-specific qualification questions and assessment-fee acknowledgement
 - [x] Preserve submission behavior while storing all answers and optional photo
 - [x] Show complete enquiry details in admin
-- [ ] Verify general enquiry and leave dedicated order flows unchanged
+- [x] Verify general enquiry and leave dedicated order flows unchanged
