@@ -7,6 +7,8 @@ import containerInteriorImg from "@/assets/container_interior.jpg";
 import containerBeachfrontImg from "@/assets/container_beachfront.jpg";
 import containerCafeImg from "@/assets/container_cafe.jpg";
 import SectionLabel from "@/components/SectionLabel";
+import PhotoGallery from "@/components/PhotoGallery";
+import { containerFinishedUnits, containerBuildSteps } from "@/data/realBuildPhotos";
 import GoldCTA from "@/components/container/GoldCTA";
 import GoldCheck from "@/components/container/GoldCheck";
 import {
