@@ -3,12 +3,13 @@ import heroImg from "@/assets/hero_villa.jpg";
 import SectionLabel from "@/components/SectionLabel";
 
 
-const stats = [
-  { value: "50+", label: "Clients Helped" },
-  { value: "15+", label: "Years on Island" },
-  { value: "$80M+", label: "In Transactions" },
-  { value: "94%", label: "Client Retention" },
+const facts = [
+  { value: "Antigua & Barbuda", label: "Working island-wide" },
+  { value: "Built to order", label: "Every unit made to spec" },
+  { value: "Vetted local trades", label: "Coordinated and supervised" },
+  { value: "Owner-led", label: "Direct contact throughout" },
 ];
+
 
 const specialties = [
   "Traditional Construction",
