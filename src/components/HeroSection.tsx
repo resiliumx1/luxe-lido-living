@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import BookingModal from "@/components/BookingModal";
 
 type HeroMode = "video-desktop" | "video-tablet" | "poster";
 
@@ -19,7 +18,6 @@ function getHeroMode(): HeroMode {
 
 export default function HeroSection() {
   const navigate = useNavigate();
-  const [bookingOpen, setBookingOpen] = useState(false);
   const [mode, setMode] = useState<HeroMode>(() =>
     typeof window !== "undefined" ? getHeroMode() : "poster"
   );
@@ -148,7 +146,7 @@ export default function HeroSection() {
                 </span>
               </button>
               <button
-                onClick={() => setBookingOpen(true)}
+                onClick={() => navigate("/contact")}
                 className="font-sans text-sm font-medium tracking-[0.05em] px-7 py-3.5 bg-transparent text-white border border-white/[0.55] cursor-pointer transition-all duration-300 hover:border-white/90 hover:bg-white/[0.08] hover:-translate-y-0.5 inline-flex items-center justify-center"
                 style={{ borderRadius: "6px" }}
               >
@@ -171,10 +169,6 @@ export default function HeroSection() {
 
       </section>
 
-      <BookingModal
-        isOpen={bookingOpen}
-        onClose={() => setBookingOpen(false)}
-      />
     </>
   );
 }
