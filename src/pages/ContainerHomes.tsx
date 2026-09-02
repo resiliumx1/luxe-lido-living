@@ -602,7 +602,7 @@ function FinalCTA() {
           </GoldCTA>
         </div>
         <div className="flex flex-wrap items-center justify-center gap-6">
-          {["Licensed Agent", "94% Client Retention", "Island-Wide Service"].map((t) => (
+          {["Licensed Agent", "Built to Order", "Island-Wide Service"].map((t) => (
             <span key={t} className="flex items-center gap-2">
               <GoldCheck />
               <span className="font-sans text-xs text-off-white/50 tracking-wider uppercase">{t}</span>
