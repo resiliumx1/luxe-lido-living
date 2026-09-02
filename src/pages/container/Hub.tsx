@@ -3,6 +3,8 @@ import { motion } from "framer-motion";
 import { ArrowRight, Shield, DollarSign, Clock, Truck, Package, Ruler, Weight, Box } from "lucide-react";
 import ResponsiveImage from "@/components/ResponsiveImage";
 import SectionLabel from "@/components/SectionLabel";
+import PhotoGallery from "@/components/PhotoGallery";
+import { containerFinishedUnits, containerBuildSteps } from "@/data/realBuildPhotos";
 import { useCurrency } from "@/contexts/CurrencyContext";
 
 const containers = [
@@ -187,6 +189,40 @@ export default function Hub() {
           </div>
         </div>
       </section>
+
+      {/* Finished units — real photography */}
+      <section className="bg-secondary py-24 px-6">
+        <div className="max-w-[1280px] mx-auto">
+          <SectionLabel text="Finished Units" />
+          <h2 className="font-serif text-h2 text-foreground mt-4 mb-3">Completed and Ready to Ship</h2>
+          <p className="font-sans text-muted-foreground text-body max-w-2xl mb-12">
+            Real photographs of completed modular units leaving the workshop. Tap to enlarge.
+          </p>
+          <PhotoGallery
+            photos={containerFinishedUnits}
+            className="grid-cols-1 sm:grid-cols-2 lg:grid-cols-2"
+            aspect="aspect-[16/11]"
+          />
+        </div>
+      </section>
+
+      {/* How they're built */}
+      <section className="bg-background py-24 px-6">
+        <div className="max-w-[1280px] mx-auto">
+          <SectionLabel text="How They're Built" />
+          <h2 className="font-serif text-h2 text-foreground mt-4 mb-3">Steel Frame, Panel Skin, Full Fit-Out</h2>
+          <p className="font-sans text-muted-foreground text-body max-w-2xl mb-12">
+            Units are built on a welded galvanised steel chassis and skinned in insulated foam-core panels —
+            structurally stronger and better insulated than block, and far quicker to erect.
+          </p>
+          <PhotoGallery
+            photos={containerBuildSteps}
+            className="grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6"
+            aspect="aspect-[4/3]"
+          />
+        </div>
+      </section>
+
 
       {/* Terms — near the order CTA */}
       <section id="order-cta" className="bg-ocean-deep py-20 px-6">
