@@ -27,7 +27,7 @@ export default function WhatsAppWidget() {
 
       {/* Tooltip */}
       <span
-        className="absolute right-[68px] top-1/2 -translate-y-1/2 bg-ocean-deep text-off-white text-xs font-sans whitespace-nowrap px-3 py-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none shadow-lg"
+        className="hidden md:block absolute right-[68px] top-1/2 -translate-y-1/2 bg-ocean-deep text-off-white text-xs font-sans whitespace-nowrap px-3 py-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none shadow-lg"
         style={{ borderRadius: "6px" }}
       >
         Chat with Ashante directly
