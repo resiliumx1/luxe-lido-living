@@ -2,11 +2,12 @@ import { Link } from "react-router-dom";
 import ashanteImg from "@/assets/ashante_portrait.jpg";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
-const stats = [
-  { num: "15+", label: "Years", sub: "Expert Knowledge" },
-  { num: "50+", label: "Clients", sub: "Helped Locally & Abroad" },
-  { num: "94%", label: "Client", sub: "Client Retention" },
+const facts = [
+  { title: "Antigua & Barbuda", sub: "Working island-wide" },
+  { title: "Built to order", sub: "Every unit made to spec" },
+  { title: "Vetted local trades", sub: "Coordinated and supervised" },
 ];
+
 
 export default function AgentAuthority() {
   const sectionRef = useScrollReveal();
