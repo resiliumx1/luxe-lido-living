@@ -1,12 +1,11 @@
 import { useState, useEffect, useRef } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { Menu, X, Heart, Sun, Moon, ChevronDown, ArrowRight } from "lucide-react";
+import { Menu, X, Sun, Moon, ChevronDown, ArrowRight } from "lucide-react";
 import { useTheme } from "next-themes";
-import { useWishlist } from "@/contexts/WishlistContext";
 import { useCurrency } from "@/contexts/CurrencyContext";
 import { LuxeLogo } from "@/components/ui/LuxeLogo";
-import WishlistDrawer from "./WishlistDrawer";
 import BookingModal from "./BookingModal";
+
 
 type CtaAction = { label: string; type: "modal" } | { label: string; type: "route"; to: string };
 
