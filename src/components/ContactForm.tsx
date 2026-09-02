@@ -10,6 +10,8 @@ import { WHATSAPP_NUMBER, ASHANTE_EMAIL, ASHANTE_PHONE, ASHANTE_PHONE_RAW, OFFIC
 
 const NEEDS = [
   { value: "build-home", label: "Build a home" },
+  { value: "managed-construction", label: "Managed construction" },
+  { value: "custom-build", label: "Custom build" },
   { value: "renovate-repair", label: "Renovate or repair" },
   { value: "container-modular", label: "Container or modular unit" },
   { value: "food-trailer", label: "Food trailer" },
@@ -24,6 +26,17 @@ const BUILD_METHODS = [
   { value: "insulated-panel", label: "Insulated panel" },
 ];
 const TRADES = ["Tiling", "Painting", "Plumbing", "Electrical", "Roofing", "Drawings & design"];
+const MANAGED_STAGES = [
+  { value: "planning", label: "Still planning" },
+  { value: "drawings-ready", label: "Drawings ready" },
+  { value: "need-drawings", label: "Need drawings arranged" },
+  { value: "in-progress", label: "Build already started" },
+];
+const DESIGN_STATUS = [
+  { value: "own-drawings", label: "I have my own drawings" },
+  { value: "arrange-drawings", label: "Please arrange the drawings" },
+  { value: "ideas-only", label: "Ideas only so far" },
+];
 const CONTAINER_SIZES = [{ value: "20ft", label: "20ft" }, { value: "40ft", label: "40ft" }, { value: "unsure", label: "Not sure yet" }];
 const TIMELINES = [{ value: "asap", label: "As soon as possible" }, { value: "1-3-months", label: "1–3 months" }, { value: "3-6-months", label: "3–6 months" }, { value: "6-plus-months", label: "6+ months" }, { value: "exploring", label: "Just exploring" }];
 const BUDGETS = [{ value: "under-50k", label: "Under US$50k" }, { value: "50k-150k", label: "US$50k–150k" }, { value: "150k-300k", label: "US$150k–300k" }, { value: "300k-plus", label: "US$300k+" }, { value: "unsure", label: "Not sure yet" }];
@@ -36,8 +49,8 @@ const queryNeedMap: Record<string, { need: string; buildMethod?: string; service
   "renovations-trades": { need: "renovate-repair" },
   "property-sales-land": { need: "buy-property" },
   relocation: { need: "relocation-help" },
-  "managed-construction": { need: "build-home", service: "managed-construction" },
-  "custom-builds": { need: "build-home", service: "custom-builds" },
+  "managed-construction": { need: "managed-construction", service: "managed-construction" },
+  "custom-builds": { need: "custom-build", service: "custom-builds" },
 };
 
 const detailsSchema = z.object({
@@ -53,13 +66,14 @@ const contactSchema = z.object({
 
 type FormState = {
   need: string; buildMethod: string; trade: string; containerSize: string;
+  projectStage: string; designStatus: string;
   timeline: string; budget: string; area: string; details: string;
   firstName: string; lastName: string; phone: string; email: string;
   preferredContact: string; assessmentAcknowledged: boolean; service: string;
 };
 
 const initialForm: FormState = {
-  need: "", buildMethod: "", trade: "", containerSize: "", timeline: "", budget: "", area: "", details: "",
+  need: "", buildMethod: "", trade: "", containerSize: "", projectStage: "", designStatus: "", timeline: "", budget: "", area: "", details: "",
   firstName: "", lastName: "", phone: "", email: "", preferredContact: "", assessmentAcknowledged: false, service: "",
 };
 
@@ -85,7 +99,8 @@ export default function ContactForm({ dark = false }: { dark?: boolean }) {
     }
   }, [searchParams]);
 
-  const requiresAssessment = form.need === "build-home" || form.need === "renovate-repair";
+  const requiresAssessment = ["build-home", "managed-construction", "custom-build", "renovate-repair"].includes(form.need);
+  const needsBuildMethod = ["build-home", "managed-construction", "custom-build"].includes(form.need);
   const selectedNeed = NEEDS.find((option) => option.value === form.need)?.label || "General enquiry";
   const textColor = dark ? "text-off-white" : "text-foreground";
   const subTextColor = dark ? "text-off-white/70" : "text-muted-foreground";
@@ -100,6 +115,8 @@ export default function ContactForm({ dark = false }: { dark?: boolean }) {
     ...(form.buildMethod && { build_method: form.buildMethod }),
     ...(form.trade && { trade: form.trade }),
     ...(form.containerSize && { container_size: form.containerSize }),
+    ...(form.projectStage && { project_stage: form.projectStage }),
+    ...(form.designStatus && { design_status: form.designStatus }),
     timeline: form.timeline,
     budget_range: form.budget,
     parish_or_area: form.area.trim(),
@@ -110,7 +127,9 @@ export default function ContactForm({ dark = false }: { dark?: boolean }) {
   const validateStep = () => {
     if (step === 0) {
       if (!form.need) return "Choose what you need help with.";
-      if (form.need === "build-home" && !form.buildMethod) return "Choose a build method.";
+      if (needsBuildMethod && !form.buildMethod) return "Choose a build method.";
+      if (form.need === "managed-construction" && !form.projectStage) return "Tell us what stage the project is at.";
+      if (form.need === "custom-build" && !form.designStatus) return "Tell us about your design or drawings.";
       if (form.need === "renovate-repair" && !form.trade) return "Choose the main trade needed.";
       if (form.need === "container-modular" && !form.containerSize) return "Choose a container size.";
       if (!form.timeline) return "Choose a rough timeline.";
@@ -187,9 +206,11 @@ export default function ContactForm({ dark = false }: { dark?: boolean }) {
     <div className="space-y-6">
       <div>
         <label className={`text-label block mb-3 ${labelColor}`}>What do you need? <span className="text-primary">*</span></label>
-        <OptionSelector name="need" options={NEEDS} value={form.need} onChange={(need) => setForm({ ...form, need, buildMethod: "", trade: "", containerSize: "", assessmentAcknowledged: false })} onDark={dark} />
+        <OptionSelector name="need" options={NEEDS} value={form.need} onChange={(need) => setForm({ ...form, need, buildMethod: "", trade: "", containerSize: "", projectStage: "", designStatus: "", assessmentAcknowledged: false })} onDark={dark} />
       </div>
-      {form.need === "build-home" && <div><label className={`text-label block mb-3 ${labelColor}`}>Build method <span className="text-primary">*</span></label><OptionSelector name="buildMethod" options={BUILD_METHODS} value={form.buildMethod} onChange={(buildMethod) => setForm({ ...form, buildMethod })} onDark={dark} /></div>}
+      {needsBuildMethod && <div><label className={`text-label block mb-3 ${labelColor}`}>Build method <span className="text-primary">*</span></label><OptionSelector name="buildMethod" options={BUILD_METHODS} value={form.buildMethod} onChange={(buildMethod) => setForm({ ...form, buildMethod })} onDark={dark} /></div>}
+      {form.need === "managed-construction" && <div><label className={`text-label block mb-3 ${labelColor}`}>Where is the project now? <span className="text-primary">*</span></label><OptionSelector name="projectStage" options={MANAGED_STAGES} value={form.projectStage} onChange={(projectStage) => setForm({ ...form, projectStage })} onDark={dark} /></div>}
+      {form.need === "custom-build" && <div><label className={`text-label block mb-3 ${labelColor}`}>Your design <span className="text-primary">*</span></label><OptionSelector name="designStatus" options={DESIGN_STATUS} value={form.designStatus} onChange={(designStatus) => setForm({ ...form, designStatus })} onDark={dark} /></div>}
       {form.need === "renovate-repair" && <div><label className={`text-label block mb-3 ${labelColor}`}>Which trade do you need? <span className="text-primary">*</span></label><OptionSelector name="trade" options={TRADES.map((trade) => ({ value: trade.toLowerCase().replace(/ /g, "-"), label: trade }))} value={form.trade} onChange={(trade) => setForm({ ...form, trade })} onDark={dark} /></div>}
       {form.need === "container-modular" && <div><label className={`text-label block mb-3 ${labelColor}`}>Container size <span className="text-primary">*</span></label><OptionSelector name="containerSize" options={CONTAINER_SIZES} value={form.containerSize} onChange={(containerSize) => setForm({ ...form, containerSize })} onDark={dark} /></div>}
       {form.need && <>

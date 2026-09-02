@@ -10,15 +10,15 @@ const services = [
     num: "01",
     name: "Managed Construction",
     interest: "managed-construction",
-    desc: "We take on your build as a single managed project — drawings, permits, materials, trades, scheduling and site supervision through to handover.",
-    details: "Whether you want a traditional, container or insulated-panel home, Ashante coordinates each stage so you have one point of contact. She brings in the right trades and suppliers, tracks progress, handles the day-to-day decisions on site and keeps you informed until the keys are handed over.",
+    desc: "Ashante runs the project on your behalf — hiring and coordinating contractors and trades, sourcing and pricing materials, scheduling the work, supervising the site and keeping you updated.",
+    details: "Clients who are overseas, or who simply do not want to run a build themselves, hand the whole project over. Ashante appoints and coordinates the trades, prices and orders materials, sequences the work, supervises site progress and reports back to you. This is available whether or not she supplied the original design, and it applies to traditional block, container and insulated panel builds alike.",
   },
   {
     num: "02",
     name: "Custom Builds",
     interest: "custom-builds",
-    desc: "A home designed around your plot, budget and how you want to live — not chosen from a fixed catalogue.",
-    details: "We start with your requirements and the site, then develop architectural drawings and a design that suits your needs. The build can be delivered through traditional construction, container conversion or insulated panel construction, depending on what works best for you.",
+    desc: "A home built to your own design rather than a standard model — layout, finishes and specification are your call.",
+    details: "Bring your own drawings, or Ashante will arrange the architectural drawings and design for you. The finished design is then built in traditional block, container or insulated panel construction, whichever suits your plot, timeline and budget.",
   },
   {
     num: "03",
@@ -67,11 +67,11 @@ const services = [
 const workStyles = [
   {
     title: "Done For You",
-    desc: "Ashante manages the project end to end — coordinating design, permits, materials, trades and site work through to handover.",
+    desc: "You appoint Ashante to carry the project. She holds the schedule, the trades and the material orders, and reports progress to you until handover.",
   },
   {
     title: "Buyer Managed",
-    desc: "You manage the build directly, while Ashante supplies trusted trades, materials and practical support where you need it.",
+    desc: "You keep control of the build and the decisions on site, while Ashante supplies the trades, materials and pricing you ask for.",
   },
 ];
 
@@ -137,8 +137,11 @@ export default function Services() {
 
         <section className="py-24 bg-sand-light dark:bg-sand-light">
           <div className="max-w-[1280px] mx-auto px-6 md:px-10">
-            <SectionLabel text="How Managed Construction Works" />
-            <h2 className="text-h2 text-ocean-deep dark:text-foreground mb-10">Choose how you want to run your project.</h2>
+            <SectionLabel text="Two Ways to Work" />
+            <h2 className="text-h2 text-ocean-deep dark:text-foreground mb-4">How the work is contracted.</h2>
+            <p className="font-sans text-ocean-mid dark:text-foreground/70 text-base leading-relaxed max-w-2xl mb-10">
+              Separate from the service itself, this is the commercial arrangement — who holds responsibility for running the build day to day.
+            </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {workStyles.map((style) => (
                 <div key={style.title} className="bg-off-white dark:bg-card border border-sand dark:border-gold/15 p-8 md:p-10">

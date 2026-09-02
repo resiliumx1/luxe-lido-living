@@ -149,8 +149,8 @@ function FeaturedListings() {
 
 // ---------- Services ----------
 const services = [
-  { num: "01", name: "Managed Construction", interest: "managed-construction", desc: "We take on your build as a single managed project — drawings, permits, materials, trades and site supervision through to handover." },
-  { num: "02", name: "Custom Builds", interest: "custom-builds", desc: "A home designed around your plot, budget and how you want to live — not chosen from a fixed catalogue." },
+  { num: "01", name: "Managed Construction", interest: "managed-construction", desc: "Ashante runs your build for you — contractors and trades, materials, scheduling, site supervision and progress updates, on any build method." },
+  { num: "02", name: "Custom Builds", interest: "custom-builds", desc: "Built to your own design, not a standard model — your drawings or ours, in block, container or insulated panel." },
   { num: "03", name: "Traditional Construction", interest: "traditional-construction", desc: "Conventional block and concrete homes, coordinated around your land, needs and budget." },
   { num: "04", name: "Container Builds", interest: "container-builds", desc: "Shipping containers converted into homes, offices, shops and useful commercial spaces." },
   { num: "05", name: "Insulated Panel Builds", interest: "insulated-panel-builds", desc: "Our recommended method for better thermal performance, faster erection and lower cost than concrete block." },

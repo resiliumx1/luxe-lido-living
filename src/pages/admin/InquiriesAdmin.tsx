@@ -86,6 +86,8 @@ export default function InquiriesAdmin() {
       build_method: "Build method",
       trade: "Trade",
       container_size: "Container size",
+      project_stage: "Project stage",
+      design_status: "Design status",
       timeline: "Timeline",
       budget_range: "Budget range",
       parish_or_area: "Parish or area",
