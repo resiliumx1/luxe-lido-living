@@ -72,8 +72,14 @@ export default function ContactForm({ dark = false }: { dark?: boolean }) {
 
   useEffect(() => {
     const interest = searchParams.get("interest");
-    const need = interest ? queryNeedMap[interest] : undefined;
-    if (need) setForm((current) => ({ ...current, need }));
+    const preset = interest ? queryNeedMap[interest] : undefined;
+    if (preset) {
+      setForm((current) => ({
+        ...current,
+        need: preset.need,
+        buildMethod: preset.buildMethod ?? current.buildMethod,
+      }));
+    }
   }, [searchParams]);
 
   const requiresAssessment = form.need === "build-home" || form.need === "renovate-repair";
