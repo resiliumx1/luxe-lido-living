@@ -294,7 +294,34 @@ export default function ContactForm({ dark = false }: { dark?: boolean }) {
           </div>
 
           {submitted ? (
-            <div className="flex flex-col items-center justify-center text-center gap-6 py-12"><CheckCircle size={56} className="text-primary" /><h3 className={`font-serif text-3xl ${textColor}`}>Thank You</h3><p className={`font-sans text-base ${subTextColor} max-w-sm`}>Your enquiry has been received. Ashante will be in touch within 24 hours.</p><Button variant="outline" onClick={() => { setSubmitted(false); setForm(initialForm); setPhoto(null); setStep(0); }}>Send another enquiry</Button></div>
+            <div className="flex flex-col items-center justify-center text-center gap-5 py-12">
+              <CheckCircle size={56} className="text-primary" />
+              <h3 className={`font-serif text-3xl ${textColor}`}>Enquiry received</h3>
+              <p className={`font-sans text-base ${subTextColor} max-w-sm`}>
+                Thank you{form.firstName ? `, ${form.firstName.trim()}` : ""} — your {selectedNeed.toLowerCase()} enquiry is with Ashante.
+              </p>
+              <ol className={`w-full max-w-sm space-y-3 text-left font-sans text-sm ${textColor}`}>
+                {[
+                  "She reads your answers and photo personally — usually the same working day.",
+                  `She replies by ${form.preferredContact === "call" ? "phone call" : form.preferredContact === "email" ? "email" : "WhatsApp"} within 24 hours, and by the next working day at the latest.`,
+                  "You'll get clarifying questions, indicative costs and next steps for your build, unit or property.",
+                ].map((line, index) => (
+                  <li key={line} className="flex items-start gap-3">
+                    <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground text-xs font-bold">{index + 1}</span>
+                    <span className={subTextColor}>{line}</span>
+                  </li>
+                ))}
+              </ol>
+              <a
+                href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(`Hello Ashante, I've just submitted an enquiry about ${selectedNeed.toLowerCase()}.`)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-3 bg-[#25D366] text-white font-sans font-medium small-caps tracking-wider text-sm px-6 py-3 transition-opacity hover:opacity-90"
+              >
+                <MessageCircle size={16} /> Continue on WhatsApp now
+              </a>
+              <Button variant="outline" onClick={() => { setSubmitted(false); setForm(initialForm); setPhoto(null); setStep(0); }}>Send another enquiry</Button>
+            </div>
           ) : (
             <div>
               <div className="mb-8" aria-label={`Step ${step + 1} of 3`}>
