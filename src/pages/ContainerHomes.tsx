@@ -635,6 +635,7 @@ export default function ContainerHomes() {
     <div className="bg-background">
       <ContainerHero />
       <WhyContainerHomes />
+      <RealUnits />
       <PackagesSection />
       <ComparisonTable />
       <HowItWorks />
