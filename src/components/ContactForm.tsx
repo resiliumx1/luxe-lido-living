@@ -55,12 +55,12 @@ type FormState = {
   need: string; buildMethod: string; trade: string; containerSize: string;
   timeline: string; budget: string; area: string; details: string;
   firstName: string; lastName: string; phone: string; email: string;
-  preferredContact: string; assessmentAcknowledged: boolean;
+  preferredContact: string; assessmentAcknowledged: boolean; service: string;
 };
 
 const initialForm: FormState = {
   need: "", buildMethod: "", trade: "", containerSize: "", timeline: "", budget: "", area: "", details: "",
-  firstName: "", lastName: "", phone: "", email: "", preferredContact: "", assessmentAcknowledged: false,
+  firstName: "", lastName: "", phone: "", email: "", preferredContact: "", assessmentAcknowledged: false, service: "",
 };
 
 export default function ContactForm({ dark = false }: { dark?: boolean }) {
