@@ -75,8 +75,8 @@ export default function BookingModal({ isOpen, onClose, propertyName }: BookingM
         ) : (
           <>
             <div className="mb-6">
-              <p className="text-eyebrow mb-2">Book a Viewing</p>
-              <h3 className="font-serif text-2xl text-foreground">{propertyName || "Arrange a Property Viewing"}</h3>
+              <p className="text-eyebrow mb-2">Request a Viewing</p>
+              <h3 className="font-serif text-2xl text-foreground">{propertyName || "Request a Viewing"}</h3>
             </div>
             <form onSubmit={handleSubmit} className="space-y-5">
               <div>
