@@ -27,7 +27,7 @@ function SearchBar() {
   const handleFind = () => {
     if (propType === "Luxury Homes") navigate("/luxury-homes");
     else if (propType === "Container Homes") navigate("/container-homes");
-    else if (propType === "Prefab Homes") navigate("/prefab-homes");
+    else if (propType === "Insulated Panel Builds") navigate("/prefab-homes");
     else if (propType === "Container Businesses") navigate("/container-solutions");
     else if (propType === "Land") navigate("/contact?interest=land");
     else navigate("/luxury-homes");
@@ -44,7 +44,7 @@ function SearchBar() {
                 <option value="">All Types</option>
                 <option>Luxury Homes</option>
                 <option>Container Homes</option>
-                <option>Prefab Homes</option>
+                <option>Insulated Panel Builds</option>
                 <option>Container Businesses</option>
                 <option>Land</option>
               </select>

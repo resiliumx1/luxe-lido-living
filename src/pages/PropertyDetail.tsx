@@ -63,7 +63,7 @@ export default function PropertyDetail() {
             <Link to="/" className="hover:text-primary transition-colors">Home</Link>
             <ChevronRight size={14} />
             <Link to={property.categoryHref} className="hover:text-primary transition-colors capitalize">
-              {property.type === "luxury" ? "Luxury Homes" : property.type === "container" ? "Container Homes" : "Prefab Homes"}
+              {property.type === "luxury" ? "Luxury Homes" : property.type === "container" ? "Container Homes" : "Insulated Panel Homes"}
             </Link>
             <ChevronRight size={14} />
             <span className="text-foreground">{property.name}</span>

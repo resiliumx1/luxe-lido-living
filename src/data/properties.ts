@@ -180,7 +180,7 @@ const properties: Property[] = [
       "https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=800&q=80",
       "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80",
     ],
-    description: "Steps from the sand, this three-container residence proves that sustainable living and beachfront luxury are not mutually exclusive. Open-plan living with folding glass walls that dissolve the boundary between indoors and the Caribbean Sea.",
+    description: "Steps from the sand, this three-container residence combines sustainable construction with comfortable beachfront living. Open-plan interiors and folding glass walls connect the home directly to the Caribbean Sea.",
     features: ["Beachfront location", "Folding glass walls", "Sustainable construction", "Open-plan living", "Outdoor deck", "Solar-ready roof"],
     categoryHref: "/container-homes",
   },

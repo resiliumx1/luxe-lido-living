@@ -152,7 +152,7 @@ export default function HeroSection() {
                 className="font-sans text-sm font-medium tracking-[0.05em] px-7 py-3.5 bg-transparent text-white border border-white/[0.55] cursor-pointer transition-all duration-300 hover:border-white/90 hover:bg-white/[0.08] hover:-translate-y-0.5 inline-flex items-center justify-center"
                 style={{ borderRadius: "6px" }}
               >
-                Book a Consultation
+                Discuss Your Project
               </button>
             </div>
           </div>

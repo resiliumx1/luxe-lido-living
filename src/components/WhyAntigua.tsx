@@ -19,8 +19,8 @@ const stats = [
   },
   {
     icon: Award,
-    title: "Citizenship by Investment",
-    desc: "Qualify for Antiguan citizenship through property purchase",
+    title: "Local Building Support",
+    desc: "Access trusted trades, materials and practical on-island guidance",
   },
 ];
 
