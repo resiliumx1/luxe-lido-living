@@ -236,7 +236,7 @@ export default function Navigation() {
         </button>
       </div>
 
-      <WishlistDrawer isOpen={wishlistOpen} onClose={() => setWishlistOpen(false)} />
+      
       <BookingModal isOpen={bookingOpen} onClose={() => setBookingOpen(false)} />
     </>
   );
