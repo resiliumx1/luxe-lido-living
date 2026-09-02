@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { MessageSquare, Calendar, Users, Mail, ExternalLink, ChevronDown, ChevronUp, Download } from "lucide-react";
+import { MessageSquare, Calendar, Users, Mail, ExternalLink, ChevronDown, ChevronUp, Download, Image } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "@/hooks/use-toast";
 import type { Database } from "@/integrations/supabase/types";
@@ -66,6 +66,34 @@ export default function InquiriesAdmin() {
     await supabase.from("leads").update({ status }).eq("id", id);
     fetchAll();
     toast({ title: "Status updated" });
+  };
+
+  const openEnquiryPhoto = async (path: string) => {
+    const { data, error } = await supabase.storage.from("enquiry-photos").createSignedUrl(path, 60);
+    if (error || !data?.signedUrl) {
+      toast({ title: "Photo unavailable", description: "The private photo could not be opened." });
+      return;
+    }
+    window.open(data.signedUrl, "_blank", "noopener,noreferrer");
+  };
+
+  const qualificationEntries = (value: Enquiry["qualification"]) => {
+    if (!value || typeof value !== "object" || Array.isArray(value)) return [];
+    const labels: Record<string, string> = {
+      need: "Need code",
+      need_label: "What they need",
+      build_method: "Build method",
+      trade: "Trade",
+      container_size: "Container size",
+      timeline: "Timeline",
+      budget_range: "Budget range",
+      parish_or_area: "Parish or area",
+      assessment_fee_required: "Assessment fee applies",
+      assessment_fee_acknowledged: "Fee policy acknowledged",
+    };
+    return Object.entries(value)
+      .filter(([key]) => key !== "need")
+      .map(([key, item]) => [labels[key] || key.replace(/_/g, " "), typeof item === "boolean" ? (item ? "Yes" : "No") : String(item)]);
   };
 
   const exportLeadsCsv = () => {
@@ -140,10 +168,20 @@ export default function InquiriesAdmin() {
               </button>
               {expandedId === enq.id && (
                 <div className="px-4 pb-4 space-y-3 bg-muted/10">
-                  {enq.property_name && <p className="text-sm"><strong>Property:</strong> {enq.property_name}</p>}
-                  <p className="text-sm text-foreground">{enq.message}</p>
+                  {enq.property_name && <p className="text-sm"><strong>Enquiry type:</strong> {enq.property_name}</p>}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 border-y border-border py-3">
+                    {qualificationEntries(enq.qualification).map(([label, value]) => (
+                      <p key={label} className="text-sm text-foreground"><strong className="capitalize">{label}:</strong> {value}</p>
+                    ))}
+                  </div>
+                  <div>
+                    <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground mb-1">Project details</p>
+                    <p className="text-sm text-foreground whitespace-pre-wrap">{enq.message}</p>
+                  </div>
+                  <p className="text-sm"><strong>Phone:</strong> {enq.phone || "Not provided"} · <strong>Preferred contact:</strong> {enq.preferred_contact || "Not provided"}</p>
                   <div className="flex flex-wrap gap-2">
                     <a href={`mailto:${enq.email}`} className="flex items-center gap-1 text-xs text-primary hover:underline"><Mail size={12} /> Reply via Email</a>
+                    {enq.photo_path && <button type="button" onClick={() => openEnquiryPhoto(enq.photo_path || "")} className="flex items-center gap-1 text-xs text-primary hover:underline"><Image size={12} /> View Photo</button>}
                     {enq.status !== "replied" && (
                       <button onClick={() => updateEnquiryStatus(enq.id, "replied")} className="text-xs text-primary hover:underline">Mark Replied</button>
                     )}

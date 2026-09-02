@@ -74,8 +74,11 @@ export type Database = {
           name: string
           notes: string | null
           phone: string | null
+          photo_path: string | null
+          preferred_contact: string | null
           property_id: string | null
           property_name: string | null
+          qualification: Json
           status: string | null
         }
         Insert: {
@@ -86,8 +89,11 @@ export type Database = {
           name: string
           notes?: string | null
           phone?: string | null
+          photo_path?: string | null
+          preferred_contact?: string | null
           property_id?: string | null
           property_name?: string | null
+          qualification?: Json
           status?: string | null
         }
         Update: {
@@ -98,8 +104,11 @@ export type Database = {
           name?: string
           notes?: string | null
           phone?: string | null
+          photo_path?: string | null
+          preferred_contact?: string | null
           property_id?: string | null
           property_name?: string | null
+          qualification?: Json
           status?: string | null
         }
         Relationships: []
