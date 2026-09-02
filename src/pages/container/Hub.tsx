@@ -3,6 +3,8 @@ import { motion } from "framer-motion";
 import { ArrowRight, Shield, DollarSign, Clock, Truck, Package, Ruler, Weight, Box } from "lucide-react";
 import ResponsiveImage from "@/components/ResponsiveImage";
 import SectionLabel from "@/components/SectionLabel";
+import PhotoGallery from "@/components/PhotoGallery";
+import { containerFinishedUnits, containerBuildSteps } from "@/data/realBuildPhotos";
 import { useCurrency } from "@/contexts/CurrencyContext";
 
 const containers = [
