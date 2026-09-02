@@ -65,17 +65,18 @@ export default function AgentAuthority() {
               </p>
             </div>
 
-            {/* Stats row */}
-            <div className="grid grid-cols-3 gap-6 mb-10 py-8 border-t border-b border-gold/20">
-              {stats.map((s) => (
-                <div key={s.num} className="text-center">
-                  <p className="font-serif text-gold font-medium" style={{ fontSize: "36px", lineHeight: 1 }}>
-                    {s.num}
+            {/* Factual highlights */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-10 py-8 border-t border-b border-gold/20">
+              {facts.map((f) => (
+                <div key={f.title} className="text-center">
+                  <p className="font-serif text-gold font-medium" style={{ fontSize: "20px", lineHeight: 1.2 }}>
+                    {f.title}
                   </p>
-                  <p className="font-sans text-off-white/60 text-xs mt-2 tracking-wide">{s.sub}</p>
+                  <p className="font-sans text-off-white/60 text-xs mt-2 tracking-wide">{f.sub}</p>
                 </div>
               ))}
             </div>
+
 
             {/* CTA */}
             <Link
