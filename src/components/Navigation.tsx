@@ -37,7 +37,7 @@ const navLinks = [
   { label: "Container Solutions", href: "/container-solutions" },
   { label: "Insulated Panel Builds", href: "/prefab-homes" },
   { label: "Trailers", href: "/trailers" },
-  { label: "Properties", href: "/properties" },
+  { label: "About", href: "/about" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
 ];
