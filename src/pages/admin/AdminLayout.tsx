@@ -23,10 +23,11 @@ export default function AdminLayout() {
   const { theme, setTheme } = useTheme();
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
-  const handleSignOut = () => {
-    logout();
-    navigate("/");
+  const handleSignOut = async () => {
+    await logout();
+    navigate("/admin/login", { replace: true });
   };
+
 
   const toggleTheme = () => {
     setTheme(theme === "dark" ? "light" : "dark");
