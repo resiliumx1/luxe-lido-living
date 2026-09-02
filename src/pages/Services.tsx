@@ -8,41 +8,55 @@ import { Link } from "react-router-dom";
 const services = [
   {
     num: "01",
+    name: "Managed Construction",
+    interest: "managed-construction",
+    desc: "We take on your build as a single managed project — drawings, permits, materials, trades, scheduling and site supervision through to handover.",
+    details: "Whether you want a traditional, container or insulated-panel home, Ashante coordinates each stage so you have one point of contact. She brings in the right trades and suppliers, tracks progress, handles the day-to-day decisions on site and keeps you informed until the keys are handed over.",
+  },
+  {
+    num: "02",
+    name: "Custom Builds",
+    interest: "custom-builds",
+    desc: "A home designed around your plot, budget and how you want to live — not chosen from a fixed catalogue.",
+    details: "We start with your requirements and the site, then develop architectural drawings and a design that suits your needs. The build can be delivered through traditional construction, container conversion or insulated panel construction, depending on what works best for you.",
+  },
+  {
+    num: "03",
     name: "Traditional Construction",
     interest: "traditional-construction",
     desc: "Conventional block and concrete homes built for everyday life in Antigua & Barbuda.",
     details: "From a first home or family extension to a complete new residence, we coordinate drawings, materials, skilled trades and construction around your site, budget and priorities. You receive clear guidance from early planning through handover.",
   },
   {
-    num: "02",
+    num: "04",
     name: "Container Builds",
     interest: "container-builds",
     desc: "Shipping containers converted into practical homes, offices, shops and commercial units.",
     details: "We help you select the right container, define the layout and coordinate the conversion for your intended use. Each project can include insulation, windows, doors, utilities, finishes and equipment suited to the Caribbean climate.",
   },
   {
-    num: "03",
+    num: "05",
     name: "Insulated Panel Builds",
     interest: "insulated-panel-builds",
     desc: "Our recommended building method for better thermal performance, faster erection and lower cost than concrete block.",
     details: "Through our manufacturing partner, we supply and build with foam-core insulated panels engineered for efficient construction in the Caribbean. The system reduces heat transfer, shortens time on site and gives homeowners a cost-conscious alternative without compromising a strong, comfortable finish.",
   },
   {
-    num: "04",
+    num: "06",
     name: "Renovations & Trades",
     interest: "renovations-trades",
     desc: "Reliable help for tiling, painting, plumbing, electrical work, roofing, drawings and design.",
     details: "Ashante brings together vetted tradesmen and manages the work, whether you are refreshing one room, repainting a property, replacing a roof or carrying out a larger renovation. Architectural drawings and design support can be included where needed.",
   },
   {
-    num: "05",
+    num: "07",
     name: "Property Sales & Land",
     interest: "property-sales-land",
     desc: "Houses and land for sale, with the details buyers need to explore their options online.",
     details: "Browse homes and plots on the site before making an enquiry. Ashante can arrange viewings, answer questions about the property or area, and help buyers understand the practical next steps toward purchasing and building.",
   },
   {
-    num: "06",
+    num: "08",
     name: "Relocation Services",
     interest: "relocation",
     desc: "On-the-ground support for overseas buyers looking for land, a home or a place to build.",
@@ -53,7 +67,7 @@ const services = [
 const workStyles = [
   {
     title: "Done For You",
-    desc: "Ashante manages the project end to end — coordinating design, materials, trades, timelines and the work on site through to handover.",
+    desc: "Ashante manages the project end to end — coordinating design, permits, materials, trades and site work through to handover.",
   },
   {
     title: "Buyer Managed",
@@ -123,8 +137,8 @@ export default function Services() {
 
         <section className="py-24 bg-sand-light dark:bg-sand-light">
           <div className="max-w-[1280px] mx-auto px-6 md:px-10">
-            <SectionLabel text="Two Ways to Work" />
-            <h2 className="text-h2 text-ocean-deep dark:text-foreground mb-10">Choose the support that suits you.</h2>
+            <SectionLabel text="How Managed Construction Works" />
+            <h2 className="text-h2 text-ocean-deep dark:text-foreground mb-10">Choose how you want to run your project.</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {workStyles.map((style) => (
                 <div key={style.title} className="bg-off-white dark:bg-card border border-sand dark:border-gold/15 p-8 md:p-10">
