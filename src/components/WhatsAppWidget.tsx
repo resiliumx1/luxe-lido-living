@@ -6,8 +6,8 @@ export default function WhatsAppWidget() {
       href={`https://wa.me/${WHATSAPP_NUMBER}?text=Hello%20Ashante%2C%20I%27m%20interested%20in%20a%20property.`}
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed z-[9999] group"
-      style={{ bottom: "24px", right: "24px" }}
+      className="fixed z-[9999] group left-4 right-auto md:left-auto md:right-6"
+      style={{ bottom: "calc(16px + env(safe-area-inset-bottom, 0px))" }}
       aria-label="Chat with Ashante on WhatsApp"
     >
       {/* Pulse ring */}
