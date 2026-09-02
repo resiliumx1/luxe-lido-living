@@ -96,6 +96,7 @@ export default function ContactForm({ dark = false }: { dark?: boolean }) {
   const qualification = useMemo(() => ({
     need: form.need,
     need_label: selectedNeed,
+    ...(form.service && { service_path: form.service }),
     ...(form.buildMethod && { build_method: form.buildMethod }),
     ...(form.trade && { trade: form.trade }),
     ...(form.containerSize && { container_size: form.containerSize }),
