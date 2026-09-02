@@ -213,6 +213,7 @@ export default function ContactForm({ dark = false }: { dark?: boolean }) {
       setSubmitting(false);
       return;
     }
+    try { window.sessionStorage.removeItem(DRAFT_KEY); } catch { /* storage unavailable */ }
     setSubmitted(true);
     setSubmitting(false);
   };
