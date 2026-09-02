@@ -1,12 +1,11 @@
 import { useState, useEffect, useRef } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { Menu, X, Heart, Sun, Moon, ChevronDown, ArrowRight } from "lucide-react";
+import { Menu, X, Sun, Moon, ChevronDown, ArrowRight } from "lucide-react";
 import { useTheme } from "next-themes";
-import { useWishlist } from "@/contexts/WishlistContext";
 import { useCurrency } from "@/contexts/CurrencyContext";
 import { LuxeLogo } from "@/components/ui/LuxeLogo";
-import WishlistDrawer from "./WishlistDrawer";
 import BookingModal from "./BookingModal";
+
 
 type CtaAction = { label: string; type: "modal" } | { label: string; type: "route"; to: string };
 
@@ -38,7 +37,6 @@ const navLinks = [
   { label: "Container Solutions", href: "/container-solutions" },
   { label: "Insulated Panel Builds", href: "/prefab-homes" },
   { label: "Trailers", href: "/trailers" },
-  { label: "Properties", href: "/properties" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
 ];
@@ -46,12 +44,11 @@ const navLinks = [
 export default function Navigation() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [wishlistOpen, setWishlistOpen] = useState(false);
   const [bookingOpen, setBookingOpen] = useState(false);
   const [containerDropdownOpen, setContainerDropdownOpen] = useState(false);
   const [mobileContainerOpen, setMobileContainerOpen] = useState(false);
   const { theme, setTheme } = useTheme();
-  const { count } = useWishlist();
+
   const { currency, setCurrency } = useCurrency();
   const location = useLocation();
   const navigate = useNavigate();
@@ -155,19 +152,7 @@ export default function Navigation() {
               {isDark ? <Sun size={16} /> : <Moon size={16} />}
             </button>
 
-            {/* Wishlist */}
-            <button
-              onClick={() => setWishlistOpen(true)}
-              aria-label={`Saved properties: ${count}`}
-              className="relative p-2 text-gold hover:text-gold-soft transition-colors duration-300"
-            >
-              <Heart size={18} fill={count > 0 ? "currentColor" : "none"} strokeWidth={2} />
-              {count > 0 && (
-                <span className="absolute -top-0.5 -right-0.5 w-4 h-4 rounded-full bg-gold text-ocean-deep text-[9px] font-bold flex items-center justify-center">
-                  {count}
-                </span>
-              )}
-            </button>
+
 
             {/* Context-aware primary CTA */}
             <button
@@ -250,7 +235,7 @@ export default function Navigation() {
         </button>
       </div>
 
-      <WishlistDrawer isOpen={wishlistOpen} onClose={() => setWishlistOpen(false)} />
+      
       <BookingModal isOpen={bookingOpen} onClose={() => setBookingOpen(false)} />
     </>
   );

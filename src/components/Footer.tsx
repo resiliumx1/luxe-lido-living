@@ -3,14 +3,16 @@ import { Instagram, Facebook, Phone, Mail, Lock } from "lucide-react";
 import { WHATSAPP_NUMBER, ASHANTE_EMAIL, ASHANTE_PHONE, ASHANTE_PHONE_RAW, OFFICE_HOURS, OFFICE_LOCATION } from "@/lib/contact";
 
 const quickLinks = [
-  { label: "Luxury Homes", href: "/luxury-homes" },
+  { label: "Services", href: "/services" },
   { label: "Container Solutions", href: "/container-solutions" },
   { label: "Insulated Panel Builds", href: "/prefab-homes" },
   { label: "Trailers", href: "/trailers" },
-  { label: "Services", href: "/services" },
+  { label: "Properties for Sale", href: "/properties" },
+  { label: "Luxury Homes", href: "/luxury-homes" },
   { label: "About Ashante", href: "/about" },
   { label: "Contact", href: "/contact" },
 ];
+
 
 
 export default function Footer() {
