@@ -238,6 +238,14 @@ export default function ContactForm({ dark = false }: { dark?: boolean }) {
 
   const renderStepTwo = () => (
     <div className="space-y-6">
+      {requiresAssessment && (
+        <div className={`flex items-start gap-3 border p-4 ${dark ? "border-primary/40 bg-primary/10" : "border-primary/40 bg-primary/5"}`} style={{ borderRadius: "8px" }}>
+          <Info size={18} className="text-primary mt-0.5 flex-shrink-0" />
+          <p className={`font-sans text-sm leading-relaxed ${textColor}`}>
+            Good to know: construction and renovation quotes carry a US$250 assessment fee, payable before any site visit, measurement or drawings. Nothing to pay now — you'll confirm you understand at the last step.
+          </p>
+        </div>
+      )}
       <div><label className={`text-label block mb-2 ${labelColor}`}>Project details <span className="text-primary">*</span></label><textarea className={`${inputCls} resize-none`} rows={7} maxLength={3000} placeholder="Tell us what you want to build, improve or find…" value={form.details} onChange={(event) => setForm({ ...form, details: event.target.value })} /></div>
       <div>
         <label className={`text-label block mb-2 ${labelColor}`}>Photo <span className={subTextColor}>(optional)</span></label>
