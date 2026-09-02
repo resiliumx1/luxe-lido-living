@@ -15,6 +15,8 @@ import {
   Wind,
 } from "lucide-react";
 import SectionLabel from "@/components/SectionLabel";
+import PhotoGallery from "@/components/PhotoGallery";
+import { trailerRealBuilds } from "@/data/realBuildPhotos";
 
 const trailerTypes = [
   {
