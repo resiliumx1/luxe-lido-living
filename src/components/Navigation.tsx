@@ -34,11 +34,11 @@ function getCtaForPath(pathname: string): CtaAction {
 }
 
 const navLinks = [
-  { label: "Luxury Homes", href: "/luxury-homes" },
+  { label: "Services", href: "/services" },
   { label: "Container Solutions", href: "/container-solutions" },
   { label: "Insulated Panel Builds", href: "/prefab-homes" },
   { label: "Trailers", href: "/trailers" },
-  { label: "Services", href: "/services" },
+  { label: "Properties", href: "/properties" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
 ];
