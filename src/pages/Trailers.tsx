@@ -114,7 +114,7 @@ export default function Trailers() {
           className="absolute inset-0"
           style={{
             background:
-              "radial-gradient(ellipse at 30% 20%, hsl(var(--gold) / 0.18) 0%, transparent 55%), radial-gradient(ellipse at 80% 80%, hsl(var(--gold) / 0.10) 0%, transparent 60%), linear-gradient(180deg, hsl(var(--ocean-deep)) 0%, hsl(var(--ocean-deep)) 60%, #0a1422 100%)",
+              "radial-gradient(ellipse at 30% 20%, hsl(var(--gold) / 0.18) 0%, transparent 55%), radial-gradient(ellipse at 80% 80%, hsl(var(--gold) / 0.10) 0%, transparent 60%), linear-gradient(180deg, hsl(var(--ocean-deep)) 0%, hsl(var(--ocean-deep)) 60%, #0E1621 100%)",
           }}
         />
         {/* Watermark */}

@@ -56,7 +56,7 @@ function ContainerHero() {
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(115deg, rgba(36,31,27,0.90) 0%, rgba(36,31,27,0.60) 45%, rgba(36,31,27,0.20) 100%)",
+            "linear-gradient(115deg, rgba(14,22,33,0.90) 0%, rgba(14,22,33,0.60) 45%, rgba(14,22,33,0.20) 100%)",
         }}
       />
       <div
@@ -64,7 +64,7 @@ function ContainerHero() {
         style={{
           height: "35%",
           background:
-            "linear-gradient(to top, rgba(36,31,27,0.85) 0%, rgba(36,31,27,0.40) 60%, transparent 100%)",
+            "linear-gradient(to top, rgba(14,22,33,0.85) 0%, rgba(14,22,33,0.40) 60%, transparent 100%)",
         }}
       />
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none">
@@ -153,7 +153,7 @@ function WhyContainerHomes() {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {whyCards.map(({ Icon, title, desc }) => (
-            <div key={title} className="group bg-card rounded-2xl p-8 border border-transparent transition-all duration-500 hover:-translate-y-0.5 hover:shadow-[0_8px_40px_rgba(212,165,74,0.08)] relative overflow-hidden">
+            <div key={title} className="group bg-card rounded-2xl p-8 border border-transparent transition-all duration-500 hover:-translate-y-0.5 hover:shadow-[0_8px_40px_rgba(200,169,106,0.08)] relative overflow-hidden">
               <div className="absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 w-0 bg-gold transition-all duration-500 group-hover:w-full" />
               <div className="w-14 h-14 flex items-center justify-center rounded-xl bg-secondary mb-5 transition-colors duration-500 group-hover:bg-gold/10">
                 <Icon className="w-8 h-8 text-ocean-mid transition-colors duration-500 group-hover:text-gold" />
@@ -335,7 +335,7 @@ function PackagesSection() {
               <p className="font-sans text-sm text-off-white/85 mb-6">{current.tagline}</p>
               <div className="flex flex-wrap gap-4 mb-8">
                 {current.prices.map((p) => (
-                  <div key={p.unit} className="bg-ocean-deep/60 border border-gold/15 rounded-xl px-5 py-4 transition-shadow duration-300 hover:shadow-[0_0_24px_rgba(212,165,74,0.12)]">
+                  <div key={p.unit} className="bg-ocean-deep/60 border border-gold/15 rounded-xl px-5 py-4 transition-shadow duration-300 hover:shadow-[0_0_24px_rgba(200,169,106,0.12)]">
                     <span className="font-sans text-xs text-off-white/85 block mb-1">{p.unit}</span>
                     <span className="font-serif text-xl text-gold">{p.price}</span>
                   </div>
@@ -445,7 +445,7 @@ function HowItWorks() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
             {processSteps.map(({ Icon, num, title, desc }) => (
               <div key={num} className="group flex flex-col items-center text-center">
-                <div className="relative w-24 h-24 rounded-full bg-card border border-border flex items-center justify-center mb-6 transition-all duration-500 group-hover:shadow-[0_0_30px_rgba(212,165,74,0.15)]">
+                <div className="relative w-24 h-24 rounded-full bg-card border border-border flex items-center justify-center mb-6 transition-all duration-500 group-hover:shadow-[0_0_30px_rgba(200,169,106,0.15)]">
                   <Icon className="w-10 h-10 text-ocean-mid transition-colors duration-500 group-hover:text-gold" />
                   <span className="absolute -top-1 -right-1 w-7 h-7 rounded-full bg-gold text-primary-foreground font-sans text-xs font-bold flex items-center justify-center">
                     {num}
@@ -496,7 +496,7 @@ function ContainersForBusiness() {
               {businessCards.map(({ Icon, title, desc }) => (
                 <div
                   key={title}
-                  className="group p-6 rounded-xl border border-off-white/10 transition-all duration-500 hover:border-gold/30 hover:shadow-[0_0_24px_rgba(212,165,74,0.08)]"
+                  className="group p-6 rounded-xl border border-off-white/10 transition-all duration-500 hover:border-gold/30 hover:shadow-[0_0_24px_rgba(200,169,106,0.08)]"
                 >
                   <div className="w-12 h-12 flex items-center justify-center rounded-lg bg-off-white/[0.06] mb-4 transition-colors duration-500 group-hover:bg-gold/10">
                     <Icon className="w-7 h-7 text-off-white/85 transition-colors duration-500 group-hover:text-gold" />
@@ -557,7 +557,7 @@ function FinalCTA() {
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
-          background: "radial-gradient(ellipse at center, rgba(212,165,74,0.08) 0%, transparent 60%)",
+          background: "radial-gradient(ellipse at center, rgba(200,169,106,0.08) 0%, transparent 60%)",
         }}
       />
       {/* Gold dot grid */}

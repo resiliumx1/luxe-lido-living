@@ -291,7 +291,7 @@ export default function ContactForm({ dark = false }: { dark?: boolean }) {
             {[{ Icon: Phone, label: "Phone", value: ASHANTE_PHONE, href: `tel:${ASHANTE_PHONE_RAW}` }, { Icon: Mail, label: "Email", value: ASHANTE_EMAIL, href: `mailto:${ASHANTE_EMAIL}` }, { Icon: MapPin, label: "Office", value: OFFICE_LOCATION, href: null }, { Icon: Clock, label: "Hours", value: OFFICE_HOURS, href: null }].map(({ Icon, label, value, href }, index) => (
               <div key={label}><div className="flex items-start gap-4"><Icon size={16} className="text-primary mt-0.5 flex-shrink-0" /><div><p className="small-caps text-xs tracking-widest font-sans text-primary mb-1">{label}</p>{href ? <a href={href} className={`font-serif text-lg ${textColor} hover:text-primary transition-colors`}>{value}</a> : <p className={`font-serif text-lg ${textColor}`}>{value}</p>}</div></div>{index < 3 && <div className={`mt-6 border-b ${dark ? "border-primary/20" : "border-sand dark:border-primary/10"}`} />}</div>
             ))}
-            <a href={`https://wa.me/${WHATSAPP_NUMBER}?text=Hello%20Ashante%2C%20I%27d%20like%20to%20discuss%20a%20project%20or%20property.`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 bg-[#25D366] text-white font-sans font-medium small-caps tracking-wider text-sm px-6 py-3 transition-opacity hover:opacity-90"><MessageCircle size={16} /> Chat on WhatsApp</a>
+            <a href={`https://wa.me/${WHATSAPP_NUMBER}?text=Hello%20Ashante%2C%20I%27d%20like%20to%20discuss%20a%20project%20or%20property.`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 bg-[#25D366] text-ink font-sans font-semibold small-caps tracking-wider text-sm px-6 py-3 transition-opacity hover:opacity-90"><MessageCircle size={16} /> Chat on WhatsApp</a>
             <p className={`font-sans text-sm ${subTextColor} italic`}>Typically responds within 24 hours.</p>
           </div>
 
@@ -318,7 +318,7 @@ export default function ContactForm({ dark = false }: { dark?: boolean }) {
                 href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(`Hello Ashante, I've just submitted an enquiry about ${selectedNeed.toLowerCase()}.`)}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 bg-[#25D366] text-white font-sans font-medium small-caps tracking-wider text-sm px-6 py-3 transition-opacity hover:opacity-90"
+                className="inline-flex items-center gap-3 bg-[#25D366] text-ink font-sans font-semibold small-caps tracking-wider text-sm px-6 py-3 transition-opacity hover:opacity-90"
               >
                 <MessageCircle size={16} /> Continue on WhatsApp now
               </a>

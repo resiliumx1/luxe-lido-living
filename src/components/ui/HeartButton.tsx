@@ -30,7 +30,7 @@ export function HeartButton({ propertyId, size = "md" }: HeartButtonProps) {
         borderRadius: "50%",
         background: liked
           ? "hsl(var(--gold))"
-          : "rgba(10, 22, 40, 0.55)",
+          : "rgba(14,22,33, 0.55)",
         backdropFilter: "blur(4px)",
         transform: liked ? "scale(1.08)" : "scale(1)",
       }}
