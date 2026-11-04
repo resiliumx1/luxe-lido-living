@@ -203,7 +203,7 @@ export default function HeroSection() {
           style={{ background: "linear-gradient(to top, rgba(36,31,27,0.65), transparent)" }}
         />
 
-        <div className="relative z-10 h-full px-6 md:px-12 pt-28 md:pt-32 pb-8 md:pb-12 flex flex-col">
+        <div className="relative z-10 h-full px-6 md:px-12 pt-28 md:pt-32 pb-24 md:pb-12 flex flex-col">
           {/* Top-left */}
           <motion.div {...fade(1.0)}>
             <Link
@@ -245,7 +245,7 @@ export default function HeroSection() {
               Block, container or insulated panel — priced honestly and built by vetted local trades, whether
               you're on island or overseas.
             </motion.p>
-            <motion.div {...fade(1.1)}>
+            <motion.div {...fade(1.1)} className="md:mr-20">
               <Link
                 to="/contact"
                 className="inline-flex items-center gap-2 bg-gold text-espresso font-sans text-sm font-semibold tracking-[0.04em] transition-colors hover:bg-gold-soft"
