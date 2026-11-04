@@ -1,0 +1,1 @@
+CREATE POLICY "Admins manage project photos" ON storage.objects FOR ALL TO authenticated USING (bucket_id = 'project-photos' AND public.is_admin()) WITH CHECK (bucket_id = 'project-photos' AND public.is_admin());
