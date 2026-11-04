@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { MessageSquare, Calendar, Users, Mail, ExternalLink, ChevronDown, ChevronUp, Download, Image } from "lucide-react";
+import { MessageSquare, Calendar, Users, Mail, ExternalLink, ChevronDown, ChevronUp, Download, Image, FolderKanban } from "lucide-react";
+import { Link } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "@/hooks/use-toast";
 import type { Database } from "@/integrations/supabase/types";
@@ -184,6 +185,7 @@ export default function InquiriesAdmin() {
                   <p className="text-sm"><strong>Phone:</strong> {enq.phone || "Not provided"} · <strong>Preferred contact:</strong> {enq.preferred_contact || "Not provided"}</p>
                   <div className="flex flex-wrap gap-2">
                     <a href={`mailto:${enq.email}`} className="flex items-center gap-1 text-xs text-primary hover:underline"><Mail size={12} /> Reply via Email</a>
+                    <Link to={`/admin/projects?from=${enq.id}`} className="flex items-center gap-1 text-xs font-medium text-primary hover:underline"><FolderKanban size={12} /> Start project</Link>
                     {enq.photo_path && <button type="button" onClick={() => openEnquiryPhoto(enq.photo_path || "")} className="flex items-center gap-1 text-xs text-primary hover:underline"><Image size={12} /> View Photo</button>}
                     {enq.status !== "replied" && (
                       <button onClick={() => updateEnquiryStatus(enq.id, "replied")} className="text-xs text-primary hover:underline">Mark Replied</button>

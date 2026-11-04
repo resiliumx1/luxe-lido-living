@@ -13,6 +13,7 @@ const navItems = [
   { label: "Containers", href: "/admin/containers", icon: Container },
   { label: "Photo Manager", href: "/admin/photos", icon: Image },
   { label: "Inquiries", href: "/admin/inquiries", icon: MessageSquare },
+  { label: "Projects", href: "/admin/projects", icon: FolderKanban },
   { label: "Settings", href: "/admin/settings", icon: Settings },
 ];
 
