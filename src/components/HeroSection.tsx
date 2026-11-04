@@ -101,7 +101,7 @@ export default function HeroSection() {
 
             <h1
               className="text-display title-on-dark font-normal text-white mb-6 hero-stagger"
-              style={{ textShadow: "0 2px 24px rgba(0,0,0,0.5)", animationDelay: "0.5s" }}
+              style={{ textShadow: "0 2px 24px rgba(0,0,0,0.5)", animationDelay: "0.5s", fontSize: "clamp(42px, 5.4vw, 76px)" }}
             >
               Your home, built right.
               <br />
