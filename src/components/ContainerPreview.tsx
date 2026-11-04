@@ -72,7 +72,7 @@ export default function ContainerPreview() {
         <div className="flex flex-wrap items-center justify-center gap-10 mb-10 reveal reveal-delay-3">
           {stats.map((s) => (
             <div key={s.label} className="flex items-center gap-2.5">
-              <s.icon size={16} className="text-gold/60" />
+              <s.icon size={16} className="text-gold" />
               <div>
                 <span className="font-sans text-sm text-off-white font-medium">{s.label}</span>
                 <span className="font-sans text-xs text-off-white/85 ml-1.5">{s.desc}</span>
