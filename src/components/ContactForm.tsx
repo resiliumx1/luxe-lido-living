@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
 import { ArrowLeft, ArrowRight, Check, CheckCircle, Clock, Info, Mail, MapPin, MessageCircle, Paperclip, Phone, Upload } from "lucide-react";
 import { z } from "zod";
 import { supabase } from "@/integrations/supabase/client";
@@ -326,10 +327,14 @@ export default function ContactForm({ dark = false }: { dark?: boolean }) {
           ) : (
             <div>
               <div className="mb-8" aria-label={`Step ${step + 1} of 3`}>
-                <div className="flex items-center gap-2 mb-3">{["Your needs", "Project details", "Your details"].map((label, index) => <div key={label} className="flex flex-1 items-center gap-2"><span className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full font-sans text-sm font-bold ${index <= step ? "bg-primary text-primary-foreground" : dark ? "bg-off-white/10 text-off-white/60" : "bg-muted text-muted-foreground"}`}>{index < step ? <Check size={14} /> : index + 1}</span>{index < 2 && <span className={`h-px flex-1 ${index < step ? "bg-primary" : borderColor}`} />}</div>)}</div>
-                <p className={`font-sans text-xs uppercase tracking-widest ${subTextColor}`}>Step {step + 1} of 3 · <span className={textColor}>{["What do you need?", "Project details", "Your details"][step]}</span></p>
+                <div className="flex items-center gap-2 mb-3">{["Your needs", "Project details", "Your details"].map((label, index) => <div key={label} className="flex flex-1 items-center gap-2"><motion.span animate={{ scale: index === step ? 1.12 : 1 }} transition={{ type: "spring", stiffness: 300, damping: 18 }} className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full font-sans text-sm font-bold transition-colors duration-500 ${index <= step ? "bg-primary text-primary-foreground shadow-md" : dark ? "bg-off-white/10 text-off-white/60" : "bg-muted text-muted-foreground"}`}>{index < step ? <Check size={14} /> : index + 1}</motion.span>{index < 2 && <span className={`relative h-0.5 flex-1 overflow-hidden rounded-full ${dark ? "bg-off-white/15" : "bg-muted"}`}><motion.span className="absolute inset-y-0 left-0 bg-primary" initial={false} animate={{ width: index < step ? "100%" : "0%" }} transition={{ duration: 0.6, ease: "easeInOut" }} /></span>}</div>)}</div>
+                <p className={`font-sans text-xs uppercase tracking-widest ${subTextColor}`}>Step {step + 1} of 3 · <span className={textColor}>{["What do you need?", "Project details", "Your details"][step]}</span> · {Math.round(((step + 1) / 3) * 100)}%</p>
               </div>
-              {step === 0 ? renderStepOne() : step === 1 ? renderStepTwo() : renderStepThree()}
+              <AnimatePresence mode="wait">
+                <motion.div key={step} initial={{ opacity: 0, x: 24 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -24 }} transition={{ duration: 0.3, ease: "easeOut" }}>
+                  {step === 0 ? renderStepOne() : step === 1 ? renderStepTwo() : renderStepThree()}
+                </motion.div>
+              </AnimatePresence>
               {error && <p role="alert" className="mt-5 font-sans text-sm text-destructive">{error}</p>}
               <div className={`mt-8 flex items-center justify-between border-t pt-6 ${borderColor}`}>
                 {step > 0 ? <Button type="button" variant="ghost" onClick={() => { setError(""); setStep(step - 1); }} disabled={submitting}><ArrowLeft /> Back</Button> : <span />}
