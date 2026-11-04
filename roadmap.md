@@ -16,3 +16,8 @@
 - [x] Reveal individual sections and service items as they enter view; honor reduced motion
 - [x] Balance mobile and desktop spacing from service discovery to enquiry
 - [x] Verify public pages and enquiry links on desktop and mobile
+
+# Homepage core offerings
+- [x] Container orders, trailer builds, insulated panel builds and managed construction as the four lead cards, each with benefits and its own enquiry button
+- [x] Supporting services kept below with enquiry links; no duplicated container/panel entries
+- [x] Verify all four buttons reach the right form and preselect the right project type
