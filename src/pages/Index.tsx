@@ -111,7 +111,7 @@ function Services() {
       <div className="max-w-[1280px] mx-auto px-6 md:px-10">
         <div className="mb-12 reveal max-w-2xl">
           <SectionLabel text="What We Offer" light />
-          <h2 className="text-h2 text-off-white">Four ways we build</h2>
+          <h2 className="text-h2 text-off-white">Four ways to get it built</h2>
           <p className="font-sans text-off-white/60 text-base leading-relaxed mt-4">
             Start with the work you need. Each one opens the right form with your project type already
             chosen, so you only answer what is relevant to you.
@@ -182,7 +182,7 @@ function DeliveredWork() {
       <div className="max-w-[1280px] mx-auto px-6 md:px-10">
         <div className="mb-12 reveal max-w-2xl">
           <SectionLabel text="Work Delivered" />
-          <h2 className="text-h2 text-ocean-deep dark:text-foreground">Real units, real customers</h2>
+          <h2 className="text-h2 text-ocean-deep dark:text-foreground">Delivered in Antigua. Not mock-ups.</h2>
           <p className="font-sans text-ocean-mid/70 dark:text-foreground/60 text-base leading-relaxed mt-4">
             These are photographs of finished work, not renders — including the RumBurger food trailer
             built and delivered to a customer here in Antigua, and modular container units completed and
@@ -245,7 +245,7 @@ function HowItWorks() {
       <div className="max-w-[1280px] mx-auto px-6 md:px-10">
         <div className="mb-14 reveal max-w-2xl">
           <SectionLabel text="How It Works" />
-          <h2 className="text-h2 text-ocean-deep dark:text-foreground">From enquiry to handover</h2>
+          <h2 className="text-h2 text-ocean-deep dark:text-foreground">What happens after you enquire</h2>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">

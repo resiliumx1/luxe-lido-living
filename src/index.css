@@ -165,15 +165,15 @@
 
 .text-display {
   font-family: var(--font-display);
-  font-size: clamp(44px, 6vw, 72px);
-  font-weight: 400;
-  line-height: 1.1;
+  font-size: clamp(48px, 7vw, 88px);
+  font-weight: 500;
+  line-height: 1.05;
   letter-spacing: 0.01em;
 }
 
 .text-h1 {
   font-family: var(--font-display);
-  font-size: clamp(36px, 4.5vw, 56px);
+  font-size: clamp(40px, 5.5vw, 68px);
   font-weight: 400;
   line-height: 1.15;
   letter-spacing: 0.01em;
@@ -181,8 +181,8 @@
 
 .text-h2 {
   font-family: var(--font-display);
-  font-size: clamp(28px, 3.5vw, 40px);
-  font-weight: 400;
+  font-size: clamp(34px, 4.6vw, 56px);
+  font-weight: 500;
   line-height: 1.2;
   letter-spacing: 0.01em;
 }
@@ -215,15 +215,15 @@
 
 .text-body-sm {
   font-family: var(--font-body);
-  font-size: 15px;
+  font-size: 16px;
   line-height: 1.7;
 }
 
 .text-eyebrow {
   font-family: var(--font-body);
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.16em;
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: hsl(var(--gold));
 }
@@ -524,3 +524,24 @@
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
+/* ── Gold shimmer titles ── */
+@layer components {
+  .text-display, .text-h1, .text-h2, .gold-shimmer {
+    background-image: linear-gradient(100deg,
+      hsl(var(--title-gold-a)) 0%, hsl(var(--title-gold-b)) 35%,
+      hsl(var(--title-gold-c)) 50%, hsl(var(--title-gold-b)) 65%, hsl(var(--title-gold-a)) 100%);
+    background-size: 250% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: hsl(var(--title-gold-b));
+    animation: gold-title-shimmer 7s ease-in-out infinite;
+    text-shadow: none !important;
+  }
+  .text-display .italic, .text-h1 .italic, .text-h2 .italic { -webkit-text-fill-color: transparent; }
+}
+:root { --title-gold-a: 38 70% 28%; --title-gold-b: 40 85% 36%; --title-gold-c: 44 90% 52%; }
+.dark, .bg-ocean-deep, [class*="bg-ocean"] { --title-gold-a: 38 50% 52%; --title-gold-b: 42 80% 64%; --title-gold-c: 46 100% 82%; }
+.dark { --title-gold-a: 38 50% 52%; --title-gold-b: 42 80% 64%; --title-gold-c: 46 100% 82%; }
+@keyframes gold-title-shimmer { 0%,100% { background-position: 100% 0; } 50% { background-position: 0% 0; } }
+@media (prefers-reduced-motion: reduce) { .text-display, .text-h1, .text-h2, .gold-shimmer { animation: none; } }
