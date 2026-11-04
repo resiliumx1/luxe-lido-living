@@ -2,7 +2,6 @@ import { useState, useEffect, useRef } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Menu, X, Sun, Moon, ChevronDown, ArrowRight } from "lucide-react";
 import { useTheme } from "next-themes";
-import { useCurrency } from "@/contexts/CurrencyContext";
 import { LuxeLogo } from "@/components/ui/LuxeLogo";
 import BookingModal from "./BookingModal";
 
@@ -49,7 +48,6 @@ export default function Navigation() {
   const [mobileContainerOpen, setMobileContainerOpen] = useState(false);
   const { theme, setTheme } = useTheme();
 
-  const { currency, setCurrency } = useCurrency();
   const location = useLocation();
   const navigate = useNavigate();
   const isHome = location.pathname === "/";
@@ -98,7 +96,7 @@ export default function Navigation() {
             ? ""
             : "bg-ocean-deep/95 backdrop-blur-md shadow-lg shadow-black/10"
         }`}
-        style={isTransparent ? { background: "linear-gradient(to bottom, rgba(5,12,28,0.50) 0%, transparent 100%)" } : undefined}
+        style={isTransparent ? { background: "linear-gradient(to bottom, rgba(36,31,27,0.50) 0%, transparent 100%)" } : undefined}
         aria-label="Main navigation"
       >
         <div className="max-w-[1280px] mx-auto px-6 md:px-10 flex items-center justify-between h-20">
@@ -120,29 +118,6 @@ export default function Navigation() {
 
           {/* Right — utilities + CTA + mobile hamburger */}
           <div className="flex items-center gap-1 shrink-0">
-            {/* Currency toggle — pill group */}
-            <div
-              className="hidden md:flex items-center h-8 border border-gold/20 overflow-hidden"
-              role="radiogroup"
-              aria-label="Currency"
-            >
-              {(["USD", "XCD", "CAD"] as const).map((c, idx) => (
-                <div key={c} className="flex items-center h-full">
-                  {idx > 0 && <span className="w-px h-4 bg-gold/20" aria-hidden="true" />}
-                  <button
-                    role="radio"
-                    aria-checked={currency === c}
-                    onClick={() => setCurrency(c)}
-                    className={`px-2.5 h-full font-sans text-[11px] font-bold tracking-wide transition-colors duration-200 ${
-                      currency === c ? utilActive : utilMuted
-                    }`}
-                  >
-                    {c}
-                  </button>
-                </div>
-              ))}
-            </div>
-
             {/* Theme toggle */}
             <button
               onClick={() => setTheme(isDark ? "light" : "dark")}
@@ -182,24 +157,6 @@ export default function Navigation() {
       >
         {/* Mobile Preferences row */}
         <div className="flex items-center gap-6 mb-4 pb-4 border-b border-gold/10">
-          <div className="flex items-center gap-3">
-            <span className="font-sans text-xs text-off-white/85 uppercase tracking-widest">Currency</span>
-            <div className="flex items-center h-8 border border-gold/20" role="radiogroup" aria-label="Currency">
-              {(["USD", "XCD", "CAD"] as const).map((c, idx) => (
-                <div key={c} className="flex items-center h-full">
-                  {idx > 0 && <span className="w-px h-4 bg-gold/20" aria-hidden="true" />}
-                  <button
-                    role="radio"
-                    aria-checked={currency === c}
-                    onClick={() => setCurrency(c)}
-                    className={`px-3 h-full font-sans text-xs font-bold ${currency === c ? "text-gold" : "text-off-white/85"}`}
-                  >
-                    {c}
-                  </button>
-                </div>
-              ))}
-            </div>
-          </div>
           <div className="flex items-center gap-3">
             <span className="font-sans text-xs text-off-white/85 uppercase tracking-widest">Theme</span>
             <button

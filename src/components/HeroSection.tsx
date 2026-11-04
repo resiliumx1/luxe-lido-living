@@ -49,7 +49,7 @@ export default function HeroSection() {
 
   return (
     <>
-      <section className="relative min-h-screen min-h-[100svh] overflow-hidden flex items-center">
+      <section className="on-dark relative min-h-screen min-h-[100svh] overflow-hidden flex items-center">
         {/* Background layer */}
         {mode === "poster" ? (
           <img
@@ -82,12 +82,12 @@ export default function HeroSection() {
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(100deg, rgba(5,12,28,0.92) 0%, rgba(5,12,28,0.80) 35%, rgba(5,12,28,0.55) 65%, rgba(5,12,28,0.35) 100%)",
+              "linear-gradient(100deg, rgba(36,31,27,0.92) 0%, rgba(36,31,27,0.80) 35%, rgba(36,31,27,0.55) 65%, rgba(36,31,27,0.35) 100%)",
           }}
         />
         <div
           className="absolute bottom-0 left-0 right-0 h-1/2"
-          style={{ background: "linear-gradient(to top, rgba(5,12,28,0.75) 0%, transparent 100%)" }}
+          style={{ background: "linear-gradient(to top, rgba(36,31,27,0.75) 0%, transparent 100%)" }}
         />
 
         <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-10 pt-28 pb-32 grid lg:grid-cols-12 gap-12 items-center">
