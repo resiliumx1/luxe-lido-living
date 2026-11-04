@@ -131,7 +131,6 @@ const ProjectsAdmin = () => {
     <div className="space-y-6">
       <div className="flex flex-wrap items-center justify-between gap-4">
         <div>
-          <h2 className="font-serif text-2xl text-foreground">Projects</h2>
           <p className="text-sm text-muted-foreground">{active} active · {projects.length} total · {money(totalBudget)} in budgets</p>
         </div>
         <Button onClick={createBlank}><Plus /> New project</Button>
