@@ -558,7 +558,7 @@
 .title-on-dark { --title-gold-a: 38 50% 55%; --title-gold-b: 42 80% 66%; --title-gold-c: 46 100% 84%; }
 
 /* ── Gold text resolves to AA-safe ink on light, bright gold on dark ── */
-.dark, .on-dark, .bg-ocean-deep, [class*="bg-ocean-deep"], [class*="bg-espresso"], [class*="bg-primary-dark"], footer, .title-on-dark { --gold-ink: var(--gold); }
+.dark, .on-dark, .bg-ocean-deep, [class*="bg-ocean-deep"], [class*="bg-espresso"], [class*="bg-primary-dark"], footer, .title-on-dark, :has(> img.absolute.inset-0), :has(> video.absolute) { --gold-ink: var(--gold); --title-gold-a: 38 50% 55%; --title-gold-b: 42 80% 66%; --title-gold-c: 46 100% 84%; }
 .text-gold { color: hsl(var(--gold-ink)); }
 .text-gold-soft { color: hsl(var(--gold-ink)); }
 :is(.dark, .on-dark, .bg-ocean-deep, [class*="bg-ocean-deep"], [class*="bg-espresso"], footer) .text-gold-soft { color: hsl(var(--gold-soft)); }
