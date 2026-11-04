@@ -59,7 +59,7 @@ export default function PrefabHomes() {
                 <div key={label} className="border-t border-gold pt-6">
                   <Icon size={20} className="text-gold mb-4" />
                   <h3 className="font-serif text-lg text-ocean-deep dark:text-foreground mb-2">{label}</h3>
-                  <p className="font-sans text-sm text-ocean-mid/70 dark:text-foreground/50 leading-relaxed">{desc}</p>
+                  <p className="font-sans text-sm text-ocean-mid/70 dark:text-foreground/85 leading-relaxed">{desc}</p>
                 </div>
               ))}
             </div>

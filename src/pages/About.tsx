@@ -78,7 +78,7 @@ export default function About() {
               {facts.map((s) => (
                 <div key={s.label}>
                   <p className="font-serif text-gold font-medium mb-2" style={{ fontSize: "20px", lineHeight: 1.2 }}>{s.value}</p>
-                  <p className="text-stat-label text-off-white/60">{s.label}</p>
+                  <p className="text-stat-label text-off-white/85">{s.label}</p>
                 </div>
               ))}
             </div>

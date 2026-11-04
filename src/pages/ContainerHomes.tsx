@@ -117,10 +117,10 @@ function ContainerHero() {
           <div className="mt-8 hero-stagger flex items-center gap-6" style={{ animationDelay: "1.2s" }}>
             <div>
               <span className="font-serif text-2xl text-gold">$88,000</span>
-              <span className="font-sans text-xs text-off-white/50 ml-1.5">XCD starting</span>
+              <span className="font-sans text-xs text-off-white/85 ml-1.5">XCD starting</span>
             </div>
             <span className="w-px h-6 bg-gold/20" />
-            <span className="font-sans text-xs text-off-white/50 tracking-wider uppercase">3 Packages</span>
+            <span className="font-sans text-xs text-off-white/85 tracking-wider uppercase">3 Packages</span>
           </div>
         </div>
       </div>
@@ -332,11 +332,11 @@ function PackagesSection() {
                 <current.Icon className="w-6 h-6 text-gold" />
                 <h3 className="font-serif text-2xl text-off-white">{current.name}</h3>
               </div>
-              <p className="font-sans text-sm text-off-white/60 mb-6">{current.tagline}</p>
+              <p className="font-sans text-sm text-off-white/85 mb-6">{current.tagline}</p>
               <div className="flex flex-wrap gap-4 mb-8">
                 {current.prices.map((p) => (
                   <div key={p.unit} className="bg-ocean-deep/60 border border-gold/15 rounded-xl px-5 py-4 transition-shadow duration-300 hover:shadow-[0_0_24px_rgba(212,165,74,0.12)]">
-                    <span className="font-sans text-xs text-off-white/50 block mb-1">{p.unit}</span>
+                    <span className="font-sans text-xs text-off-white/85 block mb-1">{p.unit}</span>
                     <span className="font-serif text-xl text-gold">{p.price}</span>
                   </div>
                 ))}
@@ -402,9 +402,9 @@ function ComparisonTable() {
               {comparisonRows.map((row) => (
                 <tr key={row.feature} className="border-b border-border/50 transition-colors duration-200 hover:bg-gold/[0.04]">
                   <td className="font-sans text-sm text-foreground py-3.5 pr-4">{row.feature}</td>
-                  <td className="py-3.5 px-4 text-center">{row.self ? <GoldCheck /> : <span className="text-muted-foreground/40">—</span>}</td>
-                  <td className="py-3.5 px-4 text-center">{row.full ? <GoldCheck /> : <span className="text-muted-foreground/40">—</span>}</td>
-                  <td className="py-3.5 px-4 text-center">{row.premium ? <GoldCheck /> : <span className="text-muted-foreground/40">—</span>}</td>
+                  <td className="py-3.5 px-4 text-center">{row.self ? <GoldCheck /> : <span className="text-muted-foreground">—</span>}</td>
+                  <td className="py-3.5 px-4 text-center">{row.full ? <GoldCheck /> : <span className="text-muted-foreground">—</span>}</td>
+                  <td className="py-3.5 px-4 text-center">{row.premium ? <GoldCheck /> : <span className="text-muted-foreground">—</span>}</td>
                 </tr>
               ))}
               <tr className="border-t-2 border-gold/20">
@@ -499,10 +499,10 @@ function ContainersForBusiness() {
                   className="group p-6 rounded-xl border border-off-white/10 transition-all duration-500 hover:border-gold/30 hover:shadow-[0_0_24px_rgba(212,165,74,0.08)]"
                 >
                   <div className="w-12 h-12 flex items-center justify-center rounded-lg bg-off-white/[0.06] mb-4 transition-colors duration-500 group-hover:bg-gold/10">
-                    <Icon className="w-7 h-7 text-off-white/50 transition-colors duration-500 group-hover:text-gold" />
+                    <Icon className="w-7 h-7 text-off-white/85 transition-colors duration-500 group-hover:text-gold" />
                   </div>
                   <h4 className="font-serif text-lg text-off-white mb-1">{title}</h4>
-                  <p className="font-sans text-sm text-off-white/50">{desc}</p>
+                  <p className="font-sans text-sm text-off-white/85">{desc}</p>
                 </div>
               ))}
             </div>
@@ -525,7 +525,7 @@ function ContainersForBusiness() {
               transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
             >
               <span className="font-serif text-2xl text-gold block leading-none">40%</span>
-              <span className="font-sans text-[10px] text-off-white/50 tracking-wider uppercase">Faster Build</span>
+              <span className="font-sans text-[10px] text-off-white/85 tracking-wider uppercase">Faster Build</span>
             </motion.div>
             <motion.div
               className="absolute -top-4 -right-4 bg-ocean-deep/90 backdrop-blur-md border border-gold/20 rounded-xl px-5 py-4"
@@ -533,7 +533,7 @@ function ContainersForBusiness() {
               transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
             >
               <span className="font-serif text-2xl text-gold block leading-none">8 Wks</span>
-              <span className="font-sans text-[10px] text-off-white/50 tracking-wider uppercase">Average Delivery</span>
+              <span className="font-sans text-[10px] text-off-white/85 tracking-wider uppercase">Average Delivery</span>
             </motion.div>
           </div>
         </div>
@@ -590,7 +590,7 @@ function FinalCTA() {
           </span>
           ?
         </h2>
-        <p className="font-sans text-off-white/60 text-base mb-10 max-w-md mx-auto">
+        <p className="font-sans text-off-white/85 text-base mb-10 max-w-md mx-auto">
           Speak with Ashante today to find the perfect container home package for your vision and budget.
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10">
@@ -605,7 +605,7 @@ function FinalCTA() {
           {["Licensed Agent", "Built to Order", "Island-Wide Service"].map((t) => (
             <span key={t} className="flex items-center gap-2">
               <GoldCheck />
-              <span className="font-sans text-xs text-off-white/50 tracking-wider uppercase">{t}</span>
+              <span className="font-sans text-xs text-off-white/85 tracking-wider uppercase">{t}</span>
             </span>
           ))}
         </div>

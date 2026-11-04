@@ -87,7 +87,7 @@ export default function Navigation() {
   const isDark = theme === "dark";
 
   // Utility colors based on nav state
-  const utilMuted = isTransparent ? "text-off-white/50" : "text-off-white/50";
+  const utilMuted = isTransparent ? "text-off-white/85" : "text-off-white/85";
   const utilActive = "text-gold";
 
   return (
@@ -183,7 +183,7 @@ export default function Navigation() {
         {/* Mobile Preferences row */}
         <div className="flex items-center gap-6 mb-4 pb-4 border-b border-gold/10">
           <div className="flex items-center gap-3">
-            <span className="font-sans text-xs text-off-white/40 uppercase tracking-widest">Currency</span>
+            <span className="font-sans text-xs text-off-white/85 uppercase tracking-widest">Currency</span>
             <div className="flex items-center h-8 border border-gold/20" role="radiogroup" aria-label="Currency">
               {(["USD", "XCD", "CAD"] as const).map((c, idx) => (
                 <div key={c} className="flex items-center h-full">
@@ -192,7 +192,7 @@ export default function Navigation() {
                     role="radio"
                     aria-checked={currency === c}
                     onClick={() => setCurrency(c)}
-                    className={`px-3 h-full font-sans text-xs font-bold ${currency === c ? "text-gold" : "text-off-white/40"}`}
+                    className={`px-3 h-full font-sans text-xs font-bold ${currency === c ? "text-gold" : "text-off-white/85"}`}
                   >
                     {c}
                   </button>
@@ -201,7 +201,7 @@ export default function Navigation() {
             </div>
           </div>
           <div className="flex items-center gap-3">
-            <span className="font-sans text-xs text-off-white/40 uppercase tracking-widest">Theme</span>
+            <span className="font-sans text-xs text-off-white/85 uppercase tracking-widest">Theme</span>
             <button
               onClick={() => setTheme(isDark ? "light" : "dark")}
               aria-label={`Toggle theme — currently ${isDark ? "dark" : "light"} mode`}

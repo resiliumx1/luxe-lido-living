@@ -97,7 +97,7 @@ export default function AdminDashboard() {
                   </div>
                   <div className="flex items-center gap-2">
                     {inq.status === "unread" && <span className="w-1.5 h-1.5 bg-gold rounded-full" />}
-                    <span className="font-sans text-[11px] text-muted-foreground/60">{timeAgo(inq.created_at)}</span>
+                    <span className="font-sans text-[11px] text-muted-foreground">{timeAgo(inq.created_at)}</span>
                   </div>
                 </div>
               ))}
@@ -119,7 +119,7 @@ export default function AdminDashboard() {
                   </div>
                   <div className="text-right">
                     <p className="font-sans text-[11px] text-gold">{new Date(v.preferred_date).toLocaleDateString()}</p>
-                    <p className="font-sans text-[11px] text-muted-foreground/60 capitalize">{v.method?.replace("-", " ")}</p>
+                    <p className="font-sans text-[11px] text-muted-foreground capitalize">{v.method?.replace("-", " ")}</p>
                   </div>
                 </div>
               ))}

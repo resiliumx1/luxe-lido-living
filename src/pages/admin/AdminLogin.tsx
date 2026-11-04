@@ -70,11 +70,11 @@ export default function AdminLogin() {
           </div>
 
           <h1 className="font-serif text-2xl text-white text-center mb-1">Admin Access</h1>
-          <p className="font-sans text-sm text-white/40 text-center mb-8">Authorized personnel only</p>
+          <p className="font-sans text-sm text-white/85 text-center mb-8">Authorized personnel only</p>
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label htmlFor="admin-email" className="block font-sans text-xs tracking-wide text-white/50 mb-2">
+              <label htmlFor="admin-email" className="block font-sans text-xs tracking-wide text-white/85 mb-2">
                 Email
               </label>
               <input
@@ -90,7 +90,7 @@ export default function AdminLogin() {
             </div>
 
             <div>
-              <label htmlFor="admin-password" className="block font-sans text-xs tracking-wide text-white/50 mb-2">
+              <label htmlFor="admin-password" className="block font-sans text-xs tracking-wide text-white/85 mb-2">
                 Password
               </label>
               <input
@@ -134,14 +134,14 @@ export default function AdminLogin() {
               setError(null);
               setNotice(null);
             }}
-            className="w-full font-sans text-[12px] text-white/40 hover:text-gold transition-colors duration-300 mt-4"
+            className="w-full font-sans text-[12px] text-white/85 hover:text-gold transition-colors duration-300 mt-4"
           >
             {mode === "signin" ? "First time? Create the admin account" : "Already have an account? Sign in"}
           </button>
 
           <Link
             to="/"
-            className="flex items-center justify-center gap-1.5 mt-6 font-sans text-sm text-white/40 hover:text-gold transition-colors duration-300"
+            className="flex items-center justify-center gap-1.5 mt-6 font-sans text-sm text-white/85 hover:text-gold transition-colors duration-300"
           >
             <ArrowLeft size={14} />
             Back to Site

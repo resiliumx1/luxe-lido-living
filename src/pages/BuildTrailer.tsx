@@ -272,7 +272,7 @@ export default function BuildTrailer() {
         <div className="max-w-[960px] mx-auto">
           <SectionLabel text="Custom Trailers & Mobile Kitchens" light />
           <h1 className="font-serif text-h2 md:text-display text-off-white mt-3">Start Your Trailer Build</h1>
-          <p className="font-sans text-off-white/60 text-body mt-2 max-w-2xl">
+          <p className="font-sans text-off-white/85 text-body mt-2 max-w-2xl">
             Five quick steps. We'll come back with a layout, a timeline, and a quote.
           </p>
         </div>

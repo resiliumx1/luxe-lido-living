@@ -49,7 +49,7 @@ export default function Footer() {
             <span className="inline-block transition-transform duration-500 hover:scale-105" style={{ filter: "drop-shadow(0 0 24px hsl(var(--gold) / 0.35))" }}>
               <img src="/logo-dark.svg" className="h-14" alt="A. Lindsay Luxe Estates" />
             </span>
-            <p className="font-sans text-off-white/50 text-sm mt-4 text-center max-w-md">
+            <p className="font-sans text-off-white/85 text-sm mt-4 text-center max-w-md">
               Construction, renovation, land and property support across Antigua &amp; Barbuda.
             </p>
             <p className="font-serif italic text-gold/70 text-sm tracking-wide mt-3">
@@ -106,7 +106,7 @@ export default function Footer() {
               <ul className="space-y-3">
                 {quickLinks.map((l) => (
                   <li key={l.href}>
-                    <Link to={l.href} className="font-sans text-sm text-white/60 hover:text-gold transition-colors duration-300">
+                    <Link to={l.href} className="font-sans text-sm text-white/85 hover:text-gold transition-colors duration-300">
                       {l.label}
                     </Link>
                   </li>
@@ -119,17 +119,17 @@ export default function Footer() {
               <h4 className="text-eyebrow mb-5">Contact</h4>
               <ul className="space-y-3">
                 <li>
-                  <a href={`tel:${ASHANTE_PHONE_RAW}`} className="flex items-center gap-2 font-sans text-sm text-white/60 hover:text-gold transition-colors duration-300">
+                  <a href={`tel:${ASHANTE_PHONE_RAW}`} className="flex items-center gap-2 font-sans text-sm text-white/85 hover:text-gold transition-colors duration-300">
                     <Phone size={14} className="text-gold/50" /> {ASHANTE_PHONE}
                   </a>
                 </li>
                 <li>
-                  <a href={`mailto:${ASHANTE_EMAIL}`} className="flex items-center gap-2 font-sans text-sm text-white/60 hover:text-gold transition-colors duration-300">
+                  <a href={`mailto:${ASHANTE_EMAIL}`} className="flex items-center gap-2 font-sans text-sm text-white/85 hover:text-gold transition-colors duration-300">
                     <Mail size={14} className="text-gold/50" /> {ASHANTE_EMAIL}
                   </a>
                 </li>
                 <li>
-                  <a href={`https://wa.me/${WHATSAPP_NUMBER}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 font-sans text-sm text-white/60 hover:text-gold transition-colors duration-300">
+                  <a href={`https://wa.me/${WHATSAPP_NUMBER}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 font-sans text-sm text-white/85 hover:text-gold transition-colors duration-300">
                     <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" className="text-gold/50">
                       <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
                       <path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.932-1.41A9.953 9.953 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18a7.96 7.96 0 01-4.104-1.136l-.29-.173-3.03.866.81-2.957-.186-.3A7.962 7.962 0 014 12c0-4.411 3.589-8 8-8s8 3.589 8 8-3.589 8-8 8z"/>
@@ -143,9 +143,9 @@ export default function Footer() {
             {/* Office Hours */}
             <div>
               <h4 className="text-eyebrow mb-5">Office Hours</h4>
-              <ul className="space-y-3 font-sans text-sm text-white/60">
+              <ul className="space-y-3 font-sans text-sm text-white/85">
                 <li>{OFFICE_HOURS}</li>
-                <li className="text-white/40 text-xs mt-2">{OFFICE_LOCATION}</li>
+                <li className="text-white/85 text-xs mt-2">{OFFICE_LOCATION}</li>
               </ul>
             </div>
           </div>
@@ -154,11 +154,11 @@ export default function Footer() {
         {/* Bottom row */}
         <div className="border-t border-gold/20">
           <div className="max-w-[1280px] mx-auto px-6 md:px-10 py-6 flex flex-col md:flex-row items-center justify-between gap-3">
-            <p className="font-sans text-white/40 text-xs">
+            <p className="font-sans text-white/85 text-xs">
               © 2025 A. Lindsay Luxe Estates. All rights reserved.
             </p>
             <div className="flex items-center gap-4">
-              <p className="font-sans text-white/40 text-xs">
+              <p className="font-sans text-white/85 text-xs">
                 Construction &amp; Licensed Real Estate Services, Antigua &amp; Barbuda
               </p>
               <Link to="/admin/login" className="font-sans text-[11px] tracking-wider uppercase text-gold/60 hover:text-gold transition-colors duration-300 flex items-center gap-1.5">
