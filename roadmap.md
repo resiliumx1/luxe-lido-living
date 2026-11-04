@@ -5,3 +5,9 @@
 - [x] Preserve submission behavior while storing all answers and optional photo
 - [x] Show complete enquiry details in admin
 - [x] Verify general enquiry and leave dedicated order flows unchanged
+
+# Conversion & polish pass
+
+- [x] Homepage: Managed Construction and Custom Builds as flagship cards, every service with a "Start your enquiry" button
+- [x] Container order and trailer build forms: animated progress, smoother finish screen
+- [x] Gentle scroll fade-ins across homepage and service pages, consistent section spacing
