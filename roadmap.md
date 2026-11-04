@@ -15,4 +15,4 @@
 # Section rhythm refinement
 - [x] Reveal individual sections and service items as they enter view; honor reduced motion
 - [x] Balance mobile and desktop spacing from service discovery to enquiry
-- [ ] Verify public pages and enquiry links on desktop and mobile
+- [x] Verify public pages and enquiry links on desktop and mobile
