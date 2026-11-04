@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactNode, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowLeft, ArrowRight, Check } from "lucide-react";
 
@@ -48,6 +48,10 @@ export default function RequestEngine({
           return typeof v === "string" ? v : null;
         })()
       : null;
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [step]);
 
   const next = () => {
     if (validationMsg) return;
