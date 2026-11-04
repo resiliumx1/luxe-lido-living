@@ -16,6 +16,7 @@ import {
 } from "lucide-react";
 import SectionLabel from "@/components/SectionLabel";
 import PhotoGallery from "@/components/PhotoGallery";
+import Reveal from "@/components/Reveal";
 import { trailerRealBuilds } from "@/data/realBuildPhotos";
 
 const trailerTypes = [
@@ -151,12 +152,14 @@ export default function Trailers() {
       {/* Types */}
       <section className="bg-background py-24 px-6">
         <div className="max-w-[1280px] mx-auto">
-          <SectionLabel text="What We Build" />
-          <h2 className="font-serif text-h2 text-foreground mt-4 mb-3">Five Formats. Endless Configurations.</h2>
-          <p className="font-sans text-muted-foreground text-body max-w-2xl mb-12">
-            Every trailer is purpose-built — no off-the-shelf templates. Pick your format, and we'll design
-            the layout around how you actually work.
-          </p>
+          <Reveal>
+            <SectionLabel text="What We Build" />
+            <h2 className="font-serif text-h2 text-foreground mt-4 mb-3">Five Formats. Endless Configurations.</h2>
+            <p className="font-sans text-muted-foreground text-body max-w-2xl mb-12">
+              Every trailer is purpose-built — no off-the-shelf templates. Pick your format, and we'll design
+              the layout around how you actually work.
+            </p>
+          </Reveal>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {trailerTypes.map((t, i) => (
@@ -182,13 +185,17 @@ export default function Trailers() {
       {/* Real builds */}
       <section className="bg-secondary py-24 px-6">
         <div className="max-w-[1280px] mx-auto">
-          <SectionLabel text="Real Builds" />
-          <h2 className="font-serif text-h2 text-foreground mt-4 mb-3">Built, Shipped, Trading.</h2>
-          <p className="font-sans text-muted-foreground text-body max-w-2xl mb-12">
-            These are photographs of our actual work — not renders. The RumBurger trailer below was built to
-            the customer's brand and menu, then shipped and delivered to Antigua. Tap any photo to enlarge.
-          </p>
-          <PhotoGallery photos={trailerRealBuilds} />
+          <Reveal>
+            <SectionLabel text="Real Builds" />
+            <h2 className="font-serif text-h2 text-foreground mt-4 mb-3">Built, Shipped, Trading.</h2>
+            <p className="font-sans text-muted-foreground text-body max-w-2xl mb-12">
+              These are photographs of our actual work — not renders. The RumBurger trailer below was built to
+              the customer's brand and menu, then shipped and delivered to Antigua. Tap any photo to enlarge.
+            </p>
+          </Reveal>
+          <Reveal delay={2}>
+            <PhotoGallery photos={trailerRealBuilds} />
+          </Reveal>
         </div>
       </section>
 
@@ -196,11 +203,13 @@ export default function Trailers() {
       {/* Process */}
       <section className="bg-ocean-deep py-24 px-6">
         <div className="max-w-[1280px] mx-auto">
-          <SectionLabel text="Build Process" light />
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mt-4 mb-16">
-            <h2 className="font-serif text-h2 text-off-white max-w-2xl">From Brief to Delivery</h2>
-            <p className="font-serif italic text-gold text-h4">Typical build: 4–6 weeks</p>
-          </div>
+          <Reveal>
+            <SectionLabel text="Build Process" light />
+            <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mt-4 mb-16">
+              <h2 className="font-serif text-h2 text-off-white max-w-2xl">From Brief to Delivery</h2>
+              <p className="font-serif italic text-gold text-h4">Typical build: 4–6 weeks</p>
+            </div>
+          </Reveal>
 
           <div className="flex flex-col lg:flex-row items-start gap-4">
             {processSteps.map((step, i) => (
@@ -227,11 +236,13 @@ export default function Trailers() {
       {/* What's Included — spec block */}
       <section className="bg-background py-24 px-6">
         <div className="max-w-[1280px] mx-auto">
-          <SectionLabel text="What's Included" />
-          <h2 className="font-serif text-h2 text-foreground mt-4 mb-3">Example Build Specification</h2>
-          <p className="font-sans text-muted-foreground text-body max-w-2xl mb-12">
-            Based on a recent build — every trailer is configured to your menu and operation.
-          </p>
+          <Reveal>
+            <SectionLabel text="What's Included" />
+            <h2 className="font-serif text-h2 text-foreground mt-4 mb-3">Example Build Specification</h2>
+            <p className="font-sans text-muted-foreground text-body max-w-2xl mb-12">
+              Based on a recent build — every trailer is configured to your menu and operation.
+            </p>
+          </Reveal>
 
           {/* Dimensions */}
           <div className="bg-secondary border border-border p-8 mb-8">
@@ -302,7 +313,7 @@ export default function Trailers() {
 
       {/* Final CTA */}
       <section className="bg-ocean-deep py-24 px-6 text-center">
-        <div className="max-w-2xl mx-auto">
+        <Reveal className="max-w-2xl mx-auto">
           <h2 className="font-serif text-h2 text-off-white mb-6">Ready To Build?</h2>
           <p className="font-sans text-off-white/60 text-body mb-10">
             Tell us your menu, your brand, and where you're operating — we'll come back with a layout, a
@@ -314,7 +325,7 @@ export default function Trailers() {
           >
             Start Your Trailer Build <ArrowRight size={16} />
           </Link>
-        </div>
+        </Reveal>
       </section>
     </main>
   );
