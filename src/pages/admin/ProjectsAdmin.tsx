@@ -52,10 +52,10 @@ const ProjectsAdmin = () => {
         const { data: enq } = await supabase.from("enquiries").select("*").eq("id", fromEnquiry).maybeSingle();
         if (enq) {
           const q = (enq.qualification || {}) as Record<string, unknown>;
-          const need = String(q.need || enq.property_name || "Project");
+          const need = String(q.need_label || q.need || enq.property_name || "Project");
           const { data: created, error } = await supabase.from("projects").insert({
             enquiry_id: enq.id, title: `${need} — ${enq.name}`, client_name: enq.name, client_email: enq.email,
-            client_phone: enq.phone, service_type: need, location: q.area ? String(q.area) : null,
+            client_phone: enq.phone, service_type: need, location: q.parish_or_area ? String(q.parish_or_area) : null,
             notes: enq.message, photo_paths: enq.photo_path ? [`enquiry:${enq.photo_path}`] : [],
           }).select().single();
           if (error) toast({ title: "Could not create project", description: error.message, variant: "destructive" });
