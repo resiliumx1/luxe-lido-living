@@ -251,7 +251,7 @@ function HowItWorks() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
           {steps.map((s, i) => (
             <div key={s.num} className={`reveal reveal-delay-${Math.min(i + 1, 6)}`}>
-              <p className="font-serif text-4xl text-gold/40 font-light mb-4">{s.num}</p>
+              <p className="font-serif text-4xl text-gold font-light mb-4">{s.num}</p>
               <h3 className="font-serif text-lg text-ocean-deep dark:text-foreground mb-3">{s.title}</h3>
               <p className="font-sans text-sm text-ocean-mid/70 dark:text-foreground/85 leading-relaxed">{s.desc}</p>
             </div>

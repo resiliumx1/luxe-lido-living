@@ -165,7 +165,7 @@ export default function HeroSection() {
           className="absolute bottom-20 sm:bottom-24 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 hero-stagger"
           style={{ animationDelay: "1.4s" }}
         >
-          <span className="font-sans text-[9px] font-semibold tracking-[0.2em] uppercase text-gold/70">
+          <span className="font-sans text-[9px] font-semibold tracking-[0.2em] uppercase text-gold">
             Scroll
           </span>
           <span className="block w-px h-6 bg-gold/50 scroll-line" />
