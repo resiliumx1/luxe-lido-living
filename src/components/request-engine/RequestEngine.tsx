@@ -59,24 +59,34 @@ export default function RequestEngine({
     <div className="max-w-[960px] mx-auto px-6 py-12 pt-28">
       {/* Progress bar */}
       <div className="mb-10">
-        <div className="flex items-center gap-2 mb-3">
+        <div className="flex items-center gap-2 mb-3" aria-hidden>
           {steps.map((s, i) => (
             <div key={i} className="flex-1 flex items-center gap-2">
-              <div
-                className={`w-8 h-8 rounded-full flex items-center justify-center font-sans text-sm font-bold transition-colors ${
-                  i <= step ? "bg-gold text-ocean-deep" : "bg-secondary text-muted-foreground"
+              <motion.span
+                animate={{ scale: i === step ? 1.12 : 1 }}
+                transition={{ type: "spring", stiffness: 300, damping: 18 }}
+                className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full font-sans text-sm font-bold transition-colors duration-500 ${
+                  i <= step ? "bg-gold text-ocean-deep shadow-md" : "bg-secondary text-muted-foreground"
                 }`}
               >
                 {i < step ? <Check size={14} /> : i + 1}
-              </div>
+              </motion.span>
               {i < steps.length - 1 && (
-                <div className={`flex-1 h-0.5 ${i < step ? "bg-gold" : "bg-secondary"}`} />
+                <span className="relative h-0.5 flex-1 overflow-hidden rounded-full bg-secondary">
+                  <motion.span
+                    className="absolute inset-y-0 left-0 bg-gold"
+                    initial={false}
+                    animate={{ width: i < step ? "100%" : "0%" }}
+                    transition={{ duration: 0.6, ease: "easeInOut" }}
+                  />
+                </span>
               )}
             </div>
           ))}
         </div>
-        <p className="font-sans text-xs uppercase tracking-widest text-muted-foreground">
-          Step {step + 1} of {steps.length} · <span className="text-foreground">{current.label}</span>
+        <p className="font-sans text-xs uppercase tracking-widest text-muted-foreground" aria-live="polite">
+          Step {step + 1} of {steps.length} · <span className="text-foreground">{current.label}</span> ·{" "}
+          {Math.round(((step + 1) / steps.length) * 100)}%
         </p>
       </div>
 
