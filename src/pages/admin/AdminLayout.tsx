@@ -3,6 +3,7 @@ import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
 import {
   LayoutDashboard, Home, Container, MessageSquare,
   Settings, Image, LogOut, ExternalLink, Menu, X, Sun, Moon,
+  FolderKanban,
 } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useAdminAuth } from "@/contexts/AdminAuthContext";
@@ -13,6 +14,7 @@ const navItems = [
   { label: "Containers", href: "/admin/containers", icon: Container },
   { label: "Photo Manager", href: "/admin/photos", icon: Image },
   { label: "Inquiries", href: "/admin/inquiries", icon: MessageSquare },
+  { label: "Projects", href: "/admin/projects", icon: FolderKanban },
   { label: "Settings", href: "/admin/settings", icon: Settings },
 ];
 

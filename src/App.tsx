@@ -26,6 +26,7 @@ import AdminDashboard from "./pages/admin/AdminDashboard";
 import PropertiesAdmin from "./pages/admin/PropertiesAdmin";
 import PhotoManager from "./pages/admin/PhotoManager";
 import InquiriesAdmin from "./pages/admin/InquiriesAdmin";
+import ProjectsAdmin from "./pages/admin/ProjectsAdmin";
 import AdminContainers from "./pages/admin/AdminContainers";
 import AdminSettings from "./pages/admin/AdminSettings";
 import ContainerHub from "./pages/container/Hub";
@@ -68,6 +69,7 @@ const App = () => (
                     <Route path="containers" element={<AdminContainers />} />
                     <Route path="photos" element={<PhotoManager />} />
                     <Route path="inquiries" element={<InquiriesAdmin />} />
+                    <Route path="projects" element={<ProjectsAdmin />} />
                     <Route path="settings" element={<AdminSettings />} />
                   </Route>
 
