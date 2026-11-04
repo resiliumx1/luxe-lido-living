@@ -32,51 +32,70 @@ function Marquee() {
   );
 }
 
-// ---------- Services ----------
-const flagships = [
+// ---------- Core offerings ----------
+const coreOffers = [
   {
     num: "01",
-    name: "Managed Construction",
-    interest: "managed-construction",
-    tagline: "She runs the build — you don't.",
-    desc: "Hiring and coordinating the contractors and trades, sourcing and pricing materials, scheduling the sequence of work, supervising the site and keeping you updated. Available whether or not she supplied the design, on any build method.",
-    points: ["Trades hired and coordinated", "Materials sourced and priced", "Site supervised, progress reported"],
+    name: "Container Orders",
+    to: "/order-container",
+    cta: "Order a container",
+    tagline: "Real 20ft and 40ft units, ordered and delivered.",
+    desc: "New one-trip or used cargo-worthy stock, standard or high-cube, priced from the island and taken to your site or shipped anywhere in the region.",
+    points: ["20ft & 40ft, new or cargo-worthy used", "Standard or high-cube (9'6\")", "Delivery quoted to your site"],
   },
   {
     num: "02",
-    name: "Custom Builds",
-    interest: "custom-builds",
-    tagline: "Your design, not a standard model.",
-    desc: "Built from your own drawings, or with the architectural drawings and design arranged for you — in traditional block, container or insulated panel. Layout, finishes and specification are your call.",
-    points: ["Your drawings, or ours", "Layout and finishes your call", "Block, container or panel"],
+    name: "Trailer Builds",
+    to: "/build-trailer",
+    cta: "Start your trailer build",
+    tagline: "A kitchen on wheels, built to your menu.",
+    desc: "Food trailers, coffee bars, dessert trailers and mobile kitchens — laid out around the way you actually work, and fitted with the equipment you run.",
+    points: ["Laid out around your menu and brand", "Equipment, power and plumbing specified", "Typically on the road in 4–6 weeks"],
+  },
+  {
+    num: "03",
+    name: "Insulated Panel Builds",
+    to: "/contact?interest=insulated-panel-builds",
+    cta: "Enquire about panel builds",
+    tagline: "Cooler, faster and easier on the budget than block.",
+    desc: "Foam-core insulated panels supplied and built with our manufacturing partner, engineered for the Caribbean — so less heat gets in and less time is spent on site.",
+    points: ["Less heat transfer through the walls", "Shorter time on site than block", "Cost-conscious alternative to concrete"],
+  },
+  {
+    num: "04",
+    name: "Managed Construction",
+    to: "/contact?interest=managed-construction",
+    cta: "Discuss your build",
+    tagline: "She runs the build — you don't.",
+    desc: "Overseas, or simply not wanting to run a build yourself? The trades are appointed and coordinated, materials priced and ordered, the work sequenced, the site supervised and progress reported back to you.",
+    points: ["Trades hired, coordinated and supervised", "Materials priced, ordered and tracked", "Progress reported through to handover"],
   },
 ];
 
-const services = [
-  { num: "03", name: "Traditional Construction", interest: "traditional-construction", desc: "Conventional block and concrete homes, coordinated around your land, needs and budget." },
-  { num: "04", name: "Container Builds", interest: "container-builds", desc: "Shipping containers converted into homes, offices, shops and useful commercial spaces." },
-  { num: "05", name: "Insulated Panel Builds", interest: "insulated-panel-builds", desc: "Our recommended method for better thermal performance, faster erection and lower cost than concrete block." },
-  { num: "06", name: "Renovations & Trades", interest: "renovations-trades", desc: "Vetted help with tiling, painting, plumbing, electrical work, roofing, drawings and design." },
-  { num: "07", name: "Property Sales & Land", interest: "property-sales-land", desc: "Houses and land with clear details — tell us what you're after and we'll come back with options." },
-  { num: "08", name: "Relocation Services", interest: "relocation", desc: "Local support for overseas buyers finding land, property and reliable people on the ground." },
+const supporting = [
+  { num: "05", name: "Custom Builds", interest: "custom-builds", span: "lg:col-span-2", desc: "Built from your own drawings, or with the architectural drawings arranged for you — in block, container or insulated panel." },
+  { num: "06", name: "Traditional Construction", interest: "traditional-construction", span: "lg:col-span-2", desc: "Conventional block and concrete homes, coordinated around your land, needs and budget." },
+  { num: "07", name: "Renovations & Trades", interest: "renovations-trades", span: "lg:col-span-2", desc: "Vetted help with tiling, painting, plumbing, electrical work, roofing, drawings and design." },
+  { num: "08", name: "Property Sales & Land", interest: "property-sales-land", span: "lg:col-span-3", desc: "Houses and land with clear details — tell us what you're after and we'll come back with options." },
+  { num: "09", name: "Relocation Services", interest: "relocation", span: "md:col-span-2 lg:col-span-3", desc: "Local support for overseas buyers finding land, property and reliable people on the ground." },
 ];
 
 function EnquiryButton({
-  interest,
+  to,
   label = "Start your enquiry",
   variant = "solid",
 }: {
-  interest: string;
+  to: string;
   label?: string;
   variant?: "solid" | "outline";
 }) {
   return (
     <Link
-      to={`/contact?interest=${interest}`}
+      to={to}
       className={
         variant === "solid"
           ? "cta-shimmer inline-flex w-fit items-center gap-2 bg-gold hover:bg-gold-soft text-ocean-deep font-sans font-semibold small-caps tracking-[0.14em] text-sm px-7 py-3 transition-all duration-300"
-          : "inline-flex w-fit items-center gap-2 border border-gold/40 px-5 py-2.5 font-sans small-caps tracking-[0.14em] text-xs text-gold hover:bg-gold hover:text-ocean-deep transition-colors duration-300"
+          : "inline-flex w-fit items-center gap-2 border border-gold/60 px-6 py-3 font-sans small-caps tracking-[0.14em] text-[13px] text-gold-soft hover:bg-gold hover:text-ocean-deep transition-colors duration-300"
       }
     >
       {label} <span aria-hidden>→</span>
@@ -92,21 +111,22 @@ function Services() {
       <div className="max-w-[1280px] mx-auto px-6 md:px-10">
         <div className="mb-12 reveal max-w-2xl">
           <SectionLabel text="What We Offer" light />
-          <h2 className="text-h2 text-off-white">Services</h2>
+          <h2 className="text-h2 text-off-white">Four ways we build</h2>
           <p className="font-sans text-off-white/60 text-base leading-relaxed mt-4">
-            Start with the work you need. Each option opens the enquiry form with that service already chosen,
-            so you only answer what is relevant to you.
+            Start with the work you need. Each one opens the right form with your project type already
+            chosen, so you only answer what is relevant to you.
           </p>
         </div>
 
-        {/* Flagship services */}
+        {/* Core offerings — the four the site leads with */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6">
-          {flagships.map((s, i) => (
+          {coreOffers.map((s, i) => (
             <div
               key={s.num}
-              className={`reveal reveal-delay-${i + 1} group relative flex flex-col border border-gold/30 bg-gold/[0.07] p-8 md:p-10 transition-colors duration-300 hover:border-gold/60`}
+              className={`reveal reveal-delay-${Math.min(i + 1, 4)} group relative flex flex-col border border-gold/30 bg-gold/[0.07] p-8 md:p-10 transition-all duration-300 hover:border-gold/60 hover:bg-gold/[0.11]`}
             >
-              <p className="font-serif text-5xl text-off-white/10 font-light leading-none mb-5 group-hover:text-gold/20 transition-colors duration-300">
+              <span className="absolute left-0 top-0 h-px w-0 bg-gold transition-all duration-500 group-hover:w-full" aria-hidden />
+              <p className="font-serif text-5xl text-off-white/10 font-light leading-none mb-5 group-hover:text-gold/25 transition-colors duration-300">
                 {s.num}
               </p>
               <h3 className="font-serif text-2xl md:text-3xl text-off-white mb-2">{s.name}</h3>
@@ -121,18 +141,21 @@ function Services() {
                 ))}
               </ul>
               <div className="mt-8">
-                <EnquiryButton interest={s.interest} />
+                <EnquiryButton to={s.to} label={s.cta} />
               </div>
             </div>
           ))}
         </div>
 
         {/* Supporting services */}
-        <div className="mt-4 lg:mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-gold/10">
-          {services.map((s, i) => (
+        <div className="mt-16 md:mt-20 reveal">
+          <SectionLabel text="Also Handled" light />
+        </div>
+        <div className="mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-px bg-gold/10">
+          {supporting.map((s, i) => (
             <div
               key={s.num}
-              className={`reveal reveal-delay-${Math.min(i + 1, 6)} group flex flex-col bg-ocean-deep dark:bg-ocean-deep p-7 border-t-2 border-transparent hover:border-gold transition-colors duration-300`}
+              className={`reveal reveal-delay-${Math.min(i + 1, 5)} group flex flex-col bg-ocean-deep dark:bg-ocean-deep p-7 border-t-2 border-transparent hover:border-gold transition-colors duration-300 ${s.span}`}
             >
               <p className="font-serif text-4xl text-off-white/10 font-light mb-3 group-hover:text-gold/20 transition-colors duration-300">
                 {s.num}
@@ -140,7 +163,7 @@ function Services() {
               <h3 className="font-serif text-lg text-off-white mb-2">{s.name}</h3>
               <p className="font-sans text-off-white/50 text-sm leading-relaxed flex-1">{s.desc}</p>
               <div className="mt-5">
-                <EnquiryButton interest={s.interest} variant="outline" />
+                <EnquiryButton to={`/contact?interest=${s.interest}`} variant="outline" />
               </div>
             </div>
           ))}
