@@ -322,7 +322,7 @@ function FactsStrip() {
     "Vetted local trades, coordinated on site",
   ];
   return (
-    <div className="bg-ocean-deep border-t border-gold/25">
+    <div className="section-alt border-y border-border">
       <div className="max-w-[1280px] mx-auto px-6 md:px-12">
         <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-4 sm:gap-0 py-6 sm:py-0 sm:h-[72px]">
           {facts.map((fact, i, arr) => (
@@ -332,7 +332,7 @@ function FactsStrip() {
                 i < arr.length - 1 ? "sm:border-r border-gold/15" : ""
               }`}
             >
-              <span className="font-sans text-xs sm:text-sm text-white/70 tracking-wide">{fact}</span>
+              <span className="font-sans text-xs sm:text-sm text-foreground tracking-wide">{fact}</span>
             </div>
           ))}
         </div>
@@ -344,7 +344,7 @@ function FactsStrip() {
 
 export default function Index() {
   return (
-    <div className="bg-off-white dark:bg-background">
+    <div className="alternate-sections bg-background">
       <HeroSection />
       <FactsStrip />
       <Services />
