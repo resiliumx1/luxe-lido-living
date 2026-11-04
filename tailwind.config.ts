@@ -71,6 +71,8 @@ export default {
         "gold-soft": "hsl(var(--gold-soft))",
         "gold-text": "hsl(var(--gold-text))",
         espresso: "hsl(var(--espresso))",
+        ink: "hsl(var(--ink))",
+        "ink-2": "hsl(var(--ink-2))",
         "espresso-2": "hsl(var(--espresso-2))",
         stone: "hsl(var(--stone))",
         taupe: "hsl(var(--taupe))",

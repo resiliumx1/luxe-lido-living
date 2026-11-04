@@ -190,17 +190,17 @@ export default function HeroSection() {
         )}
 
         {/* Warm overlay + darker right half + bottom vignette for corner text */}
-        <div className="absolute inset-0" style={{ background: "rgba(36,31,27,0.40)" }} />
+        <div className="absolute inset-0" style={{ background: "rgba(14,22,33,0.40)" }} />
         <div
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(90deg, rgba(36,31,27,0) 35%, rgba(36,31,27,0.45) 60%, rgba(36,31,27,0.70) 100%)",
+              "linear-gradient(90deg, rgba(14,22,33,0) 35%, rgba(14,22,33,0.45) 60%, rgba(14,22,33,0.70) 100%)",
           }}
         />
         <div
           className="absolute inset-x-0 bottom-0 h-2/5"
-          style={{ background: "linear-gradient(to top, rgba(36,31,27,0.65), transparent)" }}
+          style={{ background: "linear-gradient(to top, rgba(14,22,33,0.65), transparent)" }}
         />
 
         <div className="relative z-10 h-full px-6 md:px-12 pt-28 md:pt-32 pb-24 md:pb-12 flex flex-col">
