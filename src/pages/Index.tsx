@@ -73,11 +73,11 @@ const coreOffers = [
 ];
 
 const supporting = [
-  { num: "05", name: "Custom Builds", interest: "custom-builds", desc: "Built from your own drawings, or with the architectural drawings arranged for you — in block, container or insulated panel." },
-  { num: "06", name: "Traditional Construction", interest: "traditional-construction", desc: "Conventional block and concrete homes, coordinated around your land, needs and budget." },
-  { num: "07", name: "Renovations & Trades", interest: "renovations-trades", desc: "Vetted help with tiling, painting, plumbing, electrical work, roofing, drawings and design." },
-  { num: "08", name: "Property Sales & Land", interest: "property-sales-land", desc: "Houses and land with clear details — tell us what you're after and we'll come back with options." },
-  { num: "09", name: "Relocation Services", interest: "relocation", desc: "Local support for overseas buyers finding land, property and reliable people on the ground." },
+  { num: "05", name: "Custom Builds", interest: "custom-builds", span: "lg:col-span-2", desc: "Built from your own drawings, or with the architectural drawings arranged for you — in block, container or insulated panel." },
+  { num: "06", name: "Traditional Construction", interest: "traditional-construction", span: "lg:col-span-2", desc: "Conventional block and concrete homes, coordinated around your land, needs and budget." },
+  { num: "07", name: "Renovations & Trades", interest: "renovations-trades", span: "lg:col-span-2", desc: "Vetted help with tiling, painting, plumbing, electrical work, roofing, drawings and design." },
+  { num: "08", name: "Property Sales & Land", interest: "property-sales-land", span: "lg:col-span-3", desc: "Houses and land with clear details — tell us what you're after and we'll come back with options." },
+  { num: "09", name: "Relocation Services", interest: "relocation", span: "md:col-span-2 lg:col-span-3", desc: "Local support for overseas buyers finding land, property and reliable people on the ground." },
 ];
 
 function EnquiryButton({
@@ -95,7 +95,7 @@ function EnquiryButton({
       className={
         variant === "solid"
           ? "cta-shimmer inline-flex w-fit items-center gap-2 bg-gold hover:bg-gold-soft text-ocean-deep font-sans font-semibold small-caps tracking-[0.14em] text-sm px-7 py-3 transition-all duration-300"
-          : "inline-flex w-fit items-center gap-2 border border-gold/40 px-5 py-2.5 font-sans small-caps tracking-[0.14em] text-xs text-gold hover:bg-gold hover:text-ocean-deep transition-colors duration-300"
+          : "inline-flex w-fit items-center gap-2 border border-gold/60 px-6 py-3 font-sans small-caps tracking-[0.14em] text-[13px] text-gold-soft hover:bg-gold hover:text-ocean-deep transition-colors duration-300"
       }
     >
       {label} <span aria-hidden>→</span>
