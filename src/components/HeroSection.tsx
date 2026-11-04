@@ -1,5 +1,13 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { ArrowRight, HardHat, MapPin, Ruler } from "lucide-react";
+import { trailerRealBuilds, containerFinishedUnits } from "@/data/realBuildPhotos";
+
+const trust = [
+  { icon: MapPin, label: "Local, on island" },
+  { icon: Ruler, label: "Built to order" },
+  { icon: HardHat, label: "Vetted trades" },
+];
 
 type HeroMode = "video-desktop" | "video-tablet" | "poster";
 
@@ -69,89 +77,85 @@ export default function HeroSection() {
           </video>
         )}
 
-        {/* Overlay — right-biased directional gradient */}
+        {/* Overlay — stronger for text contrast */}
         <div
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(100deg, rgba(5,12,28,0.85) 0%, rgba(5,12,28,0.70) 25%, rgba(5,12,28,0.40) 55%, rgba(5,12,28,0.15) 85%, rgba(5,12,28,0.10) 100%)",
+              "linear-gradient(100deg, rgba(5,12,28,0.92) 0%, rgba(5,12,28,0.80) 35%, rgba(5,12,28,0.55) 65%, rgba(5,12,28,0.35) 100%)",
           }}
         />
-
-        {/* Bottom vignette */}
         <div
-          className="absolute bottom-0 left-0 right-0"
-          style={{
-            height: "40%",
-            background:
-              "linear-gradient(to top, rgba(5,12,28,0.60) 0%, transparent 40%)",
-          }}
+          className="absolute bottom-0 left-0 right-0 h-1/2"
+          style={{ background: "linear-gradient(to top, rgba(5,12,28,0.75) 0%, transparent 100%)" }}
         />
 
-        {/* Content — left-anchored */}
-        <div
-          className="relative z-10 w-full pt-24 pb-32"
-          style={{ paddingLeft: "clamp(2rem, 6vw, 6rem)", paddingRight: "1.5rem" }}
-        >
-          <div className="max-w-[560px]">
-            {/* Eyebrow */}
-            <div
-              className="flex items-center gap-3 mb-4 hero-stagger"
-              style={{ animationDelay: "0.2s" }}
-            >
-              <span className="block w-8 h-px bg-gold" />
-              <span className="font-sans text-xs font-bold tracking-[0.22em] uppercase text-gold">
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-10 pt-28 pb-32 grid lg:grid-cols-12 gap-12 items-center">
+          <div className="lg:col-span-7">
+            <div className="flex items-center gap-3 mb-5 hero-stagger" style={{ animationDelay: "0.2s" }}>
+              <span className="block w-10 h-px bg-gold" />
+              <span className="font-sans text-xs font-bold tracking-[0.22em] uppercase text-gold-soft">
                 Built to order · Antigua &amp; Barbuda
               </span>
             </div>
 
-            {/* Headline */}
             <h1
-              className="text-display title-on-dark font-normal text-white mb-5 hero-stagger"
-            style={{
-              textShadow: "0 2px 20px rgba(0,0,0,0.35)",
-              animationDelay: "0.5s",
-            }}
+              className="text-display title-on-dark font-normal text-white mb-6 hero-stagger"
+              style={{ textShadow: "0 2px 24px rgba(0,0,0,0.5)", animationDelay: "0.5s" }}
             >
               Your home, built right.
               <br />
               <span className="italic">Without the runaround.</span>
             </h1>
 
-            {/* Sub-headline */}
             <p
-              className="font-sans text-white/[0.84] max-w-[480px] mb-8 hero-stagger"
-              style={{
-                fontSize: "clamp(15px, 1.8vw, 18px)",
-                lineHeight: 1.75,
-                animationDelay: "0.8s",
-              }}
+              className="font-sans text-white max-w-[540px] mb-9 hero-stagger"
+              style={{ fontSize: "clamp(16px, 1.8vw, 19px)", lineHeight: 1.7, animationDelay: "0.8s" }}
             >
               Block, container or insulated panel — one local point of contact who prices it honestly, hires the right trades and keeps your build moving, whether you're on island or overseas.
             </p>
 
-            {/* CTAs */}
-            <div
-              className="flex flex-col sm:flex-row gap-3.5 hero-stagger"
-              style={{ animationDelay: "1.0s" }}
-            >
+            <div className="flex flex-col sm:flex-row gap-3.5 mb-10 hero-stagger" style={{ animationDelay: "1.0s" }}>
               <button
-                 onClick={() => navigate("/contact")}
-                className="group hero-cta-primary font-sans text-sm font-semibold tracking-[0.06em] px-7 py-3.5 bg-gold text-primary-foreground border-none cursor-pointer transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(201,169,110,0.4)] inline-flex items-center justify-center gap-2"
-                style={{ borderRadius: "6px" }}
+                onClick={() => navigate("/contact")}
+                className="group hero-cta-primary font-sans text-sm font-semibold tracking-[0.06em] px-8 py-4 bg-gold text-primary-foreground border-none cursor-pointer transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(201,169,110,0.4)] inline-flex items-center justify-center gap-2 rounded-md"
               >
                 Get a build estimate
-                <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">
-                  →
-                </span>
+                <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
               </button>
               <button
                 onClick={() => navigate("/services")}
-                className="font-sans text-sm font-medium tracking-[0.05em] px-7 py-3.5 bg-transparent text-white border border-white/[0.55] cursor-pointer transition-all duration-300 hover:border-white/90 hover:bg-white/[0.08] hover:-translate-y-0.5 inline-flex items-center justify-center"
-                style={{ borderRadius: "6px" }}
+                className="font-sans text-sm font-semibold tracking-[0.05em] px-8 py-4 bg-white/10 backdrop-blur-sm text-white border border-white/70 cursor-pointer transition-all duration-300 hover:bg-white/20 hover:-translate-y-0.5 inline-flex items-center justify-center rounded-md"
               >
                 See what we build
               </button>
+            </div>
+
+            <ul className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-[600px] hero-stagger" style={{ animationDelay: "1.2s" }}>
+              {trust.map(({ icon: Icon, label }) => (
+                <li key={label} className="flex items-center gap-3 text-white text-sm font-medium">
+                  <span className="flex items-center justify-center w-9 h-9 rounded-full border border-gold/60 bg-gold/15 shrink-0">
+                    <Icon className="w-4 h-4 text-gold-soft" strokeWidth={1.75} />
+                  </span>
+                  {label}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Real builds collage (desktop) */}
+          <div className="hidden lg:block lg:col-span-5 hero-stagger" style={{ animationDelay: "1.1s" }}>
+            <div className="relative h-[460px]">
+              <figure className="absolute top-0 right-0 w-[78%] aspect-[4/3] overflow-hidden rounded-md border border-gold/40 shadow-2xl">
+                <img src={trailerRealBuilds[0].src} alt={trailerRealBuilds[0].alt} className="w-full h-full object-cover" />
+              </figure>
+              <figure className="absolute bottom-0 left-0 w-[62%] aspect-[4/3] overflow-hidden rounded-md border border-gold/40 shadow-2xl">
+                <img src={containerFinishedUnits[1]?.src ?? containerFinishedUnits[0].src} alt={containerFinishedUnits[1]?.alt ?? containerFinishedUnits[0].alt} className="w-full h-full object-cover" />
+              </figure>
+              <div className="absolute bottom-6 right-2 bg-ocean-deep/90 border border-gold/50 rounded-md px-4 py-3 backdrop-blur-sm">
+                <p className="text-eyebrow text-gold-soft">Real work</p>
+                <p className="text-white text-sm font-medium">Delivered in Antigua</p>
+              </div>
             </div>
           </div>
         </div>
