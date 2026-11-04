@@ -101,21 +101,21 @@ export default function HeroSection() {
             >
               <span className="block w-8 h-px bg-gold" />
               <span className="font-sans text-xs font-bold tracking-[0.22em] uppercase text-gold">
-                Homes · Construction · Property · Antigua &amp; Barbuda
+                Built to order · Antigua &amp; Barbuda
               </span>
             </div>
 
             {/* Headline */}
             <h1
-              className="text-display font-normal text-white mb-3 hero-stagger"
+              className="text-display title-on-dark font-normal text-white mb-5 hero-stagger"
             style={{
               textShadow: "0 2px 20px rgba(0,0,0,0.35)",
               animationDelay: "0.5s",
             }}
             >
-              Build the home you need,
+              Your home, built right.
               <br />
-              <span className="italic text-gold">right here in Antigua</span>
+              <span className="italic">Without the runaround.</span>
             </h1>
 
             {/* Sub-headline */}
@@ -127,7 +127,7 @@ export default function HeroSection() {
                 animationDelay: "0.8s",
               }}
             >
-              Traditional, container and insulated panel builds — plus renovations, trusted trades, land and homes for sale, with practical local guidance from start to finish.
+              Block, container or insulated panel — one local point of contact who prices it honestly, hires the right trades and keeps your build moving, whether you're on island or overseas.
             </p>
 
             {/* CTAs */}
@@ -136,21 +136,21 @@ export default function HeroSection() {
               style={{ animationDelay: "1.0s" }}
             >
               <button
-                 onClick={() => navigate("/services")}
+                 onClick={() => navigate("/contact")}
                 className="group hero-cta-primary font-sans text-sm font-semibold tracking-[0.06em] px-7 py-3.5 bg-gold text-primary-foreground border-none cursor-pointer transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(201,169,110,0.4)] inline-flex items-center justify-center gap-2"
                 style={{ borderRadius: "6px" }}
               >
-                Explore Our Services
+                Get a build estimate
                 <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">
                   →
                 </span>
               </button>
               <button
-                onClick={() => navigate("/contact")}
+                onClick={() => navigate("/services")}
                 className="font-sans text-sm font-medium tracking-[0.05em] px-7 py-3.5 bg-transparent text-white border border-white/[0.55] cursor-pointer transition-all duration-300 hover:border-white/90 hover:bg-white/[0.08] hover:-translate-y-0.5 inline-flex items-center justify-center"
                 style={{ borderRadius: "6px" }}
               >
-                Discuss Your Project
+                See what we build
               </button>
             </div>
           </div>
