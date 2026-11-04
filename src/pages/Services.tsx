@@ -117,7 +117,7 @@ export default function Services() {
                   {/* Title + short desc */}
                   <div className="md:col-span-4">
                     <h2 className="font-serif text-2xl text-ocean-deep dark:text-foreground mb-2">{s.name}</h2>
-                    <p className="font-sans text-sm text-ocean-mid/70 dark:text-foreground/50 leading-relaxed">{s.desc}</p>
+                    <p className="font-sans text-sm text-ocean-mid/70 dark:text-foreground/85 leading-relaxed">{s.desc}</p>
                   </div>
 
                   {/* Long description */}

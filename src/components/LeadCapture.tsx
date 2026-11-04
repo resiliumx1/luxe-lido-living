@@ -46,7 +46,7 @@ export default function LeadCapture() {
         {submitted ? (
           <div className="py-6">
             <p className="font-sans text-primary font-medium text-lg mb-2">You're on the list ✓</p>
-            <p className="font-sans text-off-white/60 text-sm">We'll be in touch with relevant updates.</p>
+            <p className="font-sans text-off-white/85 text-sm">We'll be in touch with relevant updates.</p>
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 mb-4">
@@ -55,7 +55,7 @@ export default function LeadCapture() {
               placeholder="Enter your email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="flex-1 bg-transparent border-[1.5px] border-off-white/20 text-off-white font-sans px-5 py-3.5 text-sm placeholder:text-off-white/40 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all"
+              className="flex-1 bg-transparent border-[1.5px] border-off-white/20 text-off-white font-sans px-5 py-3.5 text-sm placeholder:text-off-white/85 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all"
               style={{ borderRadius: "8px" }}
             />
             <button
@@ -71,7 +71,7 @@ export default function LeadCapture() {
         {error && <p className="font-sans text-red-400 text-sm mb-3">{error}</p>}
 
         {!submitted && (
-          <p className="font-sans text-off-white/40 text-xs">
+          <p className="font-sans text-off-white/85 text-xs">
             No spam. Unsubscribe anytime. Your details are private.
           </p>
         )}

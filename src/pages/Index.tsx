@@ -25,7 +25,7 @@ function Marquee() {
     <div className="bg-sand-light dark:bg-sand-light py-4 overflow-hidden border-y border-sand dark:border-gold/10">
       <div className="marquee-inner flex">
         {[text, text, text, text].map((t, i) => (
-          <span key={i} className="small-caps text-xs text-ocean-mid dark:text-foreground/60 tracking-widest font-sans px-8">{t}</span>
+          <span key={i} className="small-caps text-xs text-ocean-mid dark:text-foreground/85 tracking-widest font-sans px-8">{t}</span>
         ))}
       </div>
     </div>
@@ -112,7 +112,7 @@ function Services() {
         <div className="mb-12 reveal max-w-2xl">
           <SectionLabel text="What We Offer" light />
           <h2 className="text-h2 text-off-white">Four ways to get it built</h2>
-          <p className="font-sans text-off-white/60 text-base leading-relaxed mt-4">
+          <p className="font-sans text-off-white/85 text-base leading-relaxed mt-4">
             Start with the work you need. Each one opens the right form with your project type already
             chosen, so you only answer what is relevant to you.
           </p>
@@ -131,7 +131,7 @@ function Services() {
               </p>
               <h3 className="font-serif text-2xl md:text-3xl text-off-white mb-2">{s.name}</h3>
               <p className="font-sans text-sm text-gold/85 mb-4">{s.tagline}</p>
-              <p className="font-sans text-sm text-off-white/60 leading-relaxed">{s.desc}</p>
+              <p className="font-sans text-sm text-off-white/85 leading-relaxed">{s.desc}</p>
               <ul className="mt-6 space-y-2">
                 {s.points.map((point) => (
                   <li key={point} className="flex items-start gap-3 font-sans text-sm text-off-white/70">
@@ -161,7 +161,7 @@ function Services() {
                 {s.num}
               </p>
               <h3 className="font-serif text-lg text-off-white mb-2">{s.name}</h3>
-              <p className="font-sans text-off-white/50 text-sm leading-relaxed flex-1">{s.desc}</p>
+              <p className="font-sans text-off-white/85 text-sm leading-relaxed flex-1">{s.desc}</p>
               <div className="mt-5">
                 <EnquiryButton to={`/contact?interest=${s.interest}`} variant="outline" />
               </div>
@@ -183,7 +183,7 @@ function DeliveredWork() {
         <div className="mb-12 reveal max-w-2xl">
           <SectionLabel text="Work Delivered" />
           <h2 className="text-h2 text-ocean-deep dark:text-foreground">Delivered in Antigua. Not mock-ups.</h2>
-          <p className="font-sans text-ocean-mid/70 dark:text-foreground/60 text-base leading-relaxed mt-4">
+          <p className="font-sans text-ocean-mid/70 dark:text-foreground/85 text-base leading-relaxed mt-4">
             These are photographs of finished work, not renders — including the RumBurger food trailer
             built and delivered to a customer here in Antigua, and modular container units completed and
             shipped across the region.
@@ -253,7 +253,7 @@ function HowItWorks() {
             <div key={s.num} className={`reveal reveal-delay-${Math.min(i + 1, 6)}`}>
               <p className="font-serif text-4xl text-gold/40 font-light mb-4">{s.num}</p>
               <h3 className="font-serif text-lg text-ocean-deep dark:text-foreground mb-3">{s.title}</h3>
-              <p className="font-sans text-sm text-ocean-mid/70 dark:text-foreground/60 leading-relaxed">{s.desc}</p>
+              <p className="font-sans text-sm text-ocean-mid/70 dark:text-foreground/85 leading-relaxed">{s.desc}</p>
             </div>
           ))}
         </div>

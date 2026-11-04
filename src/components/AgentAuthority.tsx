@@ -72,7 +72,7 @@ export default function AgentAuthority() {
                   <p className="font-serif text-gold font-medium" style={{ fontSize: "20px", lineHeight: 1.2 }}>
                     {f.title}
                   </p>
-                  <p className="font-sans text-off-white/60 text-xs mt-2 tracking-wide">{f.sub}</p>
+                  <p className="font-sans text-off-white/85 text-xs mt-2 tracking-wide">{f.sub}</p>
                 </div>
               ))}
             </div>

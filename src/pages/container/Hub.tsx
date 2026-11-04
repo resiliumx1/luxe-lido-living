@@ -258,7 +258,7 @@ export default function Hub() {
             >
               Order a Container <ArrowRight size={16} />
             </Link>
-            <p className="font-sans text-off-white/50 text-xs">
+            <p className="font-sans text-off-white/85 text-xs">
               Or message Ashante directly on WhatsApp to check current availability.
             </p>
           </div>
@@ -335,7 +335,7 @@ export default function Hub() {
       <section className="bg-ocean-deep py-16 md:py-20 px-6 text-center">
         <Reveal className="max-w-2xl mx-auto">
           <h2 className="font-serif text-h2 text-off-white mb-6">Ready to Order?</h2>
-          <p className="font-sans text-off-white/60 text-body mb-10">
+          <p className="font-sans text-off-white/85 text-body mb-10">
             Tell us which size you need, where it's going, and when you need it — we'll confirm current
             availability and pricing within 24 hours.
           </p>

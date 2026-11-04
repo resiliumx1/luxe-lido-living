@@ -46,7 +46,7 @@ export default function Properties() {
                   className={`font-sans text-sm font-medium tracking-wider px-5 py-2.5 transition-all duration-300 border ${
                     active === f.value
                       ? "bg-gold text-ocean-deep border-gold"
-                      : "bg-transparent text-ocean-mid dark:text-foreground/60 border-sand dark:border-gold/20 hover:border-gold/50"
+                      : "bg-transparent text-ocean-mid dark:text-foreground/85 border-sand dark:border-gold/20 hover:border-gold/50"
                   }`}
                 >
                   {f.label}

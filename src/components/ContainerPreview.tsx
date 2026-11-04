@@ -37,7 +37,7 @@ export default function ContainerPreview() {
           <h2 className="font-serif text-4xl md:text-5xl text-off-white mb-4">
             Modern Modular Architecture
           </h2>
-          <p className="font-sans text-off-white/50 text-body max-w-2xl">
+          <p className="font-sans text-off-white/85 text-body max-w-2xl">
             Homes, commercial spaces, hospitality units, utility buildings — all engineered for Caribbean conditions.
           </p>
         </div>
@@ -59,7 +59,7 @@ export default function ContainerPreview() {
               <div className="absolute inset-0 bg-gradient-to-t from-ocean-deep/90 via-ocean-deep/20 to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-5">
                 <h3 className="font-serif text-xl text-off-white mb-1">{v.label}</h3>
-                <p className="font-sans text-off-white/50 text-xs mb-3">{v.pitch}</p>
+                <p className="font-sans text-off-white/85 text-xs mb-3">{v.pitch}</p>
                 <span className="inline-flex items-center gap-1 text-gold font-sans text-xs group-hover:gap-2 transition-all">
                   Explore <ArrowRight size={12} />
                 </span>
@@ -75,7 +75,7 @@ export default function ContainerPreview() {
               <s.icon size={16} className="text-gold/60" />
               <div>
                 <span className="font-sans text-sm text-off-white font-medium">{s.label}</span>
-                <span className="font-sans text-xs text-off-white/40 ml-1.5">{s.desc}</span>
+                <span className="font-sans text-xs text-off-white/85 ml-1.5">{s.desc}</span>
               </div>
             </div>
           ))}

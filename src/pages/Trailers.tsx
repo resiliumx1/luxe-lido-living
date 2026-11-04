@@ -316,7 +316,7 @@ export default function Trailers() {
       <section className="bg-ocean-deep py-16 md:py-24 px-6 text-center">
         <Reveal className="max-w-2xl mx-auto">
           <h2 className="font-serif text-h2 text-off-white mb-6">Ready To Build?</h2>
-          <p className="font-sans text-off-white/60 text-body mb-10">
+          <p className="font-sans text-off-white/85 text-body mb-10">
             Tell us your menu, your brand, and where you're operating — we'll come back with a layout, a
             timeline, and a quote.
           </p>
