@@ -107,7 +107,7 @@ export default function HeroSection() {
 
             {/* Headline */}
             <h1
-              className="text-display font-normal text-white mb-3 hero-stagger"
+              className="text-display title-on-dark font-normal text-white mb-5 hero-stagger"
             style={{
               textShadow: "0 2px 20px rgba(0,0,0,0.35)",
               animationDelay: "0.5s",
