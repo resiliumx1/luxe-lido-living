@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Menu, X, Sun, Moon, ChevronDown, ArrowRight } from "lucide-react";
 import { useTheme } from "next-themes";
+import ThemeSwitch from "@/components/ThemeSwitch";
 import { LuxeLogo } from "@/components/ui/LuxeLogo";
 import BookingModal from "./BookingModal";
 
@@ -82,7 +83,7 @@ export default function Navigation() {
   }, []);
 
   const isTransparent = isHome && !scrolled;
-  const isDark = theme === "dark";
+  const isDark = useTheme().resolvedTheme === "dark";
 
   // Utility colors based on nav state
   const utilMuted = isTransparent ? "text-off-white/85" : "text-off-white/85";
@@ -99,7 +100,7 @@ export default function Navigation() {
         style={isTransparent ? { background: "linear-gradient(to bottom, rgba(14,22,33,0.50) 0%, transparent 100%)" } : undefined}
         aria-label="Main navigation"
       >
-        <div className="max-w-[1280px] mx-auto px-6 md:px-10 flex items-center justify-between h-20">
+        <div className="max-w-[1280px] mx-auto px-6 md:px-12 flex items-center justify-between h-20">
           {/* Logo */}
           <LuxeLogo size="md" as="link" variant="dark" />
 
@@ -119,13 +120,7 @@ export default function Navigation() {
           {/* Right — utilities + CTA + mobile hamburger */}
           <div className="flex items-center gap-1 shrink-0">
             {/* Theme toggle */}
-            <button
-              onClick={() => setTheme(isDark ? "light" : "dark")}
-              aria-label={`Toggle theme — currently ${isDark ? "dark" : "light"} mode`}
-              className={`hidden md:flex p-2 transition-colors duration-300 ${utilMuted} hover:text-gold`}
-            >
-              {isDark ? <Sun size={16} /> : <Moon size={16} />}
-            </button>
+            <ThemeSwitch className="hidden md:inline-flex mr-3" />
 
 
 
@@ -159,13 +154,7 @@ export default function Navigation() {
         <div className="flex items-center gap-6 mb-4 pb-4 border-b border-gold/10">
           <div className="flex items-center gap-3">
             <span className="font-sans text-xs text-off-white/85 uppercase tracking-widest">Theme</span>
-            <button
-              onClick={() => setTheme(isDark ? "light" : "dark")}
-              aria-label={`Toggle theme — currently ${isDark ? "dark" : "light"} mode`}
-              className="text-gold p-1"
-            >
-              {isDark ? <Sun size={18} /> : <Moon size={18} />}
-            </button>
+            <ThemeSwitch />
           </div>
         </div>
 

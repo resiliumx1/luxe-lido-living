@@ -33,7 +33,7 @@ export default function BuildYourHome() {
 
   return (
     <section className="py-28 bg-sand-light dark:bg-sand-light relative overflow-hidden" ref={sectionRef}>
-      <div className="max-w-[1280px] mx-auto px-6 md:px-10">
+      <div className="max-w-[1280px] mx-auto px-6 md:px-12">
         {/* Header */}
         <div className="max-w-3xl mb-14 reveal">
           <SectionLabel text="Build Your Home" />
@@ -72,9 +72,9 @@ export default function BuildYourHome() {
               className="group bg-off-white dark:bg-card border border-sand dark:border-gold/15 p-8 md:p-10 transition-colors duration-300 hover:border-gold"
             >
               <span className="small-caps text-xs text-gold tracking-[0.25em] font-sans">{t.tag}</span>
-              <h4 className="font-serif text-2xl text-ocean-deep dark:text-foreground mt-3 mb-4">
+              <h3 className="font-serif text-2xl text-ocean-deep dark:text-foreground mt-3 mb-4">
                 {t.title}
-              </h4>
+              </h3>
               <p className="font-sans text-ocean-mid dark:text-foreground/70 text-base leading-relaxed mb-6">
                 {t.desc}
               </p>

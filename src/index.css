@@ -16,6 +16,7 @@
     --secondary-on-dark: 216 16% 76%;      /* #B8C0CC */
     --gold-text: 40 49% 32%;                /* #7A5F2A gold text on light */
     --gold-ink: var(--gold-text);
+    --section-alt: 48 15% 94%;        /* #F1F0EC */
 
     --primary-dark: 215 40% 9%;
     --accent-gold: 40 46% 60%;
@@ -69,14 +70,15 @@
   .dark {
     color-scheme: dark;
     --gold-ink: var(--gold);
+    --section-alt: 216 41% 12%;       /* #121C2B */
     --primary-dark: 215 42% 7%;
     --ocean-deep: 215 42% 7%;
     --ocean-mid: 217 39% 15%;
     --teal: 216 16% 76%;
     --sand: 217 30% 22%;
-    --sand-light: 217 39% 15%;
+    --sand-light: 216 41% 12%;
     --off-white: 60 17% 98%;
-    --warm-neutral: 217 39% 15%;
+    --warm-neutral: 216 41% 12%;
     --text-dark: 60 17% 98%;
     --taupe: 216 16% 76%;
 
@@ -96,8 +98,8 @@
     --accent-foreground: 215 40% 9%;
     --destructive: 0 62% 55%;
     --destructive-foreground: 215 40% 9%;
-    --border: 217 30% 22%;
-    --input: 217 30% 26%;
+    --border: 219 35% 22%;            /* #24314A */
+    --input: 219 35% 26%;
     --ring: 40 46% 60%;
 
     --sidebar-background: 215 42% 7%;
@@ -571,3 +573,55 @@ a[href^="tel:"], .tabular { font-family: var(--font-display); font-variant-numer
 
 /* Secondary text on dark surfaces */
 :is(.dark, .on-dark, .bg-ocean-deep, [class*="bg-ocean-deep"], [class*="bg-espresso"], footer) .text-muted-foreground { color: hsl(var(--secondary-on-dark)); }
+
+/* ── Theme-following sections (formerly hard-coded ink) ──
+   Local token remap so legacy text-off-white / bg-ocean-deep children follow the theme. */
+.section-alt {
+  background-color: hsl(var(--section-alt));
+  color: hsl(var(--foreground));
+  --off-white: var(--foreground);
+  --ocean-deep: var(--card);
+  --gold-ink: var(--gold-text);
+  --secondary-on-dark: var(--muted-foreground);
+  --title-gold-a: 40 49% 26%; --title-gold-b: 40 49% 32%; --title-gold-c: 40 49% 32%;
+}
+.dark .section-alt, .section-alt :is([class*="bg-ocean-deep"]) { --gold-ink: var(--gold-text); }
+.dark .section-alt, .dark .section-alt [class*="bg-ocean-deep"] {
+  --gold-ink: var(--gold);
+  --title-gold-a: 38 50% 55%; --title-gold-b: 42 80% 66%; --title-gold-c: 46 100% 84%;
+}
+.section-alt [class*="bg-ocean-deep"] { border: 1px solid hsl(var(--border)); }
+/* Photo containers inside flipped sections keep a dark context for overlays and captions */
+.section-alt :has(> img), .section-alt :has(> video), .section-alt :has(> picture) {
+  --ocean-deep: 215 40% 9%;
+  --off-white: 60 17% 98%;
+  --gold-ink: var(--gold);
+}
+/* Gold buttons always carry ink text */
+.bg-gold.text-ocean-deep, .bg-primary.text-primary-foreground, .bg-gold .text-ocean-deep { color: hsl(var(--ink)); }
+
+/* Homepage: alternate section backgrounds from tokens */
+.alternate-sections > section:not(.on-dark):nth-of-type(odd) { background-color: hsl(var(--background)) !important; }
+.alternate-sections > section:not(.on-dark):nth-of-type(even) { background-color: hsl(var(--section-alt)) !important; }
+
+/* ── Layout rhythm: 96px phones / 144px desktop on every content section ── */
+main section[class*="py-"]:not(.on-dark) { padding-top: 96px !important; padding-bottom: 96px !important; }
+@media (min-width: 768px) {
+  main section[class*="py-"]:not(.on-dark) { padding-top: 144px !important; padding-bottom: 144px !important; }
+}
+
+/* ── Section headers: title left, one-line intro right on desktop ── */
+@media (min-width: 1024px) {
+  main section :where(div:not(.text-center):has(> h2 + p)) {
+    display: grid;
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+    column-gap: 4rem;
+    align-items: end;
+  }
+  main section :where(div:not(.text-center):has(> h2 + p)) > * { grid-column: 1 / -1; }
+  main section :where(div:not(.text-center):has(> h2 + p)) > h2 { grid-column: 1; margin-bottom: 0; }
+  main section :where(div:not(.text-center):has(> h2 + p)) > h2 + p { grid-column: 2; margin: 0; max-width: none; }
+  main section :where(div:not(.text-center):has(> h2 + p)) > h2 + p + * { margin-top: 4rem; }
+}
+.section-alt .text-gold-soft, .section-alt [class*="bg-ocean-deep"] .text-gold-soft { color: hsl(var(--gold-ink)); }
+.section-alt :is(.border-gold-soft, [class*="border-gold/"]) { border-color: hsl(var(--gold-ink) / 0.6); }

@@ -90,7 +90,7 @@ export default function Services() {
       <main id="main-content">
         {/* Services Grid */}
         <section className="py-16 md:py-24 bg-off-white dark:bg-background" ref={sectionRef}>
-          <div className="max-w-[1280px] mx-auto px-6 md:px-10">
+          <div className="max-w-[1280px] mx-auto px-6 md:px-12">
             <div className="max-w-2xl mb-8 md:mb-12 reveal">
               <SectionLabel text="What We Offer" />
               <p className="font-sans text-ocean-mid dark:text-foreground/70 text-base leading-relaxed">
@@ -137,7 +137,7 @@ export default function Services() {
         </section>
 
         <section className="py-16 md:py-24 bg-sand-light dark:bg-sand-light">
-          <div className="max-w-[1280px] mx-auto px-6 md:px-10">
+          <div className="max-w-[1280px] mx-auto px-6 md:px-12">
             <Reveal>
               <SectionLabel text="Two Ways to Work" />
               <h2 className="text-h2 text-ocean-deep dark:text-foreground mb-4">How the work is contracted.</h2>
@@ -158,7 +158,7 @@ export default function Services() {
 
         {/* CTA */}
         <div className="bg-ocean-deep py-16 border-t border-gold/20">
-          <Reveal className="max-w-[1280px] mx-auto px-6 md:px-10 flex flex-col md:flex-row items-center justify-between gap-6">
+          <Reveal className="max-w-[1280px] mx-auto px-6 md:px-12 flex flex-col md:flex-row items-center justify-between gap-6">
             <p className="font-serif italic text-off-white text-xl md:text-2xl">
               Planning a build, renovation or property purchase? Let's discuss what you need.
             </p>

@@ -57,7 +57,7 @@ export default function PropertyDetail() {
   return (
     <>
       <main id="main-content" className="bg-background pt-24 pb-20">
-        <div className="max-w-[1280px] mx-auto px-6 md:px-10">
+        <div className="max-w-[1280px] mx-auto px-6 md:px-12">
           {/* Breadcrumb */}
           <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-sm font-sans text-muted-foreground mb-8">
             <Link to="/" className="hover:text-primary transition-colors">Home</Link>

@@ -282,8 +282,8 @@ export default function ContactForm({ dark = false }: { dark?: boolean }) {
   );
 
   return (
-    <section className={`py-24 ${dark ? "bg-ocean-deep" : "bg-off-white dark:bg-background"}`}>
-      <div className="max-w-[1280px] mx-auto px-6 md:px-10">
+    <section className={`py-24 section-alt`}>
+      <div className="max-w-[1280px] mx-auto px-6 md:px-12">
         <SectionLabel text="Get in touch" light={dark} />
         <h2 className={`text-h2 mb-16 ${textColor}`}>How can we help?</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16">

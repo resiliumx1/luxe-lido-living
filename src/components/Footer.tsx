@@ -43,7 +43,7 @@ export default function Footer() {
 
       <div className="relative z-10">
         {/* Top row */}
-        <div className="max-w-[1280px] mx-auto px-6 md:px-10 pt-20 pb-12">
+        <div className="max-w-[1280px] mx-auto px-6 md:px-12 pt-20 pb-12">
           {/* Logo centered with tagline */}
           <div className="flex flex-col items-center mb-16">
             <span className="inline-block transition-transform duration-500 hover:scale-105" style={{ filter: "drop-shadow(0 0 24px hsl(var(--gold) / 0.35))" }}>
@@ -153,7 +153,7 @@ export default function Footer() {
 
         {/* Bottom row */}
         <div className="border-t border-gold/20">
-          <div className="max-w-[1280px] mx-auto px-6 md:px-10 py-6 flex flex-col md:flex-row items-center justify-between gap-3">
+          <div className="max-w-[1280px] mx-auto px-6 md:px-12 py-6 flex flex-col md:flex-row items-center justify-between gap-3">
             <p className="font-sans text-white/85 text-xs">
               © 2025 A. Lindsay Luxe Estates. All rights reserved.
             </p>

@@ -37,7 +37,7 @@ import BuildTrailer from "./pages/BuildTrailer";
 const queryClient = new QueryClient();
 
 const App = () => (
-  <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
+  <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
     <CurrencyProvider>
       <WishlistProvider>
         <AdminAuthProvider>

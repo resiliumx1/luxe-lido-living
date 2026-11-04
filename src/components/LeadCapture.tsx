@@ -34,8 +34,8 @@ export default function LeadCapture() {
   };
 
   return (
-    <section className="py-24 bg-ocean-deep" ref={sectionRef}>
-      <div className="max-w-[640px] mx-auto px-6 md:px-10 text-center reveal">
+    <section className="py-24 section-alt" ref={sectionRef}>
+      <div className="max-w-[640px] mx-auto px-6 md:px-12 text-center reveal">
         <h2 className="font-serif text-off-white font-medium mb-4" style={{ fontSize: "clamp(28px, 4vw, 40px)" }}>
           Keep Up With New Opportunities
         </h2>

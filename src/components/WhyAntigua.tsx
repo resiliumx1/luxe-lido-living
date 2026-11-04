@@ -29,7 +29,7 @@ export default function WhyAntigua() {
 
   return (
     <section className="py-28 bg-sand-light dark:bg-secondary" ref={sectionRef}>
-      <div className="max-w-[1280px] mx-auto px-6 md:px-10">
+      <div className="max-w-[1280px] mx-auto px-6 md:px-12">
         {/* Header */}
         <div className="text-center mb-16 reveal">
           <h2 className="font-serif text-ocean-deep dark:text-foreground mb-4" style={{ fontSize: "clamp(32px, 5vw, 48px)" }}>

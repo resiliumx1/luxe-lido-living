@@ -146,7 +146,7 @@ const whyCards = [
 function WhyContainerHomes() {
   return (
     <section className="py-28 bg-secondary">
-      <div className="max-w-[1280px] mx-auto px-6 md:px-10">
+      <div className="max-w-[1280px] mx-auto px-6 md:px-12">
         <div className="mb-14">
           <SectionLabel text="The Advantage" />
           <h2 className="text-h2 text-foreground">Why Container Homes?</h2>
@@ -171,7 +171,7 @@ function WhyContainerHomes() {
 function RealUnits() {
   return (
     <section className="py-28 bg-background">
-      <div className="max-w-[1280px] mx-auto px-6 md:px-10">
+      <div className="max-w-[1280px] mx-auto px-6 md:px-12">
         <div className="mb-14">
           <SectionLabel text="Finished Units" />
           <h2 className="text-h2 text-foreground">Completed and Ready to Ship</h2>
@@ -266,7 +266,7 @@ function PackagesSection() {
   const current = packagesData.find((p) => p.key === active)!;
 
   return (
-    <section id="packages" className="py-28 bg-ocean-deep relative overflow-hidden">
+    <section id="packages" className="py-28 section-alt relative overflow-hidden">
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
@@ -275,7 +275,7 @@ function PackagesSection() {
           opacity: 0.03,
         }}
       />
-      <div className="relative max-w-[1280px] mx-auto px-6 md:px-10">
+      <div className="relative max-w-[1280px] mx-auto px-6 md:px-12">
         <div className="mb-14">
           <SectionLabel text="Packages" light />
           <h2 className="text-h2 text-off-white">Container Home Packages</h2>
@@ -383,7 +383,7 @@ const comparisonRows = [
 function ComparisonTable() {
   return (
     <section className="py-20 bg-secondary">
-      <div className="max-w-[1080px] mx-auto px-6 md:px-10">
+      <div className="max-w-[1080px] mx-auto px-6 md:px-12">
         <div className="mb-10">
           <SectionLabel text="Compare" />
           <h2 className="font-serif text-3xl md:text-4xl text-foreground">Package Comparison</h2>
@@ -434,7 +434,7 @@ const processSteps = [
 function HowItWorks() {
   return (
     <section className="py-28 bg-secondary">
-      <div className="max-w-[1280px] mx-auto px-6 md:px-10">
+      <div className="max-w-[1280px] mx-auto px-6 md:px-12">
         <div className="mb-16">
           <SectionLabel text="The Process" />
           <h2 className="font-serif text-4xl md:text-5xl text-foreground">How It Works</h2>
@@ -474,8 +474,8 @@ const businessCards = [
 
 function ContainersForBusiness() {
   return (
-    <section id="container-businesses" className="py-28 bg-ocean-deep">
-      <div className="max-w-[1280px] mx-auto px-6 md:px-10">
+    <section id="container-businesses" className="py-28 section-alt">
+      <div className="max-w-[1280px] mx-auto px-6 md:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Left */}
           <div>
@@ -501,7 +501,7 @@ function ContainersForBusiness() {
                   <div className="w-12 h-12 flex items-center justify-center rounded-lg bg-off-white/[0.06] mb-4 transition-colors duration-500 group-hover:bg-gold/10">
                     <Icon className="w-7 h-7 text-off-white/85 transition-colors duration-500 group-hover:text-gold" />
                   </div>
-                  <h4 className="font-serif text-lg text-off-white mb-1">{title}</h4>
+                  <h3 className="font-serif text-lg text-off-white mb-1">{title}</h3>
                   <p className="font-sans text-sm text-off-white/85">{desc}</p>
                 </div>
               ))}
