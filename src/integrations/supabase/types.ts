@@ -137,6 +137,66 @@ export type Database = {
         }
         Relationships: []
       }
+      projects: {
+        Row: {
+          budget_usd: number | null
+          client_email: string | null
+          client_name: string
+          client_phone: string | null
+          created_at: string
+          enquiry_id: string | null
+          id: string
+          location: string | null
+          notes: string | null
+          photo_paths: string[]
+          service_type: string | null
+          spent_usd: number
+          start_date: string | null
+          status: string
+          target_date: string | null
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          budget_usd?: number | null
+          client_email?: string | null
+          client_name: string
+          client_phone?: string | null
+          created_at?: string
+          enquiry_id?: string | null
+          id?: string
+          location?: string | null
+          notes?: string | null
+          photo_paths?: string[]
+          service_type?: string | null
+          spent_usd?: number
+          start_date?: string | null
+          status?: string
+          target_date?: string | null
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          budget_usd?: number | null
+          client_email?: string | null
+          client_name?: string
+          client_phone?: string | null
+          created_at?: string
+          enquiry_id?: string | null
+          id?: string
+          location?: string | null
+          notes?: string | null
+          photo_paths?: string[]
+          service_type?: string | null
+          spent_usd?: number
+          start_date?: string | null
+          status?: string
+          target_date?: string | null
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       properties: {
         Row: {
           area: string
