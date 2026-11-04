@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { WHATSAPP_NUMBER } from "@/lib/contact";
 
 // Controls the button must never sit on top of.
-const BLOCKING = 'input, textarea, select, button, [contenteditable="true"]';
+const BLOCKING = "input, textarea, select, button, [contenteditable]";
 
 export default function WhatsAppWidget() {
   const ref = useRef<HTMLAnchorElement>(null);
@@ -22,17 +22,32 @@ export default function WhatsAppWidget() {
     let idle: number | undefined;
     let frame = 0;
 
-    // Ask the browser what is underneath the button (itself ignored) so the
-    // button can get out of the way of form fields and the submit button.
+    // Does any control sit under the button's corner? Checked by comparing
+    // boxes rather than by what the browser paints, so overlays can't fool it.
     const checkUnderneath = () => {
       const el = ref.current;
-      if (!el) return;
+      if (!el || !window.matchMedia("(max-width: 767px)").matches) {
+        setBlocking(false);
+        return;
+      }
       const r = el.getBoundingClientRect();
-      const prev = el.style.pointerEvents;
-      el.style.pointerEvents = "none";
-      const under = document.elementFromPoint(r.left + r.width / 2, r.top + r.height / 2);
-      el.style.pointerEvents = prev;
-      setBlocking(Boolean(under?.closest(BLOCKING)));
+      const pad = 4;
+      const left = r.left - pad;
+      const top = r.top - pad;
+      const right = r.right + pad;
+      const bottom = r.bottom + pad;
+
+      let hit = false;
+      for (const node of Array.from(document.querySelectorAll<HTMLElement>(BLOCKING))) {
+        if (el.contains(node)) continue;
+        const b = node.getBoundingClientRect();
+        if (b.width < 2 || b.height < 2) continue;
+        if (b.left < right && b.right > left && b.top < bottom && b.bottom > top) {
+          hit = true;
+          break;
+        }
+      }
+      setBlocking(hit);
     };
 
     const onScroll = () => {
