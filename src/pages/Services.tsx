@@ -3,6 +3,7 @@ import PageBanner from "@/components/PageBanner";
 import SectionLabel from "@/components/SectionLabel";
 import ContactForm from "@/components/ContactForm";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import Reveal from "@/components/Reveal";
 import { Link } from "react-router-dom";
 
 const services = [
@@ -137,11 +138,13 @@ export default function Services() {
 
         <section className="py-24 bg-sand-light dark:bg-sand-light">
           <div className="max-w-[1280px] mx-auto px-6 md:px-10">
-            <SectionLabel text="Two Ways to Work" />
-            <h2 className="text-h2 text-ocean-deep dark:text-foreground mb-4">How the work is contracted.</h2>
-            <p className="font-sans text-ocean-mid dark:text-foreground/70 text-base leading-relaxed max-w-2xl mb-10">
-              Separate from the service itself, this is the commercial arrangement — who holds responsibility for running the build day to day.
-            </p>
+            <Reveal>
+              <SectionLabel text="Two Ways to Work" />
+              <h2 className="text-h2 text-ocean-deep dark:text-foreground mb-4">How the work is contracted.</h2>
+              <p className="font-sans text-ocean-mid dark:text-foreground/70 text-base leading-relaxed max-w-2xl mb-10">
+                Separate from the service itself, this is the commercial arrangement — who holds responsibility for running the build day to day.
+              </p>
+            </Reveal>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {workStyles.map((style) => (
                 <div key={style.title} className="bg-off-white dark:bg-card border border-sand dark:border-gold/15 p-8 md:p-10">
@@ -155,7 +158,7 @@ export default function Services() {
 
         {/* CTA */}
         <div className="bg-ocean-deep py-16 border-t border-gold/20">
-          <div className="max-w-[1280px] mx-auto px-6 md:px-10 flex flex-col md:flex-row items-center justify-between gap-6">
+          <Reveal className="max-w-[1280px] mx-auto px-6 md:px-10 flex flex-col md:flex-row items-center justify-between gap-6">
             <p className="font-serif italic text-off-white text-xl md:text-2xl">
               Planning a build, renovation or property purchase? Let's discuss what you need.
             </p>
@@ -165,7 +168,7 @@ export default function Services() {
             >
               Get in touch <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
             </a>
-          </div>
+          </Reveal>
         </div>
 
         <ContactForm />
