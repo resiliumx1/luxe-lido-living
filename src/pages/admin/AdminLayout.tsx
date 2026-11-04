@@ -3,6 +3,7 @@ import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
 import {
   LayoutDashboard, Home, Container, MessageSquare,
   Settings, Image, LogOut, ExternalLink, Menu, X, Sun, Moon,
+  FolderKanban,
 } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useAdminAuth } from "@/contexts/AdminAuthContext";
