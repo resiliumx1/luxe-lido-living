@@ -623,3 +623,5 @@ main section[class*="py-"]:not(.on-dark) { padding-top: 96px !important; padding
   main section :where(div:not(.text-center):has(> h2 + p)) > h2 + p { grid-column: 2; margin: 0; max-width: none; }
   main section :where(div:not(.text-center):has(> h2 + p)) > h2 + p + * { margin-top: 4rem; }
 }
+.section-alt .text-gold-soft, .section-alt [class*="bg-ocean-deep"] .text-gold-soft { color: hsl(var(--gold-ink)); }
+.section-alt :is(.border-gold-soft, [class*="border-gold/"]) { border-color: hsl(var(--gold-ink) / 0.6); }
