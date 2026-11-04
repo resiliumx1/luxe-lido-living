@@ -56,7 +56,7 @@ function ContainerHero() {
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(115deg, rgba(5,12,28,0.90) 0%, rgba(5,12,28,0.60) 45%, rgba(5,12,28,0.20) 100%)",
+            "linear-gradient(115deg, rgba(36,31,27,0.90) 0%, rgba(36,31,27,0.60) 45%, rgba(36,31,27,0.20) 100%)",
         }}
       />
       <div
@@ -64,7 +64,7 @@ function ContainerHero() {
         style={{
           height: "35%",
           background:
-            "linear-gradient(to top, rgba(5,12,28,0.85) 0%, rgba(5,12,28,0.40) 60%, transparent 100%)",
+            "linear-gradient(to top, rgba(36,31,27,0.85) 0%, rgba(36,31,27,0.40) 60%, transparent 100%)",
         }}
       />
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none">

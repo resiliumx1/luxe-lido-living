@@ -98,7 +98,7 @@ export default function Navigation() {
             ? ""
             : "bg-ocean-deep/95 backdrop-blur-md shadow-lg shadow-black/10"
         }`}
-        style={isTransparent ? { background: "linear-gradient(to bottom, rgba(5,12,28,0.50) 0%, transparent 100%)" } : undefined}
+        style={isTransparent ? { background: "linear-gradient(to bottom, rgba(36,31,27,0.50) 0%, transparent 100%)" } : undefined}
         aria-label="Main navigation"
       >
         <div className="max-w-[1280px] mx-auto px-6 md:px-10 flex items-center justify-between h-20">

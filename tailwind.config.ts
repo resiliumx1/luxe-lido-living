@@ -14,7 +14,9 @@ export default {
     },
     extend: {
       fontFamily: {
-        serif: ["'Cormorant Garamond'", "Georgia", "serif"],
+        serif: ["'Inter Tight'", "system-ui", "sans-serif"],
+        display: ["'Inter Tight'", "system-ui", "sans-serif"],
+        accent: ["'Cormorant Garamond'", "Georgia", "serif"],
         sans: ["'DM Sans'", "system-ui", "sans-serif"],
       },
       fontSize: {
@@ -67,6 +69,11 @@ export default {
         "off-white": "hsl(var(--off-white))",
         gold: "hsl(var(--gold))",
         "gold-soft": "hsl(var(--gold-soft))",
+        "gold-text": "hsl(var(--gold-text))",
+        espresso: "hsl(var(--espresso))",
+        "espresso-2": "hsl(var(--espresso-2))",
+        stone: "hsl(var(--stone))",
+        taupe: "hsl(var(--taupe))",
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",

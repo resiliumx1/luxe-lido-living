@@ -6,123 +6,112 @@
   :root {
     color-scheme: light;
 
-    /* Core brand palette — luxury Caribbean */
-    --primary-dark: 220 42% 10%;      /* #0A1628 */
-    --accent-gold: 38 44% 61%;        /* #C9A96E */
-    --accent-gold-soft: 40 48% 68%;   /* #D4BC7A */
-    --warm-neutral: 33 43% 93%;       /* #F5EFE6 */
-    --pure-white: 0 0% 100%;          /* #FFFFFF */
-    --text-dark: 0 0% 10%;            /* #1A1A1A */
-    --text-light: 0 0% 100%;          /* white at 0.85 for dark bg usage */
+    /* Warm palette — Sand / Stone / Taupe / Espresso / Gold */
+    --espresso: 27 14% 12%;           /* #241F1B */
+    --espresso-2: 27 14% 16%;         /* #2E2823 */
+    --stone: 34 21% 81%;              /* #D8CFC3 */
+    --taupe: 31 15% 38%;              /* #6F6152 */
+    --gold-text: 38 45% 34%;          /* #7E6230 — gold text on light */
+    --gold-ink: var(--gold-text);     /* resolves per surface */
 
-    /* Legacy aliases — keeping compatibility */
-    --ocean-deep: 220 42% 10%;
-    --ocean-mid: 220 30% 25%;
-    --teal: 193 42% 31%;
-    --sand: 33 25% 75%;
-    --sand-light: 33 43% 93%;
-    --off-white: 33 43% 97%;
-    --gold: 38 44% 61%;
-    --gold-soft: 40 48% 68%;
+    --primary-dark: 27 14% 12%;
+    --accent-gold: 37 42% 59%;
+    --accent-gold-soft: 37 45% 68%;
+    --warm-neutral: 34 26% 87%;
+    --pure-white: 0 0% 100%;
+    --text-dark: 27 14% 12%;
+    --text-light: 34 30% 91%;
 
-    /* Shadcn semantic tokens */
-    --background: 33 43% 97%;
-    --foreground: 0 0% 10%;
+    /* Legacy aliases mapped onto the warm palette */
+    --ocean-deep: 27 14% 12%;
+    --ocean-mid: 27 14% 16%;
+    --teal: 31 15% 38%;
+    --sand: 34 21% 81%;
+    --sand-light: 34 26% 87%;
+    --off-white: 34 30% 91%;
+    --gold: 37 42% 59%;               /* #C2A06A — fills & accents on dark */
+    --gold-soft: 37 45% 68%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 0 0% 10%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 10%;
-
-    --primary: 38 44% 61%;
-    --primary-foreground: 220 42% 10%;
-
-    --secondary: 33 43% 93%;
-    --secondary-foreground: 0 0% 10%;
-
-    --muted: 33 43% 93%;
-    --muted-foreground: 220 32% 20%;
-
-    --accent: 38 44% 61%;
-    --accent-foreground: 220 42% 10%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 33 25% 75%;
-    --input: 33 25% 75%;
-    --ring: 38 44% 61%;
-
+    --background: 34 30% 91%;
+    --foreground: 27 14% 12%;
+    --card: 34 30% 94%;
+    --card-foreground: 27 14% 12%;
+    --popover: 34 30% 94%;
+    --popover-foreground: 27 14% 12%;
+    --primary: 37 42% 59%;
+    --primary-foreground: 27 14% 12%;
+    --secondary: 34 21% 81%;
+    --secondary-foreground: 27 14% 12%;
+    --muted: 34 26% 87%;
+    --muted-foreground: 31 15% 33%;
+    --accent: 37 42% 59%;
+    --accent-foreground: 27 14% 12%;
+    --destructive: 0 70% 42%;
+    --destructive-foreground: 34 30% 91%;
+    --border: 34 21% 81%;
+    --input: 34 21% 75%;
+    --ring: 38 45% 34%;
     --radius: 0rem;
 
-    --sidebar-background: 220 42% 10%;
-    --sidebar-foreground: 33 43% 97%;
-    --sidebar-primary: 38 44% 61%;
-    --sidebar-primary-foreground: 220 42% 10%;
-    --sidebar-accent: 220 30% 25%;
-    --sidebar-accent-foreground: 33 43% 97%;
-    --sidebar-border: 220 30% 25%;
-    --sidebar-ring: 38 44% 61%;
+    --sidebar-background: 27 14% 12%;
+    --sidebar-foreground: 34 30% 91%;
+    --sidebar-primary: 37 42% 59%;
+    --sidebar-primary-foreground: 27 14% 12%;
+    --sidebar-accent: 27 14% 16%;
+    --sidebar-accent-foreground: 34 30% 91%;
+    --sidebar-border: 27 12% 22%;
+    --sidebar-ring: 37 42% 59%;
   }
 
-  /* ========== DARK MODE ========== */
+  /* ========== DARK MODE — Espresso backgrounds, Sand text ========== */
   .dark {
     color-scheme: dark;
-    --primary-dark: 222 50% 5%;
-    --ocean-deep: 222 50% 5%;
-    --ocean-mid: 210 30% 65%;
-    --teal: 193 35% 50%;
-    --sand: 220 20% 28%;
-    --sand-light: 220 20% 13%;
-    --off-white: 220 15% 92%;
-    --gold: 38 44% 61%;
-    --gold-soft: 40 48% 68%;
-    --warm-neutral: 220 20% 13%;
-    --text-dark: 220 15% 92%;
+    --gold-ink: var(--gold);
+    --primary-dark: 27 14% 9%;
+    --ocean-deep: 27 14% 9%;
+    --ocean-mid: 27 14% 16%;
+    --teal: 34 21% 81%;
+    --sand: 27 12% 26%;
+    --sand-light: 27 14% 16%;
+    --off-white: 34 30% 91%;
+    --warm-neutral: 27 14% 16%;
+    --text-dark: 34 30% 91%;
 
-    --background: 222 47% 5%;
-    --foreground: 220 15% 92%;
+    --background: 27 14% 12%;
+    --foreground: 34 30% 91%;
+    --card: 27 14% 16%;
+    --card-foreground: 34 30% 91%;
+    --popover: 27 14% 16%;
+    --popover-foreground: 34 30% 91%;
+    --primary: 37 42% 59%;
+    --primary-foreground: 27 14% 12%;
+    --secondary: 27 14% 16%;
+    --secondary-foreground: 34 30% 91%;
+    --muted: 27 14% 16%;
+    --muted-foreground: 34 21% 78%;
+    --accent: 37 42% 59%;
+    --accent-foreground: 27 14% 12%;
+    --destructive: 0 62% 55%;
+    --destructive-foreground: 27 14% 12%;
+    --border: 27 12% 24%;
+    --input: 27 12% 28%;
+    --ring: 37 42% 59%;
 
-    --card: 220 40% 10%;
-    --card-foreground: 220 15% 92%;
-
-    --popover: 220 40% 10%;
-    --popover-foreground: 220 15% 92%;
-
-    --primary: 38 44% 61%;
-    --primary-foreground: 222 47% 5%;
-
-    --secondary: 220 20% 13%;
-    --secondary-foreground: 220 15% 92%;
-
-    --muted: 220 20% 13%;
-    --muted-foreground: 210 30% 76%;
-
-    --accent: 38 44% 61%;
-    --accent-foreground: 222 47% 5%;
-
-    --destructive: 0 62.8% 50%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 220 20% 20%;
-    --input: 220 20% 20%;
-    --ring: 38 44% 61%;
-
-    --sidebar-background: 222 47% 5%;
-    --sidebar-foreground: 220 15% 92%;
-    --sidebar-primary: 38 44% 61%;
-    --sidebar-primary-foreground: 222 47% 5%;
-    --sidebar-accent: 220 40% 10%;
-    --sidebar-accent-foreground: 220 15% 92%;
-    --sidebar-border: 220 20% 20%;
-    --sidebar-ring: 38 44% 61%;
+    --sidebar-background: 27 14% 9%;
+    --sidebar-foreground: 34 30% 91%;
+    --sidebar-primary: 37 42% 59%;
+    --sidebar-primary-foreground: 27 14% 12%;
+    --sidebar-accent: 27 14% 16%;
+    --sidebar-accent-foreground: 34 30% 91%;
+    --sidebar-border: 27 12% 24%;
+    --sidebar-ring: 37 42% 59%;
   }
 }
 
 @layer base {
   :root {
-    --font-display: 'Cormorant Garamond', 'Cormorant', Georgia, serif;
+    --font-display: 'Inter Tight', system-ui, sans-serif;
+    --font-accent: 'Cormorant Garamond', Georgia, serif;
     --font-body: 'DM Sans', system-ui, -apple-system, sans-serif;
   }
 
@@ -140,17 +129,23 @@
     @apply bg-background text-foreground;
     font-family: var(--font-body);
     font-size: 17px;
-    line-height: 1.75;
+    line-height: 1.7;
   }
 
-  h1, h2, h3, h4, h5 {
+  h1, h2, h3 {
     font-family: var(--font-display);
-    letter-spacing: 0.02em;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    line-height: 0.95;
   }
+  h4, h5 { font-family: var(--font-display); font-weight: 400; letter-spacing: -0.01em; }
+  h1 .italic, h2 .italic, h3 .italic { font-style: normal; }
+  blockquote, q { font-family: var(--font-accent); font-style: italic; }
 
-  h1 { font-size: clamp(44px, 6vw, 72px); line-height: 1.1; letter-spacing: 0.01em; }
-  h2 { font-size: clamp(32px, 5vw, 48px); line-height: 1.1; }
-  h3 { font-size: clamp(22px, 3vw, 32px); line-height: 1.25; }
+  h1 { font-size: clamp(44px, 6vw, 72px); }
+  h2 { font-size: clamp(32px, 5vw, 48px); }
+  h3 { font-size: clamp(22px, 3vw, 32px); line-height: 1.05; }
   h4 { font-size: clamp(18px, 2.2vw, 24px); line-height: 1.35; }
 
   /* Accessibility: focus indicators */
@@ -166,32 +161,37 @@
 .text-display {
   font-family: var(--font-display);
   font-size: clamp(48px, 7vw, 88px);
-  font-weight: 500;
-  line-height: 1.05;
-  letter-spacing: 0.01em;
+  font-weight: 300;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
 }
 
 .text-h1 {
   font-family: var(--font-display);
   font-size: clamp(40px, 5.5vw, 68px);
-  font-weight: 400;
-  line-height: 1.15;
-  letter-spacing: 0.01em;
+  font-weight: 300;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
 }
 
 .text-h2 {
   font-family: var(--font-display);
   font-size: clamp(34px, 4.6vw, 56px);
-  font-weight: 500;
-  line-height: 1.2;
-  letter-spacing: 0.01em;
+  font-weight: 300;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
 }
 
 .text-h3 {
   font-family: var(--font-display);
   font-size: clamp(22px, 2.5vw, 28px);
-  font-weight: 400;
-  line-height: 1.3;
+  font-weight: 300;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
 }
 
 .text-h4 {
@@ -225,23 +225,25 @@
   font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: hsl(var(--gold));
+  color: hsl(var(--gold-ink));
 }
 
 .text-price {
   font-family: var(--font-display);
+  font-variant-numeric: lining-nums tabular-nums;
   font-size: clamp(22px, 2.5vw, 30px);
   font-weight: 400;
   letter-spacing: 0.02em;
-  color: hsl(var(--gold));
+  color: hsl(var(--gold-ink));
 }
 
 .text-stat-number {
   font-family: var(--font-display);
+  font-variant-numeric: lining-nums tabular-nums;
   font-size: clamp(36px, 4vw, 52px);
   font-weight: 400;
   line-height: 1;
-  color: hsl(var(--gold));
+  color: hsl(var(--gold-ink));
 }
 
 .text-stat-label {
@@ -282,7 +284,15 @@
 
 @layer utilities {
   .font-serif {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: var(--font-display);
+  }
+  .font-accent {
+    font-family: var(--font-accent);
+    font-style: italic;
+  }
+  .font-numeric {
+    font-family: var(--font-display);
+    font-variant-numeric: lining-nums tabular-nums;
   }
   .font-sans {
     font-family: 'DM Sans', sans-serif;
@@ -540,9 +550,16 @@
   }
   .text-display .italic, .text-h1 .italic, .text-h2 .italic { -webkit-text-fill-color: transparent; }
 }
-:root { --title-gold-a: 38 70% 28%; --title-gold-b: 40 85% 36%; --title-gold-c: 44 90% 52%; }
-.dark, .bg-ocean-deep, [class*="bg-ocean"] { --title-gold-a: 38 50% 52%; --title-gold-b: 42 80% 64%; --title-gold-c: 46 100% 82%; }
+:root { --title-gold-a: 38 45% 28%; --title-gold-b: 38 45% 34%; --title-gold-c: 38 48% 40%; }
+.dark, .bg-ocean-deep, [class*="bg-ocean"], .on-dark, [class*="bg-espresso"] { --title-gold-a: 38 50% 52%; --title-gold-b: 42 80% 64%; --title-gold-c: 46 100% 82%; }
 .dark { --title-gold-a: 38 50% 52%; --title-gold-b: 42 80% 64%; --title-gold-c: 46 100% 82%; }
 @keyframes gold-title-shimmer { 0%,100% { background-position: 100% 0; } 50% { background-position: 0% 0; } }
 @media (prefers-reduced-motion: reduce) { .text-display, .text-h1, .text-h2, .gold-shimmer { animation: none; } }
 .title-on-dark { --title-gold-a: 38 50% 55%; --title-gold-b: 42 80% 66%; --title-gold-c: 46 100% 84%; }
+
+/* ── Gold text resolves to AA-safe ink on light, bright gold on dark ── */
+.dark, .on-dark, .bg-ocean-deep, [class*="bg-ocean-deep"], [class*="bg-espresso"], [class*="bg-primary-dark"], footer, .title-on-dark { --gold-ink: var(--gold); }
+.text-gold { color: hsl(var(--gold-ink)); }
+.text-gold-soft { color: hsl(var(--gold-ink)); }
+:is(.dark, .on-dark, .bg-ocean-deep, [class*="bg-ocean-deep"], [class*="bg-espresso"], footer) .text-gold-soft { color: hsl(var(--gold-soft)); }
+a[href^="tel:"], .tabular { font-family: var(--font-display); font-variant-numeric: lining-nums tabular-nums; }
