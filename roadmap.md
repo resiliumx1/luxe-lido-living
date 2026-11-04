@@ -11,3 +11,8 @@
 - [x] Homepage: Managed Construction and Custom Builds as flagship cards, every service with a "Start your enquiry" button
 - [x] Container order and trailer build forms: animated progress, smoother finish screen
 - [x] Gentle scroll fade-ins across homepage and service pages, consistent section spacing
+
+# Section rhythm refinement
+- [x] Reveal individual sections and service items as they enter view; honor reduced motion
+- [x] Balance mobile and desktop spacing from service discovery to enquiry
+- [x] Verify public pages and enquiry links on desktop and mobile

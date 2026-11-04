@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { ArrowRight, Shield, DollarSign, Clock, Truck, Package, Ruler, Weight, Box } from "lucide-react";
 import ResponsiveImage from "@/components/ResponsiveImage";
 import SectionLabel from "@/components/SectionLabel";
@@ -83,6 +83,7 @@ const valueProps = [
 ];
 
 export default function Hub() {
+  const reduceMotion = useReducedMotion();
   const { formatPriceFromXCD } = useCurrency();
 
   return (
@@ -99,7 +100,7 @@ export default function Hub() {
         <div className="absolute inset-0 bg-gradient-to-t from-ocean-deep/85 via-ocean-deep/45 to-ocean-deep/20" />
         <div className="relative z-10 flex flex-col items-center justify-end h-full pb-20 px-6 text-center">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={reduceMotion ? false : { opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
@@ -125,7 +126,7 @@ export default function Hub() {
       </section>
 
       {/* Order — two real products */}
-      <section id="order" className="bg-background py-24 px-6">
+      <section id="order" className="bg-background py-16 md:py-24 px-6">
         <div className="max-w-[1280px] mx-auto">
           <Reveal>
             <SectionLabel text="Available Units" />
@@ -140,7 +141,7 @@ export default function Hub() {
             {containers.map((c, i) => (
               <motion.div
                 key={c.id}
-                initial={{ opacity: 0, y: 20 }}
+                initial={reduceMotion ? false : { opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1, duration: 0.5 }}
@@ -194,7 +195,7 @@ export default function Hub() {
       </section>
 
       {/* Finished units — real photography */}
-      <section className="bg-secondary py-24 px-6">
+      <section className="bg-secondary py-16 md:py-24 px-6">
         <div className="max-w-[1280px] mx-auto">
           <Reveal>
             <SectionLabel text="Finished Units" />
@@ -214,7 +215,7 @@ export default function Hub() {
       </section>
 
       {/* How they're built */}
-      <section className="bg-background py-24 px-6">
+      <section className="bg-background py-16 md:py-24 px-6">
         <div className="max-w-[1280px] mx-auto">
           <Reveal>
             <SectionLabel text="How They're Built" />
@@ -236,7 +237,7 @@ export default function Hub() {
 
 
       {/* Terms — near the order CTA */}
-      <section id="order-cta" className="bg-ocean-deep py-20 px-6">
+      <section id="order-cta" className="bg-ocean-deep py-16 md:py-20 px-6">
         <div className="max-w-[1080px] mx-auto">
           <Reveal>
             <SectionLabel text="How It Works" light />
@@ -265,7 +266,7 @@ export default function Hub() {
       </section>
 
       {/* Use-case inspiration */}
-      <section className="bg-background py-24 px-6">
+      <section className="bg-background py-16 md:py-24 px-6">
         <div className="max-w-[1280px] mx-auto">
           <Reveal>
             <SectionLabel text="What You Can Do With It" />
@@ -280,7 +281,7 @@ export default function Hub() {
             {useCases.map((u, i) => (
               <motion.div
                 key={u.key}
-                initial={{ opacity: 0, y: 20 }}
+                initial={reduceMotion ? false : { opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08, duration: 0.5 }}
@@ -310,13 +311,13 @@ export default function Hub() {
       </section>
 
       {/* Why containers — trimmed to claims that apply to the steel shell itself */}
-      <section className="bg-secondary py-24 px-6">
+      <section className="bg-secondary py-16 md:py-24 px-6">
         <div className="max-w-[1280px] mx-auto">
           <Reveal>
             <SectionLabel text="Why Containers" />
             <h2 className="font-serif text-h2 text-foreground mt-4 mb-12">Built To Last in the Caribbean</h2>
           </Reveal>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+          <Reveal className="grid grid-cols-1 md:grid-cols-3 gap-10">
             {valueProps.map((vp) => (
               <div key={vp.title} className="flex flex-col items-start">
                 <div className="w-12 h-12 rounded-full bg-gold/10 flex items-center justify-center mb-4">
@@ -326,12 +327,12 @@ export default function Hub() {
                 <p className="font-sans text-muted-foreground text-sm leading-relaxed">{vp.desc}</p>
               </div>
             ))}
-          </div>
+          </Reveal>
         </div>
       </section>
 
       {/* Final CTA */}
-      <section className="bg-ocean-deep py-20 px-6 text-center">
+      <section className="bg-ocean-deep py-16 md:py-20 px-6 text-center">
         <Reveal className="max-w-2xl mx-auto">
           <h2 className="font-serif text-h2 text-off-white mb-6">Ready to Order?</h2>
           <p className="font-sans text-off-white/60 text-body mb-10">

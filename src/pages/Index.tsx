@@ -88,7 +88,7 @@ function Services() {
   const sectionRef = useScrollReveal();
 
   return (
-    <section className="py-24 md:py-28 bg-ocean-deep dark:bg-ocean-deep" ref={sectionRef}>
+    <section className="py-16 md:py-24 bg-ocean-deep dark:bg-ocean-deep" ref={sectionRef}>
       <div className="max-w-[1280px] mx-auto px-6 md:px-10">
         <div className="mb-12 reveal max-w-2xl">
           <SectionLabel text="What We Offer" light />
@@ -155,7 +155,7 @@ function DeliveredWork() {
   const sectionRef = useScrollReveal();
 
   return (
-    <section className="py-24 md:py-28 bg-off-white dark:bg-background" ref={sectionRef}>
+    <section className="py-16 md:py-24 bg-off-white dark:bg-background" ref={sectionRef}>
       <div className="max-w-[1280px] mx-auto px-6 md:px-10">
         <div className="mb-12 reveal max-w-2xl">
           <SectionLabel text="Work Delivered" />
@@ -218,7 +218,7 @@ function HowItWorks() {
   const sectionRef = useScrollReveal();
 
   return (
-    <section className="py-24 md:py-28 bg-sand-light dark:bg-sand-light" ref={sectionRef}>
+    <section className="py-16 md:py-24 bg-sand-light dark:bg-sand-light" ref={sectionRef}>
       <div className="max-w-[1280px] mx-auto px-6 md:px-10">
         <div className="mb-14 reveal max-w-2xl">
           <SectionLabel text="How It Works" />
@@ -254,7 +254,7 @@ function PropertiesRow() {
   const featured = properties.filter((p) => p.type === "luxury").slice(0, 3);
 
   return (
-    <section className="py-20 md:py-24 bg-off-white dark:bg-background" ref={sectionRef}>
+    <section className="py-16 md:py-20 bg-off-white dark:bg-background" ref={sectionRef}>
       <div className="max-w-[1280px] mx-auto px-6 md:px-10">
         <div className="flex flex-wrap items-end justify-between gap-4 mb-10 reveal">
           <div>

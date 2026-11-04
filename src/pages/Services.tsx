@@ -89,9 +89,9 @@ export default function Services() {
 
       <main id="main-content">
         {/* Services Grid */}
-        <section className="py-28 bg-off-white dark:bg-background" ref={sectionRef}>
+        <section className="py-16 md:py-24 bg-off-white dark:bg-background" ref={sectionRef}>
           <div className="max-w-[1280px] mx-auto px-6 md:px-10">
-            <div className="max-w-2xl mb-16 reveal">
+            <div className="max-w-2xl mb-8 md:mb-12 reveal">
               <SectionLabel text="What We Offer" />
               <p className="font-sans text-ocean-mid dark:text-foreground/70 text-base leading-relaxed">
                 Whether you are building a home, improving the one you have, buying land or relocating,
@@ -99,11 +99,11 @@ export default function Services() {
               </p>
             </div>
 
-            <div className="space-y-0 reveal reveal-delay-2">
+            <div className="space-y-0">
               {services.map((s, i) => (
                 <div
                   key={s.num}
-                  className={`group grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-10 py-12 ${
+                  className={`reveal group grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-10 py-8 md:py-12 ${
                     i < services.length - 1 ? "border-b border-sand dark:border-gold/10" : ""
                   }`}
                 >
@@ -136,7 +136,7 @@ export default function Services() {
           </div>
         </section>
 
-        <section className="py-24 bg-sand-light dark:bg-sand-light">
+        <section className="py-16 md:py-24 bg-sand-light dark:bg-sand-light">
           <div className="max-w-[1280px] mx-auto px-6 md:px-10">
             <Reveal>
               <SectionLabel text="Two Ways to Work" />
@@ -147,10 +147,10 @@ export default function Services() {
             </Reveal>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {workStyles.map((style) => (
-                <div key={style.title} className="bg-off-white dark:bg-card border border-sand dark:border-gold/15 p-8 md:p-10">
+                <Reveal key={style.title} className="bg-off-white dark:bg-card border border-sand dark:border-gold/15 p-8 md:p-10">
                   <h3 className="font-serif text-2xl text-ocean-deep dark:text-foreground mb-4">{style.title}</h3>
                   <p className="font-sans text-ocean-mid dark:text-foreground/70 leading-relaxed">{style.desc}</p>
-                </div>
+                </Reveal>
               ))}
             </div>
           </div>

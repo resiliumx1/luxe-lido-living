@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import {
   ArrowRight,
   ChefHat,
@@ -104,6 +104,7 @@ const standardSystems = [
 ];
 
 export default function Trailers() {
+  const reduceMotion = useReducedMotion();
   return (
     <main id="main-content">
       {/* Hero */}
@@ -123,7 +124,7 @@ export default function Trailers() {
 
         <div className="relative z-10 w-full px-6 pb-20 pt-32 text-center">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={reduceMotion ? false : { opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             className="max-w-3xl mx-auto"
@@ -150,7 +151,7 @@ export default function Trailers() {
       </section>
 
       {/* Types */}
-      <section className="bg-background py-24 px-6">
+      <section className="bg-background py-16 md:py-24 px-6">
         <div className="max-w-[1280px] mx-auto">
           <Reveal>
             <SectionLabel text="What We Build" />
@@ -165,7 +166,7 @@ export default function Trailers() {
             {trailerTypes.map((t, i) => (
               <motion.div
                 key={t.label}
-                initial={{ opacity: 0, y: 20 }}
+                initial={reduceMotion ? false : { opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08, duration: 0.5 }}
@@ -183,7 +184,7 @@ export default function Trailers() {
       </section>
 
       {/* Real builds */}
-      <section className="bg-secondary py-24 px-6">
+      <section className="bg-secondary py-16 md:py-24 px-6">
         <div className="max-w-[1280px] mx-auto">
           <Reveal>
             <SectionLabel text="Real Builds" />
@@ -201,19 +202,19 @@ export default function Trailers() {
 
 
       {/* Process */}
-      <section className="bg-ocean-deep py-24 px-6">
+      <section className="bg-ocean-deep py-16 md:py-24 px-6">
         <div className="max-w-[1280px] mx-auto">
           <Reveal>
             <SectionLabel text="Build Process" light />
-            <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mt-4 mb-16">
+            <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mt-4 mb-10 md:mb-14">
               <h2 className="font-serif text-h2 text-off-white max-w-2xl">From Brief to Delivery</h2>
               <p className="font-serif italic text-gold text-h4">Typical build: 4–6 weeks</p>
             </div>
           </Reveal>
 
-          <div className="flex flex-col lg:flex-row items-start gap-4">
+          <div className="flex flex-col lg:flex-row items-start gap-8 lg:gap-4">
             {processSteps.map((step, i) => (
-              <div key={step.label} className="flex-1 relative w-full">
+              <Reveal key={step.label} delay={i + 1} className="flex-1 relative w-full">
                 <div className="flex items-center gap-3 mb-3">
                   <span className="w-8 h-8 rounded-full bg-gold text-ocean-deep font-sans font-bold text-sm flex items-center justify-center">
                     {i + 1}
@@ -227,14 +228,14 @@ export default function Trailers() {
                     className="hidden lg:block absolute -right-3 top-2.5 text-gold"
                   />
                 )}
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
       {/* What's Included — spec block */}
-      <section className="bg-background py-24 px-6">
+      <section className="bg-background py-16 md:py-24 px-6">
         <div className="max-w-[1280px] mx-auto">
           <Reveal>
             <SectionLabel text="What's Included" />
@@ -245,7 +246,7 @@ export default function Trailers() {
           </Reveal>
 
           {/* Dimensions */}
-          <div className="bg-secondary border border-border p-8 mb-8">
+          <Reveal className="bg-secondary border border-border p-6 md:p-8 mb-8">
             <div className="flex items-center gap-3 mb-6">
               <Ruler size={18} className="text-gold" />
               <h3 className="font-sans font-semibold text-foreground text-sm tracking-wide uppercase">
@@ -260,12 +261,12 @@ export default function Trailers() {
                 </div>
               ))}
             </div>
-          </div>
+          </Reveal>
 
           {/* Equipment + Systems two-col */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* Equipment */}
-            <div className="bg-card border border-border p-8">
+            <Reveal className="bg-card border border-border p-6 md:p-8">
               <div className="flex items-center gap-3 mb-6">
                 <Flame size={18} className="text-gold" />
                 <h3 className="font-sans font-semibold text-foreground text-sm tracking-wide uppercase">
@@ -283,10 +284,10 @@ export default function Trailers() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </Reveal>
 
             {/* Standard Systems */}
-            <div className="bg-card border border-border p-8">
+            <Reveal className="bg-card border border-border p-6 md:p-8">
               <div className="flex items-center gap-3 mb-6">
                 <ShieldCheck size={18} className="text-gold" />
                 <h3 className="font-sans font-semibold text-foreground text-sm tracking-wide uppercase">
@@ -306,13 +307,13 @@ export default function Trailers() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </Reveal>
           </div>
         </div>
       </section>
 
       {/* Final CTA */}
-      <section className="bg-ocean-deep py-24 px-6 text-center">
+      <section className="bg-ocean-deep py-16 md:py-24 px-6 text-center">
         <Reveal className="max-w-2xl mx-auto">
           <h2 className="font-serif text-h2 text-off-white mb-6">Ready To Build?</h2>
           <p className="font-sans text-off-white/60 text-body mb-10">

@@ -4,36 +4,40 @@ export function useScrollReveal(
   options: IntersectionObserverInit = {}
 ): React.RefObject<HTMLDivElement> {
   const ref = useRef<HTMLDivElement>(null);
+  const { root = null, rootMargin = "0px 0px -24px 0px", threshold = 0.05 } = options;
 
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
 
+    const targets = Array.from(el.querySelectorAll<HTMLElement>(".reveal"));
+    if (el.classList.contains("reveal")) targets.unshift(el);
+    // A container should not reveal its off-screen descendants all at once.
+    const revealTargets = targets.length > 0 ? targets : [el];
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches || !("IntersectionObserver" in window)) {
+      revealTargets.forEach((target) => target.classList.add("visible"));
+      return;
+    }
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            // Add visible to all .reveal children + the element itself
-            entry.target.querySelectorAll(".reveal").forEach((child) => {
-              child.classList.add("visible");
-            });
-            if (entry.target.classList.contains("reveal")) {
-              entry.target.classList.add("visible");
-            }
+            entry.target.classList.add("visible");
             observer.unobserve(entry.target);
           }
         });
       },
       {
-        threshold: 0.1,
-        rootMargin: "0px 0px -60px 0px",
-        ...options,
+        threshold,
+        rootMargin,
+        root,
       }
     );
 
-    observer.observe(el);
+    revealTargets.forEach((target) => observer.observe(target));
     return () => observer.disconnect();
-  }, []);
+  }, [root, rootMargin, threshold]);
 
   return ref;
 }
