@@ -21,3 +21,13 @@
 - [x] Container orders, trailer builds, insulated panel builds and managed construction as the four lead cards, each with benefits and its own enquiry button
 - [x] Supporting services kept below with enquiry links; no duplicated container/panel entries
 - [x] Verify all four buttons reach the right form and preselect the right project type
+
+# Mobile WhatsApp button
+- [ ] Shrink/move the floating WhatsApp button so it never covers page text while scrolling or form fields and the submit button
+- [ ] Verify on a phone-sized viewport: homepage scroll, contact form, container/trailer forms
+
+# Site package
+- [x] Copy clean source (no git, dependencies, build output) into a staging folder
+- [ ] Write a replication guide covering stack, routes, design tokens, data rules and backend schema
+- [ ] Zip the package and save it to Files
+
