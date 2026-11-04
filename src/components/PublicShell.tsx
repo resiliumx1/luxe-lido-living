@@ -7,7 +7,7 @@ export default function PublicShell({ children }: { children: React.ReactNode })
     <>
       <Navigation />
       <WhatsAppWidget />
-      {children}
+      <main id="main-content">{children}</main>
       <Footer />
     </>
   );

@@ -106,7 +106,7 @@ const standardSystems = [
 export default function Trailers() {
   const reduceMotion = useReducedMotion();
   return (
-    <main id="main-content">
+    <div>
       {/* Hero */}
       <section className="relative min-h-[80vh] flex items-end overflow-hidden bg-ocean-deep">
         {/* Layered gradient backdrop */}
@@ -328,6 +328,6 @@ export default function Trailers() {
           </Link>
         </Reveal>
       </section>
-    </main>
+    </div>
   );
 }

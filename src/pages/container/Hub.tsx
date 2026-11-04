@@ -87,7 +87,7 @@ export default function Hub() {
   const { formatPriceFromXCD } = useCurrency();
 
   return (
-    <main id="main-content">
+    <div>
       {/* Hero */}
       <section className="relative h-[80vh] min-h-[560px] overflow-hidden">
         <ResponsiveImage
@@ -347,6 +347,6 @@ export default function Hub() {
           </Link>
         </Reveal>
       </section>
-    </main>
+    </div>
   );
 }
