@@ -151,11 +151,11 @@ function Services() {
         <div className="mt-16 md:mt-20 reveal">
           <SectionLabel text="Also Handled" light />
         </div>
-        <div className="mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-gold/10">
+        <div className="mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-px bg-gold/10">
           {supporting.map((s, i) => (
             <div
               key={s.num}
-              className={`reveal reveal-delay-${Math.min(i + 1, 5)} group flex flex-col bg-ocean-deep dark:bg-ocean-deep p-7 border-t-2 border-transparent hover:border-gold transition-colors duration-300`}
+              className={`reveal reveal-delay-${Math.min(i + 1, 5)} group flex flex-col bg-ocean-deep dark:bg-ocean-deep p-7 border-t-2 border-transparent hover:border-gold transition-colors duration-300 ${s.span}`}
             >
               <p className="font-serif text-4xl text-off-white/10 font-light mb-3 group-hover:text-gold/20 transition-colors duration-300">
                 {s.num}
