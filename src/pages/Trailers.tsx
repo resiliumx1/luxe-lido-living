@@ -202,7 +202,7 @@ export default function Trailers() {
 
 
       {/* Process */}
-      <section className="bg-ocean-deep py-16 md:py-24 px-6">
+      <section className="section-alt py-16 md:py-24 px-6">
         <div className="max-w-[1280px] mx-auto">
           <Reveal>
             <SectionLabel text="Build Process" light />
@@ -313,7 +313,7 @@ export default function Trailers() {
       </section>
 
       {/* Final CTA */}
-      <section className="bg-ocean-deep py-16 md:py-24 px-6 text-center">
+      <section className="section-alt py-16 md:py-24 px-6 text-center">
         <Reveal className="max-w-2xl mx-auto">
           <h2 className="font-serif text-h2 text-off-white mb-6">Ready To Build?</h2>
           <p className="font-sans text-off-white/85 text-body mb-10">

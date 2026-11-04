@@ -34,7 +34,7 @@ export default function About() {
           decoding="async"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-ocean-deep/80 via-ocean-deep/30 to-transparent" />
-        <div className="relative max-w-[1280px] mx-auto px-6 md:px-10 w-full">
+        <div className="relative max-w-[1280px] mx-auto px-6 md:px-12 w-full">
           <div className="flex items-center gap-4 mb-4">
             <span className="gold-line w-10" />
             <span className="small-caps text-xs text-gold tracking-widest font-sans">A. Lindsay Luxe Estates</span>
@@ -46,7 +46,7 @@ export default function About() {
       <main id="main-content">
         {/* Story */}
         <section aria-label="Ashante Lindsay biography" className="py-24 bg-off-white dark:bg-background">
-          <div className="max-w-[1280px] mx-auto px-6 md:px-10">
+          <div className="max-w-[1280px] mx-auto px-6 md:px-12">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
               {/* Image */}
               <div className="relative md:sticky md:top-28">
@@ -73,7 +73,7 @@ export default function About() {
 
         {/* Facts */}
         <div className="bg-ocean-deep py-16 border-y border-gold/20">
-          <div className="max-w-[1280px] mx-auto px-6 md:px-10">
+          <div className="max-w-[1280px] mx-auto px-6 md:px-12">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
               {facts.map((s) => (
                 <div key={s.label}>
@@ -88,7 +88,7 @@ export default function About() {
 
         {/* Specialties */}
         <section aria-label="Areas of expertise" className="py-20 bg-sand-light dark:bg-sand-light">
-          <div className="max-w-[1280px] mx-auto px-6 md:px-10 text-center">
+          <div className="max-w-[1280px] mx-auto px-6 md:px-12 text-center">
             <SectionLabel text="Areas of Expertise" />
             <h2 className="text-h2 text-ocean-deep dark:text-foreground mb-10">Specialties</h2>
             <div className="flex flex-wrap justify-center gap-3">
@@ -103,7 +103,7 @@ export default function About() {
 
         {/* Mission quote */}
         <section aria-label="Mission statement" className="py-24 bg-off-white dark:bg-background">
-          <div className="max-w-[800px] mx-auto px-6 md:px-10 text-center">
+          <div className="max-w-[800px] mx-auto px-6 md:px-12 text-center">
             <div className="gold-line w-16 mx-auto mb-10" />
             <blockquote className="font-serif italic text-2xl md:text-3xl text-ocean-deep dark:text-foreground leading-relaxed mb-6">
               "Whether you are building from the ground up, renovating one room or buying a plot of land, my job is to help you find the right people and keep the work moving."
@@ -115,7 +115,7 @@ export default function About() {
 
         {/* CTA */}
         <div className="bg-ocean-deep py-16">
-          <div className="max-w-[1280px] mx-auto px-6 md:px-10 flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="max-w-[1280px] mx-auto px-6 md:px-12 flex flex-col md:flex-row items-center justify-between gap-6">
             <p className="font-serif italic text-off-white text-xl md:text-2xl">Ready to discuss your build, renovation or property plans?</p>
             <a
               href="/contact"

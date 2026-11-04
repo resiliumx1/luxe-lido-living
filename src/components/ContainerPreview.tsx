@@ -25,13 +25,13 @@ export default function ContainerPreview() {
   const navigate = useNavigate();
 
   return (
-    <section className="py-28 bg-ocean-deep relative overflow-hidden" ref={sectionRef}>
+    <section className="py-28 section-alt relative overflow-hidden" ref={sectionRef}>
       {/* Watermark */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none">
         <span className="font-serif text-[18vw] font-light text-off-white/[0.03] leading-none">AL</span>
       </div>
 
-      <div className="relative max-w-[1280px] mx-auto px-6 md:px-10">
+      <div className="relative max-w-[1280px] mx-auto px-6 md:px-12">
         <div className="mb-12 reveal">
           <SectionLabel text="Container Solutions" light />
           <h2 className="font-serif text-4xl md:text-5xl text-off-white mb-4">

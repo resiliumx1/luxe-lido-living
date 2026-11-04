@@ -25,7 +25,7 @@ export default function PrefabHomes() {
 
       <main id="main-content">
         <section aria-label="Prefab home listings" className="py-20 bg-off-white dark:bg-background">
-          <div className="max-w-[1280px] mx-auto px-6 md:px-10">
+          <div className="max-w-[1280px] mx-auto px-6 md:px-12">
             <div className="max-w-2xl mb-16">
               <SectionLabel text="Our Recommended Method" />
               <p className="font-sans text-ocean-mid dark:text-foreground/70 text-base leading-relaxed">
@@ -68,7 +68,7 @@ export default function PrefabHomes() {
 
         {/* CTA */}
         <div className="bg-ocean-deep py-16 border-t border-gold/20">
-          <div className="max-w-[1280px] mx-auto px-6 md:px-10 flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="max-w-[1280px] mx-auto px-6 md:px-12 flex flex-col md:flex-row items-center justify-between gap-6">
             <p className="font-serif italic text-off-white text-xl md:text-2xl">
               Ready to plan your build timeline? Start with a call.
             </p>

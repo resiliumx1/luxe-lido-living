@@ -100,7 +100,7 @@ export default function Navigation() {
         style={isTransparent ? { background: "linear-gradient(to bottom, rgba(14,22,33,0.50) 0%, transparent 100%)" } : undefined}
         aria-label="Main navigation"
       >
-        <div className="max-w-[1280px] mx-auto px-6 md:px-10 flex items-center justify-between h-20">
+        <div className="max-w-[1280px] mx-auto px-6 md:px-12 flex items-center justify-between h-20">
           {/* Logo */}
           <LuxeLogo size="md" as="link" variant="dark" />
 

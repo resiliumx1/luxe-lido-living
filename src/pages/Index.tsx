@@ -107,8 +107,8 @@ function Services() {
   const sectionRef = useScrollReveal();
 
   return (
-    <section className="py-16 md:py-24 bg-ocean-deep dark:bg-ocean-deep" ref={sectionRef}>
-      <div className="max-w-[1280px] mx-auto px-6 md:px-10">
+    <section className="py-16 md:py-24 section-alt" ref={sectionRef}>
+      <div className="max-w-[1280px] mx-auto px-6 md:px-12">
         <div className="mb-12 reveal max-w-2xl">
           <SectionLabel text="What We Offer" light />
           <h2 className="text-h2 text-off-white">Four ways to get it built</h2>
@@ -179,7 +179,7 @@ function DeliveredWork() {
 
   return (
     <section className="py-16 md:py-24 bg-off-white dark:bg-background" ref={sectionRef}>
-      <div className="max-w-[1280px] mx-auto px-6 md:px-10">
+      <div className="max-w-[1280px] mx-auto px-6 md:px-12">
         <div className="mb-12 reveal max-w-2xl">
           <SectionLabel text="Work Delivered" />
           <h2 className="text-h2 text-ocean-deep dark:text-foreground">Delivered in Antigua. Not mock-ups.</h2>
@@ -242,7 +242,7 @@ function HowItWorks() {
 
   return (
     <section className="py-16 md:py-24 bg-sand-light dark:bg-sand-light" ref={sectionRef}>
-      <div className="max-w-[1280px] mx-auto px-6 md:px-10">
+      <div className="max-w-[1280px] mx-auto px-6 md:px-12">
         <div className="mb-14 reveal max-w-2xl">
           <SectionLabel text="How It Works" />
           <h2 className="text-h2 text-ocean-deep dark:text-foreground">What happens after you enquire</h2>
@@ -278,7 +278,7 @@ function PropertiesRow() {
 
   return (
     <section className="py-16 md:py-20 bg-off-white dark:bg-background" ref={sectionRef}>
-      <div className="max-w-[1280px] mx-auto px-6 md:px-10">
+      <div className="max-w-[1280px] mx-auto px-6 md:px-12">
         <div className="flex flex-wrap items-end justify-between gap-4 mb-10 reveal">
           <div>
             <SectionLabel text="Also On The Books" />
@@ -323,7 +323,7 @@ function FactsStrip() {
   ];
   return (
     <div className="bg-ocean-deep border-t border-gold/25">
-      <div className="max-w-[1280px] mx-auto px-6 md:px-10">
+      <div className="max-w-[1280px] mx-auto px-6 md:px-12">
         <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-4 sm:gap-0 py-6 sm:py-0 sm:h-[72px]">
           {facts.map((fact, i, arr) => (
             <div

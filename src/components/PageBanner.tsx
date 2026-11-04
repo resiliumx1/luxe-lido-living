@@ -16,7 +16,7 @@ export default function PageBanner({ image, title, subtitle }: PageBannerProps) 
         decoding="async"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-ocean-deep/90 via-ocean-deep/45 to-transparent" />
-      <div className="relative max-w-[1280px] mx-auto px-6 md:px-10 w-full">
+      <div className="relative max-w-[1280px] mx-auto px-6 md:px-12 w-full">
         <div className="flex items-center gap-4 mb-4">
           <span className="gold-line w-10" />
           <span className="small-caps text-xs text-gold-soft tracking-widest font-sans">A. Lindsay Luxe Estates</span>

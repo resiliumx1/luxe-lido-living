@@ -237,7 +237,7 @@ export default function Hub() {
 
 
       {/* Terms — near the order CTA */}
-      <section id="order-cta" className="bg-ocean-deep py-16 md:py-20 px-6">
+      <section id="order-cta" className="section-alt py-16 md:py-20 px-6">
         <div className="max-w-[1080px] mx-auto">
           <Reveal>
             <SectionLabel text="How It Works" light />
@@ -332,7 +332,7 @@ export default function Hub() {
       </section>
 
       {/* Final CTA */}
-      <section className="bg-ocean-deep py-16 md:py-20 px-6 text-center">
+      <section className="section-alt py-16 md:py-20 px-6 text-center">
         <Reveal className="max-w-2xl mx-auto">
           <h2 className="font-serif text-h2 text-off-white mb-6">Ready to Order?</h2>
           <p className="font-sans text-off-white/85 text-body mb-10">

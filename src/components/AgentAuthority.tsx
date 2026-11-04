@@ -13,8 +13,8 @@ export default function AgentAuthority() {
   const sectionRef = useScrollReveal();
 
   return (
-    <section className="py-28 bg-ocean-deep" ref={sectionRef}>
-      <div className="max-w-[1280px] mx-auto px-6 md:px-10">
+    <section className="py-28 section-alt" ref={sectionRef}>
+      <div className="max-w-[1280px] mx-auto px-6 md:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Photo — left */}
           <div className="reveal">
