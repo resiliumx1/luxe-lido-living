@@ -4,6 +4,7 @@ import { ArrowRight, Shield, DollarSign, Clock, Truck, Package, Ruler, Weight, B
 import ResponsiveImage from "@/components/ResponsiveImage";
 import SectionLabel from "@/components/SectionLabel";
 import PhotoGallery from "@/components/PhotoGallery";
+import Reveal from "@/components/Reveal";
 import { containerFinishedUnits, containerBuildSteps } from "@/data/realBuildPhotos";
 import { useCurrency } from "@/contexts/CurrencyContext";
 
@@ -126,12 +127,14 @@ export default function Hub() {
       {/* Order — two real products */}
       <section id="order" className="bg-background py-24 px-6">
         <div className="max-w-[1280px] mx-auto">
-          <SectionLabel text="Available Units" />
-          <h2 className="font-serif text-h2 text-foreground mt-4 mb-3">Two Sizes. One Standard.</h2>
-          <p className="font-sans text-muted-foreground text-body max-w-2xl mb-12">
-            Both sizes are available as standard or high-cube (9'6"). Starting prices in Eastern Caribbean
-            Dollars — switch currency in the header to view in USD or CAD.
-          </p>
+          <Reveal>
+            <SectionLabel text="Available Units" />
+            <h2 className="font-serif text-h2 text-foreground mt-4 mb-3">Two Sizes. One Standard.</h2>
+            <p className="font-sans text-muted-foreground text-body max-w-2xl mb-12">
+              Both sizes are available as standard or high-cube (9'6"). Starting prices in Eastern Caribbean
+              Dollars — switch currency in the header to view in USD or CAD.
+            </p>
+          </Reveal>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {containers.map((c, i) => (
@@ -173,7 +176,7 @@ export default function Hub() {
           </div>
 
           {/* 40ft spec strip */}
-          <div className="mt-12 bg-secondary border border-border p-8">
+          <Reveal delay={3} className="mt-12 bg-secondary border border-border p-8">
             <p className="text-eyebrow text-primary mb-3">40ft / 22G1 Specifications</p>
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
               {fortySpecs.map((s) => (
@@ -186,40 +189,48 @@ export default function Hub() {
                 </div>
               ))}
             </div>
-          </div>
+          </Reveal>
         </div>
       </section>
 
       {/* Finished units — real photography */}
       <section className="bg-secondary py-24 px-6">
         <div className="max-w-[1280px] mx-auto">
-          <SectionLabel text="Finished Units" />
-          <h2 className="font-serif text-h2 text-foreground mt-4 mb-3">Completed and Ready to Ship</h2>
-          <p className="font-sans text-muted-foreground text-body max-w-2xl mb-12">
-            Real photographs of completed modular units leaving the workshop. Tap to enlarge.
-          </p>
-          <PhotoGallery
-            photos={containerFinishedUnits}
-            className="grid-cols-1 sm:grid-cols-2 lg:grid-cols-2"
-            aspect="aspect-[16/11]"
-          />
+          <Reveal>
+            <SectionLabel text="Finished Units" />
+            <h2 className="font-serif text-h2 text-foreground mt-4 mb-3">Completed and Ready to Ship</h2>
+            <p className="font-sans text-muted-foreground text-body max-w-2xl mb-12">
+              Real photographs of completed modular units leaving the workshop. Tap to enlarge.
+            </p>
+          </Reveal>
+          <Reveal delay={2}>
+            <PhotoGallery
+              photos={containerFinishedUnits}
+              className="grid-cols-1 sm:grid-cols-2 lg:grid-cols-2"
+              aspect="aspect-[16/11]"
+            />
+          </Reveal>
         </div>
       </section>
 
       {/* How they're built */}
       <section className="bg-background py-24 px-6">
         <div className="max-w-[1280px] mx-auto">
-          <SectionLabel text="How They're Built" />
-          <h2 className="font-serif text-h2 text-foreground mt-4 mb-3">Steel Frame, Panel Skin, Full Fit-Out</h2>
-          <p className="font-sans text-muted-foreground text-body max-w-2xl mb-12">
-            Units are built on a welded galvanised steel chassis and skinned in insulated foam-core panels —
-            structurally stronger and better insulated than block, and far quicker to erect.
-          </p>
-          <PhotoGallery
-            photos={containerBuildSteps}
-            className="grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6"
-            aspect="aspect-[4/3]"
-          />
+          <Reveal>
+            <SectionLabel text="How They're Built" />
+            <h2 className="font-serif text-h2 text-foreground mt-4 mb-3">Steel Frame, Panel Skin, Full Fit-Out</h2>
+            <p className="font-sans text-muted-foreground text-body max-w-2xl mb-12">
+              Units are built on a welded galvanised steel chassis and skinned in insulated foam-core panels —
+              structurally stronger and better insulated than block, and far quicker to erect.
+            </p>
+          </Reveal>
+          <Reveal delay={2}>
+            <PhotoGallery
+              photos={containerBuildSteps}
+              className="grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6"
+              aspect="aspect-[4/3]"
+            />
+          </Reveal>
         </div>
       </section>
 
@@ -227,8 +238,10 @@ export default function Hub() {
       {/* Terms — near the order CTA */}
       <section id="order-cta" className="bg-ocean-deep py-20 px-6">
         <div className="max-w-[1080px] mx-auto">
-          <SectionLabel text="How It Works" light />
-          <h2 className="font-serif text-h2 text-off-white mt-4 mb-10">Clear Terms, No Surprises</h2>
+          <Reveal>
+            <SectionLabel text="How It Works" light />
+            <h2 className="font-serif text-h2 text-off-white mt-4 mb-10">Clear Terms, No Surprises</h2>
+          </Reveal>
           <ul className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-12">
             {terms.map((t, i) => (
               <li key={i} className="flex items-start gap-3 font-sans text-sm text-off-white/75 leading-relaxed">
@@ -254,12 +267,14 @@ export default function Hub() {
       {/* Use-case inspiration */}
       <section className="bg-background py-24 px-6">
         <div className="max-w-[1280px] mx-auto">
-          <SectionLabel text="What You Can Do With It" />
-          <h2 className="font-serif text-h2 text-foreground mt-4 mb-3">Inspiration, Not Templates</h2>
-          <p className="font-sans text-muted-foreground text-body max-w-2xl mb-12">
-            We sell the container. What you build with it is up to you — these are scenarios our clients have
-            already brought to life across Antigua &amp; Barbuda.
-          </p>
+          <Reveal>
+            <SectionLabel text="What You Can Do With It" />
+            <h2 className="font-serif text-h2 text-foreground mt-4 mb-3">Inspiration, Not Templates</h2>
+            <p className="font-sans text-muted-foreground text-body max-w-2xl mb-12">
+              We sell the container. What you build with it is up to you — these are scenarios our clients have
+              already brought to life across Antigua &amp; Barbuda.
+            </p>
+          </Reveal>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {useCases.map((u, i) => (
@@ -295,10 +310,12 @@ export default function Hub() {
       </section>
 
       {/* Why containers — trimmed to claims that apply to the steel shell itself */}
-      <section className="bg-secondary py-20 px-6">
+      <section className="bg-secondary py-24 px-6">
         <div className="max-w-[1280px] mx-auto">
-          <SectionLabel text="Why Containers" />
-          <h2 className="font-serif text-h2 text-foreground mt-4 mb-12">Built To Last in the Caribbean</h2>
+          <Reveal>
+            <SectionLabel text="Why Containers" />
+            <h2 className="font-serif text-h2 text-foreground mt-4 mb-12">Built To Last in the Caribbean</h2>
+          </Reveal>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
             {valueProps.map((vp) => (
               <div key={vp.title} className="flex flex-col items-start">
@@ -315,7 +332,7 @@ export default function Hub() {
 
       {/* Final CTA */}
       <section className="bg-ocean-deep py-20 px-6 text-center">
-        <div className="max-w-2xl mx-auto">
+        <Reveal className="max-w-2xl mx-auto">
           <h2 className="font-serif text-h2 text-off-white mb-6">Ready to Order?</h2>
           <p className="font-sans text-off-white/60 text-body mb-10">
             Tell us which size you need, where it's going, and when you need it — we'll confirm current
@@ -327,7 +344,7 @@ export default function Hub() {
           >
             Order a Container <ArrowRight size={16} />
           </Link>
-        </div>
+        </Reveal>
       </section>
     </main>
   );
